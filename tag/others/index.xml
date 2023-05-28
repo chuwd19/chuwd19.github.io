@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Others | Wenda Chu</title><link>https://wenda-qianhw.netlify.app/tag/others/</link><atom:link href="https://wenda-qianhw.netlify.app/tag/others/index.xml" rel="self" type="application/rss+xml"/><description>Others</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 31 Dec 2022 00:00:00 +0000</lastBuildDate><image><url>https://wenda-qianhw.netlify.app/media/icon_hud9f11bce4f3a2a4889ae0de212996427_55561_512x512_fill_lanczos_center_2.png</url><title>Others</title><link>https://wenda-qianhw.netlify.app/tag/others/</link></image><item><title>Distributed Robust Principal Component Analysis</title><link>https://wenda-qianhw.netlify.app/project/drpca/</link><pubDate>Sat, 31 Dec 2022 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/project/drpca/</guid><description>&lt;p>Principal component analysis (PCA) has been widely used for dimension reduction in data science. It extracts the top k significant components of a given matrix by computing the best low-rank approximation. However, it is well known that PCA is sensitive to noises and adversarial attacks. Robust PCA (RPCA) aims at mitigating this drawback by separating the noise out explicitly. Specifically, RPCA assumes that the observed matrix $M$ can be decomposed as $M = L^* + S^*$ where $L^*$ is a low-rank matrix and $S^*$ is a sparse matrix.&lt;/p>
+&lt;p>Some RPCA algorithms relax the low-rank constraints to nuclear norm and sparsity to $\ell_1$ norm, so that traditional convex optimization algorithms (e.g., PGM, ADMM) can be directly applied. Others reformulate the problem as low-rank matrix factorization with $\ell_1$ norm bounded noise. However, none of these algorithms are scalable and can be implemented distributedly, due to the use of SVD or full matrix multiplications. In this paper, we propose a distributed RPCA algorithm based on consensus-factorization (DCF-PCA) that takes $O(1)$ computation time as the number of remote clients increase. We show the convergence of our algorithm both theoretically and empirically.&lt;/p></description></item><item><title>Ray Tracing Renderer</title><link>https://wenda-qianhw.netlify.app/project/rtx/</link><pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/project/rtx/</guid><description>&lt;p>This renderer supports Monte Carlo path tracing with reflection and refraction. Simple geometries (cubes, spheres, circles, cylinders, etc.) can be loaded in from .txt files, while complicated triangular meshes with uv textures and normal vector interpolation can be loaded from .obj files. Area lights are supported to create soft shadows. Moreover, we support depth of fields effects and achieve anti-aliasing by super-sampling. For more details, please click the button and redirect to the main slide.&lt;/p>
+&lt;h4 id="1-overview">1 Overview&lt;/h4>
+&lt;p>I implement a ray tracer based on the &lt;strong>path tracing algorithm&lt;/strong>, which supports:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Ray reflection, refraction&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Color Bleeding&lt;/strong> effects by monte carlo sampling the directions of diffuse rays.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Loading in simple geometries such as spheres, circles, cubes and cylinders from .txt file&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Area lights that create &lt;strong>soft shadows&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Depth of fields&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Anti-aliasing&lt;/strong> by supersampling&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Loading in triangle meshes from .obj file, which supports &lt;strong>uv textures&lt;/strong> and &lt;strong>normal vector interpolation&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Accelerate the computation of triangle mesh intersections by &lt;strong>bounding box&lt;/strong> and &lt;strong>binary space tree&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Coarse-grained multi-processing acceleration by creating multiple threads that compute different pixels.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="2-implementation-details">2 Implementation Details&lt;/h4>
+&lt;h5 id="21-main-loop">2.1 Main loop&lt;/h5>
+&lt;p>The main logic of this ray tracer is as follows:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Ray Trace (depth, weight):&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>if intersect with lights: return light color&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>if not intersect with any objects: return background color&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>compute Phong shading&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>if (&lt;code>depth == 1&lt;/code> or &lt;code>weight &amp;lt; thres&lt;/code>) return&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>compute reflective ray and add color &lt;code>reflect_weight * Ray Trace(depth-1, weight * reflect_weight)&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>compute refractive ray and add color &lt;code>refract_weight * Ray Trace(depth-1, weight * refract_weight)&lt;/code>&lt;/p>
+&lt;ul>
+&lt;li>If total reflection happens, the ray is actually reflection ray&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Sample &lt;code>num_samples&lt;/code> diffuse ray by consine sampling, then add the mean colors of &lt;code>diffuse_weight * Ray Trace(depth-1, weight * diffuse_weight)&lt;/code>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="22-area-light">2.2 Area Light&lt;/h5>
+&lt;ul>
+&lt;li>Area lights are created together with a Object3D pointer. For example, a circle or a sphere that spreading out lights.&lt;/li>
+&lt;li>In order to compute Phong shading, we need to sample points on the Object3D object. We specify the sampling algorithms for &lt;strong>circles, spheres, cubes and cylinders&lt;/strong>. These objects can spread out lights in my ray tracer!&lt;/li>
+&lt;/ul>
+&lt;h5 id="23-meshes">2.3 Meshes&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>I write a simple obj file parser to load in .obj files. It supports reading multiple materials with uv texture maps and vertex normals.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>UV texture and normal interpolation computed by: (from &lt;code>include/triangle.hpp&lt;/code> &lt;em>lines 50 - 60&lt;/em>)&lt;/p>
+&lt;pre>&lt;code class="language-c++">if (hasNvec)
+normal_t = (1 - result[1] - result[2])* normal_vecx
++ result[1] * normal_vecy + result[2] * normal_vecz;
+if (this-&amp;gt;material-&amp;gt;hasUVMap()){
+Vector2f coord = (1 - result[1] - result[2]) * coords[0]
++ result[1] * coords[1]+ result[2] * coords[2];
+Vector3f color;
+this-&amp;gt;material-&amp;gt;getColor(coord[0], coord[1], color);
+this-&amp;gt;_m = new Material(*this-&amp;gt;material, color);
+}
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>- I also accelerate the intersection computation by bounding boxes and binary space trees. (By `include/bbox.hpp` and some corresponding codes in `src/mesh.cpp`)
+​```c++
+// This function compute a large bounding box for the mesh
+// and then recursively break it into two smaller boxes and store them
+// as children nodes.
+void Mesh::computeBbox() {
+this-&amp;gt;boundingbox = new Bbox();
+for (int i = 0; i &amp;lt; v.size(); i++){
+this-&amp;gt;boundingbox-&amp;gt;AddPoint(v[i]);
+}
+this-&amp;gt;boundingbox-&amp;gt;print();
+int depth = 10; // max depth of tree
+this-&amp;gt;boundingbox-&amp;gt;split(depth);
+std::vector&amp;lt;Bbox*&amp;gt; bbox_list = this-&amp;gt;boundingbox-&amp;gt;traverse();
+for (const auto &amp;amp; bbox : bbox_list){
+for (int triId = 0; triId &amp;lt; (int) t.size(); ++triId) {
+TriangleIndex&amp;amp; triIndex = t[triId];
+Bbox temp = Bbox();
+temp.AddPoint(v[triIndex[0]]);
+temp.AddPoint(v[triIndex[1]]);
+temp.AddPoint(v[triIndex[2]]);
+bbox-&amp;gt;triangles.push_back(bbox-&amp;gt;intersectBox(temp));
+}
+}
+}
+bool Mesh::intersect(const Ray &amp;amp;r, Hit &amp;amp;h, float tmin) {
+std::vector &amp;lt;Bbox *&amp;gt; bbox_list;
+if (this-&amp;gt;boundingbox != nullptr){
+if (!this-&amp;gt;boundingbox-&amp;gt;intersect(r,h,tmin)){
+return false;
+}
+else {
+// This returns a bounding box list that has intersects
+// in the ascending order of t.
+bbox_list = this-&amp;gt;boundingbox-&amp;gt;findIntersect(r,h,tmin);
+}
+}
+bool result = false;
+for (const auto &amp;amp; bbox : bbox_list) {
+for (int triId = 0; triId &amp;lt; (int) t.size(); ++triId) {
+TriangleIndex&amp;amp; triIndex = t[triId];
+// If the bounding box does not intersect with the triangle, continue
+if (!bbox-&amp;gt;triangles[triId])
+continue;
+&amp;quot;&amp;quot;&amp;quot;
+// some code computing intersection for the triangle (omitted)
+&amp;quot;&amp;quot;&amp;quot;
+}
+if (result){
+// double check if the intersection is in the box
+if (bbox-&amp;gt;PointIn(r.pointAtParameter(h.getT())))
+break;
+}
+}
+return result;
+}
+&lt;/code>&lt;/pre>
+&lt;h5 id="24-depth-of-field-anti-aliasing">2.4 Depth of Field, Anti-Aliasing&lt;/h5>
+&lt;ul>
+&lt;li>Depth of field effects are created by simulating the aperture of a camera. We uniformly sample starting points for the camera over a circle and compute the mean color. Only the objects near the focus point will be clear.&lt;/li>
+&lt;li>Anti-aliasing: compute the color values on grids and compute their mean.&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-c++">Ray sample(const Vector2f &amp;amp;point) override {
+Ray ray = this-&amp;gt;generateRay(point);
+Vector3f focus_point = ray.pointAtParameter(focus);
+float r = distribution(generator) * lens_radius;
+float theta = distribution(generator) * 2 * PI;
+// Sample a random point in the aperture
+Vector3f sampled_center = center + up * cos(theta) * std::sqrt(r)
++ horizontal * sin(theta) * std::sqrt(r);
+return Ray (sampled_center, (focus_point - sampled_center).normalized());
+}
+num_samples = 8; // 8 * 8 for anti-aliasing
+cam_samples = 10; // for dof
+// In main.cpp:
+for (int i = 0; i&amp;lt;num_samples; i++){
+float xp = x + i/num_samples;
+for (int j = 0; j &amp;lt; num_samples; j++){
+float yp = y + j/num_samples;
+for (int c = 0; c &amp;lt; cam_samples; c++){
+Ray camRay = cam-&amp;gt;sample(Vector2f(xp, yp));
+Vector3f color_sample = Vector3f::ZERO;
+RayTracer(camRay, depth, 1, color_sample, parser);
+color += color_sample;
+}
+}
+}
+&lt;/code>&lt;/pre>
+&lt;h5 id="25-multi-processing">2.5 Multi-processing&lt;/h5>
+&lt;p>To accelerate ray tracing computation, I write a simple multi-thread program that assign equivalent number of pixels to each threads for computation. Notice that this assignment may not be balanced, since different pixels requires different amont of computation power. However, this program can still exploit the multi-core feature of modern cpus.&lt;/p>
+&lt;pre>&lt;code class="language-c++">std::vector&amp;lt;Image*&amp;gt; imgs;
+int num_threads = 8;
+std::vector&amp;lt;std::future&amp;lt;int&amp;gt;&amp;gt; fus;
+int main(){
+for (i = 0; i &amp;lt; num_threads; i++){
+int hi = (i * h) / num_threads;
+int he = (i+1) * h / num_threads;
+int idx = i;
+Image * img = new Image(w,he-hi);
+imgs.push_back(img);
+// Assign workload to thread i.
+fus.push_back(std::async(&amp;amp;renderer, hi, he, 0, w, inputFile, depth, idx));
+}
+for (int i = 0; i &amp;lt; num_threads; i++){
+fus[i].get();
+// Join the threads
+}
+Image img = Image(w,h);
+// Merge subimages.
+for (int i = 0; i &amp;lt; num_threads; i++){
+int hi = (i * h) / num_threads;
+int he = ((i+1) * h) / num_threads;
+for (int x = 0; x &amp;lt; w; ++x) {
+for (int y = hi; y &amp;lt; he; ++y) {
+img.SetPixel(x,y,imgs[i]-&amp;gt;GetPixel(x,y-hi));
+}
+}
+}
+}
+// Actual computation in each thread.
+int renderer (int hi, int he, int wi, int we, char * inputFile, int depth, int idx){
+SceneParser parser = SceneParser(inputFile);
+int num_samples = 8;
+int cam_samples = 10;
+Camera * cam = parser.getCamera();
+if (cam-&amp;gt;lens_radius &amp;lt; 1e-6) cam_samples = 1;
+Vector3f * data = new Vector3f[we - wi];
+for (int y = hi; y &amp;lt; he; ++y) {
+for (int x = wi; x &amp;lt; we; ++x) {
+Vector3f color = Vector3f::ZERO;
+for (int i = 0; i&amp;lt;num_samples; i++){
+float xp = x + i/num_samples;
+for (int j = 0; j &amp;lt; num_samples; j++){
+for (int c = 0; c &amp;lt; cam_samples; c++){
+float yp = y + j/num_samples;
+Ray camRay = cam-&amp;gt;sample(Vector2f(xp, yp));
+Vector3f color_sample = Vector3f::ZERO;
+RayTracer(camRay, depth, 1, color_sample, parser);
+color += color_sample;
+}
+}
+}
+if (idx == 0){
+std::cout &amp;lt;&amp;lt; &amp;quot;Row:&amp;quot; &amp;lt;&amp;lt; y-hi &amp;lt;&amp;lt; &amp;quot;,Column:&amp;quot; &amp;lt;&amp;lt; x &amp;lt;&amp;lt; std::endl;
+}
+data[x-wi] = color/(num_samples*num_samples*cam_samples);
+}
+imgs[idx]-&amp;gt;SetRow(y-hi,data);
+std::cout &amp;lt;&amp;lt; &amp;quot;Row:&amp;quot; &amp;lt;&amp;lt; y-hi &amp;lt;&amp;lt; std::endl;
+if (y % 10 == 0){
+imgs[idx]-&amp;gt;SaveBMP(outputFile);
+}
+}
+imgs[idx]-&amp;gt;SaveBMP(outputFile);
+return 0;
+}
+&lt;/code>&lt;/pre>
+&lt;h4 id="3-results">3 Results&lt;/h4>
+&lt;p>&lt;img src="figures/scene11.bmp" alt="avatar" style="zoom:80%;" />&lt;/p>
+&lt;p>&lt;img src="figures/2ball.bmp" alt="2ball" />&lt;/p>
+&lt;p>&lt;img src="figures/scene15_final_2.bmp" alt="avatar" style="zoom:70%;" />&lt;/p>
+&lt;p>&lt;img src="figures/dof.bmp" alt="avatar" style="zoom:80%;" />&lt;/p></description></item><item><title>A survey on Differential Privacy</title><link>https://wenda-qianhw.netlify.app/project/dp/</link><pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/project/dp/</guid><description>&lt;p>Over the past several decades, immense amount of data were collected, which enables a variety of new applications and services. Some of these applications investigate user behaviors and gain economic profits from it (such as recommendation algorithms); while some of them get access to crucial information such as health condition or medical data. As a result, it has been a growing concern to guard the privacy of users and protect sensitive data from exposure.&lt;/p>
+&lt;p>Among various approaches, Differential Privacy is considered as one of the most promising privacy preservation techniques. An elegant definition of privacy is proposed by and several basic mechanisms are introduced as building blocks toward privacy. In this report, we make a concise introduction to these techniques and briefly discuss several applications of differential privacy.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,2422 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>typed | Wenda Chu</title><link>https://wenda-qianhw.netlify.app/tag/typed/</link><atom:link href="https://wenda-qianhw.netlify.app/tag/typed/index.xml" rel="self" type="application/rss+xml"/><description>typed</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 08 Mar 2023 00:00:00 +0000</lastBuildDate><image><url>https://wenda-qianhw.netlify.app/media/icon_hud9f11bce4f3a2a4889ae0de212996427_55561_512x512_fill_lanczos_center_2.png</url><title>typed</title><link>https://wenda-qianhw.netlify.app/tag/typed/</link></image><item><title>Topology</title><link>https://wenda-qianhw.netlify.app/archived_note/topology/</link><pubDate>Wed, 08 Mar 2023 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/topology/</guid><description/></item><item><title>Adversarial Defenses</title><link>https://wenda-qianhw.netlify.app/archived_note/adv-defenses/</link><pubDate>Wed, 17 Nov 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/adv-defenses/</guid><description/></item><item><title>Adversarial Machine Learning</title><link>https://wenda-qianhw.netlify.app/archived_note/adversarial-ml/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/adversarial-ml/</guid><description>&lt;h2 id="centernotes-on-adversarial-machine-learningcenter">&lt;center>Notes on Adversarial Machine Learning&lt;/center>&lt;/h2>
+&lt;h3 id="1--formalize-adversarial-attack">1 Formalize Adversarial Attack&lt;/h3>
+&lt;h5 id="explorative-attacks-vs-causative-attack">Explorative Attacks vs. Causative Attack&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Explorative attacks&lt;/strong>: the attacker influences only the evaluation data.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;blockquote>
+&lt;p>The attempts to passively circumvent the learning mechanism to explore blind spots in the learner&lt;/p>
+&lt;p>&amp;hellip; to craft intrusions so as to evade the classifier without direct influence over the classifier itself&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Causative attacks&lt;/strong>: the attacker attempts to hack the training data as well.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>In the following survey, an adversary is usually assumed to be &lt;strong>explorative&lt;/strong>.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="adversarys-goal">Adversary&amp;rsquo;s Goal&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>For an input $I_c\in \mathbb R^m$, find a small perturbation $\rho$ to force a classifier $\mathcal C$ to label $\ell$. ((&lt;a href="https://arxiv.org/abs/1312.6199" target="_blank" rel="noopener">Szegedy et al. 2014&lt;/a>)
+$$
+\min |\rho|, s.t.\mathcal C(I_c+\rho) = \ell
+$$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Another definition is to minimize the loss function on label $\ell$, with perturbation $\rho$ subject to some restriction.
+$$
+\min_{\rho\in \Delta}\mathcal L(I_c +\rho, \ell)
+$$&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Targeted&lt;/strong>: Fool the classifier to a specific label $\ell$&lt;/li>
+&lt;li>&lt;strong>Untargeted&lt;/strong>: Any $\ell$ different from the origin class suffices.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="adversarys-strength">Adversary&amp;rsquo;s Strength&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>An adversary may have access to some of the knowledges below:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Training dataset&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The feature representation of a sample (a vector in the feature space)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Learning algorithm of the model (e.g. architecture of a neural network)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The whole trained model with parameters&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Output of the learner&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>If an attack only requires input-output behavior of the model, it is referred to as a &lt;strong>black box attack&lt;/strong>. (In some looser definition, the output of loss function is also accessible.)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Otherwise, it is a &lt;strong>white box attack&lt;/strong>.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="2--typical-attacks-for-classification">2 Typical Attacks for Classification&lt;/h3>
+&lt;h5 id="box-constrained-l-bfgs-szegedy-et-al-2014httpsarxivorgabs13126199">Box-constrained L-BFGS (&lt;a href="https://arxiv.org/abs/1312.6199" target="_blank" rel="noopener">Szegedy et al. 2014&lt;/a>)&lt;/h5>
+&lt;ul>
+&lt;li>The origin goal (1) of an adversary is generally too hard a problem for optimization. It is helpful to transform it into the following form:&lt;/li>
+&lt;/ul>
+&lt;p>$$
+\rho_c^* = \min_\rho c|\rho| + \mathcal L(I_c+\rho, \ell), s.t. I_c + \rho\in[0,1]^m
+$$&lt;/p>
+&lt;ul>
+&lt;li>We need to find the minimal parameter $c&amp;gt;0$, such that $\mathcal C(I_c + \rho_c^*) = \ell$. The optimum of problem (3) can be sought using L-BFGS. It is proved that two optimization problem (1) and (3) yield same results under convex losses.&lt;/li>
+&lt;li>Szegedy&amp;rsquo;s paper also suggests an upper bound on unstability only by network architecture. This is done by inspecting the upper Lipschitz constant of each layer: if layer $k$ is $L_k$-Lipschitz, the whole network would be $L = \prod_{k=1}^K L_k$ Lipschitz:&lt;/li>
+&lt;/ul>
+&lt;p>$$
+|\phi(I_c) - \phi(I_c + \rho)||\leq L|r|
+$$&lt;/p>
+&lt;ul>
+&lt;li>This bound is usually too loose to be meaningful, but according to Szegedy, it implies that regularization that penalizing each upper Lipschitz bound might help the robustness of the network.&lt;/li>
+&lt;/ul>
+&lt;h5 id="fgsm-goodfellow-et-al-2015httpsarxivorgabs14126572">FGSM (&lt;a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener">Goodfellow et al. 2015&lt;/a>)&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>A &lt;strong>linear&lt;/strong> and &lt;strong>one-shot&lt;/strong> perturbation:
+$$
+\rho = \epsilon \cdot sign(\nabla_x \mathcal L(\theta,x,y))
+$$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>In this paper, it is shown that:&lt;/p>
+&lt;ul>
+&lt;li>Linear models are sufficient for the existence of adversarial attacks, since small perturbation results in a huge variation due to high dimensionality.&lt;/li>
+&lt;li>It is hypothesized that it is linearity instead of non-linearity that makes models vulnerable.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>The computational efficiency of one-shot perturbation enables adversarial training.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="iterative-methods-kurakin-et-al-2017httpsarxivorgabs160702533">Iterative Methods (&lt;a href="https://arxiv.org/abs/1607.02533" target="_blank" rel="noopener">Kurakin et al. 2017&lt;/a>)&lt;/h5>
+&lt;ul>
+&lt;li>Basic iterative method: this is essentially a PGD of $\ell^{\infty}$ ball.&lt;/li>
+&lt;/ul>
+&lt;p>$$
+I_\rho^{(i+1)} = Clip_\epsilon [I_\rho^{(i)} + \alpha sign(\nabla \mathcal L(\theta, I_\rho^{(i)}, \ell))]
+$$&lt;/p>
+&lt;ul>
+&lt;li>Least-likely-class iterative method:&lt;/li>
+&lt;/ul>
+&lt;p>$$
+I_\rho^{(i+1)} = Clip_\epsilon[I_\rho^{(i)}-\alpha sign(\nabla \mathcal L(\theta, I_\rho^{(i)}), \ell_{target})]
+$$&lt;/p>
+&lt;ul>
+&lt;li>where $\ell_{target}$ is the least likely class of prediction.&lt;/li>
+&lt;/ul>
+&lt;h5 id="jacobian-based-saliency-map-attack">Jacobian based Saliency Map Attack&lt;/h5>
+&lt;ul>
+&lt;li>$\ell_0$ norm attack (not read yet)&lt;/li>
+&lt;/ul>
+&lt;h5 id="one-pixel-attack">One Pixel Attack&lt;/h5>
+&lt;ul>
+&lt;li>Applies &lt;strong>differential evolution&lt;/strong> to generate adversarial examples&lt;/li>
+&lt;li>Black box attack: Requires only the predicted likelihood vector, but not the loss function or its gradient.&lt;/li>
+&lt;/ul>
+&lt;h5 id="carlini-and-wagner-attacks">Carlini and Wagner Attacks&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Find objective functions $f$, such that
+$$
+f(I_c + \rho) \leq 0 \text{ iff } \mathcal C(I_c + \rho) = \ell
+$$
+which enables an alternative optimization formulation:
+$$
+\min |\rho| + c\cdot f(I_c + \rho),\ \mathrm{s.t.}\ I_c +\rho\in [0,1]^n
+$$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>An efficient objective function $f$ is found to be
+$$
+f(x) = \max(\max_{i\neq t} Z(x)_i - Z(x)_t, -\kappa),
+$$
+where the classifier is assumed to be:
+$$
+\mathcal C(x) = Softmax(Z(x)).
+$$
+The parameter $\kappa\geq 0$ forces an adversary to find adversarial examples of higher confidence. It is shown that $\kappa$ is positively correlated to the transferability of the adversarial examples found.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Yet another trick is used for the box constraints. Let $x = \frac{1}{2}(\tanh(w)+1)$, so $x$ satisfies $x\in [0,1]$ automatically.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="3--transferability">3 Transferability&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Transferability:&lt;/strong> the ability of an adversarial example to remain effective on differently trained models.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>A more careful definition (&lt;a href="https://arxiv.org/abs/1605.07277" target="_blank" rel="noopener">Papernot et al. 2016&lt;/a>):&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Intra-technique&lt;/strong> transferability: consider models trained with the same technique but different parameter
+initializations or datasets&lt;/li>
+&lt;li>&lt;strong>cross-technique&lt;/strong> transferability: consider models trained with different techniques&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Transferability empowers black-box attacks: to train a substitute model by querying the classifier as an oracle.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Several methods for data augmentation are proposed by Papernot et al.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="universal-adversarial-perturbations-moosavi-dezfooli-et-al-2017httpsarxivorgabs161008401">Universal Adversarial Perturbations (&lt;a href="https://arxiv.org/abs/1610.08401" target="_blank" rel="noopener">Moosavi-Dezfooli et al. 2017&lt;/a>)&lt;/h5>
+&lt;ul>
+&lt;li>A perturbation is &lt;strong>universal&lt;/strong> if:&lt;/li>
+&lt;/ul>
+&lt;p>$$
+\Pr_{I_c\sim S} (\mathcal C(I_c)\neq \mathcal C(I_c+\rho)) \geq 1-\delta,\ \mathrm{s.t.}|\rho|_p\leq\epsilon
+$$&lt;/p>
+&lt;blockquote>
+&lt;p>For each image x in the validation set, we compute the adversarial perturbation vector $r(x)$&amp;hellip; To quantify the correlation between different regions of the decision boundary of the classifier, we define the matrix $N = [\frac{r(x_1)}{|r(x_1)|_2} \dots \frac{r(x_n)}{|r(x_n)|_2}]$&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>The author compares the singular values of matrix $N$ with the singular values of a matrix with columns sampled randomly.&lt;/li>
+&lt;li>It is explained that a subspace of dimension $d^\prime \ll d$ containing most normal vectors to the decision boundary in regions
+surrounding natural images.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="figure/fig1.png" alt="avatar" style="zoom:30%;" />&lt;/p>
+&lt;h3 id="myth">Myth:&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>Why adversarial examples are so close to any input $x$?&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Why adversarial examples looks like random noise?&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Why training with mislabeling also yields models with great performance?&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>I listened to an online report made by &lt;strong>Adi Shamir&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Assumptions:&lt;/p>
+&lt;ul>
+&lt;li>$k$-manifold assumption&lt;/li>
+&lt;li>The boundary of a classification network is only pushed to get close to the manifold during training&lt;/li>
+&lt;li>Claim: adversarial examples are nearly orthogonal to the manifold.&lt;/li>
+&lt;li>Test using generative model!&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="4--defenses">4 Defenses&lt;/h3>
+&lt;h5 id="1-adversarial-training">1. Adversarial Training&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Intuition: to argument the training data with perturbated examples.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Solving the min-max problem
+$$
+\min_\theta \sum_{(x,y)\in S}\max_{\rho\in \Delta} \mathcal L(\theta, x+\rho, y)
+$$&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="2-to-detect-adversarial-examples">2. To Detect Adversarial Examples&lt;/h5>
+&lt;p>&lt;em>&lt;strong>On Detecting Adversarial Perturbations&lt;/strong>&lt;/em> (&lt;a href="https://arxiv.org/abs/1702.04267" target="_blank" rel="noopener">Metzen et al. 2017&lt;/a>)&lt;/p>
+&lt;ul>
+&lt;li>Intuition: to train a small subnetwork for distinguishing genuine data from data containing adversarial perturbation&lt;/li>
+&lt;li>Train a normal classifier $\Rightarrow$ Generate adversarial examples $\Rightarrow$ Train the detector&lt;/li>
+&lt;li>Worst case: the adversary adapts to the detector:&lt;/li>
+&lt;/ul>
+&lt;p>$$
+I_\rho^{(i+1)} = Clip_\epsilon\left{I_\rho^{(i)} + \alpha\Big[(1-\sigma)\cdot sign(\nabla \mathcal L_{classify}(I_\rho^{(i)},\ell_{true}))+\sigma \cdot sign \big(\nabla \mathcal L_{detect}(I_\rho^{(i)})\big)\Big]\right}
+$$&lt;/p>
+&lt;ul>
+&lt;li>where $\sigma$ allows the dynamic adversary to trade off these two objectives.&lt;/li>
+&lt;li>Apply the dynamic adversary and the detector alternately.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>&lt;strong>Detecting Adversarial Samples from Artifacts&lt;/strong>&lt;/em> (&lt;a href="https://arxiv.org/abs/1703.00410" target="_blank" rel="noopener">Feinman et al. 2017&lt;/a>)&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>A crucial drawback of Metzen&amp;rsquo;s work: must be trained on generated adversarial examples&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>An intuition: high dimensional datasets are believed to lie on a ==low-dim manifold==; and the adversarial perturbations must push samples off the data manifold.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Kernel Density estimation:&lt;/strong> Detect the points that are far away from the manifold.
+$$
+\hat f(x) = \frac{1}{|X_t|}\sum_{x_i\in X_t}k(\phi(x_i),\phi(x))
+$$&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>where $X_t$ is the set of training data with label $t$ (here $t$ means the predicted class).&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>$k(\cdot,\cdot)$ is the kernel function and $\phi(\cdot)$ maps input $x$ to its feature vector of the last hidden layer.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Another intuition: deeper layers provide more linear and unwrapped manifold.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Bayesian Neural Network Uncertainty:&lt;/strong> identify low-confidence regions by capturing &amp;ldquo;==variance==&amp;rdquo; of predictions&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Randomness is considered under dropouts and parameters are sampled for $T$ times.
+$$
+Var(y^*) \approx \frac{1}{T}\sum_{i=1}^T \hat y^* (x^*,W^t)^T\hat y^*(x^*,W^t) - \mathbb E(y^*)^T\mathbb E(y^*)
+$$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>where $y^* = f(x^*)$ is a prediction of test input $x*$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>It is shown that typical adversarial examples do have much different distributions on uncertainty.&lt;/p>
+&lt;p>&lt;img src="figure/fig2.png" alt="avatar" style="zoom:35%;" />&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>&lt;strong>Adversarial Examples Are Not Easily Detected: Bypassing Ten Detection Methods&lt;/strong>&lt;/em> (&lt;a href="https://arxiv.org/abs/1705.07263" target="_blank" rel="noopener">Carlini et al. 2017&lt;/a>)&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Analyze 10 proposed defenses to ==detect== adversarial examples&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Conclusion: all these defenses are &lt;em>inefficient&lt;/em> when an adversary is aware the neural network is being secured with a given detection scheme; and some of the properties claimed for adversarial examples are only due to existing attack techniques.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The 10 defenses can be categorized:&lt;/p>
+&lt;ol>
+&lt;li>Train a secondary neural network for detection&lt;/li>
+&lt;li>Capture statistical properties&lt;/li>
+&lt;li>Perform input-normalization with randomization and blurring&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>
+&lt;p>Break each defenses by:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Secondary Detector:&lt;/p>
+&lt;ul>
+&lt;li>Treat &amp;ldquo;malicious&amp;rdquo; as a new label. Combine the detector and the classifier:&lt;/li>
+&lt;/ul>
+&lt;p>$$
+G(x)_i = \begin{cases}
+Z_F(x)_i \qquad\qquad\qquad\qquad\qquad, \text{ if } i\leq N\&lt;br>
+(Z_D(x)+1)\cdot \max_j Z_F(x)_j \qquad \text{if } i=N+1
+\end{cases}
+$$&lt;/p>
+&lt;p>where $Z_F, Z_D$ are logits of the classifier and detector, respectively.&lt;/p>
+&lt;ul>
+&lt;li>The detector marks &amp;ldquo;malicious&amp;rdquo; $\Leftrightarrow$ $Z_D(x)&amp;gt;0$ $\Leftrightarrow$ $\arg\max_i G(x_i) = N+1$&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="3-certified-defenses">3. Certified Defenses&lt;/h5>
+&lt;blockquote>
+&lt;p>Aim to &amp;ldquo;provide rigorous guarantees of robustness against norm-bounded attacks&amp;rdquo;&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;em>&lt;strong>Certified Robustness to Adversarial Examples with Differential Privacy&lt;/strong>&lt;/em> (&lt;a href="https://arxiv.org/abs/1802.03471" target="_blank" rel="noopener">Lecuyer et al. 2019&lt;/a>)&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Consider a classifier $\mathcal C(x)$ that outputs soft labels $(p_1,\dots, p_n)$, $\sum_{i = 1}^n p_i = 1$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Suppose $\mathcal C(x)$ is $(\epsilon, \delta)$-DP, which implies $\mathbb E[p_i(x)] = e^{\epsilon}\mathbb E[p_i(x^\prime)]+ \delta$, for any $x,x^\prime$ such that $d(x,x^\prime) &amp;lt; 1$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Main theorem:&lt;/strong> If $\mathcal C$ is $(\epsilon,\delta)$-DP, w.r.t. $\ell_p$ norm, and $\forall x, \exists k$, s.t.:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>$$
+\mathbb E(\mathcal C_k(x)) \geq e^{2\epsilon} \max_{i\neq k} \mathbb E(\mathcal C_i(x)) + (1+e^\epsilon)\delta
+$$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Then the classification model $y = \arg\max_{i=1}^n p_i$ is robust to attacks within the $\ell_p$ unit ball.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>This is different from traditional DP which uses $\ell_0$ norm for $d(x,x^\prime)$, and the definition of sensitivity must also be changed:
+$$
+\Delta_{p,q}^{(f)} = \max_{x\neq x^\prime} \frac{|f(x) - f(x^\prime)|_q}{|x-x^\prime|_p}
+$$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The conclusion of DP can be applied to $p$ norm as well, namely: Laplacian mechanism works for bounded $\Delta_{p,1}$ and Gaussian mechanism works for $\Delta_{p,2}$. Moreover, as DP is immune to post-processing, we can add these noises at layer of the network!&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Overall Scheme: Pre-noise layers + noise layer $\longrightarrow$ Post-noise layers&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Only need to bound the sensitivity of pre-noise computation $x\mapsto g(x)$. This is done by transforming $g$ to $\tilde g$ with $\Delta_{p,q}^{(\tilde g)}\leq 1$.&lt;/p>
+&lt;ul>
+&lt;li>Techniques: Normalization, Projection SGD (Parseval networks, ==tbd==).&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="figure/DP.png" alt="avatar" style="zoom:50%;" />&lt;/p>
+&lt;h3 id="5-restricted-threat-model-attacks">5 Restricted Threat Model Attacks&lt;/h3>
+&lt;p>&lt;em>&lt;strong>Decision-Based Adversarial Attacks: Reliable Attacks Against Black-Box Machine Learning Models&lt;/strong>&lt;/em>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Story so far: gradient-based, score-based and transfer-based attacks&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;blockquote>
+&lt;p>Definition &lt;strong>(Decision-based attacks):&lt;/strong> Direct attacks that solely rely on the final decision of the model&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Method:&lt;/strong> Initialize with an adversarial input $x_0 = x^\prime,$ make random walk according to a &amp;ldquo;proposal distribution&amp;rdquo;, trying to reduce $|x_k - x^*|$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Performance:&lt;/strong> Requires (unsurprisingly) much more iterations of forward passes.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="figure/Dicision_based.png" alt="avatar" style="zoom:35%;" />&lt;/p>
+&lt;h3 id="6-generative-models">6 Generative Models&lt;/h3>
+&lt;h5 id="61-variational-autoencoder-vae-background">6.1 Variational Autoencoder (VAE) Background&lt;/h5>
+&lt;ul>
+&lt;li>latent representation $z = Enc(x)$, and decoder/generator maps $z$ to $\hat x$. $\hat x = Dec(z)$.&lt;/li>
+&lt;li>VAE aims to learn a latent representation for posterior distribution $p(z|x)$. Maximize loss function (minimize KL divergence):&lt;/li>
+&lt;/ul>
+&lt;p>$$
+\begin{align}
+\mathcal L_{VAE}&amp;amp;= \log p(x) - KL(q(z|x)|p(z|x))\notag\&lt;br>
+&amp;amp;= \sum_z q(z|x) \log p(x) - \sum_z q(z|x) \log \frac{q(z|x)}{p(z|x)}\notag\&lt;br>
+&amp;amp;= \mathbb E_{q(z|x)}[-\log q(z|x) + \log p(x,z)]\notag\&lt;br>
+&amp;amp;= \sum_z q(z|x) \log \frac{p(z)}{q(z|x)} + \mathbb E_{q(z|x)} p(x|z)\notag\&lt;br>
+&amp;amp;= -KL(q(z|x)|p(z)) + \mathbb E_{q(z|x)}p(x|z).
+\end{align}
+$$&lt;/p>
+&lt;h3 id="7-verifiably-robust-models">7 Verifiably Robust Models&lt;/h3>
+&lt;h5 id="71-interval-bound-propagation">7.1 Interval Bound Propagation&lt;/h5>
+&lt;ul>
+&lt;li>For input $x_0$ and logits $x_k$, we want worst case robustness in a neighbour of $x_0$:&lt;/li>
+&lt;/ul>
+&lt;p>$$
+(e_y - e_{y_{true}})^T\cdot z_k \leq 0,\ \forall z_0 \in \mathcal X(x_0). \label{verify}
+$$&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>where $z_k = logits(z_0)$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Consider $z_k = \sigma(h(z_{k-1}))$ with monotonic activation function $\sigma$, $\overline z_k = h(\overline z_{k-1})$ and $\underline z_k = h(\underline z_{k-1})$ .&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Let $\overline z_0(\epsilon) = z_0 + \epsilon \mathbf 1$ and $\underline z_0(\epsilon) = z_0 - \epsilon \mathbf 1$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Left hand size of $\ref{verify}$ is bounded by $\overline z_{k,y}(\epsilon) - \underline z_{k,true}(\epsilon)$. To minimuze this term, define:
+$$
+z^*_{k,y}(\epsilon) = \begin{cases}\overline z_{k,y}(\epsilon)&amp;amp;\text{if } y\neq y_{true}\ \underline z_{k,y}(\epsilon)&amp;amp;\text{if }y = y_{true}\end{cases}
+$$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Then minimize hybrid training loss:
+$$
+\mathcal L = \ell(z_k,y_{true}) + \alpha \ell(z^*_{k}(\epsilon), y_{true})
+$$&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="8-physical-world-attacks">8 Physical World Attacks&lt;/h3>
+&lt;p>&lt;em>&lt;strong>Synthesizing Robust Adversarial Examples&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>&lt;strong>Expectation Over Transformation&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>To address the issue: adversarial examples does not keep adversarial under image transformations in the real world.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Minimize visual difference $t(x)-t(x^\prime)$ instead of $x-x^\prime$ in texture space&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>$$
+\begin{align}
+\arg\max_{x^\prime} \quad&amp;amp;\mathbb E_{t\sim T}[\log P(y_t|t(x^\prime))]\&lt;br>
+\mathrm{s.t.} \qquad&amp;amp;\mathbb E_{t\sim T} [d(t(x^\prime), t(x))]&amp;lt;\epsilon\notag\&lt;br>
+&amp;amp;x^\prime \in [0,1]^d\notag
+\end{align}
+$$&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>The distribution $T$ of transformations:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>2D: $t(x) = Ax + b$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>3D: texture $x$, render it on an object to $Mx +b$&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Optimize the objective:
+$$
+\arg\max_{x^\prime} \ \mathbb E_{t\sim T}\big[\log P(y_t|t(x^\prime)) - \lambda |LAB(t(x)) - LAB(t(x^\prime))|_2\big]
+$$&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>&lt;strong>Fooling Automated Surveillance Cameras Adversarial Patches to Attack Person Detection&lt;/strong>&lt;/em>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Patch Adversarial Attack: only structurally editing certain local areas on an image&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>A pipeline of &lt;strong>patch attack&lt;/strong>&lt;/p>
+&lt;p>&lt;img src="figure/Adv_Patch_Pipeline.png" alt="avatar" style="zoom:45%;" />&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Hybrid Objectives:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>$L_{nps}$ non-printability score&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>$L_{tv}$ the total variation loss. Force the image to be smooth.
+$$
+L_{tv} = \sum_{i,j} \sqrt{(p_{i,j} - p_{i+1,j})^2 + (p_{i,j} - p_{i,j+1})^2}
+$$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>$L_{obj}$ maximize the objectness $p(obj)$. Note that we can also use $L_{cls}$ (class score) or both.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>&lt;strong>Adversarial T-shirt! Evading Person Detectors in A Physical World&lt;/strong>&lt;/em>&lt;/p>
+&lt;h5 id="thin-plate-spline-tps-mapping">Thin Plate Spline (TPS) mapping&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>To learn transformations $t$ that maps each pixel $p^{(x)}$ to $p^{(z)}$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Suppose $p^{(x)} = (\phi^{(x)}, \psi^{(x)})$, $p^{(z)} = (\phi^{(x)}+\Delta_\phi, \psi^{(x)}+\Delta_\psi)$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>According to TPS method, the only solution of $\Delta$ is given by:
+$$
+\Delta(p^{(x)};\theta) = a_0 +a_1\phi^{(x)} + a_2 \psi^{(x)} + \sum_{i=1}^n c_i U(|\hat p_i^{(x)} - p^{(x)}|_2) \label{delta}
+$$
+where the radial basis function $U(r) = r^2 \log r$ and $\hat p_i^{(x)}$ are $n$ sampled points on image $x$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>TPS resorts to a regression problem to determine $\theta$, in which the regression objective is to minimize the difference between
+$$
+{\Delta(\hat p_i^{(x)};\theta)}&lt;em>{i=1}^n \quad \text{and} \quad {(\phi_i^{(z)}, \psi_i^{(z)}) - (\phi_i^{(x)},\psi_i^{(x)})}&lt;/em>{i=1}^n
+$$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>This results in an equivalent problem:
+$$
+F\theta_\phi =\begin{pmatrix}K&amp;amp;P\P^T &amp;amp;0_{3\times 3}
+\end{pmatrix}\theta_\phi = \begin{pmatrix}\hat \Delta_\phi\ 0_{3\times 1}\end{pmatrix}^T
+$$
+where $K_{ij} = U(|\hat p_{i}^{(x)} - \hat p_j^{(x)}|)$ $\theta_\phi = [c,a]$ and $P = [1, \hat \phi^{(x)}, \hat\psi^{(x)}]$.&lt;/p>
+&lt;p>(See &lt;a href="#2-tps_grid_gen.py-%28TPS%29">Code for TPS&lt;/a> for implementing details.)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="adversarial-t-shirts-generation">Adversarial T-shirts generation&lt;/h5>
+&lt;ul>
+&lt;li>The pipeline is similar as above. The major difference is the composited transformation adopted here.&lt;/li>
+&lt;li>The overall transformation is given by:&lt;/li>
+&lt;/ul>
+&lt;p>$$
+x_i^\prime = t_{env}(A + t(B - C+t_{color}(M_{c,i}\circ t_{TPS}(\delta + \mu v)))), t\sim \mathcal T, t_{TPS}\sim \mathcal T_{TPS}, v\sim \mathcal N(0,1)
+$$&lt;/p>
+&lt;ul>
+&lt;li>$A = (1-M_{p,i})\circ x_i$ yields the background region, $B = M_{p,i}\circ x_i$ is the human-bounded region.&lt;/li>
+&lt;li>$C = M_{c,i}\circ x_i$ is the bounding box of T-shirt.&lt;/li>
+&lt;li>$t_{color}$ is applied in place of non-printability loss.&lt;/li>
+&lt;li>$t$ stands for conventional physical transformations, $t_{env}$ for brightness of the whole environment.&lt;/li>
+&lt;li>Gaussian smoothing is applied by $v$ to the adversarial patch.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>&lt;strong>Can 3D Adversarial Logos Cloak Humans?&lt;/strong>&lt;/em>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Various postures and multi-view transformations threatens the adversarial property of previous 2D adversarial patches&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Overall pipeline: Detach 3D logos from person mesh as submeshes $\mathcal L$, then:
+$$
+\tilde{\mathcal L} = \mathcal T_{logo}(S,\mathcal L) = \mathcal M_{3D}(\mathcal S, \mathcal M_{2D}(\mathcal L))
+$$&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Texture $\mathcal S$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>$\mathcal M_{2D}$ maps a 3D logo to 2D domain $[0,1]^2$; $M_{3D}$ attach texture to 3D logo&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>Finally, render the 3D adv logo by differentiable renderer (e.g. Neural 3D Mesh Renderer) with human and background.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Loss&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>$$
+\mathcal L_{adv} = \lambda \cdot DIS(\mathcal I, y) + TV(\tilde{\mathcal L})
+$$&lt;/p>
+&lt;ul>
+&lt;li>DIS: disappearance loss = the maximum confidence of all bounding boxes that contain the target object&lt;/li>
+&lt;li>TV: total variance: $TV(\tilde{\mathcal L}) = \sum_{i,j} (|R(\tilde{\mathcal L})_{i,j}- R(\tilde{\mathcal L})_{i,j+1}| + |R(\tilde{\mathcal L})_{i+1,j}- R(\tilde{\mathcal L})_{i,j}|)$ captures discontinuity of 2D adv logo. (Here $R$ stands for rendering.)&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>&lt;strong>Adversarial Texture for Fooling Person Detectors in Physical World&lt;/strong>&lt;/em>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;blockquote>
+&lt;p>Goal: to train an expandable texture that can cover any clothes in any size&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>
+&lt;p>Four methods: RCA, TCA, EGA, TC-EGA&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="#Code:-Adversarial-Texture">Code Notes&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="9-object-detection">9 Object Detection&lt;/h3>
+&lt;h5 id="91-yolo">9.1 YOLO&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>$S\times S$ grids, each containing $B$ anchor points with bounding boxes&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Each anchor point: $[x,y,w,h,p_{obj}, p_{\ell1}, \dots, p_{\ell n}]$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>$p_{obj}$: object probability. The prob. of containing an object.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>$p_{\ell i}$: Class score, learned by SoftMax and cross entropy&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Confidence of object: measured by $p_{obj} \times IOU$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Confidence of class: measured by $p_{obj}\times IOU \times \Pr[\ell_i,|,obj]$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Yolo: Outputs [&lt;code>batch&lt;/code>, &lt;code>num_class&lt;/code> + 5$\times$&lt;code>num_anchors&lt;/code> , $H\times W$]&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Yolov2: Outputs [&lt;code>batch&lt;/code>, (&lt;code>num_class&lt;/code> + 5)$\times$&lt;code>num_anchors&lt;/code> , $H\times W$] (See details at &lt;a href="#3.1-MaxProbExtractor">below&lt;/a>).&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="92-region-proposal-network">9.2 Region proposal network&lt;/h5>
+&lt;ul>
+&lt;li>CNN generates anchors:
+&lt;ul>
+&lt;li>For each pixel on the feature map (say 256 dimension with size H$\times W$), generate $k=9$ anchors.&lt;/li>
+&lt;li>The height-weight ratio of these 9 anchors are 0.5, 1 or 2, each with three different size.&lt;/li>
+&lt;li>Each pixel has $2k$ scores and $4k$ coordinates. Each anchor yields a foreground and a background score. Use softmax to decide where it is foreground or background.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Meanwhile, use &lt;strong>bounding box regression&lt;/strong> on each anchor. (Another branch)&lt;/li>
+&lt;li>Finally, &lt;strong>Proposal Layer&lt;/strong> takes sum over anchors and BBox regression.
+&lt;ul>
+&lt;li>Sort these anchors by foreground softmax scores.&lt;/li>
+&lt;li>Delete anchors that surpass too much from boundary.&lt;/li>
+&lt;li>Use &lt;strong>Non-maximum suppression&lt;/strong> to avoid multiple anchors on a single object. (Recursively choose the anchor with highest score and delete other anchors with high IOU against it.)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="93-bounding-box">9.3 Bounding Box&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Original bounding box $P(x,y,w,h)$, learn deformation $d(P)$ to approximate the ground truth
+$$
+\hat G_x = P_w d_x(P)+P_x\&lt;br>
+\hat G_y = P_h d_y(P)+P_y\&lt;br>
+\hat G_w = P_w e^{d_w(P)}\&lt;br>
+\hat G_h = P_h e^{d_h(P)}\&lt;br>
+$$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>where $d(P) = w^T\phi(P)$. $\phi$ is the feature vector so we shall learn parameter $w$&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="94-roi-alignment">9.4 ROI Alignment&lt;/h5>
+&lt;ul>
+&lt;li>The proposed anchors have different size $(w,h)$, pool the corresponding feature map (with size $w/16,h/16$) to a fixed size $(w_p, h_p)$. In each of these $w_ph_p$ grids, do max pooling.&lt;/li>
+&lt;li>Finally, apply FC layers to calculate class probability and use bounding box regression again.&lt;/li>
+&lt;/ul>
+&lt;h3 id="10-basic-graphics">10 Basic Graphics&lt;/h3>
+&lt;h5 id="101-coordinates">10.1 Coordinates&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>World coordinates: $(x,y,z)$ means left, up and in.&lt;/p>
+&lt;ul>
+&lt;li>Azimuth: 经度角&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Camera Projection Matrix $K$ (intrinsic parameters of a camera)
+$$
+\lambda \begin{pmatrix}u\v\1\end{pmatrix} = \begin{pmatrix}f&amp;amp;&amp;amp;p_x\&amp;amp;f&amp;amp;p_y\&amp;amp;&amp;amp;1\end{pmatrix}\begin{pmatrix}X\Y\Z\end{pmatrix} = K\mathbf X_c
+$$&lt;/p>
+&lt;ul>
+&lt;li>From 3D world (metric space) to 2D image (pixel space)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Coordinate transformation from &lt;strong>world coordinate&lt;/strong> $\mathbf X$ to &lt;strong>camera coordinate&lt;/strong> $\mathbf X_c$:
+$$
+\mathbf X_c = R\mathbf X + t = \begin{pmatrix}\mathbf R_{3\times 3} &amp;amp;\mathbf t_{3\times 1}\end{pmatrix}\begin{pmatrix}\mathbf X\1\end{pmatrix}
+$$&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="102-obj-format">10.2 Obj format&lt;/h5>
+&lt;ul>
+&lt;li>vertex: 3D coordinate. In format: &lt;code>v x y z&lt;/code>&lt;/li>
+&lt;li>vertex texture: 2D coordinate in texture figure. In format: &lt;code>vt x y&lt;/code>&lt;/li>
+&lt;li>vertex normal: normal direction. In format: &lt;code>vn x y z&lt;/code>&lt;/li>
+&lt;li>face. In format: &lt;code>f v1/vt1/vn1 v2/vt2/vn2 v3/vt3/vn3&lt;/code>.&lt;/li>
+&lt;li>See examples &lt;a href="https://dl.fbaipublicfiles.com/pytorch3d/data/cow_mesh/cow.obj" target="_blank" rel="noopener">here&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h5 id="103-pytorch3d">10.3 Pytorch3d&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>load an object&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>verts, faces, aux = load_obj(obj_dir)&lt;/code>&lt;/li>
+&lt;li>OR &lt;code>mesh = load_objs_as_meshes([obj_dir], device)&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Mesh: Representations of vertices and faces&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>​ List | Padded | Packed&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>$[[v_1],\dots, [v_n]]$ | has batch dimension | no batch dimension, index into padded representatoin&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>e.g. &lt;code>vertex = mesh.verts_packed()&lt;/code>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Mesh.textures:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Three possible representations:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>TexturesAtlas (each face has a texture map)&lt;/p>
+&lt;ul>
+&lt;li>(N,F,R,R,C): each face use $R\times R$ grid&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>TexturesUV: a UV map from vertices to texture image&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>TexturesVertex: a color for each vertex&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-python">#for uv:
+mesh.textures.verts_uvs_padded()
+#for TexturesVertex:
+rgb_texture = torch.tensor([1,vertex.shape[0], 3]).uniform_(0,1)
+mesh.textures = TexturesVertex(vertex_features = rgb_texture)
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="104-render">10.4 Render&lt;/h5>
+&lt;ul>
+&lt;li>Luminous Flux: $dF = dE/(dS\cdot dt)$.&lt;/li>
+&lt;li>Radiance: $I = dF/d\omega$. (立体角)&lt;/li>
+&lt;li>Conservation:
+&lt;ul>
+&lt;li>$I_i = I_d + I_s + I_t +I_v$.&lt;/li>
+&lt;li>Diffuse light: $I_d = I_i K_d (\vec L\cdot\vec N)$
+&lt;ul>
+&lt;li>where $\vec L$ is the orientation of the initial light and $\vec N$ is the normal orientation.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Specular light: $I_s = I_i K_s(\vec R \cdot \vec V)^n$
+&lt;ul>
+&lt;li>where $\vec R$ is the reflective light and $\vec V$ is the direction of view.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Ambient light: $I_a = I_i K_a$.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Shading
+&lt;ul>
+&lt;li>Gouraud: Color interpolation (barycentric interpolation)&lt;/li>
+&lt;li>Phong: Normal vector interpolation&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="11-others">11 Others&lt;/h3>
+&lt;h5 id="111-entropy-kl-divergence">11.1 Entropy, KL divergence&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Entropy $H(X) = -\sum_{x\in X}p(x)\log p(x)$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Cross entropy $XE(p,q) = \mathbb E_p (-\log q)$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The distance between two distributions $p$ and $q$ can be measured by:
+$$
+KL(p|q) = \sum_{x\in X}p(x)\log \frac{p(x)}{q(x)} = XE(p,q) - H(p),
+$$
+which represents the information loss of describing $p(x)$ by $q(x)$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Mutual Information: $\mathbb I(X;Y) = KL(p(X,Y)|p(X)p(Y))$.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="112-statistics">11.2 Statistics&lt;/h5>
+&lt;ul>
+&lt;li>Accuracy = $\frac{TP+TN}{TP+TN+FP+FN}$&lt;/li>
+&lt;li>Precision = $\frac{TP}{TP+FP}$&lt;/li>
+&lt;li>Recall = $\frac{TP}{TP+FN}$&lt;/li>
+&lt;li>PR-curve: traverses all outoffs to get a tradeoff curve of precision and recall&lt;/li>
+&lt;/ul>
+&lt;h3 id="12-experiments">12 Experiments&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>FGSM, BIM, Carlini &amp;amp; Wagner attacks&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Adversarial Training&lt;/p>
+&lt;ul>
+&lt;li>FGSM adversarial training&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/figure/FGSM_adv_train.png" alt="avatar" style="zoom:36%;" />&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>Accuracy&lt;/th>
+&lt;th>FGSM ($ e=4/255$)&lt;/th>
+&lt;th>CW ($ e = 4/255,a= 0.01, K = 10$)&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>75999.pth&lt;/td>
+&lt;td>0.817&lt;/td>
+&lt;td>0.6634&lt;/td>
+&lt;td>0.099&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;ul>
+&lt;li>Adversarial Texture:
+&lt;ul>
+&lt;li>TCA-1000epoch: AP = 0.6395&lt;/li>
+&lt;li>TCEGA-2000,1000: AP = 0.4472&lt;/li>
+&lt;li>TCEGA-HSV-red-2000,1000: AP = 0.6951&lt;/li>
+&lt;li>TCEGA-Gaussian-2000,1000: AP = 0.4916&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="pytorch3d-experiments">Pytorch3d Experiments&lt;/h5>
+&lt;h5 id="adv_3d">Adv_3d&lt;/h5>
+&lt;ul>
+&lt;li>Differentiable Rendering + original adv_patch pipeline&lt;/li>
+&lt;li>MaxProbExtractor: Only optimize the box with max iou!&lt;/li>
+&lt;/ul>
+&lt;p>Issues:&lt;/p>
+&lt;ul>
+&lt;li>Parrallel
+&lt;ul>
+&lt;li>solved by modifying detection/transfer.py&lt;/li>
+&lt;li>may introduce problems of space redundancy&lt;/li>
+&lt;li>Config now: batch size = 2, num_views = 4, any bigger batch size causes cuda out of memory&lt;/li>
+&lt;li>10 minutes/batch&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Project a [3,H,W] cloth to TextureAtlas
+&lt;ul>
+&lt;li>try TextureUV, but the projection from texture.jpg to TextureUV seems not differentiable&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Add more constraints?&lt;/li>
+&lt;li>Ensemble learning&lt;/li>
+&lt;/ul>
+&lt;p>Experiment1: Batch: $2\times 4$, lr = 0.001, attack faster-rcnn&lt;/p>
+&lt;p>&lt;img src="figure/experiment1/epoch.png" alt="epoch" style="zoom:25%;" />&lt;/p>
+&lt;p>&lt;img src="figure/experiment1/patch.jpg" alt="patch" style="zoom: 50%;" />&lt;/p>
+&lt;p>&lt;img src="figure/experiment1/test0.png" alt="avatar" style="zoom:33%;" />&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>The tendency of attacking two-stage detectors such as faster-rcnn: split boxes to smaller ones&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>MaxProbExtractor: Only to attack the box with max iou may sacrifice those boxes with smaller iou but much higher probability? (&lt;strong>Failed&lt;/strong>, the current method works great enough)&lt;/p>
+&lt;ul>
+&lt;li>now: iou threshold 0.4, prevent over-optimizing on trivial boxes.&lt;/li>
+&lt;li>try attacking the box with max confidence = iou $\times$ prob?&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>We now take the mean of gradient over $B$ pictures. Why not try weighted mean (e.g. $\ell_2$) or other loss functions (e.g. $\sum e^{prob}$) to urge the trainer to attack the largest max_prob boxes?&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Model placed in the middle of the picture (Overfit?) (Usually &lt;strong>not&lt;/strong> a problem here)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>8.28: I observe that over the parameters in the shape of [1,6906,8,8,3], only 3.49% of them (46333) deviate from original setup 0.5 (for grey). Over the trained parameters, 18.7% of them go beyond the [0,1] range.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>8.31 I render the patch trained by 4 viewing points (0,90,180,270), it turns out that a small deviation from these angles would make the rendered picture almost completely grey:&lt;/p>
+&lt;ul>
+&lt;li>It turns out that this is due to the Atlas expression of texture&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="figure/Tshirt_azim.png" alt="avatar" style="zoom:20%;" />&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>8.31 I try 50% droppout on the adv patch (a random 0/1 mask of size 6000):&lt;/p>
+&lt;ul>
+&lt;li>100%： recall = 0.10, 80%: recall = 0.32, 50%: recall = 0.89. &lt;strong>(fail)&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>9.1 experiment4: random angles (163937) &lt;strong>(fail)&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>parameters 87.59% trained&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>没有形成完整连续的图像，几乎没有对抗效果 (recall = 0.96)，但loss一直在0.3上下&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>I fixed the viewing angles for each epoch, so perhaps the tshirt is trained only adversarial for those views at end of each epoch. (&lt;strong>fixed later in experiment 7&lt;/strong>)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/figure/Tshirt_random_angle.png" alt="avatar" style="zoom:20%;" />&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>9.4 experiment5: vec2atlas, R = 8. (Map $(3,V)$ to atlas $(1,V,R,R,3)$ before the previous pipeline).&lt;/p>
+&lt;ul>
+&lt;li>recall = 0.20&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>9.3 experiment6: vec2atlas, R=2.&lt;/p>
+&lt;ul>
+&lt;li>Reducing parameter $R$ does not influence the quality of the rendered pics much, but save memory and time.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="figure/Tshirt_vec_R=2_random.png" alt="avatar" style="zoom:28%;" />&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>it seems that R=8 introduces too much parameters for a normal tshirt&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>experiment7: R=2, random angle, switch every 20 iterations, vec2atlas&lt;/p>
+&lt;p>&lt;img src="figure/experiment 7/loss-curve.png" alt="avatar" style="zoom:28%;" />&lt;/p>
+&lt;center style="color:#C0C0C0;text-decoration:underline">Loss curve for random angle sampling&lt;/center>
+&lt;ul>
+&lt;li>It turns out that random sampling takes about three times the epoches to converge as using fixed angles, but the figure below demonstrates the failure of the latter option on universal angles.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="figure/recall-angle-compare.png" alt="avatar" style="zoom: 36%;" />&lt;/p>
+&lt;center style="color:#C0C0C0;text-decoration:underline"> conf_thresh = 0.01, iou_thresh = 0.5&lt;/center>
+&lt;ul>
+&lt;li>
+&lt;p>9.5 experiment 8： 尝试不均匀地sample角度，因为之前 random angles 均匀采样（as the red line shows）会导致面积较小的衣服侧面对抗性较低&lt;/p>
+&lt;ul>
+&lt;li>evaluate the model once every 5 epoches, divide the $360^\circ$ angles into 36 intervals and estimate the loss $\ell_i$ in each interval.&lt;/li>
+&lt;li>Sample $azim \leftarrow D$, where $D(i) = \exp (\alpha\ell_i) / \sum_i \exp (\alpha\ell_i) $&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>9.7 I test the performance of different $\alpha$. Since the final loss ranges from 0.1 to 0.25, I try $\alpha = 10, 15, 20$ so that the ratio of sampling probability is about $\sim 10$.&lt;/p>
+&lt;ul>
+&lt;li>$\alpha = 10$ is too weak to be efficient; while $\alpha = 20$ is too aggressive to converge.&lt;/li>
+&lt;li>$\alpha = 15$ is balancing.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="figure/recall-angle-exp-sampling.png" alt="avatar" style="zoom:36%;" />&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>9.9 I regenerate an obj file for Tshirt using meshlab.&lt;/p>
+&lt;ul>
+&lt;li>Details: Set up 4 cameras (at 0,90,180,270 degree) and auto-generate the maps from mesh to texture.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="figure/textureuv.png" alt="avatar" style="zoom:20%;" />&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>9.10 Map the $(3,V)$ vector to the uv texture.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Details: Draw a monochrome triangle on the texture for each face according to $(3,V)$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The expressive power of uv texture is much stronger than $(3,V)$. The reverse mapping thus requires more restriction.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Render from the texture again using the UV map.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="figure/atlas2uv/texture.png" alt="avatar" style="zoom:48%;" />&lt;/p>
+&lt;p>&lt;img src="figure/atlas2uv/Tshirt_render-compare.png" alt="avatar" style="zoom:28%;" />&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;del>The uv-rendered tshirt is smoother in color but much less adversarial than the atlas-rendered one.&lt;/del>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;del>It is necessary to create a precise mapping from UV to Atlas, which would enable the pipeline of training an adversarial uv texture.&lt;/del>&lt;/p>
+&lt;p>&lt;del>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/xfigure/atlas2uv/recall-angle-compare.png" alt="avatar" style="zoom:36%;" />&lt;/del>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;del>An observation is that the lateral part of the uv-rendered tshirt gives lower recall, which is counterintuitive since the lateral part usually performs worse than other angles with less surface area.&lt;/del>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;del>A possible (yet not necessarily true) explanation: the task of the lateral parts is harder so it is trained more robust to random deviations.&lt;/del>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;del>(9.12) Combining two meshes using uv texture causes conflicts: mesh of man cloaks the mesh of tshirt&lt;/del>&lt;/p>
+&lt;p>&lt;del>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/afigure/atlas2uv/issue.png" alt="avatar" style="zoom:33%;" />&lt;/del>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>This bug is due to incompatible texture size of two meshes. &lt;strong>Fixed&lt;/strong>. (9.16)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Transfer uv texture back to $(3,V)$ by interpolation (3% deviation from original $(3,V)$ representation).&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>9.15 Enables the fast transfer from (3,V) to 2d texture in pipeline and calculate the corresponding TV loss of the 2d texture. &lt;code>loss = det_loss + a * tv_loss&lt;/code>&lt;/p>
+&lt;p>&lt;img src="figure/texture_tv.png" alt="avatar" style="zoom:8%;" />&lt;/p>
+&lt;ul>
+&lt;li>Details: &lt;code>uv = vec[:,maps[:,:]]&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/桌面/Adversarial ML/figure/recall-angle-compare-tvloss.png" alt="avatar" style="zoom: 33%;" />&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Current Pipeline:&lt;/p>
+&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/figure/pipeline0.png" alt="avatar" style="zoom:33%;" />&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Next step: to enable the rendering process directly from TextureUV.&lt;/p>
+&lt;ul>
+&lt;li>Replaces TextureAtlas and (3,V) with TextureUV&lt;/li>
+&lt;li>Facilitates direct modification on Tshirt cloth&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>9.16 Merge multiple pieces of texture maps into one.&lt;/p>
+&lt;ul>
+&lt;li>Details: Regenerate an obj. for man with nonoverlapping texture map.&lt;/li>
+&lt;li>Load the origin obj. file using atlas and transform it into (3,V) form.&lt;/li>
+&lt;li>Read the new obj. file by hand and draw each faces using PIL.draw.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="figure/texture_man.png" alt="avatar" style="zoom:33%;" />&lt;/p>
+&lt;p>Pipeline:&lt;/p>
+&lt;p>&lt;img src="figure/pipeline1.png" alt="avatar" style="zoom:33%;" />&lt;/p>
+&lt;p>Results:&lt;/p>
+&lt;p>&lt;img src="figure/experiment14.png" alt="avatar" style="zoom:33%;" />&lt;/p>
+&lt;p>&lt;img src="figure/experiment14_render.png" alt="avatar" style="zoom:50%;" />&lt;/p>
+&lt;p>&lt;img src="figure/pipeline2.png" alt="avatar" style="zoom:33%;" />&lt;/p>
+&lt;ul>
+&lt;li>Collect data of fashionable T-shirts (about 1300 tshirt clean images)&lt;/li>
+&lt;li>Use WGAN to generates TextureUV similar to normal T-shirts&lt;/li>
+&lt;li>$z\in \mathbb R^{128}$, sampled from $\mathcal N(0,I)$.&lt;/li>
+&lt;li>May require training of $z$.&lt;/li>
+&lt;/ul>
+&lt;center class="half">
+&lt;img src="figure/generate/gen1.png" alt="avatar" style="margin: 0 10px" width="400"/>
+&lt;img src="figure/generate/gen3.png" alt="avatar" style="margin: 0 10px" width="400"/>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #123;
+padding: 1px;">
+left: WGAN, Loss = det loss + 0.04*LossG;
+&lt;/div>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #123;
+padding: 1px;">
+right: Loss = det loss
+&lt;/div>
+&lt;/center>
+&lt;p>​&lt;/p>
+&lt;ul>
+&lt;li>Problems: GAN 不稳定, 且 generator 学不到数据中的style
+&lt;ul>
+&lt;li>数据集style更集中&lt;/li>
+&lt;li>VAE reconstruction，then train latent vector for adversarial loss&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="code-adversarial-texture">Code: Adversarial Texture&lt;/h3>
+&lt;h5 id="1-training_texturepy-main">1 training_texture.py (Main)&lt;/h5>
+&lt;ul>
+&lt;li>adversarial cloth: &lt;code>[1(batch),3(RGB),width, height]&lt;/code>&lt;/li>
+&lt;li>Random Crop Attack (RCA), Toroidal Crop Attack (TCA) differs only at &lt;code>random_crop&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h5 id="2-tps_grid_genpy-tps">2 tps_grid_gen.py (TPS)&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Initialize: Using a $N\times 2$ array, denoting the $N$ target control points. Then construct the TPS kernel matrix as shown &lt;a href="#Thin-Plate-Spline-%28TPS%29-mapping">above&lt;/a>. &lt;code>target_control_points&lt;/code>: $\hat p_i^{(x)}, i =[1,\dots, 25]$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>source_control_point&lt;/code> is sampled with small disturb from &lt;code>target_control_points&lt;/code>, which stands for $\hat p_i^{(z)}$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>source_coordinate = self.forward(source_control_points)&lt;/code>.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>forward function calculates
+$$
+F^{-1}\begin{pmatrix}\hat\Delta_{(\phi,\psi)}\0_{3\times 2}\end{pmatrix}^T = [\theta_\phi,\theta_\psi]
+$$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Then calculate &lt;code>source_coordinate&lt;/code> by equation $\ref{delta}$.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-python">mapping_matrix = torch.matmul(Variable(self.inverse_kernel), Y)
+source_coordinate = torch.matmul(Variable(self.target_coordinate_repr), mapping_matrix)
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>Finally, use &lt;code>F.grid_sample&lt;/code> to map the adversarial patch to &lt;code>source_coordinate&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;h5 id="3-load_datapy">3 load_data.py&lt;/h5>
+&lt;h6 id="31-maxprobextractor">3.1 MaxProbExtractor&lt;/h6>
+&lt;ul>
+&lt;li>
+&lt;p>Extracts max class probability from YOLO output.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>YOLOv2 output: [&lt;code>batch&lt;/code>, (&lt;code>num_class&lt;/code> + 5)$\times$&lt;code>num_anchors&lt;/code> , $H\times W$]&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>num_class&lt;/code> + 5 = 85.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>0~3: x,y,w,h&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>4: confidence of this anchor (objectness)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>5~84: class probability $\Pr[class_i|obj]$ of this anchor&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>for &lt;code>func = lambda obj,cls:obj&lt;/code>, we only minimize the maximum objectness confidence.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="4-random_crop">4 random_crop&lt;/h5>
+&lt;p>​ Crop type:&lt;/p>
+&lt;ul>
+&lt;li>None: used for RCA, TCA crop&lt;/li>
+&lt;/ul>
+&lt;h5 id="5-patch-transformer">5 Patch transformer&lt;/h5>
+&lt;ul>
+&lt;li>randomly adjusting brightness and contrast, adding random amount of noise, and rotating randomly&lt;/li>
+&lt;li>&lt;code>adv_batch = adv_batch * contrast + brightness + noise&lt;/code>&lt;/li>
+&lt;li>The training label: (N, num_objects, 5).&lt;/li>
+&lt;li>Output: (N, num_objects, 3, fig_h, fig_w)&lt;/li>
+&lt;/ul>
+&lt;h3 id="paper-list">Paper List&lt;/h3>
+&lt;p>Most parts of this paper list is borrowed from &lt;a href="https://nicholas.carlini.com/writing/2018/adversarial-machine-learning-reading-list.html" target="_blank" rel="noopener">Nicholas Carlini&amp;rsquo;s Reading List&lt;/a>.&lt;/p>
+&lt;h5 id="preliminary-papers">Preliminary Papers&lt;/h5>
+&lt;p>==&lt;a href="https://arxiv.org/abs/1708.06131" target="_blank" rel="noopener">Evasion Attacks against Machine Learning at Test Time&lt;/a>==
+==&lt;a href="https://arxiv.org/abs/1312.6199" target="_blank" rel="noopener">Intriguing properties of neural networks&lt;/a>==
+==&lt;a href="https://arxiv.org/abs/1412.6572" target="_blank" rel="noopener">Explaining and Harnessing Adversarial Examples&lt;/a>==&lt;/p>
+&lt;h5 id="attacks-requires-preliminary-papers">Attacks [requires Preliminary Papers]&lt;/h5>
+&lt;p>==&lt;a href="https://arxiv.org/abs/1511.07528" target="_blank" rel="noopener">The Limitations of Deep Learning in Adversarial Settings&lt;/a>==
+&lt;a href="https://arxiv.org/abs/1511.04599" target="_blank" rel="noopener">DeepFool: a simple and accurate method to fool deep neural networks&lt;/a>
+==&lt;a href="https://arxiv.org/abs/1608.04644" target="_blank" rel="noopener">Towards Evaluating the Robustness of Neural Networks&lt;/a>==&lt;/p>
+&lt;h5 id="transferability-requires-preliminary-papers">Transferability [requires Preliminary Papers]&lt;/h5>
+&lt;p>==&lt;a href="https://arxiv.org/abs/1605.07277" target="_blank" rel="noopener">Transferability in Machine Learning: from Phenomena to Black-Box Attacks using Adversarial Samples&lt;/a>==
+&lt;a href="https://arxiv.org/abs/1611.02770" target="_blank" rel="noopener">Delving into Transferable Adversarial Examples and Black-box Attacks&lt;/a>
+==&lt;a href="https://arxiv.org/abs/1610.08401" target="_blank" rel="noopener">Universal adversarial perturbations&lt;/a>==&lt;/p>
+&lt;h5 id="detecting-adversarial-examples-requires-attacks-transferability">Detecting Adversarial Examples [requires Attacks, Transferability]&lt;/h5>
+&lt;p>==&lt;a href="https://arxiv.org/abs/1702.04267" target="_blank" rel="noopener">On Detecting Adversarial Perturbations&lt;/a>
+&lt;a href="https://arxiv.org/abs/1703.00410" target="_blank" rel="noopener">Detecting Adversarial Samples from Artifacts&lt;/a>
+&lt;a href="https://arxiv.org/abs/1705.07263" target="_blank" rel="noopener">Adversarial Examples Are Not Easily Detected: Bypassing Ten Detection Methods&lt;/a>==&lt;/p>
+&lt;h5 id="restricted-threat-model-attacks-requires-attacks">Restricted Threat Model Attacks [requires Attacks]&lt;/h5>
+&lt;p>&lt;a href="https://arxiv.org/abs/1708.03999" target="_blank" rel="noopener">ZOO: Zeroth Order Optimization based Black-box Attacks to Deep Neural Networks without Training Substitute Models&lt;/a>
+==&lt;a href="https://arxiv.org/abs/1712.04248" target="_blank" rel="noopener">Decision-Based Adversarial Attacks: Reliable Attacks Against Black-Box Machine Learning Models&lt;/a>==
+&lt;a href="https://arxiv.org/abs/1807.07978" target="_blank" rel="noopener">Prior Convictions: Black-Box Adversarial Attacks with Bandits and Priors&lt;/a>&lt;/p>
+&lt;h5 id="verification-requires-introduction">Verification [requires Introduction]&lt;/h5>
+&lt;p>&lt;a href="https://arxiv.org/abs/1702.01135" target="_blank" rel="noopener">Reluplex: An Efficient SMT Solver for Verifying Deep Neural Networks&lt;/a>
+&lt;a href="https://arxiv.org/abs/1810.12715" target="_blank" rel="noopener">On the Effectiveness of Interval Bound Propagation for Training Verifiably Robust Models&lt;/a>&lt;/p>
+&lt;h5 id="defenses-2-requires-detecting">Defenses (2) [requires Detecting]&lt;/h5>
+&lt;p>&lt;a href="https://arxiv.org/abs/1706.06083" target="_blank" rel="noopener">Towards Deep Learning Models Resistant to Adversarial Attacks&lt;/a>
+==&lt;a href="https://arxiv.org/abs/1802.03471" target="_blank" rel="noopener">Certified Robustness to Adversarial Examples with Differential Privacy&lt;/a>==&lt;/p>
+&lt;h5 id="attacks-2-requires-defenses-2">Attacks (2) [requires Defenses (2)]&lt;/h5>
+&lt;p>==&lt;a href="https://arxiv.org/abs/1802.00420" target="_blank" rel="noopener">Obfuscated Gradients Give a False Sense of Security: Circumventing Defenses to Adversarial Examples&lt;/a>==
+&lt;a href="https://arxiv.org/abs/1802.05666" target="_blank" rel="noopener">Adversarial Risk and the Dangers of Evaluating Against Weak Attacks&lt;/a>&lt;/p>
+&lt;h5 id="defenses-3-requires-attacks-2">Defenses (3) [requires Attacks (2)]&lt;/h5>
+&lt;p>&lt;a href="https://arxiv.org/abs/1805.09190" target="_blank" rel="noopener">Towards the first adversarially robust neural network model on MNIST&lt;/a>
+&lt;a href="https://arxiv.org/abs/1902.06705" target="_blank" rel="noopener">On Evaluating Adversarial Robustness&lt;/a>&lt;/p>
+&lt;h5 id="other-domains-requires-attacks">Other Domains [requires Attacks]&lt;/h5>
+&lt;p>&lt;a href="https://arxiv.org/abs/1702.02284" target="_blank" rel="noopener">Adversarial Attacks on Neural Network Policies&lt;/a>
+&lt;a href="https://arxiv.org/abs/1801.01944" target="_blank" rel="noopener">Audio Adversarial Examples: Targeted Attacks on Speech-to-Text&lt;/a>
+&lt;a href="https://arxiv.org/abs/1803.01128" target="_blank" rel="noopener">Seq2Sick: Evaluating the Robustness of Sequence-to-Sequence Models with Adversarial Examples&lt;/a>
+&lt;a href="https://arxiv.org/abs/1702.06832" target="_blank" rel="noopener">Adversarial examples for generative models&lt;/a>&lt;/p>
+&lt;h5 id="detection">Detection&lt;/h5>
+&lt;p>&lt;a href="https://arxiv.org/abs/1311.2524" target="_blank" rel="noopener">Rich feature hierarchies for accurate object detection and semantic segmentation&lt;/a>
+==&lt;a href="https://arxiv.org/abs/1506.02640" target="_blank" rel="noopener">You Only Look Once: Unified, Real-Time Object Detection&lt;/a>==
+==&lt;a href="https://arxiv.org/abs/1612.08242" target="_blank" rel="noopener">YOLO9000: Better, Faster, Stronger&lt;/a>==&lt;/p>
+&lt;h5 id="physical-world-attacks">Physical-World Attacks&lt;/h5>
+&lt;p>==&lt;a href="https://arxiv.org/abs/1607.02533" target="_blank" rel="noopener">Adversarial examples in the physical world&lt;/a>==
+==&lt;a href="https://arxiv.org/abs/1707.07397" target="_blank" rel="noopener">Synthesizing Robust Adversarial Examples&lt;/a>==
+&lt;a href="https://arxiv.org/abs/1707.08945" target="_blank" rel="noopener">Robust Physical-World Attacks on Deep Learning Models&lt;/a>
+==&lt;a href="https://arxiv.org/abs/1910.11099" target="_blank" rel="noopener">Adversarial T-shirt! Evading Person Detectors in A Physical World&lt;/a>==
+&lt;a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Huang_Universal_Physical_Camouflage_Attacks_on_Object_Detectors_CVPR_2020_paper.pdf#:~:text=UPC%20constructs%20a%20universal%20camou%EF%AC%82age%20pattern%20for%20ef-fectively,patterns%20on%20object%20surfaces%20such%20as%20humanaccessories%2Fcar%20paintings." target="_blank" rel="noopener">Universal Physical Camouflage Attacks on Object Detectors&lt;/a>
+==&lt;a href="https://openaccess.thecvf.com/content_CVPRW_2019/papers/CV-COPS/Thys_Fooling_Automated_Surveillance_Cameras_Adversarial_Patches_to_Attack_Person_Detection_CVPRW_2019_paper.pdf" target="_blank" rel="noopener">Fooling Automated Surveillance Cameras Adversarial Patches to Attack Person Detection&lt;/a>==
+==&lt;a href="https://arxiv.org/abs/2006.14655" target="_blank" rel="noopener">Can 3D Adversarial Logos Cloak Humans?&lt;/a>==
+==Adversarial Texture for Fooling Person Detectors in Physical World==&lt;/p>
+&lt;h3 id="ideas">Ideas&lt;/h3>
+&lt;ul>
+&lt;li>Difference from 3D logo? (What&amp;rsquo;s our goal?)&lt;/li>
+&lt;li>Restricted deformation or recoloring from any input cloth?&lt;/li>
+&lt;li>Differential deformation of logo (by B-spline?)&lt;/li>
+&lt;li>monochromatic, analogous, or complementary colors&lt;/li>
+&lt;/ul>
+&lt;p>我们现在是优先attackiou最大的框，然后小于一定iou threshold的就不训练了，防止过度训练到一些trivial的boxes&lt;/p>
+&lt;p>牺牲了一些iou比较小但是prob比较大的框，能不能把周围有人的情况下，把周围的人也隐藏起来&lt;/p>
+&lt;p>object confidence=iou和prob 效果不好&lt;/p>
+&lt;p>B个角度的取梯度的平均值，weighted mean去加速优先attack&lt;/p>
+&lt;p>2D的pipeline 饱和度 hsv&lt;/p>
+&lt;p>色相饱和度亮度&lt;/p>
+&lt;p>参数化 gan&lt;/p></description></item><item><title>Computer Architecture</title><link>https://wenda-qianhw.netlify.app/archived_note/computer-arch/</link><pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/computer-arch/</guid><description>&lt;p>Press the &amp;lsquo;&amp;lsquo;pdf&amp;rsquo;&amp;rsquo; button to download the notes.&lt;/p></description></item><item><title>Distributed System</title><link>https://wenda-qianhw.netlify.app/archived_note/distributed/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/distributed/</guid><description>&lt;h2 id="centerreview---finalcenter">&lt;center>Review - Final&lt;/center>&lt;/h2>
+&lt;h3 id="11-intro">1.1 Intro&lt;/h3>
+&lt;h5 id="characteristics-of-ds">Characteristics of DS&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Present a single-system image&lt;/p>
+&lt;ul>
+&lt;li>Hide internal organization, communication details&lt;/li>
+&lt;li>Provide uniform interface&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Easily expandable&lt;/p>
+&lt;ul>
+&lt;li>Adding new servers is hidden from users&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Continuous availability&lt;/p>
+&lt;ul>
+&lt;li>Failures in one component can be covered by other components&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Supported by middleware&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="goal-of-ds">Goal of DS&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Resource Availiability&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Transparancy: hide details and appears to its users &amp;amp; applications to be a single computer system&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Openness:&lt;/p>
+&lt;ul>
+&lt;li>Interoperability: The ability of two different systems or applications to work together&lt;/li>
+&lt;li>Portability: An application designed to run on one distributed system can run on another system which implements the same interface.&lt;/li>
+&lt;li>Extensibility: Easy to add new components, features&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Scalability: w.r.t. size, geographical distribution, number of administrative organizations spanned&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="12-classical-synchronization">1.2 Classical Synchronization&lt;/h3>
+&lt;h5 id="concurrency">Concurrency&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Allows safe/multiplexed access to shared resources&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Critical Section&lt;/strong>: piece of code accessing a shared resource, usually variables or data structures&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Race Condition&lt;/strong>: Multiple threads of execution enter CS at the same time, update shared resource, leading to undesirable outcome&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Indeterminate Program&lt;/strong>: One or more Race Conditions, output of program depending on ordering, non-deterministic&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="mutual-exclusion">Mutual Exclusion&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>guarantee that only a single thread/process enters a CS, avoiding races&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Correctness&lt;/strong>: single process in CS at one time&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Efficiency&lt;/strong>: No waiting for availible resources, no spin-locks&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Bounded waiting&lt;/strong>: Fairness. No process waits forever.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Atomic&lt;/strong> Test-and-set $\Longrightarrow$ Mutex&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-go">Acquire_Mutex(&amp;lt;mutex&amp;gt;){while(!TestAndSet(&amp;lt;mutex&amp;gt;))}
+{CS}
+Release_Mutex(&amp;lt;mutex&amp;gt;){&amp;lt;mutex&amp;gt; = 1}
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>Semaphore: Initialized and set to integer value
+&lt;ul>
+&lt;li>P(x) stands for proberen, Dutch for “to test”&lt;/li>
+&lt;li>V(x) stands for verhogen, Dutch for “to increment”&lt;/li>
+&lt;li>binary semaphore = mutex&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-Go">x.P():
+while (x == 0) wait;
+x–-
+x.V():
+x++
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>Condition variables:
+&lt;ul>
+&lt;li>cvars provide a sync point, one thread suspended until activated by another. (more efficient way to wait than spin lock )&lt;/li>
+&lt;li>cvar always associated with mutex&lt;/li>
+&lt;li>&lt;code>Wait()&lt;/code> and &lt;code>Signal()&lt;/code> operations defined with cvars&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="fig/cvars.png" alt="avatar" style="zoom:50%;" />&lt;/p>
+&lt;h5 id="example-fifo-queue">Example: FIFO queue&lt;/h5>
+&lt;pre>&lt;code class="language-go">b.Remove():
+b.mutex.lock()
+x = b.sb.Remove()
+b.mutex.unlock()
+return x
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>Incorrect. If empty, lock forever&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>b.Remove():
+retry:
+b.mutex.lock()
+if !(b.sb.len() &amp;gt; 0){
+b.mutex.unlock()
+goto retry
+}
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>This introduces a spin-lock, not efficient. Also may lead to a &lt;strong>livelock&lt;/strong>.&lt;/li>
+&lt;li>&lt;strong>Livelock:&lt;/strong> Processes running without making progress.&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-c">b.Init():
+b.sb = NewBuf()
+b.mutex = 1
+b.cvar = NewCond(b.mutex)
+b.Insert(x):
+b.mutex.lock()
+b.sb.Insert(x)
+b.sb.Signal()
+b.mutex.unlock()
+b.Remove():
+b.mutex.lock()
+while b.sb.Empty() {
+b.cvar.wait()
+}
+x = b.sb.Remove()
+b.mutex.unlock()
+return x
+b.Flush():
+b.mutex.lock()
+b.sb.Flush()
+b.mutex.unlock()
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>
+&lt;p>Use while instead of if:&lt;/p>
+&lt;ul>
+&lt;li>With Mesa semantics, there is a point of vulnerability right after resuming execution and before locking mutex.&lt;/li>
+&lt;li>Hence, always recheck the condition using a while loop.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Concurrency vs. Parellelism&lt;/p>
+&lt;ul>
+&lt;li>Concurrency is not parallelism, although it enables parallelism&lt;/li>
+&lt;li>1 Processor: Program can still be concurrent but not parallel&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-networks">2 Networks&lt;/h3>
+&lt;h5 id="network-links">Network Links&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Latency: first package to reach&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Capacity (bandwidth): bits/sec&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Jitter: Variation in latency&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Loss/Reliability: Drop packages or not&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Reordering&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Package Delay:&lt;/p>
+&lt;ul>
+&lt;li>Propagation: Latency&lt;/li>
+&lt;li>Transimission: Bandwidth, depending on the bottleneck link&lt;/li>
+&lt;li>Processing: Router speed&lt;/li>
+&lt;li>Queueing: Traffic load and queue size&lt;/li>
+&lt;li>RTT: Round trip time = 2 $\times$ Latency&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Store and forward Protocol:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Store only one package instead of the full data!&lt;/strong>&lt;/li>
+&lt;li>Propagation Delay + Transmission delay + Store and Forward delay(package size / arriving rate)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Stop and wait Protocol:&lt;/p>
+&lt;ul>
+&lt;li>Send a single package and wait for acknowledgement&lt;/li>
+&lt;li>Improvement: Constantly sending packages and use a sliding window to record unacknowledged packages&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="ethernet-frame">Ethernet Frame&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Addresses: 6 bytes (MAC address)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Type: 2 bytes. Indicates the higher layer protocol, mostly IP.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Frame is received by all adapters on a LAN and dropped if address does not match.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>When receiving a package, the bridge looks up the entry for the destiny MAC address&lt;/p>
+&lt;ul>
+&lt;li>If exists, forward&lt;/li>
+&lt;li>If no, boardcast except the arriving port&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Learning bridges: Fill in the forward table by source addresses&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="inter-net">Inter-net&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Challenges: Heterogeneity&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Need a standard: IP&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>IP address: DNS Translates human readable names to logical endpoints&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Connection with Link layer:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>ARP&lt;/strong> (Address Resolution Protocol): Transfer an IP address to a MAC address&lt;/li>
+&lt;li>Boardcast search, destination responses&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Getting an IP address:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>ISPs get from Regional Internet Registries (RIRs)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Or Dynamic Host Configuration Protocol (DHCP)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="fig/DHCP.png" alt="avatar" style="zoom:35%;" />&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="layering">Layering&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Example: Application $\Rightarrow$ Transport $\Rightarrow$ Network $\Rightarrow$ Link&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Each layer relies on services from layer below and exports services to layer above&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Protocols&lt;/strong> define:&lt;/p>
+&lt;ul>
+&lt;li>Interface to higher layers (API)&lt;/li>
+&lt;li>Interface to peer (syntax &amp;amp; semantics)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Hide implementation: Change layers without disturbing other layers&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="transport-protocols">Transport Protocols&lt;/h5>
+&lt;ul>
+&lt;li>Hop-by-hop vs. end-to-end&lt;/li>
+&lt;li>UDP vs. TCP&lt;/li>
+&lt;li>UDP: voice, multimedia&lt;/li>
+&lt;li>TCP: Web, Mails&lt;/li>
+&lt;/ul>
+&lt;center>
+&lt;img style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+width="450";
+src="fig/socket.png">
+&lt;br>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #555555;
+padding: 2px;">Web connection diagram&lt;/div>
+&lt;/center>
+&lt;h3 id="31-synchronization">3.1 Synchronization&lt;/h3>
+&lt;h5 id="coordinated-universal-time-utc">Coordinated Universal Time (UTC)&lt;/h5>
+&lt;ul>
+&lt;li>Signals from land-based stations: 0.1-10 milliseconds ($ms$)&lt;/li>
+&lt;li>Signals from GPS: 1 microsecond ($\mu s$)&lt;/li>
+&lt;li>Clock drift rate: $10^{-6} sec/sec$&lt;/li>
+&lt;li>&lt;strong>Network Time Protocol (NTP)&lt;/strong>: hierarchical synchronization. Fits PC demand.&lt;/li>
+&lt;/ul>
+&lt;h5 id="synchronization-algorithm">Synchronization Algorithm&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Bound error by bounding propagation delay: set time to $T + D/2$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Cristian&amp;rsquo;s algorithm&lt;/strong>&lt;/p>
+&lt;center>
+&lt;img style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+width="300";
+src="fig/Cristian.png">
+&lt;br>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #555555;
+padding: 2px;">Cristian's algorithm&lt;/div>
+&lt;/center>
+&lt;ul>
+&lt;li>Measures RTT $d$. Receiver set time to $T+ d/2$&lt;/li>
+&lt;li>Error bounded by $d/2$&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Berkeley algorithm&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>One master clock send request to all others, compute the average and inform everyone to adjust&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="32-distributed-logical-clocks">3.2 Distributed Logical Clocks&lt;/h3>
+&lt;h5 id="happens-before-relatioin">Happens Before relatioin&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>$a\to_i b$ if a is in front of b in $i$&amp;rsquo;s' local event&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>$a\to b$ if $a$ is the event of sending message while $b$ is to receive it&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Concurrent events&lt;/strong>: $a|b$&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="lamport-clock">Lamport Clock&lt;/h5>
+&lt;ul>
+&lt;li>If $e \to e^\prime$, we must have $LC(e) &amp;lt; LC(e^\prime)$&lt;/li>
+&lt;li>BUT not the reverse&lt;/li>
+&lt;li>&lt;strong>Lamport&amp;rsquo;s algorithm&lt;/strong>
+&lt;ul>
+&lt;li>Local: increment $LC_i$ for each event&lt;/li>
+&lt;li>When receiving messages $(m,t)$, $LC_j = \max (LC_j,t)$&lt;/li>
+&lt;li>$LC(e) = LC_i(e)$&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>Total-order Lamport Clock:&lt;/strong>
+&lt;ul>
+&lt;li>$LC(e) = M \times LC_i(e) +i$&lt;/li>
+&lt;li>$M = # $ of processes&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="vector-clock">Vector Clock&lt;/h5>
+&lt;ul>
+&lt;li>Label each event with $V(e)[c_1,\dots, c_n]$, where $c_i$ is the number of events in process i that causally precede e&lt;/li>
+&lt;/ul>
+&lt;h6 id="remark">Remark:&lt;/h6>
+&lt;ul>
+&lt;li>Lamport clock provides one-way encoding from causality to logical time;&lt;/li>
+&lt;li>Vector clock provides exact causality information&lt;/li>
+&lt;/ul>
+&lt;h3 id="4-blockchain">4 Blockchain&lt;/h3>
+&lt;h4 id="41-hash-functions">4.1 Hash Functions&lt;/h4>
+&lt;h5 id="collision-free">Collision-Free&lt;/h5>
+&lt;ul>
+&lt;li>computationally hard to find $x,y$, s.t. $x \neq y$ but $H(x) =H(y)$&lt;/li>
+&lt;/ul>
+&lt;h5 id="hiding-one-way-function">Hiding (One-way function)&lt;/h5>
+&lt;ul>
+&lt;li>Given $H(x)$, hard to find $x$&lt;/li>
+&lt;/ul>
+&lt;h5 id="puzzle-friendly">Puzzle-friendly&lt;/h5>
+&lt;ul>
+&lt;li>no solving strategy is much better than trying random values of $x$&lt;/li>
+&lt;/ul>
+&lt;h5 id="sha-256">SHA-256&lt;/h5>
+&lt;center>
+&lt;img style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+width="450";
+src="fig/SHA.png">
+&lt;br>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #555555;
+padding: 2px;">SHA&lt;/div>
+&lt;/center>
+&lt;h5 id="blockchain">Blockchain&lt;/h5>
+&lt;ul>
+&lt;li>&lt;strong>Hash pointer:&lt;/strong> pointer to where the info is stored, and also the hash of the info&lt;/li>
+&lt;li>When modify one block, all the blocks after would know&lt;/li>
+&lt;/ul>
+&lt;center>
+&lt;img style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+width="450";
+src="fig/BC.png">
+&lt;br>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #555555;
+padding: 2px;">Blockchain&lt;/div>
+&lt;/center>
+&lt;h5 id="merkle-tree">Merkle Tree&lt;/h5>
+&lt;ul>
+&lt;li>Use &lt;strong>Hash pointers&lt;/strong> to form a tree. Data stored at the bottom.&lt;/li>
+&lt;li>$n$ data blocks requires $\log n$ layers. Show $\log n$ items to prove membership.&lt;/li>
+&lt;/ul>
+&lt;h4 id="42-bitcoin-consensus">4.2 Bitcoin Consensus&lt;/h4>
+&lt;h5 id="consensus-algorithm">Consensus Algorithm&lt;/h5>
+&lt;ol>
+&lt;li>New transactions are broadcast to all nodes&lt;/li>
+&lt;li>Each node collects new transactions into a block&lt;/li>
+&lt;li>In each round a &lt;strong>random&lt;/strong> node gets to broadcast its block&lt;/li>
+&lt;li>Other nodes accept the block only if all transactions in it are valid (unspent, valid signatures)&lt;/li>
+&lt;li>Nodes express their acceptance of the block by including its hash in the next block they create&lt;/li>
+&lt;/ol>
+&lt;h6 id="remark-1">Remark:&lt;/h6>
+&lt;ul>
+&lt;li>
+&lt;p>Protection against invalid transactions is cryptographic, but enforced by consensus&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Protection against double-spending is purely by consensus&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Double spend probability decreases exponentially with # of confirmations&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="incentives">Incentives&lt;/h5>
+&lt;ul>
+&lt;li>Block reward&lt;/li>
+&lt;li>Transaction fees&lt;/li>
+&lt;/ul>
+&lt;h5 id="randomness-of-creating-node">Randomness of creating node&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Puzzle: $H(\text{nonce}| \text{prev_hash}| \text{data})$ is small&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>nonce published as part of the block&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="5-remote-procedure-call">5 Remote Procedure Call&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>RPC&lt;/strong>: attempts to make remote procedure calls look like local ones&lt;/li>
+&lt;/ul>
+&lt;h5 id="go-example">Go example:&lt;/h5>
+&lt;ul>
+&lt;li>&lt;strong>Client side&lt;/strong>: First dials the server, then make a remote call:&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-go">client, err := rpc.DialHTTP(&amp;quot;tcp&amp;quot;, serverAddress + &amp;quot;:1234&amp;quot;)
+if err != nil { log.Fatal(&amp;quot;dialing:&amp;quot;, err) }
+args := &amp;amp;server.Args{7,8}
+var reply int
+err = client.Call(&amp;quot;Arith.Multiply&amp;quot;, args, &amp;amp;reply)
+if err != nil {
+log.Fatal(&amp;quot;arith error:&amp;quot;, err)
+}
+fmt.Printf(&amp;quot;Arith: %d*%d=%d&amp;quot;, args.A, args.B, reply)
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>
+&lt;h5 id="server-side">Server side:&lt;/h5>
+&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code class="language-go">package server
+type Args struct { A, B int }
+type Quotient struct { Quo, Rem int }
+type Arith int
+func (t *Arith) Multiply(args *Args, reply *int) error {
+*reply = args.A * args.B
+return nil }
+func (t *Arith) Divide(args *Args, quo *Quotient) error {
+if args.B == 0 { return errors.New(&amp;quot;divide by zero&amp;quot;) }
+quo.Quo = args.A / args.B
+quo.Rem = args.A % args.B
+return nil
+}
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>
+&lt;p>The server then calls (for HTTP service):&lt;/p>
+&lt;pre>&lt;code class="language-go">arith := new(Arith)
+rpc.Register(arith)
+rpc.HandleHTTP()
+l, e := net.Listen(&amp;quot;tcp&amp;quot;, &amp;quot;:1234&amp;quot;)
+if e != nil { log.Fatal(&amp;quot;listen error:&amp;quot;, e) }
+go http.Serve(l, nil)
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;li>
+&lt;p>Create a map from function name to functions:&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>for example, &lt;code>Arith.Multiply&lt;/code> $\longrightarrow$ &lt;code>&amp;amp;Multiply()&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Messaging go objects:&lt;/p>
+&lt;ul>
+&lt;li>Marshal / Unmarshal; Serialization/Deserialization&lt;/li>
+&lt;li>&lt;strong>Marshal&lt;/strong>: Transfer structured objects to sequential text&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Stub&lt;/strong>: Obtaining transparency&lt;/p>
+&lt;ul>
+&lt;li>Client stub:
+&lt;ul>
+&lt;li>Marshal arguments into machine independent format&lt;/li>
+&lt;li>unmarshals results received from server&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Server stub:
+&lt;ul>
+&lt;li>unmarshals arguments and builds stack frame&lt;/li>
+&lt;li>calls procedure&lt;/li>
+&lt;li>marshals results and sends reply&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="endian">Endian&lt;/h5>
+&lt;ul>
+&lt;li>An agreement on little or big endian: Network order&lt;/li>
+&lt;/ul>
+&lt;h5 id="semantics-break-transparency">Semantics: Break transparency&lt;/h5>
+&lt;ul>
+&lt;li>Expose remoteness to client, since you cannot hide them (Cannot distinguish a failure from latency)&lt;/li>
+&lt;li>Exactly-once
+&lt;ul>
+&lt;li>Impossible in practice&lt;/li>
+&lt;li>The robot could crash immediately before or after messaging and lose its state. Don’t know which one happened.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>At least once:
+&lt;ul>
+&lt;li>Only for idempotent operations&lt;/li>
+&lt;li>Clients just keep trying unti getting a response&lt;/li>
+&lt;li>Server just processes requests as normal, doesn‘t remember anything. Simple!&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>At most once
+&lt;ul>
+&lt;li>Zero, don’t know, or once&lt;/li>
+&lt;li>Must re-send previous reply and not process request (implies: keep cache of handled requests/responses)&lt;/li>
+&lt;li>Must be able to identify requests&lt;/li>
+&lt;li>Solution: Keep sliding window of valid RPC IDs, have clients number them sequentially.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Zero or once
+&lt;ul>
+&lt;li>Transactional semantics&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="asynchronized-rpc">Asynchronized RPC&lt;/h5>
+&lt;center>
+&lt;img style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+width="500";
+src="fig/Asyn.png">
+&lt;br>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #555555;
+padding: 2px;">Asynchronized RPC&lt;/div>
+&lt;/center>
+&lt;pre>&lt;code class="language-go">// Asynchronous call
+quotient := new(Quotient)
+divCall := client.Go(&amp;quot;Arith.Divide&amp;quot;, args, quotient, nil)
+replyCall := &amp;lt;-divCall.Done // will be equal to divCall
+// check errors, print, etc.
+&lt;/code>&lt;/pre>
+&lt;h3 id="6-mutual-exclusion">6 Mutual Exclusion&lt;/h3>
+&lt;h5 id="requirements">Requirements&lt;/h5>
+&lt;ul>
+&lt;li>Correctness: At most one process holds the lock&lt;/li>
+&lt;li>Fairness: no starvation&lt;/li>
+&lt;li>Low message overhead (protocol complexity)&lt;/li>
+&lt;li>Tolerate out-of-order messages&lt;/li>
+&lt;/ul>
+&lt;h4 id="61-centralized-algorithm">6.1 Centralized Algorithm&lt;/h4>
+&lt;h5 id="coordinator">Coordinator:&lt;/h5>
+&lt;pre>&lt;code class="language-python">while true:
+m = Receive()
+if m == (Request, i)
+if Available():
+Send (Grant) to i
+else:
+Put i in the queue
+if m == (Release)&amp;amp;&amp;amp;!empty(Q):
+Remove ID j from Q
+Send (Grant) to j
+&lt;/code>&lt;/pre>
+&lt;h5 id="clients">Clients:&lt;/h5>
+&lt;pre>&lt;code class="language-xml">Request:
+Send (Request, i) to coordinator
+Wait for reply
+Release:
+Send (Release, i) to coordinator
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>Correct and Fair (If clients never crash)!&lt;/li>
+&lt;li>Performance:
+&lt;ul>
+&lt;li>3 cycles per cycle (1 request, 1 grant, 1 release)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="selecting-a-leader-bully-algorithm">Selecting a leader: bully algorithm&lt;/h5>
+&lt;h4 id="62-decentralized-algorithm">6.2 Decentralized Algorithm&lt;/h4>
+&lt;ul>
+&lt;li>Assume that there are $n$ coordinators
+&lt;ul>
+&lt;li>Access requires a majority vote from $m &amp;gt; n/2$ coordinators.&lt;/li>
+&lt;li>A coordinator always responds immediately to a request with GRANT or DENY&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Node failures are still a problem
+&lt;ul>
+&lt;li>Coordinators may forget vote on reboot&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>What if you get less than $m$ votes?
+&lt;ul>
+&lt;li>Backoff and retry later&lt;/li>
+&lt;li>Large numbers of nodes requesting access can affect availability&lt;/li>
+&lt;li>Starvation!&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="63-totally-ordered-multicast">6.3 Totally Ordered Multicast&lt;/h4>
+&lt;ul>
+&lt;li>Use totally ordered Lamport clock&lt;/li>
+&lt;li>Details
+&lt;ul>
+&lt;li>Each message is timestamped with the current logical time of its sender.&lt;/li>
+&lt;li>Assume all messages sent by one sender are received in the order they were sent and that no messages are lost.&lt;/li>
+&lt;li>Receiving process puts a message into a local queue ordered according to timestamp.&lt;/li>
+&lt;li>The receiver multicasts an ACK to all other processes.&lt;/li>
+&lt;li>Only deliver message when it is &lt;em>both&lt;/em> at the head of queue and ack’ed by all participants&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="64-distributed-mutual-exclusion">6.4 Distributed Mutual Exclusion&lt;/h4>
+&lt;h5 id="an-operation-to-cs-totally-ordered-multicast">An operation to CS: totally ordered Multicast&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Difference&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>the receiver only need to unicast the ack to its sender, since only the requester needs to know the message is ready to commit.&lt;/li>
+&lt;li>Release messages are broadcast to let others to move on&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Correctness&lt;/p>
+&lt;ul>
+&lt;li>When process x generates request with time stamp $T_x$, and it has received replies from all $y$ in $N_x$, then its $Q$ contains all requests with time stamps $\leq T_x$.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Performance&lt;/p>
+&lt;ul>
+&lt;li>Process i sends $n-1$ request messages&lt;/li>
+&lt;li>Process i receives $n-1$ reply messages&lt;/li>
+&lt;li>Process i sends $n-1$ release messages.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="improvement-ricart--agrawala">Improvement: Ricart &amp;amp; Agrawala&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Trick: Only reply after completing its own earlier operations in the CS&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Deadlock free: since there is no cycles such that $T_a &amp;lt; T_b &amp;lt; \dots &amp;lt; T_a$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Starvation free: after requesting with time stamp $T_a$, every other processes will update their clock to $&amp;gt; T_a$.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Performance: $n-1$ requests and $n-1$ replies.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="a-token-ring-algorithm">A token ring algorithm&lt;/h5>
+&lt;ul>
+&lt;li>Correctness:
+&lt;ul>
+&lt;li>Clearly safe: Only one process can hold token&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Fairness:
+&lt;ul>
+&lt;li>Will pass around ring at most once before getting access.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Performance:
+&lt;ul>
+&lt;li>Each cycle requires between $1 - \infty$ messages&lt;/li>
+&lt;li>Latency of protocol between 0 &amp;amp; $n-1$&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;center>
+&lt;img style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+width="600";
+src="fig/Mutual Exclusion.png">
+&lt;br>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #555555;
+padding: 2px;">Mutual Exclusion methods&lt;/div>
+&lt;/center>
+&lt;h3 id="7-distributed-file-system">7 Distributed File System&lt;/h3>
+&lt;ul>
+&lt;li>Data sharing among multiple users&lt;/li>
+&lt;li>User mobility&lt;/li>
+&lt;li>Location transparency&lt;/li>
+&lt;li>Backups and centralized management&lt;/li>
+&lt;/ul>
+&lt;h5 id="vfs">VFS&lt;/h5>
+&lt;center>
+&lt;img style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+width="600";
+src="fig/dfs.png">
+&lt;br>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #555555;
+padding: 2px;">VFS&lt;/div>
+&lt;/center>
+&lt;h5 id="a-simple-approach-nfs">A simple approach (NFS)&lt;/h5>
+&lt;ul>
+&lt;li>Use RPC to forward every file system operation to the server&lt;/li>
+&lt;li>Server serializes all accesses, performs them, and sends back result.&lt;/li>
+&lt;li>Great: Same behavior as if both programs were running on the same local filesystem!&lt;/li>
+&lt;li>Bad: Performance can stink. Latency of access to remote server often much higher than to local memory.&lt;/li>
+&lt;/ul>
+&lt;h5 id="afs">AFS&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Assumptions&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Clients can cache whole files over long periods&lt;/li>
+&lt;li>Write/Write, Write/Read share are rare&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Cells and Volumes&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>cell: administrative groups&lt;/li>
+&lt;li>cells broken into volumes&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="caching">Caching&lt;/h5>
+&lt;ul>
+&lt;li>NFS Write:
+&lt;ul>
+&lt;li>Dirty data are buffered on the client machine until file close or up to 30 seconds&lt;/li>
+&lt;li>File attributes in the client cache expire after 60 seconds&lt;/li>
+&lt;li>when file is closed, all modified blocks sent to server.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>AFS
+&lt;ul>
+&lt;li>&lt;strong>Callbacks:&lt;/strong> server tells clients &amp;ldquo;Invalidate&amp;rdquo; if the file changes. So the client may re-read it.&lt;/li>
+&lt;li>&lt;strong>Remove Callback&lt;/strong> when client has flushed the data from its disk&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>Tradeoff:&lt;/strong> consistency, performance, scalability.&lt;/li>
+&lt;li>Client-side caching is a fundamental technique to improve scalability and performance. But raises important questions of cache consistency.&lt;/li>
+&lt;/ul>
+&lt;h5 id="name-space">Name Space&lt;/h5>
+&lt;ul>
+&lt;li>NFS: per-client linkage vs. AFS: global name space&lt;/li>
+&lt;li>NFS: no transparency
+&lt;ul>
+&lt;li>If a directory is moved from one server to another, client must remount&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>AFS: transparency
+&lt;ul>
+&lt;li>If a volume is moved from one server to another, only the volume location database on the servers needs to be updated&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="8-distributed-replication">8 Distributed Replication&lt;/h3>
+&lt;ul>
+&lt;li>Write replication requires some degree of consistency&lt;/li>
+&lt;li>&lt;strong>Strict Consistency&lt;/strong>
+&lt;ul>
+&lt;li>Read always returns value from latest write&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>Sequential Consistency&lt;/strong>
+&lt;ul>
+&lt;li>All nodes see operations in some sequential order&lt;/li>
+&lt;li>Operations of each process appear in-order in this sequence&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;center>
+&lt;img style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+width="700";
+src="fig/Sequential.png">
+&lt;br>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #555555;
+padding: 2px;">&lt;/div>
+&lt;/center>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Causal Consistency&lt;/strong>&lt;/p>
+&lt;center>
+&lt;img style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+width="700";
+src="fig/1.png">
+&lt;br>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #555555;
+padding: 2px;">&lt;/div>
+&lt;/center>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>P1: W(x)c&lt;/code> and &lt;code>P2: W(x)b&lt;/code> are concurrent so its not important that all processes see them in the same order&lt;br>
+However &lt;code>Wx(a)&lt;/code> and &lt;code>R(x)a&lt;/code> and then &lt;code>W(x)b&lt;/code> are potentially causally related so they must be in order.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>This sequence is allowed with a causally-consistent store, but not with a sequentially consistent store.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="81-primary-backup-replication-model">8.1 Primary-backup Replication Model&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Assumptions:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Group membership manager: allow replica nodes to join/leave&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Fail-stop failure model:&lt;/strong> (not Byzantine) server may crash, might come up again.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Failure detector&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Primary backup: Writes always go to primary, read from any backup&lt;/p>
+&lt;center>
+&lt;img style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+width="700";
+src="fig/primary backup.png">
+&lt;br>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #555555;
+padding: 2px;">parimary backup&lt;/div>
+&lt;/center>
+&lt;/li>
+&lt;li>
+&lt;p>At least once or at most once: Ack send back after Backup finish; or Ack send back only after commited logged at Primary&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Major drawback:&lt;/strong> Slow response times in case of failures.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="82-consensus-replication-model">8.2 Consensus Replication Model&lt;/h5>
+&lt;p>&lt;strong>Quorum based consensus:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Designed to have fast response time even under failures&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Operate as long as majority of machines is still alive&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>To handle $f$ failures, must have $2f + 1$ replicas&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Major difference: you want replicated Write protocols so that you can write to multiple replicas instead of just one.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Paxos approach&lt;/strong>: on multiple servers reaching consensus on a single value.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Requirements:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Correctness&lt;/strong>: Only a single value may be chosen. A machine never learns that a value has been chosen unless it really has been. The agreed value X has been proposed by some node&lt;/li>
+&lt;li>&lt;strong>Liveness&lt;/strong>: Some proposed value is eventually chosen. If a value is chosen, servers eventually learn about it&lt;/li>
+&lt;li>&lt;strong>Fault-tolerance&lt;/strong>: If less than $N/2$ nodes fail, the rest should reach agreement eventually&lt;/li>
+&lt;li>Note: Paxos sacrifices liveness in favor of correctness&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Synchronous DS: bounded amount of time node can take to process and respond to a request&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Asynchronous DS: timeout is not perfect&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>FLP Impossibility&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>It is impossible for a set of processors in an asynchronous system to agree on a binary value, even if only a single processor is subject to an unannounced failure.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Proposers, Acceptors, Learners&lt;/p>
+&lt;center>
+&lt;img style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+width="500";
+src="fig/Paxos.png">
+&lt;br>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #555555;
+padding: 2px;">Paxos&lt;/div>
+&lt;/center>
+&lt;/li>
+&lt;li>
+&lt;p>The key: once a proposal with value $v$ is chosen, all higher proposals must have value $v$, since $v$ remains the highest accepted value (It occupies $m&amp;gt;N/2$ servers).&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Remark&lt;/strong>: Only proposer knows chosen value (majority acccepted). No guarantee that proposer’s original value v is chosen by itself. Number $n$ is basically a Lamport clock, always unique $n$.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="9-byzantine-fault-tolerance">9 Byzantine Fault Tolerance&lt;/h3>
+&lt;ul>
+&lt;li>Dependability implies the following:
+&lt;ul>
+&lt;li>Availability: probability the system operates correctly at any given moment&lt;/li>
+&lt;li>Reliability: ability to run correctly for a long interval of time&lt;/li>
+&lt;li>Safety: failure to operate correctly does not lead to catastrophic failures&lt;/li>
+&lt;li>Maintainability: ability to “easily” repair a failed system&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>BFT: Nodes may be malicious. Must agree on a value among benign nodes.&lt;/li>
+&lt;li>Quorum base:
+&lt;ul>
+&lt;li>Any two quorums must intersect at least one honest node.&lt;/li>
+&lt;li>For liveness, the quorum size must be at most $N-f$.&lt;/li>
+&lt;li>$2(N-f) - N \geq f + 1$, so $N\geq 3f+1$.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="byzantine-agreement">Byzantine agreement&lt;/h5>
+&lt;ul>
+&lt;li>Phase 1: Each process sends its value to the other processes.
+&lt;ul>
+&lt;li>Correct processes send the same (correct) value to all.&lt;/li>
+&lt;li>Faulty processes may send different values to each if desired (or no message).&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Phase 2: Each process uses the messages to create a vector of responses – must be a default value for missing messages.&lt;/li>
+&lt;li>Phase 3: Each process sends its vector to all other processes.&lt;/li>
+&lt;li>Phase 4: Each process the information received from every other process to do its computation.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/post/fig/BFT.png" alt="avatar" style="zoom:33%;" />&lt;/p>
+&lt;h3 id="10-gfs--mapreduce">10 GFS &amp;amp; MapReduce&lt;/h3>
+&lt;ul>
+&lt;li>GFS is a distributed fault-tolerant file system&lt;/li>
+&lt;/ul>
+&lt;h5 id="gfs-assumptions">GFS Assumptions&lt;/h5>
+&lt;ul>
+&lt;li>Small number of large files&lt;/li>
+&lt;li>Large streaming reads&lt;/li>
+&lt;li>Large, sequential writes that append&lt;/li>
+&lt;li>Concurrent appends by multiple clients
+&lt;ul>
+&lt;li>For concurrency, only need to lock a small size of disk&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;center>
+&lt;img style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);"
+width="700";
+src="fig/GFS.png">
+&lt;br>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #555555;
+padding: 2px;">GFS&lt;/div>
+&lt;/center>
+&lt;ul>
+&lt;li>
+&lt;p>Client sends master: &lt;code>read(file name, chunk index)&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Master’s reply: &lt;code>(chunk ID, chunk version number, locations of replicas)&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Client sends “closest” chunkserver w/replica: &lt;code>read(chunk ID, byte range)&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Chunkserver replies with data&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="gfs-master-server">GFS Master Server&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Holds all metadata:&lt;/p>
+&lt;ul>
+&lt;li>namespace&lt;/li>
+&lt;li>access control information&lt;/li>
+&lt;li>mapping from files to chunks&lt;/li>
+&lt;li>current locations of chunks&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Logs all client requests to disk sequentially&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Replicates log entries to remote backup servers&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Only replies to client after log entries safe on disk on self and backups!&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Periodic checkpoints as an on-disk Btree&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="gfs-clients">GFS clients&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Master grant lease to primary (for each chunk) (60 sec), which is renewed using periodic heartbeat&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>provide with 2 special operations:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>snapshot: creating a copy of the current instance of a file or directory tree.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>append: allows clients to append data as an atomic operation without lock. Multiple processes can append to the same file concurrently&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="fault-tolerant">Fault tolerant:&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Master: Replays log from disk&lt;/p>
+&lt;ul>
+&lt;li>Recovers namespace (directory) information, recovers file-to-chunk-ID mapping (but not location of chunks)&lt;/li>
+&lt;li>Asks chunkservers which chunks they hold, recovers chunk-ID-to-chunkserver mapping&lt;/li>
+&lt;li>If chunk server has older chunk, it’s stale; if chunk server has newer chunk, adopt its version number&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Chunkserver dead:&lt;/p>
+&lt;ul>
+&lt;li>Master notices missing heartbeats, decrements count of replicas for all chunks on dead chunkserver&lt;/li>
+&lt;li>Master re-replicates chunks missing replicas in background&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="mapreduce">MapReduce&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>Programs implement &lt;code>Mapper&lt;/code> and &lt;code>Reducer&lt;/code> classes&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Mapper&lt;/strong>: Generate &lt;code>&amp;lt;key,value&amp;gt;&lt;/code> pairs&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Reducer&lt;/strong>: Iterate among all keys, outputs one or multiple &lt;code>&amp;lt;key,value&amp;gt;&lt;/code> pairs&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Remarks:&lt;/p>
+&lt;ul>
+&lt;li>Computation broken into many, short-lived tasks&lt;/li>
+&lt;li>Use disk storage to hold intermediate results&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Limitations: spend too much time on I/O to disks and over network. This makes interactive data analysis impossible&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="11-sparks">11 Sparks&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>In memory fault-tolerant computation&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Resilient Distributed Dataset&lt;/strong> (RDD)&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Immutable&lt;/strong>: cannot be modified once created. This enables &lt;strong>lineage&lt;/strong> (recreate any RDD at any time) and is compatiable with HDFS (append only).&lt;/li>
+&lt;li>&lt;strong>Transformations&lt;/strong>: create new RDD from existing ones&lt;/li>
+&lt;li>&lt;strong>Actions&lt;/strong>: compute a value based on an RDD. Either return or saved to an external storage system&lt;/li>
+&lt;li>&lt;strong>Persist&lt;/strong> RDD to a memory&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Transformations are lazy: their result RDD is not immediately computed. Their evaluation only triggered by Action!&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>This enables spark to optimize the required operations; and allows Spark to recover from failures and slow workers&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>By default, RDDs are recomputed each time you run an action on them. This can be expensive if you need to use the dataset more than once. Call &lt;code>persist()&lt;/code> or &lt;code>cache()&lt;/code> to cache an RDD in memory.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>BSP computation abstraction: Any distributed system can be emulated as local work + message passing (=BSP)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Challenges: communication overheads and stragglers&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>P2P+selective communication, bounded-delay BSP&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="12-mining-pools-and-bitcoin">12 Mining Pools and Bitcoin&lt;/h3>
+&lt;h5 id="121-mining-pools">12.1 Mining pools&lt;/h5>
+&lt;ul>
+&lt;li>Partial Method used as measuring the amount of work a miner does&lt;/li>
+&lt;li>Naive solution: assign reward proportional to the amount of work.&lt;/li>
+&lt;li>Issue: If miners jump to new pools?
+&lt;ul>
+&lt;li>The expected rewards: $\alpha_i\to \alpha_i + \text{old pool revenue}$&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Do not reward each share equally!&lt;/li>
+&lt;/ul>
+&lt;p>Examples:&lt;/p>
+&lt;ul>
+&lt;li>Slush&amp;rsquo;s method: scoring function: $s = e^{T/C}$. Gives advantage to miners who joined late.&lt;/li>
+&lt;li>Pay-per-share: the operator pays per each partial solution no matter if he managed to extend the chain.&lt;/li>
+&lt;/ul>
+&lt;p>Attacks:&lt;/p>
+&lt;ul>
+&lt;li>Sabotage: Only submit partial solutions&lt;/li>
+&lt;li>Lie-in-wait: spread computing power over many pools. Once find one, wait a while only mining for that pool and then submit&lt;/li>
+&lt;/ul>
+&lt;h5 id="122-bitcoin-transactions">12.2 Bitcoin Transactions&lt;/h5>
+&lt;ul>
+&lt;li>
+&lt;p>In: where do you get your money?&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>prev_out&lt;/code>: previous transaction（收入来源的交易账单）only hash + index (since there may be multiple out)&lt;/li>
+&lt;li>&lt;code>scriptSig&lt;/code>: your signature&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Out:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>value&lt;/code>: how much you spend&lt;/li>
+&lt;li>&lt;code>scriptPubKey&lt;/code>: public key of acceptor&lt;/li>
+&lt;li>The rest coins must be sent back to yourself&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>If tracing back each transaction, must end up with &lt;code>coinbase&lt;/code>, which is generated by mining.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>coinbase&lt;/code> has &lt;code>prev_out: hash = 0, n = 4294967295&lt;/code>.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Multisig: specify $n$ public keys, verification requires $t$ signatures.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Example: 2-of-3 multisig used for escrow transactions.&lt;/p>
+&lt;ul>
+&lt;li>If either Alice or Bob does not fulfill his/her job, the third party (randomly selected) will give signature&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Pay to script hash (P2SH): the previous Pay to PublicKey Hash (P2PKH) is too complicated. The seller can design a script beforehead, so the buyer only need to send bitcoins to that hash address.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Lock time: designed for small transactions&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h5 id="123-limitation-and-improment">12.3 Limitation and Improment&lt;/h5>
+&lt;ul>
+&lt;li>throughput limitation: 7 transactions/sec, comparing to 2000-10000 for VISA&lt;/li>
+&lt;li>Hard-forking vs. soft-forking&lt;/li>
+&lt;/ul></description></item><item><title>Probabilistic Graphical Model</title><link>https://wenda-qianhw.netlify.app/archived_note/pgm/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/pgm/</guid><description/></item></channel></rss>
