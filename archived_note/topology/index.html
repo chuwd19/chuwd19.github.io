@@ -1,17 +1,1610 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=generator content="Wowchemy 5.3.0 for Hugo"><meta name=google-site-verification content="bXFAeUgD4tD7w1w_skEMDJ8ve7HU4dy8O-uDH5i_gz8"><meta name=baidu-site-verification content="code-7BynQM9TAs"><meta name=author content="Wenda Chu 储闻达"><meta name=description content="This note includes very basic Topology, including point set topology and algebraic topology. Hopefully will add differential topology in the future."><link rel=alternate hreflang=en-us href="index.html"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><meta name=theme-color content="#1565c0"><script src="../../js/mathjax-config.js"></script><link rel=stylesheet href="../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css" media=print onload="this.media='all'"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin=anonymous media=print onload="this.media='all'"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css crossorigin=anonymous title=hl-light media=print onload="this.media='all'"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled><script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js integrity crossorigin=anonymous async></script><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Lora:wght@400;700&family=Roboto:wght@400;700&display=swap&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Lora:wght@400;700&family=Roboto:wght@400;700&display=swap&display=swap" media=print onload="this.media='all'"><link rel=stylesheet href="../../css/wowchemy.ed2da72110e60110d27da0704ff033d1.css"><link rel=manifest href="../../manifest.webmanifest"><link rel=icon type=image/png href="../../media/icon_hud9f11bce4f3a2a4889ae0de212996427_55561_32x32_fill_lanczos_center_2.png"><link rel=apple-touch-icon type=image/png href="../../media/icon_hud9f11bce4f3a2a4889ae0de212996427_55561_180x180_fill_lanczos_center_2.png"><link rel=canonical href="index.html"><meta property="twitter:card" content="summary"><meta property="og:site_name" content="Wenda Chu"><meta property="og:url" content="https://wenda-qianhw.netlify.app/archived_note/topology/"><meta property="og:title" content="Topology | Wenda Chu"><meta property="og:description" content="This note includes very basic Topology, including point set topology and algebraic topology. Hopefully will add differential topology in the future."><meta property="og:image" content="https://wenda-qianhw.netlify.app/media/icon_hud9f11bce4f3a2a4889ae0de212996427_55561_512x512_fill_lanczos_center_2.png"><meta property="twitter:image" content="https://wenda-qianhw.netlify.app/media/icon_hud9f11bce4f3a2a4889ae0de212996427_55561_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us"><meta property="article:published_time" content="2023-03-08T00:00:00+00:00"><meta property="article:modified_time" content="2023-03-08T00:00:00+00:00"><title>Topology | Wenda Chu</title></head><body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper data-wc-page-id=c036e07b482dc20f380016e934faca58><script src="../../js/wowchemy-init.min.8988fb2a4bba758785868cfcb5244555.js"></script><aside class=search-modal id=search><div class=container><section class=search-header><div class="row no-gutters justify-content-between mb-3"><div class=col-6><h1>Search</h1></div><div class="col-6 col-search-close"><a class=js-search href="index.html#" aria-label=Close><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a></div></div><div id=search-box><input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control aria-label=Search...></div></section><section class=section-search-results><div id=search-hits></div></section></div></aside><div class=page-header><nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main><div class=container-xl><div class="d-none d-lg-inline-flex"><a class=navbar-brand href="../../index.html">Wenda Chu</a></div><button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
-<span><i class="fas fa-bars"></i></span></button><div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none"><a class=navbar-brand href="../../index.html">Wenda Chu</a></div><div class="navbar-collapse main-menu-item collapse justify-content-start" id=navbar-content><ul class="navbar-nav d-md-inline-flex"><li class=nav-item><a class=nav-link href="../../index.html#about"><span>Home</span></a></li><li class=nav-item><a class=nav-link href="../../index.html#featured"><span>Publications</span></a></li><li class=nav-item><a class=nav-link href="../../index.html#projects"><span>Projects</span></a></li><li class=nav-item><a class=nav-link href="../../index.html#contact"><span>Contact</span></a></li><li class=nav-item><a class=nav-link href="../../note.html"><span>Notes</span></a></li><li class=nav-item><a class=nav-link href="../../life.html"><span>Life</span></a></li><li class=nav-item><a class=nav-link href="../../uploads/resume.pdf"><span>CV</span></a></li></ul></div><ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2"><li class=nav-item><a class="nav-link js-search" href="index.html#" aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a></li><li class="nav-item dropdown theme-dropdown"><a href="index.html#" class=nav-link data-toggle=dropdown aria-haspopup=true aria-label="Display preferences"><i class="fas fa-moon" aria-hidden=true></i></a><div class=dropdown-menu><a href="index.html#" class="dropdown-item js-set-theme-light"><span>Light</span></a>
-<a href="index.html#" class="dropdown-item js-set-theme-dark"><span>Dark</span></a>
-<a href="index.html#" class="dropdown-item js-set-theme-auto"><span>Automatic</span></a></div></li></ul></div></nav></div><div class=page-body><article class=article><div class="article-container pt-3"><h1>Topology</h1><p class=page-subtitle>My notes on Topology.</p><div class=article-metadata><div><span class=author-highlighted>Wenda Chu 储闻达</span></div><span class=article-date>Mar 8, 2023</span>
-<span class=middot-divider></span><span class=article-categories><i class="fas fa-folder mr-1"></i><a href="../../category/notes/index.html">Notes</a></span></div><div class="btn-links mb-3"><a class="btn btn-outline-primary btn-page-header" href="topology.pdf" target=_blank rel=noopener>PDF</a></div></div><div class=article-container><div class=article-style></div><div class=article-tags><a class="badge badge-light" href="../../tag/typed/index.html">typed</a></div><div class=share-box aria-hidden=true><ul class=share><li><a href="https://twitter.com/intent/tweet?url=https://wenda-qianhw.netlify.app/archived_note/topology/&text=Topology" target=_blank rel=noopener class=share-btn-twitter><i class="fab fa-twitter"></i></a></li><li><a href="https://www.facebook.com/sharer.php?u=https://wenda-qianhw.netlify.app/archived_note/topology/&t=Topology" target=_blank rel=noopener class=share-btn-facebook><i class="fab fa-facebook"></i></a></li><li><a href="mailto:?subject=Topology&body=https://wenda-qianhw.netlify.app/archived_note/topology/" target=_blank rel=noopener class=share-btn-email><i class="fas fa-envelope"></i></a></li><li><a href="https://www.linkedin.com/shareArticle?url=https://wenda-qianhw.netlify.app/archived_note/topology/&title=Topology" target=_blank rel=noopener class=share-btn-linkedin><i class="fab fa-linkedin-in"></i></a></li><li><a href="whatsapp://send?text=Topology%20https://wenda-qianhw.netlify.app/archived_note/topology/" target=_blank rel=noopener class=share-btn-whatsapp><i class="fab fa-whatsapp"></i></a></li><li><a href="https://service.weibo.com/share/share.php?url=https://wenda-qianhw.netlify.app/archived_note/topology/&title=Topology" target=_blank rel=noopener class=share-btn-weibo><i class="fab fa-weibo"></i></a></li></ul></div><div class="media author-card content-widget-hr"><a href="../../index.html"><img class="avatar mr-3 avatar-circle" src="../../authors/admin/avatar_huec040978cd197f91fa586c800703b8ed_65970_270x270_fill_q75_lanczos_center.jpg" alt="Wenda Chu 储闻达"></a><div class=media-body><h5 class=card-title><a href="../../index.html">Wenda Chu 储闻达</a></h5><h6 class=card-subtitle>Undergraduate Student</h6><p class=card-text>I like chess, piano, animation and photography.</p><ul class=network-icon aria-hidden=true></ul></div></div></div></article></div><div class=page-footer><div class=container><footer class=site-footer><p class=powered-by>Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_blank rel=noopener>Wowchemy</a> — the free, <a href=https://github.com/wowchemy/wowchemy-hugo-modules target=_blank rel=noopener>open source</a> website builder that empowers creators.</p></footer></div></div><div id=modal class="modal fade" role=dialog><div class=modal-dialog><div class=modal-content><div class=modal-header><h5 class=modal-title>Cite</h5><button type=button class=close data-dismiss=modal aria-label=Close>
-<span aria-hidden=true>&#215;</span></button></div><div class=modal-body><pre><code class="tex hljs"></code></pre></div><div class=modal-footer><a class="btn btn-outline-primary my-1 js-copy-cite" href="index.html#" target=_blank><i class="fas fa-copy"></i> Copy</a>
-<a class="btn btn-outline-primary my-1 js-download-cite" href="index.html#" target=_blank><i class="fas fa-download"></i> Download</a><div id=modal-error></div></div></div></div></div><script src="../../js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js"></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.8.4/mermaid.min.js integrity="sha512-as1BF4+iHZ3BVO6LLDQ7zrbvTXM+c/1iZ1qII/c3c4L8Rn5tHLpFUtpaEtBNS92f+xGsCzsD7b62XP3XYap6oA==" crossorigin=anonymous title=mermaid></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js crossorigin=anonymous></script><script id=search-hit-fuse-template type=text/x-template>
-        <div class="search-hit" id="summary-{{key}}">
-          <div class="search-hit-content">
-            <div class="search-hit-name">
-              <a href="https://wenda-qianhw.netlify.app/archived_note/topology/{{relpermalink}}">{{title}}</a>
-              <div class="article-metadata search-hit-type">{{type}}</div>
-              <p class="search-hit-description">{{snippet}}</p>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta http-equiv=x-ua-compatible content="IE=edge">
+    <meta name=generator content="Wowchemy 5.3.0 for Hugo">
+    <meta name=google-site-verification content="bXFAeUgD4tD7w1w_skEMDJ8ve7HU4dy8O-uDH5i_gz8">
+    <meta name=baidu-site-verification content="code-7BynQM9TAs">
+    <meta name=author content="Wenda Chu 储闻达">
+    <meta name=description
+        content="This note includes very basic Topology, including point set topology and algebraic topology. Hopefully will add differential topology in the future.">
+    <link rel=alternate hreflang=en-us href="index.html">
+    <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+    <meta name=theme-color content="#1565c0">
+    <script src="../../js/mathjax-config.js"></script>
+    <link rel=stylesheet href="../../css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css" media=print
+        onload="this.media='all'">
+    <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css
+        integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg=="
+        crossorigin=anonymous media=print onload="this.media='all'">
+    <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css
+        crossorigin=anonymous title=hl-light media=print onload="this.media='all'">
+    <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css
+        crossorigin=anonymous title=hl-dark media=print onload="this.media='all'" disabled>
+    <script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js integrity crossorigin=anonymous async></script>
+    <link rel=preload as=style
+        href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Lora:wght@400;700&family=Roboto:wght@400;700&display=swap&display=swap">
+    <link rel=stylesheet
+        href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Lora:wght@400;700&family=Roboto:wght@400;700&display=swap&display=swap"
+        media=print onload="this.media='all'">
+    <link rel=stylesheet href="../../css/wowchemy.ed2da72110e60110d27da0704ff033d1.css">
+    <link rel=manifest href="../../manifest.webmanifest">
+    <link rel=icon type=image/png
+        href="../../media/icon_hud9f11bce4f3a2a4889ae0de212996427_55561_32x32_fill_lanczos_center_2.png">
+    <link rel=apple-touch-icon type=image/png
+        href="../../media/icon_hud9f11bce4f3a2a4889ae0de212996427_55561_180x180_fill_lanczos_center_2.png">
+    <link rel=canonical href="index.html">
+    <meta property="twitter:card" content="summary">
+    <meta property="og:site_name" content="Wenda Chu">
+    <meta property="og:url" content="https://wenda-qianhw.netlify.app/archived_note/topology/">
+    <meta property="og:title" content="Topology | Wenda Chu">
+    <meta property="og:description"
+        content="This note includes very basic Topology, including point set topology and algebraic topology. Hopefully will add differential topology in the future.">
+    <meta property="og:image"
+        content="https://wenda-qianhw.netlify.app/media/icon_hud9f11bce4f3a2a4889ae0de212996427_55561_512x512_fill_lanczos_center_2.png">
+    <meta property="twitter:image"
+        content="https://wenda-qianhw.netlify.app/media/icon_hud9f11bce4f3a2a4889ae0de212996427_55561_512x512_fill_lanczos_center_2.png">
+    <meta property="og:locale" content="en-us">
+    <meta property="article:published_time" content="2023-03-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-03-08T00:00:00+00:00">
+
+
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <meta name="author" content="Wenda" />
+    <link rel="stylesheet" href="mycss.css" />
+    <title>Topology | Wenda Chu</title>
+    <style>
+        code {
+            white-space: pre-wrap;
+        }
+
+        span.smallcaps {
+            font-variant: small-caps;
+        }
+
+        span.underline {
+            text-decoration: underline;
+        }
+
+        div.column {
+            display: inline-block;
+            vertical-align: top;
+            width: 50%;
+        }
+
+        div.hanging-indent {
+            margin-left: 1.5em;
+            text-indent: -1.5em;
+        }
+
+        ul.task-list {
+            list-style: none;
+        }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script"
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+
+
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=page-wrapper
+    data-wc-page-id=c036e07b482dc20f380016e934faca58>
+    <script src="../../js/wowchemy-init.min.8988fb2a4bba758785868cfcb5244555.js"></script>
+    <aside class=search-modal id=search>
+        <div class=container>
+            <section class=search-header>
+                <div class="row no-gutters justify-content-between mb-3">
+                    <div class=col-6>
+                        <h1>Search</h1>
+                    </div>
+                    <div class="col-6 col-search-close"><a class=js-search href="index.html#" aria-label=Close><i
+                                class="fas fa-times-circle text-muted" aria-hidden=true></i></a></div>
+                </div>
+                <div id=search-box><input name=q id=search-query placeholder=Search... autocapitalize=off
+                        autocomplete=off autocorrect=off spellcheck=false type=search class=form-control
+                        aria-label=Search...></div>
+            </section>
+            <section class=section-search-results>
+                <div id=search-hits></div>
+            </section>
+        </div>
+    </aside>
+    <div class=page-header>
+        <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+            <div class=container-xl>
+                <div class="d-none d-lg-inline-flex"><a class=navbar-brand href="../../index.html">Wenda Chu</a></div>
+                <button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content
+                    aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
+                    <span><i class="fas fa-bars"></i></span></button>
+                <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none"><a class=navbar-brand
+                        href="../../index.html">Wenda Chu</a></div>
+                <div class="navbar-collapse main-menu-item collapse justify-content-start" id=navbar-content>
+                    <ul class="navbar-nav d-md-inline-flex">
+                        <li class=nav-item><a class=nav-link href="../../index.html#about"><span>Home</span></a></li>
+                        <li class=nav-item><a class=nav-link
+                                href="../../index.html#featured"><span>Publications</span></a></li>
+                        <li class=nav-item><a class=nav-link href="../../index.html#projects"><span>Projects</span></a>
+                        </li>
+                        <li class=nav-item><a class=nav-link href="../../index.html#contact"><span>Contact</span></a>
+                        </li>
+                        <li class=nav-item><a class=nav-link href="../../note.html"><span>Notes</span></a></li>
+                        <li class=nav-item><a class=nav-link href="../../life.html"><span>Life</span></a></li>
+                        <li class=nav-item><a class=nav-link href="../../uploads/resume.pdf"><span>CV</span></a></li>
+                    </ul>
+                </div>
+                <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+                    <li class=nav-item><a class="nav-link js-search" href="index.html#" aria-label=Search><i
+                                class="fas fa-search" aria-hidden=true></i></a></li>
+                    <li class="nav-item dropdown theme-dropdown"><a href="index.html#" class=nav-link
+                            data-toggle=dropdown aria-haspopup=true aria-label="Display preferences"><i
+                                class="fas fa-moon" aria-hidden=true></i></a>
+                        <div class=dropdown-menu><a href="index.html#"
+                                class="dropdown-item js-set-theme-light"><span>Light</span></a>
+                            <a href="index.html#" class="dropdown-item js-set-theme-dark"><span>Dark</span></a>
+                            <a href="index.html#" class="dropdown-item js-set-theme-auto"><span>Automatic</span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+
+    <script src="../../js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js"></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js
+        integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js
+        integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.8.4/mermaid.min.js
+        integrity="sha512-as1BF4+iHZ3BVO6LLDQ7zrbvTXM+c/1iZ1qII/c3c4L8Rn5tHLpFUtpaEtBNS92f+xGsCzsD7b62XP3XYap6oA=="
+        crossorigin=anonymous title=mermaid></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js
+        integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw=="
+        crossorigin=anonymous></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js
+        crossorigin=anonymous></script>
+    <script id=search-hit-fuse-template type=text/x-template>
+          <div class="search-hit" id="summary-{{key}}">
+            <div class="search-hit-content">
+              <div class="search-hit-name">
+                <a href="https://wenda-qianhw.netlify.app/archived_note/topology/{{relpermalink}}">{{title}}</a>
+                <div class="article-metadata search-hit-type">{{type}}</div>
+                <p class="search-hit-description">{{snippet}}</p>
+              </div>
             </div>
           </div>
+        </script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js
+        integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js
+        integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
+    <script src="../../en/js/wowchemy.min.d68ecd57c0ec1f1f61d65fd568f1c3a0.js"></script>
+    <!-- </body> -->
+
+
+    <header id="title-block-header">
+        <h1 class="title">Topology</h1>
+        <p class="author">Wenda</p>
+    </header>
+
+    <div class=page-body>
+        <article class=article>
+            <div class="article-container pt-3">
+
+                <div class=article-metadata>
+                    <div><span class=author-highlighted>Wenda Chu 储闻达</span></div><span class=article-date>Mar 8,
+                        2023</span>
+                    <span class=middot-divider></span><span class=article-categories><i
+                            class="fas fa-folder mr-1"></i><a href="../../category/notes/index.html">Notes</a></span>
+                </div>
+                <div class="btn-links mb-3"><a class="btn btn-outline-primary btn-page-header" href="topology.pdf"
+                        target=_blank rel=noopener>PDF</a></div>
+            </div>
+        </article>
+    </div>
+
+    <div class="set_sec"></div>
+
+    <div class="tableofcontents">
+        <br>
+        <span class="sectionToc">1 <a href="#1" id="QQ2-1-2">Topological Space</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">1.1 <a href="#1.1" id="QQ2-1-3">Basic Definition</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">1.2 <a href="#1.2" id="QQ2-1-4">Continuous Mapping</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">1.3 <a href="#1.3" id="QQ2-1-5">Products of
+                Topology</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">1.4 <a href="#1.4" id="QQ2-1-6">Basis</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">1.5 <a href="#1.5" id="QQ2-1-7">Hausdorff Space</a></span>
+        <br />&#x00A0;<span class="sectionToc">2 <a href="#2" id="QQ2-1-8">Quotient Topology and Gluing</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">2.1 <a href="#2.1" id="QQ2-1-9">Basic Definition</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">2.2 <a href="#2.2" id="QQ2-1-10">Quotient Topology</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">2.3 <a href="#2.3" id="QQ2-1-11">Gluing Open
+                Subsets</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">2.4 <a href="#2.4" id="QQ2-1-12">Manifold</a></span>
+        <br />&#x00A0;<span class="sectionToc">3 <a href="#3" id="QQ2-1-13">Connectedness</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">3.1 <a href="#3.1" id="QQ2-1-14">Connected Spaces</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">3.2 <a href="#3.2" id="QQ2-1-18">Path Connectedness</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">3.3 <a href="#3.3" id="QQ2-1-19">Connected
+                Components</a></span>
+        <br />&#x00A0;<span class="sectionToc">4 <a href="#4" id="QQ2-1-20">Compactness</a></span>
+
+
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">4.1 <a href="#4.1" id="QQ2-1-21">Basic Property of Compact
+                Spaces</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">4.2 <a href="#4.2" id="QQ2-1-24">Compact open
+                topology</a></span>
+        <br />&#x00A0;<span class="sectionToc">5 <a href="#5" id="QQ2-1-25">Homotopy</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">5.1 <a href="#5.1" id="QQ2-1-26">Homotopy of maps</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">5.2 <a href="#5.2" id="QQ2-1-27">Homotopy
+                equivalence.</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">5.3 <a href="#5.3" id="QQ2-1-28">Fundamental Group</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">5.4 <a href="#5.4" id="QQ2-1-29">Covering Space</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">5.5 <a href="#5.5" id="QQ2-1-30">Higher Homotopic
+                Group</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">5.6 <a href="#5.6" id="QQ2-1-31">Application of Homotopy:
+                Taxonomy of Defects</a></span>
+        <br />&#x00A0;<span class="sectionToc">6 <a href="#6" id="QQ2-1-32">Homology</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">6.1 <a href="#6.1" id="QQ2-1-35">Chain Group</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">6.2 <a href="#6.2" id="QQ2-1-36">Simplicial
+                Homology</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">6.3 <a href="#6.3" id="QQ2-1-37">Structure of Homology
+                Group</a></span>
+        <br />&#x00A0;&#x00A0;<span class="subsectionToc">6.4 <a href="#6.4" id="QQ2-1-38">Smith Normal Form</a></span>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h1 id="topological-space"><a id="1"></a>Topological Space</h1>
+    <p> Continuous mappings <span class="math inline">\(f:\mathbb R^n \to \mathbb R^m\)</span> is usually defined using
+        metrics: <span class="math inline">\(\forall \epsilon &gt; 0, \exists \delta &gt; 0\)</span>, s.t. <span
+            class="math inline">\(d(x,x_0) &lt; \delta\)</span> gives <span class="math inline">\(d(f(x),f(x_0)) &lt;
+            \epsilon\)</span>. But can we define continuity without any notion of metric?</p>
+    <p>The answer is yes. We can define continuity using only topological structures on sets.</p>
+    <h2 id="basic-definition"> <a id="1.1"></a>Basic Definition</h2>
+    <p class="definition" id="topology" data-attribution="Topology">Suppose we have a set <span
+            class="math inline">\(X\)</span>. A topology <span class="math inline">\(\mathcal
+            T\)</span> is a set of the subsets of <span class="math inline">\(X\)</span> with the following properties:
+    </p>
+    <ol>
+        <li>
+            <p><span class="math inline">\(\varnothing, X\in \mathcal T\)</span>.</p>
+        </li>
+        <li>
+            <p>(Closed under arbitrary union) <span class="math inline">\(\forall i \in \mathcal I\)</span>, <span
+                    class="math inline">\(U_i \in \mathcal T\)</span>, then <span class="math inline">\(\cup_{i\in
+                    \mathcal I} U_i
+                    \in \mathcal T\)</span>.</p>
+        </li>
+        <li>
+            <p>(Closed under finite intersection) <span class="math inline">\(U_1,\dots, U_n\)</span>, then <span
+                    class="math inline">\(\cap_{i=1}^n U_i\in \mathcal T\)</span>.</p>
+        </li>
+    </ol>
+    <p><strong>Remark.</strong> A subset <span class="math inline">\(U \in \mathcal T\)</span> is also called an open
+        set.
+        A subset <span class="math inline">\(U\in X\)</span> is called a closed set if and only if <span
+            class="math inline">\(X - U\)</span> is open.</p>
+    <p><strong>Some examples.</strong></p>
+    <ul>
+        <li>
+            <p><span class="math inline">\(\mathcal T = \{\varnothing, X\}\)</span>, trivial topology.</p>
+        </li>
+        <li>
+            <p>Power set: <span class="math inline">\(\mathcal T = P(X) := \{\text{All subsets of } X\}\)</span>, dubbed
+                discrete topology.</p>
+        </li>
+    </ul>
+    <p class="definition" id="metric" data-attribution="Metric">Let <span class="math inline">\(X\)</span> be a set. A
+        metric on <span class="math inline">\(X\)</span> is a
+        mapping <span class="math inline">\(X \times X \to \mathbb R_{\geq 0}\)</span>, subject to the following.</p>
+    <ol>
+        <li>
+            <p><span class="math inline">\(d(x,y) = 0\ \Leftrightarrow\ x = y\)</span>.</p>
+        </li>
+        <li>
+            <p><span class="math inline">\(d(x,y) = d(y,x), \forall x,y \in X\)</span>.</p>
+        </li>
+        <li>
+            <p>(Triangular inequality) <span class="math inline">\(d(x,y) + d(y,z) \geq d(x,z), \forall x,y,z \in
+                    X\)</span>.
+            </p>
+        </li>
+    </ol>
+    <p class="definition" id="open_ball" data-attribution="Open Ball">Let <span class="math inline">\(X\)</span> be a
+        set
+        and <span class="math inline">\(d\)</span> is a metric on <span class="math inline">\(X\)</span>. We define an
+        open
+        ball at <span class="math inline">\(x_0\)</span> with radius
+        <span class="math inline">\(\epsilon\)</span> as <span class="math display">\[B(x_0,\epsilon) := \{x\in X \ |\
+            d(x,x_0) &lt; \epsilon\}.\]</span>
+    </p>
+    <p class="definition" id="metric_topology" data-attribution="Metric Topology">Let <span
+            class="math inline">\(X\)</span> be a set and <span class="math inline">\(d\)</span> is a metric on <span
+            class="math inline">\(X\)</span>. Then for any subset <span class="math inline">\(U \in X\)</span>, <span
+            class="math inline">\(U\)</span> is open if and only if <span class="math display">\[\forall x\in U, \exists
+            \epsilon &gt; 0, s.t. B(x,\epsilon) \subseteq U\]</span></p>
+    <p><strong>Remark.</strong> This definition satisfies all the requirements of topological space. The proof is
+        trivial
+        class="definition" id="topology" data-attribution="Topology".
+    </p>
+    <p>Moreover, all subset <span class="math inline">\(U\in \mathcal T\)</span> can be written as the union of open
+        balls. <span class="math display">\[U = \cup_{x\in U} B(x,\epsilon).\]</span></p>
+    <p class="definition" id="subspace_topology" data-attribution="Subspace Topology">Let <span
+            class="math inline">\((X,\mathcal T)\)</span> be a topological space. Suppose <span
+            class="math inline">\(S\subset
+            X\)</span> is a subset of <span class="math inline">\(X\)</span>, then a subspace
+        topology on <span class="math inline">\(S\)</span> induced by <span class="math inline">\(\mathcal T\)</span> is
+        <span class="math display">\[\mathcal T^\prime = \{U\in S\ |\ U = S\cap V, V \in \mathcal T\}.\]</span>
+    </p>
+    <p><strong>Remark.</strong> Note that an open set <span class="math inline">\(U \subset S, U \in \mathcal
+            T^\prime\)</span> is not necessarily open at <span class="math inline">\((X,\mathcal T)\)</span> (i.e.,
+        <span class="math inline">\(U\in \mathcal T\)</span>). A simple example is <span class="math inline">\(S =
+            [0,1]\subset
+            \mathbb R\)</span> and <span class="math inline">\(\mathcal T = \{(a,b)\ |\ a,b\in \mathbb R\}\)</span>,
+        where
+        <span class="math inline">\(U = [0,0.5)\in \mathcal T^\prime\)</span> but <span class="math inline">\(U \not\in
+            \mathcal T\)</span>.
+    </p>
+
+
+    <h2 id="continuous-mapping"> <a id="1.2"></a>Continuous Mapping</h2>
+    <p>Now we have defined topology on sets. It’s time to try defining continuity without using the notion of metric.
+        Remember that in metric topology, we can define continuity as <span class="math inline">\(\forall \epsilon &gt;
+            0,
+            \exists \delta &gt; 0\)</span>, <span class="math inline">\(|x - x_0|&lt;\delta\)</span> yields <span
+            class="math inline">\(|f(x) - f(x_0)| &lt;\epsilon\)</span>. This is in fact equivalent to <span
+            class="math inline">\(f^{-1}\big(f(x_0) - \epsilon, f(x_0 + \epsilon)\big)\)</span> is open in <span
+            class="math inline">\(\mathbb R\)</span>.</p>
+    <p class="definition" id="def:continuous" data-attribution="Continuous Mapping"></span>
+        <!-- <div class="mathjax">\begin{equation}1\label{def:continuous}\end{equation}</div> -->
+        Let <span class="math inline">\(X,Y\)</span> be two topological space. We call a mapping <span
+            class="math inline">\(f: X
+            \to Y\)</span> continuous, if <span class="math display">\[\forall U \subseteq Y\ \text{that is open},
+            f^{-1}(U)\subseteq X\ \text{is open.}\]</span>
+    </p>
+    <p><strong>Remark.</strong> The composition of continuous mappings is also continuous. Also observe that
+        definition <a href="#def:continuous" data-reference-type="ref" data-reference="def:continuous">1.6</a> reduces
+        to
+        the continuous mapping in Calculus when <span class="math inline">\(Y\)</span> is a metric topology, in which
+        case we can show <em><span class="math inline">\(\forall x\in X,\epsilon &gt; 0, \exists U\in \mathcal T_X\
+                \text{with}\
+                x\in \mathcal T_X, U \subseteq B(f(x),\epsilon)\)</span></em> is equivalent to definition <a
+            href="#def:continuous" data-reference-type="ref" data-reference="def:continuous">1.6</a>.</p>
+
+
+    <p> Definition <a href="#def:continuous" data-reference-type="ref" data-reference="def:continuous">1.6</a> also
+        provides us a useful trick for defining a topology in space <span class="math inline">\(X\)</span>. Let <span
+            class="math inline">\(\mathcal T_X^{f} := \{f^{-1}(U): U \in \mathcal T_Y\}\)</span>, then <span
+            class="math inline">\(\mathcal T_X^{(f)}\)</span> is a topology on <span
+            class="math inline">\(f^{-1}(Y)\subseteq
+            X\)</span>.</p>
+    <p>The definition of continuous mapping bridges across two topological space.</p>
+    <p class="definition" data-attribution="Homeomorphism">Let <span class="math inline">\(X\)</span>, <span
+            class="math inline">\(Y\)</span> be two topological space. A
+        mapping <span class="math inline">\(f:X \to Y\)</span> is a homeomorphism, denoted <span class="math inline">\(X
+            \cong Y\)</span>, if</p>
+    <ol>
+        <li>
+            <p><span class="math inline">\(f\)</span> is continuous</p>
+        </li>
+        <li>
+            <p><span class="math inline">\(f\)</span> is bijective.</p>
+        </li>
+        <li>
+            <p><span class="math inline">\(f^{-1}\)</span> is also continuous.</p>
+        </li>
+    </ol>
+    <p><strong>Remark.</strong> Homeomorphism is typically hard to disprove. It would take some effort to proof <span
+            class="math inline">\(\mathbb R\not\cong \mathbb R^2\)</span>, and even more effort to show <span
+            class="math inline">\(\mathbb R^2 \not\cong \mathbb R^3\)</span>.</p>
+    <p><strong>Some examples.</strong></p>
+    <ul>
+        <li>
+            <p>(Embedding) Let <span class="math inline">\(f:X\to Y\)</span> be continuous and injective. <span
+                    class="math inline">\(f\)</span> is called an embedding from <span class="math inline">\(X\)</span>
+                to <span class="math inline">\(Y\)</span>, if <span class="math inline">\(f: X \to f(X)\)</span> is
+                homeomorphism.</p>
+            <p><span class="math inline">\(f:\mathbb R \to \mathbb R^2\)</span>, <span class="math inline">\(f(x) =
+                    (ax,bx)\)</span> is an embedding.</p>
+        </li>
+        <li>
+            <p>(Stereographic projection) <span class="math inline">\(S^2 = \{(x,y,z)\in \mathbb R^3\ |\ x^2 + y^2 + z^2
+                    =
+                    1\}\)</span>. Then <span class="math inline">\(S^2 \backslash \{(0,0,1)\} \cong \mathbb
+                    R^2\)</span>.</p>
+            <p><span class="math inline">\(\varphi(x,y,z) = (\frac{2x}{1-z}, \frac{2y}{1-z} -1)\)</span> and <span
+                    class="math inline">\(\varphi^{-1}(x,y-1) = (\frac{4x}{4+x^2 + y^2}, \frac{4y}{4+x^2+y^2},
+                    \frac{-4+x^2 +
+                    y^2}{4+x^2 + y^2})\)</span></p>
+        </li>
+    </ul>
+
+    <p>Next, we build a useful tool for proving continuous mappings. The following lemma allows us to check the
+        continuity of a mapping by checking continuity in its segments.</p>
+
+    <p class="lemma" data-attribution="Pasting Lemma">Let <span class="math inline">\(X,Y\)</span> be two topological
+        spaces, <span class="math inline">\(\{X_i\ |\ i\in I\}\)</span> be a family of subspaces of <span
+            class="math inline">\(X\)</span>. Let <span class="math inline">\(\{f_i\ |\ i\in I\}\)</span> be a family of
+        continuous functions and <span class="math inline">\(f_i|_{X_i\cap X_j} = f_j|_{X_i\cap X_j}\)</span> for <span
+            class="math inline">\(\forall i,j\in I\)</span>. If</p>
+    <ul>
+        <li>
+            <p><span class="math inline">\(X_i\)</span> are open sets in <span class="math inline">\(X\)</span>.</p>
+        </li>
+        <li>
+            <p>Or, <span class="math inline">\(X_i\)</span> are closed and <span class="math inline">\(I\)</span> is
+                finite.
+            </p>
+        </li>
+    </ul>
+    <p>Then <span class="math inline">\(f:X\to Y\)</span> with <span class="math inline">\(f|_{X_i} = f_i\)</span> is
+        continuous.</p>
+    <h2 id="products-of-topology"> <a id="1.3"></a>Products of Topology</h2>
+    <p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two topological space.
+        We want to find topology on <span class="math inline">\(X\times Y\)</span>. However, <span
+            class="math inline">\(U\times V, U\in \mathcal T_X, V\in \mathcal T_Y\)</span> does not naturally form a
+        topology,
+        as it is not closed under union.</p>
+    <p class="definition" data-attribution="Product Topology">Let <span class="math inline">\((X,\mathcal T_X)\)</span>,
+        <span class="math inline">\((Y,\mathcal T_Y)\)</span> be
+        two topological space. We define <em>open boxes</em> in <span class="math inline">\(X\times Y\)</span> as <span
+            class="math inline">\(U\times V\)</span>, where <span class="math inline">\(U\in\mathcal T_X\)</span> and
+        <span class="math inline">\(V\in \mathcal T_Y\)</span>.
+    </p>
+    <p>Moreover, we call a subset <span class="math inline">\(W\subseteq X\times Y\)</span> open, if it is a union of
+        open boxes.</p>
+
+    <p><strong>Remark.</strong> To check this is indeed a topology is trivial. The most crucial property is that
+        intersecting two open boxes <span class="math inline">\((U_1\times V_1) \cap (U_2\times V_2) = (U_1\cap
+            U_2)\times
+            (V_1\cap V_2)\)</span> is still an open box.</p>
+
+
+    <h2 id="basis"> <a id="1.4"></a>Basis</h2>
+    <p>We have seen in previous examples that a topology space may be constructed from some basic ingredients, e.g.,
+        open balls or open boxes. In this section, we formalize this intuition by characterising open balls and open
+        boxed as <em>basis</em>. </p>
+
+    <p class="definition" data-attribution="Basis">Let <span class="math inline">\(X\)</span> be a set. <span
+            class="math inline">\(\mathcal B\)</span> be a family of
+        subsets of <span class="math inline">\(X\)</span>. We call <span class="math inline">\(\mathcal B\)</span> a
+        basis
+        for a topology if</p>
+    <ul>
+        <li>
+            <p>(Covers <span class="math inline">\(X\)</span>) <span class="math inline">\(\forall x\in \mathcal B,
+                    \exists
+                    U\in \mathcal B\)</span>, such that <span class="math inline">\(x\in U\)</span>.</p>
+        </li>
+        <li>
+            <p>(Intersection) If <span class="math inline">\(U,V\in \mathcal B\)</span>, there exists a collection of
+                subsets
+                <span class="math inline">\(\{W_i\in \mathcal B\ |\ i\in I\}\)</span> such that <span
+                    class="math inline">\(U\cap V = \cup_{i\in I}W_i\)</span>.
+            </p>
+        </li>
+    </ul>
+
+    <p class="definition" data-attribution="Subbasis">Let <span class="math inline">\(X\)</span> be a set. <span
+            class="math inline">\(S \subseteq 2^X\)</span> is a
+        subbasis if <span class="math display">\[\bigcup_{S_i\in S} S_i = X. \quad \text{(only need S cover X)}\]</span>
+    </p>
+    <p>Given a subbasis, how do we generate a basis? <span class="math display">\[\text{Subbasis}\ S \longrightarrow
+            \text{Basis}\ \mathcal B \longrightarrow \text{Topology}\ \mathcal T\]</span></p>
+    <p>Let <span class="math inline">\(\mathcal B_S = \{S_{i_1}\cap\dots \cap S_{i_m}\ |\ S_{i_1},\dots, S_{i_m} \in
+            S\}\)</span>. Then <span class="math inline">\(\mathcal B_S\)</span> is a basis.</p>
+    <p>Let <span class="math inline">\(\mathcal T_\mathcal B = \{\bigcup_{i\in \mathcal I} B_i\ |\ B_i \in \mathcal
+            B\}\)</span>. Then <span class="math inline">\(\mathcal T_\mathcal B\)</span> is a topology.</p>
+    <p><strong>Examples.</strong></p>
+    <ul>
+        <li>
+            <p>Metric topology <span class="math inline">\((X,d)\)</span>, corresponding to basis open balls <span
+                    class="math inline">\(\{B(x,\epsilon)\ |\ x\in X, \epsilon &gt; 0\}\)</span>.</p>
+        </li>
+        <li>
+            <p>Product topology <span class="math inline">\(X\times Y\)</span>, corresponding to basis open boxes <span
+                    class="math inline">\(\{U\times V\ |\ U\in X, V\in Y\}\)</span>.</p>
+        </li>
+        <li>
+            <p><span class="math inline">\(S = \{(-\infty, a)\ |\ a\in \mathbb R\} \cup \{(b,\infty)\ |\ b\in \mathbb
+                    R\}\)</span> is a subbasis in <span class="math inline">\(\mathbb R\)</span>. Its corresponding
+                basis is <span class="math inline">\(\mathcal B_S = \{(a,b)\ |\ \forall a,b\in \mathbb R\}\)</span>
+                which is already a
+                topology in <span class="math inline">\(\mathbb R\)</span>.</p>
+        </li>
+        <li>
+            <p>(<strong>Initial topology</strong>) Consider some continuous mappings <span class="math inline">\(f_i : X
+                    \to
+                    Y_i\)</span>. Let <span class="math inline">\(S = \{f_i^{-1}(U)\ |\ U\subset Y_i\
+                    \text{open}\}\)</span>. Then
+                <span class="math inline">\(\mathcal T_S\)</span> is called an initial topology.
+            </p>
+        </li>
+    </ul>
+    <p class="proposition"><span class="math inline">\(f: X \to Y\)</span>, <span class="math inline">\(S\)</span> is a
+        subbasis of the topology of <span class="math inline">\(Y\)</span>. Then <span class="math display">\[f\
+            \text{is continuous} \Leftrightarrow f^{-1}(S_i) \in \mathcal T_X, \forall S_i \in S\]</span></p>
+
+    <h2 id="hausdorff-space"> <a id="1.5"></a>Hausdorff Space</h2>
+    <p class="definition" data-attribution="Hausdorff Space"> A topological space <span class="math inline">\(X\)</span>
+        is called Hausdorff if for any pair of points <span class="math inline">\(x,y\in X\)</span>, there exists an
+        open neighborhood <span class="math inline">\(U\)</span>
+        of <span class="math inline">\(x\)</span> and an open neighborhood <span class="math inline">\(V\)</span> of
+        <span class="math inline">\(y\)</span> such that <span class="math inline">\(U\cap V = \varnothing\)</span>.
+    </p>
+
+    <h1 id="quotient-topology-and-gluing"><a id="2"></a>Quotient Topology and Gluing</h1>
+    <h2 id="basic-definition-1"> <a id="2.1"></a>Basic Definition</h2>
+    <p><strong>Relation.</strong> A relation in <span class="math inline">\(X\)</span> is a subset <span
+            class="math inline">\(R\subset X\times X\)</span>. <span class="math inline">\((x,y)\in R\)</span> is
+        denoted
+        <span class="math inline">\(x\sim y\)</span>.
+    </p>
+    <p>An <strong>equivalent relation</strong> satisfies the following properties:</p>
+    <ul>
+        <li>
+            <p>(reflexive) <span class="math inline">\(x \sim x\)</span></p>
+        </li>
+        <li>
+            <p>(symmetric) <span class="math inline">\(x\sim y \Rightarrow y\sim x\)</span></p>
+        </li>
+        <li>
+            <p>(transitive) <span class="math inline">\(x\sim y, y\sim z \Rightarrow x\sim z\)</span></p>
+        </li>
+    </ul>
+    <p>Consider two mappings <span class="math inline">\(p_1, p_2 :T \to X\)</span>. We can define <span
+            class="math inline">\(p: T \to X\times X\)</span>, such that <span class="math inline">\(p(t) =
+            (p_1(t),p_2(t))\)</span>. Then <span class="math inline">\(R_{p_1p_2} = p(T)\)</span> is a relation
+        generated by
+        <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span>.
+    </p>
+
+    <p class="definition" data-attribution="Equivalent class">Let <span class="math inline">\(\sim\)</span> be an
+        equivalent relation. An equivalent class containing <span class="math inline">\(x\)</span> is denoted by <span
+            class="math display">\[ [x]:= \{y\in X\ |\ x\sim
+            y\}.\]</span>
+    </p>
+    <p class="definition" data-attribution="Quotient sets">The quotient set in <span class="math inline">\(X\)</span> of
+        an equivalent relation <span class="math inline">\(\sim\)</span> is denoted by <span
+            class="math display">\[X/\sim\ := \{[x]\ |\ x\in
+            X\}.\]</span></p>
+    <h2 id="quotient-topology"><a id="2.2"></a> Quotient Topology</h2>
+    <p class="definition" data-attribution="Quotient topology"><span class="math inline">\((X,\mathcal T_X)\)</span> is
+        a topology space. Let <span class="math inline">\(f:X
+            \to
+            Y\)</span> be a surjective quotient. <span class="math inline">\(U\subset Y\)</span> is open if <span
+            class="math inline">\(f^{-1}(U)\)</span> is open. The <em>quotient topology</em> is defined as <span
+            class="math display">\[\mathcal T_Y = \{U\subset Y \ |\ f^{-1}(U) \in \mathcal T_X\}\]</span></p>
+    <p><strong>Remark.</strong></p>
+    <ul>
+        <li>
+            <p><span class="math inline">\(\mathcal T_Y\)</span> is the finest topology that makes <span
+                    class="math inline">\(f\)</span> continuous.</p>
+        </li>
+        <li>
+            <p>For an equivalent relation <span class="math inline">\(\sim\)</span>, consider its projection map <span
+                    class="math inline">\(\pi: X \to X/ \sim\)</span>. The quotient topology is <span
+                    class="math display">\[\mathcal T = \{U\subset X / \sim\ |\ \pi^{-1}(U)\in\mathcal T_X\}\]</span>
+            </p>
+        </li>
+    </ul>
+    <p class="definition" data-attribution="Quotient map">Let <span class="math inline">\(X\)</span> and <span
+            class="math inline">\(Y\)</span> be topological spaces.
+        Suppose <span class="math inline">\(f:X \to Y\)</span> is a continuous and surjective. If the quotient topology
+        is homeomorphic to the topology on <span class="math inline">\(Y\)</span>, i.e., <span
+            class="math inline">\((X/\sim_f, QT)\cong (Y,\mathcal T_Y)\)</span>, then <span
+            class="math inline">\(f\)</span> is called a <em>quotient
+            map</em>.
+    </p>
+    <p>The question is: <em>how do we decide a map is a quotient map or not?</em> The following propositions <a
+            href="#2.2.3" data-reference-type="ref" data-reference="2.2.3">2.5</a> and <a href="#2.2.4"
+            data-reference-type="ref" data-reference="2.2.4">2.6</a> are usually used jointly to prove a quotient
+        map.</p>
+    <p class="proposition"><span id="2.2.3" label="2.2.3"></span> Let <span class="math inline">\(f:X\to Y\)</span> be
+        continuous and surjective. Let <span class="math inline">\(\{U_i\}_{i\in \mathcal I}\)</span> be an open cover
+        of <span class="math inline">\(Y\)</span>. We denote the restriction of <span class="math inline">\(f\)</span>
+        on
+        <span class="math inline">\(U_i\)</span> by <span class="math inline">\(f_i: f^{-1}(U_i) \to U_i\)</span> with
+        <span class="math inline">\(f_i = f|_{f^{-1}(U_i)}\)</span>.
+    </p>
+
+    <p class="proposition"><span id="2.2.4" label="2.2.4"></span> Let <span class="math inline">\(f:X\to Y\)</span> be
+        continuous and
+        surjective. If <span class="math inline">\(f\)</span> has a section <span class="math inline">\(S:Y\to
+            X\)</span>,
+        i.e., <span class="math inline">\(S:Y\to X\)</span> continuous and <span class="math inline">\(f\circ S =
+            Id_Y\)</span>, then <span class="math inline">\(f\)</span> is a quotient map.</p>
+    <p><strong>Remark.</strong> The existence of a section <span class="math inline">\(S\)</span> implies <span
+            class="math inline">\(f\)</span> is surjective.</p>
+    <p class="proposition">Let <span clas="math inline">\(f: X\to Y\)</span> be a continuous, surjective map and <span
+            class="math inline">\(f\)</span> is open (or closed) map. Then <span class="math inline">\(f\)</span> is a
+        quotient map.</p>
+
+
+
+    <h2 id="gluing-open-subsets"> <a id="2.3"></a>Gluing Open Subsets</h2>
+
+    <p class="definition" data-attribution="Open gluing datum">
+    <p>An open gluing datum consists of the following:</p>
+    <ul>
+        <li>
+            <p>(What to glue) A family of topological spaces <span class="math inline">\(\{U_i\}_{i\in \mathcal
+                    I}\)</span>.
+            </p>
+        </li>
+        <li>
+            <p>(Where to glue) Open subspaces <span class="math inline">\(U_{ij}\subset U_i\)</span>, we also set <span
+                    class="math inline">\(U_{ii} =U_i\)</span>.</p>
+        </li>
+        <li>
+            <p>(How to glue) homeomorphism <span class="math inline">\(f_{ij} : U_{ij} \to U_{ji}\)</span></p>
+        </li>
+    </ul>
+    <p>satisfying the following</p>
+    <ul>
+        <li>
+            <p><span class="math inline">\(f_{ii} = Id_{U_i}\)</span></p>
+        </li>
+        <li>
+            <p><span class="math inline">\(f_{ij}(U_{ij}\cap U_{ik})\subset U_{ji}\cap U_{jk}\)</span></p>
+        </li>
+        <li>
+            <p>(Cocycle condition) The homeomorphisms agree on triple intersections <span
+                    class="math display">\[f_{ik}|_{U_{ij}\cap U_{ik}} = f_{jk}|_{U_{ji}\cap U_{jk}} \circ
+                    f_{ij}|_{U_{ij}\cap
+                    U_{ik}}\]</span></p>
+        </li>
+    </ul>
+    </p>
+    <p><strong>Remark.</strong> The cocycle condition guarantees the consistency when gluing <span
+            class="math inline">\(&gt; 2\)</span> subsets together.</p>
+    <p class="definition" data-attribution="Disjoint union">
+        The disjoint union of a collection of sets <span class="math inline">\(\{U_i\}_{i\in \mathcal I}\)</span>: <span
+            class="math display">\[\bigsqcup_{i\in \mathcal I}U_i = \{(x,i)\ |\ i\in\mathcal I, x\in U_i\}\]</span></p>
+
+    <p class="definition" data-attribution="Open gluing"> An open gluing <span class="math inline">\[ (U_i, U_{ij},
+            f_{ij}) \]</span> is defined as
+        <span class="math display">\[U = \bigsqcup_{i\in \mathcal I}U_i.\]</span> <span class="math display">\[\sim:
+            (x,i)\sim (y,i) \Leftrightarrow x\in U_{ij}, y\in U_{ji}, f_{ij}(x) = y.\]</span>
+    </p>
+
+    <p>
+        Check that this is indeed an equivalence relation by definition. We call <span class="math inline">\((U/\sim,
+            QT)\)</span> the topological
+        space glued from datum <span class="math inline">\((U_i,U_{ij}, f_{ij})\)</span>.</p>
+
+
+    <h2 id="manifold"> <a id="2.4"></a>Manifold</h2>
+    <p class="definition" data-attribution="Chart">Let <span class="math inline">\(X\)</span> be a topological space. An
+        <span class="math inline">\(n\)</span>-dimensional chart on <span class="math inline">\(X\)</span> consists of
+        an
+        open
+        subset <span class="math inline">\(U\subset X\)</span> equipped with the subspace topology and a homeomorphism
+        <span class="math inline">\(\phi: U \to V\)</span>, where <span class="math inline">\(V\)</span> is an open
+        subspace of
+        <span class="math inline">\(\mathbb R^n\)</span> with the standard topology.
+    </p>
+    <p class="definition" data-attribution="Manifold">Let <span class="math inline">\(M\)</span> be a Hausdorff space
+        with a countable topological basis (also called
+        second countable). <span class="math inline">\(M\)</span> is a topological manifold (of pure dimension <span
+            class="math inline">\(n\)</span>) if there exists a collection of (<span class="math inline">\(n\)</span>-
+        dimensional) charts <span class="math inline">\((U_i, \varphi_i)_{i\in I}\)</span> such that <span
+            class="math inline">\(M = \bigcup_{i\in I} U_i\)</span>.</p>
+
+
+
+    <h1 id="connectedness"><a id="3"></a>Connectedness</h1>
+    <h2 id="connected-spaces"><a id="3.1"></a>Connected Spaces</h2>
+    <p class="definition" data-attribution="Connected space">A topological space <span class="math inline">\(X\)</span>
+        is connected if it is not the union of two disjoint
+        non-empty open subsets.</p>
+    <p><strong>Remark.</strong></p>
+    <p><span class="math inline">\(X\)</span> is connected. <span class="math inline">\(\Leftrightarrow\)</span> The
+        subsets that are open and closed in <span class="math inline">\(X\)</span> must be <span
+            class="math inline">\(\varnothing\)</span> and <span class="math inline">\(X\)</span>.</p>
+    <h3 id="connectedness-and-continuous-maps">Connectedness and continuous maps</h3>
+    <p>Let <span class="math inline">\(f: X \to Y\)</span> be a continuous map of topological spaces. Assume <span
+            class="math inline">\(X\)</span> is connected, then <span class="math inline">\(f(X)\)</span> is connected.
+    </p>
+    <p>In order words, connectedness is a <em><em>topological invariant</em></em>.</p>
+    <p>Using this property, we can easily show <span class="math inline">\(\mathbb R \not\cong \mathbb R^2\)</span>.
+        Since
+        <span class="math inline">\(f(\mathbb R\backslash\{0\})\)</span> is a connected subspace of <span
+            class="math inline">\(\mathbb R^2\)</span>.
+    </p>
+
+    <h3 id="connectedness-and-subspaces">Connectedness and subspaces</h3>
+    <p class="proposition" data-attribution="proposition">Let <span class="math inline">\(X\)</span> be a topological
+        space and <span class="math inline">\(X^\prime\subseteq
+            X\)</span> is a connected dense subset, then <span class="math inline">\(X\)</span> is also connected.</p>
+    <p><strong>Remark.</strong> A subset <span class="math inline">\(A\subseteq X\)</span> is <strong>dense</strong>, if
+        its closed envelop <span class="math inline">\(\overline A = X\)</span>, where <span
+            class="math inline">\(\overline
+            A = \bigcap_{i\in I} V_i\)</span>, <span class="math inline">\(V_i\)</span> is closed and <span
+            class="math inline">\(A\subseteq V_i\)</span>. An example: <span class="math inline">\(\overline {\mathbb Q}
+            =
+            \mathbb R\)</span>.</p>
+    <p class="proof">Suppose <span class="math inline">\(X\)</span> is not connected, then there exists a nonempty
+        proper subset <span class="math inline">\(U\subset X\)</span> that is closed and open. Since <span
+            class="math inline">\(X^\prime\)</span> is dense, <span class="math inline">\(U\cap X^\prime \neq
+            \varnothing\)</span>. Then <span class="math inline">\(U\cap X^\prime \subseteq X^\prime\)</span> is closed
+        and
+        open in <span class="math inline">\(X^\prime\)</span>, which means <span class="math inline">\(U\cap X^\prime =
+            X^\prime\)</span>. Thus, <span class="math inline">\(U = X^\prime = \overline X^\prime = X\)</span>,
+        contradict.
+    </p>
+    <p class="corollary"> If <span class="math inline">\(A\subseteq X\)</span> and <span
+            class="math inline">\(A\)</span> is connected,
+        then its closed envelop <span class="math inline">\(\overline A\)</span> is also connected.</p>
+
+
+    <h3 id="locally-constant-function">Locally constant function</h3>
+    <p class="definition" data-attribution="Locally constant function">Let <span class="math inline">\(\Lambda\)</span>
+        be a topological space with discrete topology. A continuous map
+        <span class="math inline">\(f:X \to \Lambda\)</span> is locally constant if <span class="math display">\[\forall
+            x,
+            \exists U\in\mathcal T, x\in U, \ \text{such that}\ f|_{U} \ \text{is constant}.\]</span>
+    </p>
+
+    <p class="proposition"><span id="lcf" label="lcf"></span> Let <span class="math inline">\((\Lambda,
+            discrete)\)</span> be a
+        topological space with at least two elements. <span class="math inline">\(X\)</span> is a topological space.
+        Then
+        <span class="math inline">\(X\)</span> is connected if and only if any locally constant function <span
+            class="math inline">\(f:X\to \Lambda\)</span> is constant.
+    </p>
+
+    <p>Using proposition <a href="#lcf" data-reference-type="ref" data-reference="lcf">3.5</a>, we can prove the
+        following convenient proposition for connectedness.</p>
+
+    <p class="proposition">Let <span class="math inline">\(\{A_i\}_{i\in I}\)</span> be a collection of connected
+        subspaces of <span class="math inline">\(X\)</span>. Let <span class="math inline">\(B\)</span> be a connected
+        subspace such
+        that
+        <span class="math inline">\(B\cap A_i \neq \varnothing\)</span>, then <span class="math display">\[B\cup
+            \bigcup_{i\in I} A_i\ \text{is connected.}\]</span>
+    </p>
+    <p class="proof">Define <span class="math inline">\(A = B\cup \bigcup_{i\in I}A_i\)</span>. Let <span
+            class="math inline">\(f:A
+            \to
+            \Lambda\)</span> be a locally constant function. We know <span class="math inline">\(f|_{A_i}\)</span> and
+        <span class="math inline">\(f_{B}\)</span> are all constant function as <span class="math inline">\(A_i\)</span>
+        and
+        <span class="math inline">\(B\)</span> are connected. Thus, <span class="math inline">\(f|_A = f|_{U}\)</span>
+        is
+        constant.
+    </p>
+
+    <p class="corollary"><span class="math inline">\((X,\mathcal T)\)</span>, if <span class="math inline">\(\forall
+            x,y\in X\)</span>,
+        there exists a connected subspace <span class="math inline">\(U\)</span>, <span class="math inline">\(x,y\in
+            U\)</span>, then <span class="math inline">\(X\)</span> is connected.</p>
+    <p class="corollary"><span id="prod" label="prod"></span> <span class="math inline">\(X,Y\)</span> are connected
+        <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(X\times Y\)</span> is connected.
+    </p>
+    <p class="corollary"><span id="conq" label="conq"></span> <span class="math inline">\(f:X\to Y\)</span> is a
+        surjective
+        continuous
+        map. <span class="math inline">\(Y\)</span> has the quotient topology. Then <span
+            class="math inline">\(X\)</span>
+        is connected <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(Y\)</span> is
+        connected.
+    </p>
+
+    <p><strong>Remark.</strong> Based on these corollaries above, we can show some basic spaces are connected.</p>
+    <ul>
+        <li>
+            <p><span class="math inline">\(\mathbb R^n\)</span> is connected. (from corollary <a href="#prod"
+                    data-reference-type="ref" data-reference="prod">3.8</a>)</p>
+        </li>
+        <li>
+            <p><span class="math inline">\(S^n\)</span> is connected. <em>Proof:</em> for <span
+                    class="math inline">\(x,y\in
+                    S^n\)</span>, choose a <span class="math inline">\(z\in S^n\)</span> and <span
+                    class="math inline">\(z\neq
+                    x,z\neq y\)</span>. Then <span class="math inline">\(\mathbb R^n / \{z\}\cong \mathbb R^n\)</span>
+                is
+                connected.</p>
+        </li>
+        <li>
+            <p><span class="math inline">\(\mathbb RP^n\)</span> and <span class="math inline">\(\mathbb CP^n\)</span>
+                connected from corollary <a href="#conq" data-reference-type="ref" data-reference="conq">3.9</a>.</p>
+        </li>
+    </ul>
+
+    <h2 id="path-connectedness"> <a id="3.2"></a>Path Connectedness</h2>
+    <p class="definition" data-attribution="Path">Let <span class="math inline">\(X\)</span> be a topological space. A
+        path <span class="math inline">\(\gamma\)</span> is a continuous map <span class="math inline">\(\gamma: I \to
+            X\)</span>.
+        <span class="math inline">\(\gamma(0)\)</span> and <span class="math inline">\(\gamma(1)\)</span> are the start
+        and
+        the end of the path.
+    </p>
+    <p class="definition" data-attribution="Path connected">A topological space <span class="math inline">\(X\)</span>
+        is path connected if for any <span class="math inline">\(x,y\in X\)</span>, <span
+            class="math inline">\(\exists\)</span> a path <span class="math inline">\(\gamma\)</span> with <span
+            class="math inline">\(\gamma(0) = x\)</span>, <span class="math inline">\(\gamma(1) = y\)</span>.</p>
+
+    <h2 id="connected-components"> <a id="3.3"></a>Connected Components</h2>
+
+    <p class="definition" data-attribution="Connected component">
+    <p><span class="math inline">\((X,\mathcal T)\)</span>. <span class="math inline">\(x,y\)</span> are mutually
+        connected if there is a connected subspace <span class="math inline">\(U\subset X\)</span> and <span
+            class="math inline">\(x,y\in U\)</span>.</p>
+    <p>Mutual connectedness is an equivalence relation. Its equivalence class are the connected components of <span
+            class="math inline">\(X\)</span>.</p>
+    <p>Total number of connected components is a topological invariant: <span class="math inline">\(\pi_0(X)\)</span>.
+    </p>
+    </p>
+
+    <p>Without any difficulty we can extend the mutual connectedness to mutual path connectedness. Note that mutual path
+        connectedness is also an equivalence relation. Similarly we define path connected components.</p>
+
+
+    <h1 id="compactness"> <a id="4"></a>Compactness</h1>
+    <p>Compactness seeks to generalize the property of a bounded and closed subset of Euclidean space.</p>
+    <p class="definition" data-attribution="Compactness">Let <span class="math inline">\(X,\mathcal T\)</span> be a
+        topological space. <span class="math inline">\(C\)</span> is compact if <span
+            class="math inline">\(\forall\)</span> open cover <span class="math inline">\(\{u_i\}_{i\in\mathcal
+            I}\)</span> of <span class="math inline">\(X\)</span>, there
+        exists
+        <span class="math inline">\(U_{i_1},\dots, U_{i_n}\in \{U_i\}_{i\in \mathcal I}\)</span>, such that <span
+            class="math inline">\(X\subset \bigcup_{i=1}^n U_{i_j}\)</span>.
+    </p>
+    <p><strong>Remark.</strong> In other words, any open cover of <span class="math inline">\(X\)</span> contains a
+        finite
+        open cover of <span class="math inline">\(X\)</span>.</p>
+    <p><strong>Examples.</strong></p>
+    <ul>
+        <li>
+            <p><span class="math inline">\((X,trivial)\)</span> is compact. If <span class="math inline">\(|X|
+                    &lt;\infty\)</span>, <span class="math inline">\((X,discrete)\)</span> is compact.</p>
+        </li>
+        <li>
+            <p><span class="math inline">\([0,1]\)</span> is compact.</p>
+        </li>
+        <li>
+            <p><span class="math inline">\((0,1)\)</span> is not compact, because <span
+                    class="math inline">\(\{(\frac{1}{n},1)\}_{n=1}^\infty\)</span> is an open cover, but no finite
+                subset of it
+                is a cover.</p>
+        </li>
+    </ul>
+
+    <h2 id="basic-property-of-compact-spaces"> <a id="4.1"></a>Basic Property of Compact Spaces</h2>
+
+    <p class="proposition">If <span class="math inline">\(f\)</span> is continuous, <span
+            class="math inline">\(X\)</span> is compact, then
+        <span class="math inline">\(f(X)\)</span> is also compact.
+    </p>
+    <h3 id="with-subspace">With subspace</h3>
+    <p class="proposition"><span id="prop:4.2" label="prop:4.2"></span> <span class="math inline">\(X\)</span> is a compact, closed space. <span class="math inline">\(Z\)</span> is a closed subspace of <span class="math inline">\(X\)</span>.
+    Then
+    <span class="math inline">\(Z\)</span> is also compact.
+    </p>
+    <p><strong>Remark.</strong> This proposition <a href="#prop:4.2" data-reference-type="ref"
+            data-reference="prop:4.2">4.3</a> guarantees that every bounded closed subset of <span
+            class="math inline">\(\mathbb R\)</span> is compact.</p>
+    <p class="proposition"><span id="prop:4.3" label="prop:4.3"></span> <span class="math inline">\(X\)</span> is
+        Hausdorff. <span class="math inline">\(Z\subset X\)</span> is compact <span
+            class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(Z\)</span> is closed.</p>
+
+    <h3 id="with-product-space">With product space</h3>
+    <p class="definition" data-attribution="Refinement of an open cover"><span class="math inline">\(\mathcal U =
+            \{U_i\}_{i\in I},\mathcal V = \{V_i\}_{i\in I}\)</span> are open covers
+        of
+        <span class="math inline">\(X\)</span>. If <span class="math inline">\(\forall V_i,\exists U_k\)</span>, such
+        that
+        <span class="math inline">\(V_i \subset U_k\)</span>, then <span class="math inline">\(\mathcal V\)</span> is
+        called
+        a refinement of <span class="math inline">\(\mathcal U\)</span>.
+    </p>
+    <p class="proposition">If <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span> are compact
+        topological spaces,
+        then <span class="math inline">\(X\times Y\)</span> is also compact.</p>
+    <p class="proof" data-attribution="Proof Sketch">Let <span class="math inline">\(\mathcal U\)</span> be an open
+        cover of <span class="math inline">\(X\times
+            Y\)</span>, we can find a refinement of <span class="math inline">\(\mathcal V\)</span> of <span
+            class="math inline">\(\mathcal U\)</span>, where <span class="math inline">\(\mathcal V\)</span> only
+        contains the
+        open boxes in <span class="math inline">\(X\times Y\)</span>. We can easily find a finite open cover in <span
+            class="math inline">\(\mathcal V\)</span> using compactness of <span class="math inline">\(X\)</span> and
+        <span class="math inline">\(Y\)</span>.
+    </p>
+    <p class="theorem" data-attribution="Heine-Borel">Let <span class="math inline">\(Z\)</span> be a subspace of <span
+            class="math inline">\(\mathbb R^n\)</span>.
+        <span class="math inline">\(Z\)</span> is compact if and only if <span class="math inline">\(Z\)</span> is a
+        bounded and
+        closed subset.
+    </p>
+    <p class="proof">
+    <p>If <span class="math inline">\(Z\)</span> is compact, then since <span class="math inline">\(\mathbb R^n\)</span>
+        is Hausdorff, we know <span class="math inline">\(Z\)</span> is closed according to proposition <a
+            href="#prop:4.3" data-reference-type="ref" data-reference="prop:4.3">4.4</a>. Note that <span
+            class="math inline">\(Z\subset
+            \bigcup_{r&gt;0}B(0,r)\)</span>, so <span class="math inline">\(Z \subset \bigcup_{r=r_1,\dots,
+            r_n}B(0,r)\)</span>, which means <span class="math inline">\(Z\)</span> is bounded.</p>
+    <p>The reverse direction is direct since <span class="math inline">\(Z\)</span> is a closed subspace of <span
+            class="math inline">\([-N,N]^n\)</span> for sufficiently large <span class="math inline">\(N\)</span>.</p>
+    </p>
+
+    <h2 id="compact-open-topology"> <a id="4.2"></a>Compact open topology</h2>
+
+    <p>In this section, we consider the set of all continuous map from <span class="math inline">\(X\)</span> to <span
+            class="math inline">\(Y\)</span>, dubbed <span class="math inline">\(\mathcal C[X;Y]\)</span>, and assign a
+        topology on it using compactness.</p>
+    <p class="definition" data-attribution="Compact open topology">Consider the set of all continuous map from <span
+            class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span>: <span
+            class="math inline">\(\mathcal C[X;Y]\)</span>. Define a subbasis =
+        <span class="math inline">\(\{\mathcal M_{K,U}\ |\ K\subset X\ \text{compact}, U\subset Y\
+            \text{open}\}\)</span>, where
+        <span class="math display">\[\mathcal M_{K,U} = \{f\in \mathcal C[X;Y]\ |\ f(K)\subset U\}.\]</span> The
+        topology
+        generated by this subbasis is called a compact open topology.
+    </p>
+
+    <p>Moreover, if <span class="math inline">\((Y,d)\)</span> is a metric topological space, then we have</p>
+
+    <p class="proposition"><span class="math inline">\((Y,d)\)</span> metric space. A collection of sets <span
+            class="math display">\[B_K(f,\epsilon) = \{g\in \mathcal C[X;Y]\ |\ \sup_{x\in K} d(f(x),g(x)) &lt;
+            \epsilon\}.\]</span> with <span class="math inline">\(K\subset X\)</span> compact. Then <span
+            class="math inline">\(\{B_K(f,\epsilon)\}\)</span> is a basis of compact open topology.</p>
+
+    <p><strong>Example.</strong></p>
+    <ul>
+        <li>
+            <p>The solution space for <span class="math inline">\(\ddot x + x = 0\)</span>: <span
+                    class="math inline">\(\mathcal M = \{x = a\cos t + b\sin t\ |\ (a,b)\in \mathbb R^2\}\)</span> is
+                homeomorphic
+                to <span class="math inline">\(\mathbb R^2\)</span>.</p>
+        </li>
+    </ul>
+    <p class="proposition"><span class="math inline">\(Y\)</span> can be embedded into <span
+            class="math inline">\(\mathcal C[X;Y]\)</span>.
+        Consider a bijective map <span class="math inline">\(c: Y \to \mathcal C[X;Y]\)</span> such that <span
+            class="math inline">\(y \mapsto f(X) = y\)</span>.</p>
+    <p class="proposition"><span class="math inline">\(\mathcal C[X;Y]\)</span> is Hausdorff if and only if <span
+            class="math inline">\(Y\)</span> is Hausdorff.</p>
+    <p class="proposition"><span class="math inline">\(\mathcal C[X;\mathbb R]\)</span> is path connected.</p>
+    <p class="proof"><span class="math inline">\(f: X \to \mathbb R\)</span>. Let <span
+            class="math inline">\(c_f:[0,1]\to \mathcal
+            C[X;\mathbb R]: c_f(t) = t\cdot f\)</span>.</p>
+
+    <h1 id="homotopy"><a id="5"></a>Homotopy</h1>
+    <p>Homeomorphism is good for sure, but usually too restricted to be held. Here we discuss a weaker condition, i.e.,
+        Homotopy.</p>
+    <h2 id="homotopy-of-maps"> <a id="5.1"></a>Homotopy of maps</h2>
+
+    <p class="definition">Let <span class="math inline">\(f,g: X \to Y\)</span> be two continuous maps. A homotopy
+        between <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> is a continuous map
+        <span class="math inline">\(\sigma: X\times [0,1]\to Y\)</span> such that <span class="math inline">\(\forall
+            x\in
+            X\)</span>, <span class="math display">\[\sigma(x,0) = f(x),\ \sigma(x,1) = g(x).\]</span> <span
+            class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> is then homotopic, denoted <span
+            class="math inline">\(f\simeq g\)</span>.
+    </p>
+    <p><strong>Remark.</strong></p>
+    <ul>
+        <li>
+            <p><span class="math inline">\(\sigma\)</span> defines a path in <span class="math inline">\(\mathcal
+                    C[X;Y]\)</span>.</p>
+        </li>
+        <li>
+            <p>Be cautious that <span class="math inline">\(\sigma\)</span> must be continuous on <span
+                    class="math inline">\(X \times [0,1]\)</span>. Only continuous for <span
+                    class="math inline">\(\sigma(\cdot,
+                    t)\)</span> is not enough.</p>
+        </li>
+        <li>
+            <p>If <span class="math inline">\(f\)</span> is homotopic to a constant function, it is called
+                null-homotopic.</p>
+        </li>
+    </ul>
+    <p class="proposition">Homotopy <span class="math inline">\(f\simeq g\)</span> is an equivalence relation.</p>
+    <p><strong>Remark.</strong> We denote the quotient set <span class="math inline">\(\mathcal C[X;Y]/\simeq\)</span>
+        as
+        <span class="math inline">\([X;Y]\)</span>.
+    </p>
+    <p class="proposition">Let <span class="math inline">\(f_1,f_2: X\to Y\)</span> and <span
+            class="math inline">\(g_1,g_2: Y\to
+            Z\)</span>.
+        If <span class="math inline">\(f_1\simeq f_2\)</span> and <span class="math inline">\(g_1\simeq g_2\)</span>,
+        then
+        <span class="math display">\[g_1\circ f_1 \simeq g_2\circ f_2.\]</span>
+    </p>
+    <p class="proof" data-attribution="Proof Sketch">
+    <p>We prove by <span class="math inline">\(g_1\circ f_2 \simeq g_1 \circ f_1 \simeq g_2 \circ f_2\)</span>.</p>
+    <p>The first relation can be proved by <span class="math inline">\(g_1 \circ \sigma_1\)</span>. The second can be
+        shown by <span class="math inline">\(\sigma_2^\prime(x,t) = \sigma_2(f_2(x),t)\)</span>.</p>
+    </p>
+
+    <h2 id="homotopy-equivalence."> <a id="5.2"></a>Homotopy equivalence.</h2>
+    <p>We consider the homotopic inverse. For <span class="math inline">\(f: X\to Y\)</span> we require its homotopic
+        inverse to satisfy: <span class="math inline">\(f\circ g \simeq Id_Y\)</span> and <span
+            class="math inline">\(g\circ
+            f \simeq Id_X\)</span>.</p>
+    <p class="definition" data-attribution="Homotopy equivalence">Topological spaces <span
+            class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are called
+        homotopy equivalent if there exist continuous maps <span class="math inline">\(f:X\to Y\)</span> and <span
+            class="math inline">\(g:Y\to X\)</span> such that <span class="math display">\[f\circ g \simeq Id_Y,\ g\circ
+            f
+            \simeq Id_X.\]</span></p>
+    <p><strong>Examples.</strong></p>
+    <ul>
+        <li>
+            <p><span class="math inline">\(\mathbb R^n\simeq \{x\}\)</span>.</p>
+        </li>
+    </ul>
+    <p class="definition" data-attribution="Contractible space">X is a contractible space if <span
+            class="math inline">\(X\simeq \{x\}\)</span>. This is equivalent to the
+        condition that <span class="math inline">\(Id_X\)</span> is null-homotopic.</p>
+    <p><strong>Example.</strong></p>
+    <ul>
+        <li>
+            <p><span class="math inline">\(\mathbb R\backslash\{0\} \simeq \{p_1\}\cup \{p_2\}\)</span>.</p>
+        </li>
+        <li>
+            <p><span class="math inline">\(\mathbb R^2 \backslash \{0\} \simeq S^1\)</span>.</p>
+        </li>
+    </ul>
+    <p>To better describe the above observation, we define <strong>defomation retraction</strong>.</p>
+    <p class="definition" data-attribution="deformation retraction">Let <span class="math inline">\(X\)</span> be a
+        topological space and <span class="math inline">\(A\)</span> be a
+        subspace of <span class="math inline">\(X\)</span>. A deformation retraction is a homotopy <span
+            class="math display">\[r: X\times [0,1] \to X\]</span> such that <span class="math inline">\(r(x,0) =
+            x\)</span>
+        and <span class="math inline">\(r(x,1) \in A\)</span>. Moreover, for any <span class="math inline">\(a\in
+            A\)</span>
+        and <span class="math inline">\(t\in [0,1]\)</span> we have <span class="math inline">\(r(a,t) = a\)</span>.</p>
+
+    <h2 id="fundamental-group"> <a id="5.3"></a>Fundamental Group</h2>
+
+    <p class="definition" data-attribution="Loops">Let <span class="math inline">\(X\)</span> be a topological space and
+        <span class="math inline">\(\gamma:[0,1]\to
+            X\)</span> is a path on X. If <span class="math inline">\(\gamma(0) = \gamma(1)\)</span> we call it a loop.
+    </p>
+    <p class="definition" data-attribution="Paths">The inverse of a path <span class="math inline">\(\gamma\)</span> is
+        <span class="math inline">\(\gamma^- (t) =
+            \gamma(1-t)\)</span>. The constant path <span class="math inline">\(I[x]\)</span> is defined as <span
+            class="math inline">\(\gamma(t) = x\)</span> for some <span class="math inline">\(x\in X\)</span>.
+    </p>
+    <p class="definition" data-attribution="Path homotopy">Two paths with same initial and end points: <span
+            class="math inline">\(\gamma_1,\gamma_2: [0,1]\to X\)</span>.
+        <span class="math inline">\(\gamma_1\simeq_p \gamma_2\)</span> if there exists a continuous map <span
+            class="math inline">\(\sigma:[0,1]\times [0,1]\to X\)</span> with <span class="math inline">\(\sigma(t,0) =
+            \gamma_1(t)\)</span> and <span class="math inline">\(\sigma(t,1) = \gamma_2(t)\)</span>. Moreover, we need
+        <span class="math inline">\(\sigma(0,s) = \gamma_1(0) = \gamma_2(0)\)</span> and <span
+            class="math inline">\(\sigma(1,s)
+            = \gamma_1(1) = \gamma_2(1)\)</span>.
+    </p>
+    <p><strong>Remark.</strong> Path homotopy is stricter than map homotopy as it fixes the initial and end points
+        during
+        deformation. To see their difference, consider <span class="math inline">\(\mathbb R\backslash \{0\}\)</span>.
+    </p>
+    <p class="definition" data-attribution="Path multiplication">Let <span class="math inline">\(\alpha, \beta\)</span>
+        be paths on a topological space <span class="math inline">\(X\)</span>. Suppose <span
+            class="math inline">\(\alpha(1) = \beta(0)\)</span>. We
+        define
+        <span class="math display">\[(\alpha *\beta)(s) = \begin{cases}
+            \alpha(2s),\ s\in [0,\frac{1}{2}],\\
+            \beta(2s-1),\ s\in [\frac{1}{2},1].
+            \end{cases}\]</span>
+    </p>
+    <p class="proposition">
+    <p>For a path <span class="math inline">\(\gamma\)</span> on <span class="math inline">\(X\)</span> we have <span
+            class="math display">\[\gamma * \gamma^- \simeq_p I[\gamma(0)]\]</span></p>
+    <p>Note that <span class="math inline">\(\alpha\simeq_p \alpha^\prime\)</span> and <span class="math inline">\(\beta
+            \simeq_p \beta^\prime\)</span> yields <span class="math inline">\(\alpha*\beta \simeq_p \alpha^\prime *
+            \beta^\prime\)</span>. We can define <span class="math display">\[_p*[\beta]_p = [\alpha*\beta]_p\]</span>
+    </p>
+    </p>
+    <p class="proposition">Suppose <span class="math inline">\(\alpha,\beta,\gamma\)</span> are paths on <span
+            class="math inline">\(X\)</span>. Then <span class="math display">\[_p*([\beta]_p *[\gamma]_p) =
+            ([\alpha]_p*[\beta]_p) * [\gamma]_p.\]</span></p>
+    <p>We now want to use define a group structure on this operation. However, not all paths on <span
+            class="math inline">\(X\)</span> can be multiplied as they might not have overlapped end points. To fix this
+        issue, we consider loops with a fixed end points.</p>
+    <p class="definition" data-attribution="Fundamental group">Let <span class="math inline">\(X\)</span> be a
+        topological space. Let <span class="math inline">\(x\in
+            X\)</span>.
+        We define <span class="math display">\[\pi_1(X,x) = \{[\gamma]_p\ |\ \gamma\ \text{loops in}\ X,\ i.e.,
+            \gamma(0) =
+            \gamma(1) = x\}.\]</span> Then <span class="math inline">\((\pi_1(X,x), *)\)</span> is a group.</p>
+
+    <p><strong>Remark.</strong></p>
+    <ul>
+        <li>
+            <p>On <span class="math inline">\(\mathbb R^2\)</span> all loops are path homotopic to the constant path. On
+                <span class="math inline">\(\mathbb R^2\backslash\{0\}\)</span>, however, loops that wrap around <span
+                    class="math inline">\(0\)</span> are not path homotopic to the constant path.
+            </p>
+        </li>
+        <li>
+            <p>A fundamental group is not necessarily Abelian.</p>
+        </li>
+    </ul>
+    <p class="proposition"><span class="math inline">\(\pi_1((X,x),*)\)</span> is a homotopic invariant.</p>
+    <p><strong>Examples</strong>.</p>
+    <ul>
+        <li>
+            <p>Let <span class="math inline">\(A\)</span> be a band and <span class="math inline">\(B\)</span> be a
+                Mobius
+                band. Then <span class="math inline">\(\pi_1(A,*) \cong \pi_1(B,*)\cong \pi_1(S^1,*)\cong (\mathbb
+                    Z,+)\)</span>.</p>
+        </li>
+    </ul>
+    <p class="proposition">If <span class="math inline">\(X\)</span> is path connected, then <span
+            class="math inline">\(\pi_1((X,x),*)\cong
+            \pi_1((X,y),*)\)</span> for any <span class="math inline">\(x,y\in X\)</span>.</p>
+    <p><strong>Remark.</strong> Let <span class="math inline">\(X\)</span> be a topological space, then the followings
+        are
+        equivalent</p>
+    <ul>
+        <li>
+            <p><span class="math inline">\(\pi_1(X,x)\)</span> is trivial</p>
+        </li>
+        <li>
+            <p><span class="math inline">\(\forall \gamma_1,\gamma_2\)</span> paths with <span
+                    class="math inline">\(\gamma_1(0) = \gamma_2(0)=x\)</span> and <span
+                    class="math inline">\(\gamma_1(1) =
+                    \gamma_2(1)\)</span>, we have <span class="math inline">\(\gamma_1\simeq_p\gamma_2\)</span>.</p>
+        </li>
+        <li>
+            <p>All loops at <span class="math inline">\(x\)</span> <span class="math inline">\(\simeq_p\)</span>
+                constant loop
+                at <span class="math inline">\(x\)</span>.</p>
+        </li>
+    </ul>
+
+    <h2 id="covering-space"> <a id="5.4"></a>Covering Space</h2>
+
+    <p class="definition" data-attribution="Covering space">Let <span class="math inline">\((E,p)\)</span> be a space
+        over <span class="math inline">\(p\)</span> with <span class="math inline">\(p:E \to B\)</span> continuous
+        surjective. <span class="math inline">\(p\)</span> is a
+        covering map and <span class="math inline">\((E,p)\)</span> is a covering space over <span
+            class="math inline">\(B\)</span>, if <span class="math inline">\(\forall b\in B\)</span> there exists an
+        open
+        neighbor <span class="math inline">\(U\)</span> of <span class="math inline">\(b\)</span> such that <span
+            class="math display">\[p^{-1}(U) = \bigcup_{i\in I} U_i\]</span> where <span
+            class="math inline">\(U_i\)</span>
+        are disjoint open subsets of <span class="math inline">\(E\)</span> and <span class="math inline">\(p|_{U_i}
+            :U_i
+            \to U\)</span> is a homeomorphism.</p>
+    <p class="lemma" data-attribution="Lifting lemma">Let <span class="math inline">\(p: E \to B\)</span> be a covering
+        map. Let <span class="math inline">\(c:
+            [0,1]\to
+            B\)</span> be a path on <span class="math inline">\(B\)</span>. If <span class="math inline">\(\tilde b \in
+            E,
+            p(\tilde b) = c(0) = b\)</span>, then there exists a <em>unique</em> path in <span
+            class="math inline">\(E\)</span>: <span class="math inline">\(\tilde c: [0,1]\to E\)</span>, such that <span
+            class="math inline">\(\tilde c(0) = \tilde b\)</span> and <span class="math inline">\(p\circ \tilde c =
+            c\)</span>.</p>
+    <p class="proposition">Let <span class="math inline">\(p: E \to B\)</span> be a covering map. Let <span
+            class="math inline">\(c_1,c_2:[0,1]\to B\)</span> be two homotopic paths on <span
+            class="math inline">\(B\)</span>. Suppose <span class="math inline">\(c_1(0) = c_2(0) = b\)</span>. Then
+        <span class="math inline">\(\tilde c_1, \tilde c_2\)</span> with <span class="math inline">\(\tilde c_1(0) =
+            \tilde
+            c_2(0) = \tilde b \in p^{-1}(b)\)</span> are also homotopic.
+    </p>
+
+    <h2 id="higher-homotopic-group"><a id="5.5"></a>Higher Homotopic Group</h2>
+
+    <p>In discussion of path-connected components, we note that <span class="math display">\[\pi_0(X) = \{[x\to X]\ |\
+            x\in X\}\]</span> can be viewed as the set of all homotopic equivalent classes from a single point to <span
+            class="math inline">\(X\)</span>. Similarly, <span class="math display">\[\pi_1(X) = \{[[0,1]\to X]\ |\ x\in
+            X\}\]</span> can be viewed as the set of all homotopic equivalent classes of loops in <span
+            class="math inline">\(X\)</span>. We want to generalize 0-dim point and 1-dim loops to <span
+            class="math inline">\(n\)</span> dimension in this section.</p>
+    <p class="definition" data-attribution="n-cube"><span class="math inline">\(I_n = [0,1]^{\otimes n} = \{(t_1,\dots,
+            t_n)\in \mathbb R^n\ |\ t_i \in
+            [0,1]\}\)</span>. Then <span class="math inline">\(\partial I_n = \{(t_1,\dots, t_n)\in I_n\ |\ \exists t_i
+            =0,1\}\)</span>.</p>
+    <p>Moreover, we define a <span class="math inline">\(n\)</span>-loop based at <span class="math inline">\(x\in
+            X\)</span> be a continuous map <span class="math display">\[\gamma:I_n \to X, \mathrm{s.t.},\
+            \gamma|_{\partial
+            I_n} = x.\]</span></p>
+    <p><strong>Remark.</strong> This requirement is a generalization of the requirement <span
+            class="math inline">\(\gamma(0) = \gamma(1)\)</span> in the 1-dimensional case, i.e., loops.</p>
+    <p class="definition" data-attribution="Homotopy of n-loops">Let <span class="math inline">\(\gamma, \sigma\)</span>
+        be two <span class="math inline">\(n\)</span>-loops based
+        at <span class="math inline">\(x\)</span>. Let <span class="math inline">\(\gamma(x) = \sigma(x)\)</span> for
+        any
+        <span class="math inline">\(x\in \partial I_n\)</span>. Then <span class="math inline">\(\gamma\simeq
+            \sigma\)</span> homotopic as <span class="math inline">\(n\)</span>-loops if there exists <span
+            class="math inline">\(H: I_n \times I \to X\)</span> such that <span class="math display">\[H(t;0) =
+            \gamma(t),
+            H(t;1) = \sigma(t),\ \text{and}\ H(t;s) = x, \forall t\in \partial I_n, s\in I.\]</span>
+    </p>
+    <p>To construct group structures for <span class="math inline">\(n\)</span>-loops, we define their composition as
+        <span class="math display">\[\sigma_1 *\sigma_2 = \begin{cases}
+            \sigma_1(2t_1,t_2,\dots, t_n),\quad 0 \leq t_1\leq 1/2.\\
+            \sigma_2(2t_1 - 1, t_2, \dots, t_n), \frac{1}{2}\leq t_1\leq 1.
+            \end{cases}
+            \label{nloop}\]</span>
+    </p>
+    <p><strong>Remark.</strong></p>
+    <ul>
+        <li>
+            <p>Surprisingly, <span class="math inline">\(\sigma_1 * \sigma_2 \simeq \sigma_2*\sigma_1\)</span> for <span
+                    class="math inline">\(n \geq 2\)</span>. In other words, <span
+                    class="math inline">\((\pi_n(X,x),*)\)</span>
+                is an Abelian group.</p>
+        </li>
+        <li>
+            <p>Moreover, <span class="math inline">\([\sigma_1*\sigma_2]_p\)</span> well defined, in the sense that
+                choosing
+                the first index in the above equations is
+                equivalent
+                to choosing any other coordinate in <span class="math inline">\([n]\)</span>.</p>
+        </li>
+    </ul>
+    <p><strong>Examples.</strong></p>
+    <ul>
+        <li>
+            <p><span class="math inline">\(\pi_n(S^n) \cong \mathbb Z, n\geq 1\)</span>.</p>
+        </li>
+        <li>
+            <p><span class="math inline">\(\pi_5(S^2) \cong \mathbb Z_2, \pi_6(S^2) \cong \mathbb Z_{12}\)</span>.</p>
+        </li>
+        <li>
+            <p><span class="math inline">\(\pi_1(\mathbb RP^2)\cong \mathbb Z_2, \pi_n (\mathbb RP^n) \cong \mathbb Z,
+                    n\geq
+                    2\)</span>.</p>
+        </li>
+        <li>
+            <p>(Bott periodicity of Lie groups) For <span class="math inline">\(n \geq (k+1)/2\)</span>, <span
+                    class="math display">\[\pi_k(U(n)) \cong \pi_k(SU(n)) \cong \begin{cases}
+                    \{e\},\ k\ \text{even}\\
+                    \mathbb Z,\ k\ \text{odd}.
+                    \end{cases}\]</span></p>
+        </li>
+    </ul>
+    <h2 id="application-of-homotopy-taxonomy-of-defects"> <a id="5.6"></a>Application of Homotopy: Taxonomy of Defects
+    </h2>
+    <p>For a given material, describe its magnetic feature by its magnetic moment <span class="math inline">\(\vec m(x)
+            =
+            \langle \sum_{i} m_i(x)\rangle\)</span>.</p>
+    <p>The free energy <span class="math display">\[\mathcal F = \mathcal F_{grad} + \mathcal F_{potential} + \mathcal
+            F_{ext}.\]</span> where <span class="math display">\[\mathcal F_{grad} = \kappa |\nabla m|^2\]</span> and
+        <span class="math display">\[\mathcal F_{potential} = -\alpha(T)|m|^2 + \beta(T) |m|^4 +
+            \frac{\alpha(T)^2}{4\beta(T)}.\]</span> Note that we should minimize <span class="math inline">\(F = \int
+            {\mathcal F(x)}\mathrm dx\)</span>. Suppose the gradient is zero, i.e., the magnetic moment is constant
+        (homogeneous). If <span class="math inline">\(\alpha(T) &lt; 0, \beta(T) &gt; 0\)</span>, then <span
+            class="math inline">\(|\vec m| = 0\)</span>. If <span class="math inline">\(\alpha(T) &gt; 0, \beta (T) &gt;
+            0\)</span>, then <span class="math inline">\(|\vec m| &gt; 0\)</span>, i.e., Ferromagnetism.
+    </p>
+    <p>We define defects as <span class="math inline">\(\vec m (x), F&lt; \infty\)</span> where <span
+            class="math inline">\(\mathcal F\)</span> is a local minimum. If <span class="math inline">\(\vec
+            m(x)\)</span> is
+        regular everywhere, we call it a regular defect. If <span class="math inline">\(\vec m(x)\)</span> has a
+        singular
+        point, we call it a singular defect.</p>
+    <p>For regular defects, we know when <span class="math inline">\(|x| \to \infty\)</span>, <span
+            class="math inline">\(\mathcal F \to 0\)</span> or otherwise the integration would not be finite. Thus,
+        <span class="math display">\[\lim_{|x|\to \infty} |\vec m(x)| = m_0 \propto
+            \sqrt{\frac{\alpha}{\beta}}.\]</span> The
+        boundary condition for <span class="math inline">\(\vec m(x): \mathbb R^d \to \mathbb R^3\)</span> is bounded to
+        <span class="math inline">\(\mathbb S^2\)</span>. The solution is locally stable guaranteed by homotopy on <span
+            class="math inline">\(\pi_{d-1}(\mathbb S^2)\)</span>.
+    </p>
+    <p><span class="math inline">\(\pi_0(S^2) = \pi_1(S^2) = \{0\}\)</span>, <span class="math inline">\(\pi_2(S^2) =
+            \mathbb Z\)</span>.</p>
+
+
+    <h1 id="homology"> <a id="6"></a>Homology</h1>
+    <h3 id="simplex">Simplex</h3>
+    <ul>
+        <li>
+            <p><span class="math inline">\(0\)</span>-simplex: a point <span class="math inline">\(\langle
+                    p_0\rangle\)</span>.</p>
+        </li>
+        <li>
+            <p><span class="math inline">\(1\)</span>-simplex: an edge: <span class="math inline">\(\langle
+                    p_0,p_1\rangle\)</span>.</p>
+        </li>
+        <li>
+            <p><span class="math inline">\(2\)</span>-simplex: an triangle <span class="math inline">\(\langle p_0,
+                    p_1,p_2\rangle\)</span>, but <span class="math inline">\(p_0,p_1,p_2\)</span> do not lie on a same
+                line.</p>
+        </li>
+    </ul>
+    <p><strong>Geometric independence:</strong> <span class="math inline">\(r+1\)</span> points are geometrically
+        independent, if <span class="math inline">\(p_0, \dots, p_r \subseteq r-dim\)</span> hyperplane, but <span
+            class="math inline">\(p_0,\dots, p_r \not \subseteq (r -1)-dim\)</span> hyperplane.</p>
+    <p class="definition" data-attribution="r-simplex"><span class="math inline">\(\{p_0,\dots, p_r\}\)</span> be <span
+            class="math inline">\((r+1)\)</span>-geometrically
+        independent. <span class="math inline">\(p_0,\dots, p_r\in \mathbb R^m\)</span>, <span
+            class="math inline">\(m\geq
+            r\)</span>. A <span class="math inline">\(r\)</span>-simplex <span class="math inline">\(\sigma^r(\langle
+            p_0,
+            \dots, p_r\rangle)\)</span> is defined as <span class="math display">\[\sigma^r = \{x\in \mathbb R^m \ |\ x
+            =
+            \sum_{i=1}^r c_i p_i, c_i \geq 0, \sum_{i=0}^r c_i = 1\}\]</span></p>
+    <p><strong>Remark.</strong> <span class="math inline">\(\{c_i\}\)</span> are called the barycentric coordinates of
+        <span class="math inline">\(x\)</span>.
+    </p>
+    <p class="definition" data-attribution="q-face">Let <span class="math inline">\(q\in \mathbb Z, 0\leq q \leq
+            r\)</span>. Select <span class="math inline">\(q+1\)</span> points from <span
+            class="math inline">\(\{p_0,\dots, p_r\}\)</span> and
+        denote
+        them by <span class="math inline">\(\{p_{i_0},\dots, p_{i_q}\}\)</span>. Then the <span
+            class="math inline">\(q\)</span>-simplex <span class="math inline">\(\langle p_{i_0}, \dots,
+            p_{i_q}\rangle\)</span> is a <span class="math inline">\(q\)</span>-face of <span
+            class="math inline">\(\langle
+            p_0 ,\dots, p_r\rangle\)</span>, denoted <span class="math display">\[\langle p_{i_0}, \dots, p_{i_q}\rangle
+            \leq
+            \langle p_0 ,\dots, p_r\rangle\]</span></p>
+    <h3 id="simplicial-complex">Simplicial Complex</h3>
+    <p class="definition"><span class="math inline">\(K\)</span> is a set of simplexes. <span
+            class="math inline">\(K\)</span> is a
+        simplicial complex if</p>
+    <ul>
+        <li>
+            <p><span class="math inline">\(\sigma\in K\)</span>, <span class="math inline">\(\sigma^\prime \leq \sigma
+                    \Rightarrow \sigma^\prime \in K\)</span></p>
+        </li>
+        <li>
+            <p>For any <span class="math inline">\(\sigma,\sigma^\prime \in K\)</span>, either <span
+                    class="math inline">\(\sigma \cap \sigma^\prime = \varnothing\)</span>, or <span
+                    class="math inline">\(\sigma
+                    \cap \sigma^\prime \leq \sigma, \sigma \cap \sigma^\prime \leq \sigma^\prime\)</span>.</p>
+        </li>
+    </ul>
+    <p><strong>Remark.</strong> For a simplicial complex <span class="math inline">\(K\)</span>, the union of all
+        elements
+        in <span class="math inline">\(K\)</span> is called a polyhedron, <span class="math inline">\(|K|:=
+            \bigcup_{\sigma\in K} \sigma\)</span>.</p>
+    <p class="definition" data-attribution="Triangulation">Let <span class="math inline">\(X\)</span> be a topological
+        space. If there exists a simplicial complex <span class="math inline">\(K\)</span>, such that <span
+            class="math inline">\(f:|K| \to X\)</span> is a
+        homeomorphism,
+        then <span class="math inline">\(X\)</span> is triangulable, and <span class="math inline">\((K,f)\)</span> is a
+        triangulation of <span class="math inline">\(X\)</span>.</p>
+
+    <h2 id="chain-group"> <a id="6.1"></a>Chain Group</h2>
+    <p>Define orientation on <span class="math inline">\(\langle p_1,\dots, p_n\rangle\)</span>. Two simplexes have the
+        same orientation if they differ by an even permutation.</p>
+    <p class="definition" data-attribution="Chain group"><span class="math inline">\(K\)</span> simplicial complex. The
+        <span class="math inline">\(r\)</span>-chain group
+        on <span class="math inline">\(K\)</span>, <span class="math inline">\(C_r(K)\)</span>, is an Abelian group
+        generated by the oriented <span class="math inline">\(r\)</span>-simplexes of <span
+            class="math inline">\(K\)</span>. If <span class="math inline">\(r&gt; \dim K\)</span>, <span
+            class="math inline">\(C_r(K) = 0\)</span>. An element in <span class="math inline">\(C_r(K)\)</span> is
+        called an
+        <span class="math inline">\(r\)</span>-chain.
+    </p>
+    <p><strong>Remark.</strong> <span class="math display">\[C_r(K) = \{\sum_i z_i \sigma_i^r\ |\ z_i \in \mathbb Z,
+            \sigma_i^r \in K\}.\]</span></p>
+    <ul>
+        <li>
+            <p>For <span class="math inline">\(c = \sum_i c_i \sigma_i^r\)</span>, <span class="math inline">\(d =
+                    \sum_i d_i
+                    \sigma_i^r\)</span>, <span class="math inline">\(c+d = \sum_i (c_i + d_i) \sigma_i^r\)</span>.</p>
+        </li>
+        <li>
+            <p><span class="math inline">\(C_r(K) \cong \mathbb Z^d\)</span> for some <span
+                    class="math inline">\(d\)</span>.
+                <span class="math inline">\(d\)</span> is the dimension of <span class="math inline">\(C_r(K)\)</span>
+                and <span class="math inline">\(d=\)</span> the number of <span class="math inline">\(r\)</span>-simplex
+                in <span class="math inline">\(K\)</span>.
+            </p>
+        </li>
+        <li>
+            <p>Consider <span class="math inline">\(\dim K = 2\)</span>, <span class="math inline">\(\dim C_2(K) - \dim
+                    C_1(K)
+                    + \dim_0(K)\)</span> is the Euler characteristic for planar graphs, which is invariant under
+                homotopy.</p>
+        </li>
+    </ul>
+    <p>Next, we define cycle groups and boundary groups that are subgroups of chain groups. We start with defining what
+        a
+        boundary is.</p>
+    <p class="definition" data-attribution="Boundary">Note that the boundary of a <span
+            class="math inline">\(r\)</span>-simplex is a union of <span class="math inline">\((r-1)\)</span>-simplexes
+        it contains. We define a boundary operator <span class="math inline">\(\partial_r : C_r(K) \to
+            C_{r-1}(K)\)</span>: <span class="math display">\[\partial_r(\sum_i
+            z_i \sigma_i^r) = \sum_i z_i \partial_r(\sigma_i^r)\]</span> and for <span class="math inline">\(\sigma_i^r
+            =
+            (p_0,p_1,\dots, p_r)\)</span>, <span class="math display">\[\partial_r(\sigma_i^r) = \sum_{i=0}^r (-1)^i
+            (p_0,\dots, p_{i-1}, p_{i+1},\dots, p_r).\]</span> By definition we know <span
+            class="math inline">\(\sigma_r\)</span> is a group homomorphism.</p>
+
+    <p>Then the kernel <span class="math inline">\(ker (\partial_r)\)</span> is called the cycle group and the image
+        <span class="math inline">\(Im (\partial_r)\)</span> is called the boundary group.
+    </p>
+    <p class="definition" data-attribution="Cycle group">An <span class="math inline">\(r\)</span>-cycle group <span
+            class="math inline">\(Z_r(K)\)</span> is defined as
+        <span class="math display">\[Z_r(K) = Ker(\partial _r) = \{c \in C_r(K) \ |\ \partial_r c= 0\}.\]</span>
+    </p>
+    <p class="definition" data-attribution="Boundary group">An <span class="math inline">\(r\)</span>-boundary group
+        <span class="math inline">\(B_r(K)\)</span> is defined
+        as
+        <span class="math display">\[B_r(K) = Im \partial_{r+1} = \{c \in C_r(K) \ |\ c = \partial_{r+1} d, d\in
+            C_{r+1}(K)\}.\]</span>
+    </p>
+    <p class="proposition">
+    <p><span class="math inline">\(\partial_r \circ \partial_{r+1}: C_{r+1}(K) \to C_{r-1}(K)\)</span> is a zero map.
+    </p>
+    <p>Therefore, <span class="math inline">\(B_r(K) \subset Z_r(K) \subset C_r(K)\)</span>.</p>
+    </p>
+
+
+    <h2 id="simplicial-homology"> <a id="6.2"></a>Simplicial Homology</h2>
+    <p>We define a <strong>chain complex</strong> <span class="math inline">\((C_{\cdot}, d_{\cdot})\)</span> of Abelian
+        groups <span class="math inline">\((C_n)_{n\in \mathbb Z}\)</span> and homomorphisms of Abelian groups <span
+            class="math display">\[d_n: C_{n+1} \to C_{n}\]</span> subject to <span class="math inline">\(d_n \circ
+            d_{n+1} =
+            0\)</span> for all <span class="math inline">\(n\in \mathbb Z\)</span>.</p>
+    <p class="definition" data-attribution="Homology">An <span class="math inline">\(r\)</span>-homology group of <span
+            class="math inline">\((C_{\cdot},d)\)</span> is
+        defined as <span class="math display">\[H_r(C_{\cdot}, d) = \frac{Ker(d_r: C_r \to C_{r-1})}{Im(d_{r+1}: C_{r+1}
+            \to
+            C_r)}\]</span></p>
+    <p class="theorem">Let <span class="math inline">\(X\)</span>,<span class="math inline">\(Y\)</span> be two
+        triangulable
+        homeomorphic
+        topological space, and <span class="math inline">\((K,f)\)</span>, <span class="math inline">\((L,g)\)</span> be
+        triangulations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. Then <span
+            class="math display">\[H_r(K) \cong H_r(L)\]</span></p>
+    <p class="proposition">Let <span class="math inline">\(K\)</span> be a connected simplicial complex, then <span
+            class="math display">\[H_0(K) \cong\mathbb Z\]</span></p>
+
+    <h2 id="structure-of-homology-group"> <a id="6.3"></a>Structure of Homology Group</h2>
+    <p>Note that <span class="math inline">\(H_r(K)\)</span> is Abelian. The most general form of an Abelian group is
+        <span class="math display">\[H_r(K) \cong \mathbb Z^n \times \mathbb Z_{k_1} \times \dots \times \mathbb
+            Z_{k_p}\]</span> The first part is called the free part and the second is called torsion part.
+    </p>
+    <p>If we change the coefficient in chain groups from integer to real numbers, the torsion part disappears. So <span
+            class="math inline">\(H_r(K;\mathbb R) \cong \mathbb R^f\)</span>.</p>
+    <p class="definition" data-attribution="Betti number">Let <span class="math inline">\(K\)</span> be a simplicial
+        complex. The <span class="math inline">\(r\)</span>-th
+        Betti number is <span class="math display">\[b_r(K) = \dim H_r(K;\mathbb R)\]</span> which is also the rank of
+        the
+        free Abelian part of <span class="math inline">\(H_r(K;\mathbb Z)\)</span>.</p>
+    <p class="definition" data-attribution="Euler characteristic">Let <span class="math inline">\(K\)</span> be an <span
+            class="math inline">\(n\)</span>-dimensional simplicial
+        complex, and <span class="math inline">\(I_r\)</span> be the number of <span
+            class="math inline">\(r\)</span>-simplexes in <span class="math inline">\(K\)</span>. The Euler
+        characteristics
+        <span class="math inline">\(\chi\)</span> is <span class="math display">\[\chi(K) = \sum_{r=0}^n (-1)^r
+            I_r.\]</span>
+    </p>
+    <p class="theorem" data-attribution="Euler-Poincare">Let <span class="math inline">\(K\)</span> be an <span
+            class="math inline">\(n\)</span>-dim simplicial complex,
+        <span class="math display">\[\chi(K) = \sum_{r=0}^n (-1)^r b_r(K).\]</span>
+    </p>
+    <h2 id="smith-normal-form"> <a id="6.4"></a>Smith Normal Form</h2>
+    <p>Let <span class="math inline">\(A = (a_{ij})\in M_{m\times n}(\mathbb Z)\)</span>. <span
+            class="math inline">\(A\)</span> is in Smith normal form if</p>
+    <ul>
+        <li>
+            <p><span class="math inline">\(a_{ij} = 0,\ \forall i\neq j\)</span></p>
+        </li>
+        <li>
+            <p><span class="math inline">\(0\leq r\leq \min(m,n)\)</span>, <span class="math inline">\(a_{ii} \neq
+                    0\)</span>
+                for <span class="math inline">\(i\leq r\)</span> and <span class="math inline">\(a_{ii} = 0\)</span>
+                otherwise.
+            </p>
+        </li>
+        <li>
+            <p><span class="math inline">\(a_i = a_{ii}, 0\leq i\leq r\)</span>, then <span class="math inline">\(a_i |
+                    a_{i+1}\)</span>.</p>
+        </li>
+    </ul>
+    <p class="proposition">If <span class="math inline">\(A\in M_{m\times n}(\mathbb Z)\)</span>, then there exists
+        <span class="math inline">\(U\in M_{m\times m}(\mathbb Z), V \in M_{n\times n} (\mathbb Z)\)</span>, <span
+            class="math inline">\(\det U = \pm 1, \det V = \pm 1\)</span>, and <span class="math inline">\(D \in
+            M_{m\times n}
+            (\mathbb Z)\)</span> is in Smith normal form. We have <span class="math display">\[A = UDV.\]</span>
+    </p>
+    <p class="proposition">
+    <p><span class="math inline">\(C_{r-1}(K) \leftarrow C_r(K) \leftarrow C_{r+1}(K) \leftarrow \dots\)</span>. Let
+        <span class="math inline">\(A\)</span> be the matrix representation for <span
+            class="math inline">\(\partial_{r+1}\)</span> and <span class="math inline">\(B\)</span> for <span
+            class="math inline">\(\partial_r\)</span>.
+    </p>
+    <p>Suppose <span class="math inline">\(SNF(A) = \mathrm{diag}(a_1,\dots, a_r, \mathbf 0)\)</span>, then <span
+            class="math display">\[H_r(K;\mathbb Z) \cong \mathrm{Ker} B/\mathrm{Im} A\cong \mathbb Z^{\dim C_r(K) - r -
+            s}\times \mathbb Z_{a_1} \times \dots \times \mathbb Z_{a_r}\]</span> where <span class="math inline">\(r
+            =\mathrm{rank} A, s = \mathrm{rank} B\)</span>.</p>
+    </p>
+
+
+    <div class=page-body>
+        <article class=article>
+            <div class="article-container pt-3">
+
+
+                <div class="btn-links mb-3"><a class="btn btn-outline-primary btn-page-header" href="topology.pdf"
+                        target=_blank rel=noopener>PDF</a></div>
+            </div>
+            <div class=article-container>
+                <div class=article-style></div>
+                <div class=share-box aria-hidden=true>
+                    <ul class=share>
+                        <li><a href="https://twitter.com/intent/tweet?url=https://wenda-qianhw.netlify.app/archived_note/topology/&text=Topology"
+                                target=_blank rel=noopener class=share-btn-twitter><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li><a href="https://www.facebook.com/sharer.php?u=https://wenda-qianhw.netlify.app/archived_note/topology/&t=Topology"
+                                target=_blank rel=noopener class=share-btn-facebook><i class="fab fa-facebook"></i></a>
+                        </li>
+                        <li><a href="mailto:?subject=Topology&body=https://wenda-qianhw.netlify.app/archived_note/topology/"
+                                target=_blank rel=noopener class=share-btn-email><i class="fas fa-envelope"></i></a>
+                        </li>
+                        <li><a href="https://www.linkedin.com/shareArticle?url=https://wenda-qianhw.netlify.app/archived_note/topology/&title=Topology"
+                                target=_blank rel=noopener class=share-btn-linkedin><i
+                                    class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="whatsapp://send?text=Topology%20https://wenda-qianhw.netlify.app/archived_note/topology/"
+                                target=_blank rel=noopener class=share-btn-whatsapp><i class="fab fa-whatsapp"></i></a>
+                        </li>
+                        <li><a href="https://service.weibo.com/share/share.php?url=https://wenda-qianhw.netlify.app/archived_note/topology/&title=Topology"
+                                target=_blank rel=noopener class=share-btn-weibo><i class="fab fa-weibo"></i></a></li>
+                    </ul>
+                </div>
+                <div class="media author-card content-widget-hr"><a href="../../index.html"><img
+                            class="avatar mr-3 avatar-circle"
+                            src="../../authors/admin/avatar_huec040978cd197f91fa586c800703b8ed_65970_270x270_fill_q75_lanczos_center.jpg"
+                            alt="Wenda Chu 储闻达"></a>
+                    <div class=media-body>
+                        <h5 class=card-title><a href="../../index.html">Wenda Chu 储闻达</a></h5>
+                        <h6 class=card-subtitle>Undergraduate Student</h6>
+                        <p class=card-text>I like chess, piano, animation and photography.</p>
+                        <ul class=network-icon aria-hidden=true></ul>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <div class=page-footer>
+        <div class=container>
+            <footer class=site-footer>
+                <p class=powered-by>Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_blank
+                        rel=noopener>Wowchemy</a> — the free, <a href=https://github.com/wowchemy/wowchemy-hugo-modules
+                        target=_blank rel=noopener>open source</a> website builder that empowers creators.</p>
+            </footer>
         </div>
-      </script><script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script><script src="../../en/js/wowchemy.min.d68ecd57c0ec1f1f61d65fd568f1c3a0.js"></script></body></html>
+    </div>
+    <div id=modal class="modal fade" role=dialog>
+        <div class=modal-dialog>
+            <div class=modal-content>
+                <div class=modal-header>
+                    <h5 class=modal-title>Cite</h5><button type=button class=close data-dismiss=modal aria-label=Close>
+                        <span aria-hidden=true>&#215;</span></button>
+                </div>
+                <div class=modal-body>
+                    <pre><code class="tex hljs"></code></pre>
+                </div>
+                <div class=modal-footer><a class="btn btn-outline-primary my-1 js-copy-cite" href="index.html#"
+                        target=_blank><i class="fas fa-copy"></i> Copy</a>
+                    <a class="btn btn-outline-primary my-1 js-download-cite" href="index.html#" target=_blank><i
+                            class="fas fa-download"></i> Download</a>
+                    <div id=modal-error></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
