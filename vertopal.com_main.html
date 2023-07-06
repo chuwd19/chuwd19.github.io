@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Wenda" />
+  <title>Topology</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Topology</h1>
+<p class="author">Wenda</p>
+</header>
+<h1 id="topological-space">Topological Space</h1>
+<p>Continuous mappings <span
+class="math inline"><em>f</em> : ℝ<sup><em>n</em></sup> → ℝ<sup><em>m</em></sup></span>
+is usually defined using metrics: <span
+class="math inline">∀<em>ϵ</em> &gt; 0, ∃<em>δ</em> &gt; 0</span>, s.t.
+<span
+class="math inline"><em>d</em>(<em>x</em>,<em>x</em><sub>0</sub>) &lt; <em>δ</em></span>
+gives <span
+class="math inline"><em>d</em>(<em>f</em>(<em>x</em>),<em>f</em>(<em>x</em><sub>0</sub>)) &lt; <em>ϵ</em></span>.
+But can we define continuity without any notion of metric?</p>
+<p>The answer is yes. We can define continuity using only topological
+structures on sets.</p>
+<h2 id="basic-definition">Basic Definition</h2>
+<div class="definition">
+<p><strong>Definition 1</strong> (Topological Space). <em>Suppose we
+have a set <span class="math inline"><em>X</em></span>. A topology <span
+class="math inline">𝒯</span> is a set of the subsets of <span
+class="math inline"><em>X</em></span> with the following
+properties:</em></p>
+<ol>
+<li><p><em><span
+class="math inline">⌀, <em>X</em> ∈ 𝒯</span>.</em></p></li>
+<li><p><em>(Closed under arbitrary union) <span
+class="math inline">∀<em>i</em> ∈ ℐ</span>, <span
+class="math inline"><em>U</em><sub><em>i</em></sub> ∈ 𝒯</span>, then
+<span
+class="math inline">∪<sub><em>i</em> ∈ ℐ</sub><em>U</em><sub><em>i</em></sub> ∈ 𝒯</span>.</em></p></li>
+<li><p><em>(Closed under finite intersection) <span
+class="math inline"><em>U</em><sub>1</sub>, …, <em>U</em><sub><em>n</em></sub></span>,
+then <span class="math inline">$\cap_{i=1}^n U_i\in \mathcal
+T$</span>.</em></p></li>
+</ol>
+</div>
+<p><strong>Remark.</strong> A subset <span
+class="math inline"><em>U</em> ∈ 𝒯</span> is also called an open set. A
+subset <span class="math inline"><em>U</em> ∈ <em>X</em></span> is
+called a closed set if and only if <span
+class="math inline"><em>X</em> − <em>U</em></span> is open.</p>
+<p><strong>Some examples.</strong></p>
+<ul>
+<li><p><span class="math inline">𝒯 = {⌀, <em>X</em>}</span>, trivial
+topology.</p></li>
+<li><p>Power set: <span
+class="math inline">𝒯 = <em>P</em>(<em>X</em>) := {All subsets of
+<em>X</em>}</span>, dubbed discrete topology.</p></li>
+</ul>
+<div class="definition">
+<p><strong>Definition 2</strong> (Metric). <em>Let <span
+class="math inline"><em>X</em></span> be a set. A metric on <span
+class="math inline"><em>X</em></span> is a mapping <span
+class="math inline"><em>X</em> × <em>X</em> → ℝ<sub> ≥ 0</sub></span>,
+subject to the following.</em></p>
+<ol>
+<li><p><em><span
+class="math inline"><em>d</em>(<em>x</em>,<em>y</em>) = 0 ⇔ <em>x</em> = <em>y</em></span>.</em></p></li>
+<li><p><em><span
+class="math inline"><em>d</em>(<em>x</em>,<em>y</em>) = <em>d</em>(<em>y</em>,<em>x</em>), ∀<em>x</em>, <em>y</em> ∈ <em>X</em></span>.</em></p></li>
+<li><p><em>(Triangular inequality) <span
+class="math inline"><em>d</em>(<em>x</em>,<em>y</em>) + <em>d</em>(<em>y</em>,<em>z</em>) ≥ <em>d</em>(<em>x</em>,<em>z</em>), ∀<em>x</em>, <em>y</em>, <em>z</em> ∈ <em>X</em></span>.</em></p></li>
+</ol>
+</div>
+<div class="definition">
+<p><strong>Definition 3</strong> (Open Ball). <em>Let <span
+class="math inline"><em>X</em></span> be a set and <span
+class="math inline"><em>d</em></span> is a metric on <span
+class="math inline"><em>X</em></span>. We define an open ball at <span
+class="math inline"><em>x</em><sub>0</sub></span> with radius <span
+class="math inline"><em>ϵ</em></span> as <span
+class="math display"><em>B</em>(<em>x</em><sub>0</sub>,<em>ϵ</em>) := {<em>x</em> ∈ <em>X</em> | <em>d</em>(<em>x</em>,<em>x</em><sub>0</sub>) &lt; <em>ϵ</em>}.</span></em></p>
+</div>
+<div class="definition">
+<p><strong>Definition 4</strong> (Metric Topology). <em>Let <span
+class="math inline"><em>X</em></span> be a set and <span
+class="math inline"><em>d</em></span> is a metric on <span
+class="math inline"><em>X</em></span>. Then for any subset <span
+class="math inline"><em>U</em> ∈ <em>X</em></span>, <span
+class="math inline"><em>U</em></span> is open if and only if <span
+class="math display">∀<em>x</em> ∈ <em>U</em>, ∃<em>ϵ</em> &gt; 0, <em>s</em>.<em>t</em>.<em>B</em>(<em>x</em>,<em>ϵ</em>) ⊆ <em>U</em></span></em></p>
+</div>
+<p><strong>Remark.</strong> This definition satisfies all the
+requirements of topological space. The proof is trivial.</p>
+<p>Moreover, all subset <span class="math inline"><em>U</em> ∈ 𝒯</span>
+can be written as the union of open balls. <span
+class="math display"><em>U</em> = ∪<sub><em>x</em> ∈ <em>U</em></sub><em>B</em>(<em>x</em>,<em>ϵ</em>).</span></p>
+<div class="definition">
+<p><strong>Definition 5</strong> (Subspace Topology). <em>Let <span
+class="math inline">(<em>X</em>,𝒯)</span> be a topological space.
+Suppose <span class="math inline"><em>S</em> ⊂ <em>X</em></span> is a
+subset of <span class="math inline"><em>X</em></span>, then a subspace
+topology on <span class="math inline"><em>S</em></span> induced by <span
+class="math inline">𝒯</span> is <span
+class="math display">𝒯<sup>′</sup> = {<em>U</em> ∈ <em>S</em> | <em>U</em> = <em>S</em> ∩ <em>V</em>, <em>V</em> ∈ 𝒯}.</span></em></p>
+</div>
+<p><strong>Remark.</strong> Note that an open set <span
+class="math inline"><em>U</em> ⊂ <em>S</em>, <em>U</em> ∈ 𝒯<sup>′</sup></span>
+is not necessarily open at <span
+class="math inline">(<em>X</em>,𝒯)</span> (i.e., <span
+class="math inline"><em>U</em> ∈ 𝒯</span>). A simple example is <span
+class="math inline"><em>S</em> = [0,1] ⊂ ℝ</span> and <span
+class="math inline">𝒯 = {(<em>a</em>,<em>b</em>) | <em>a</em>, <em>b</em> ∈ ℝ}</span>,
+where <span
+class="math inline"><em>U</em> = [0, 0.5) ∈ 𝒯<sup>′</sup></span> but
+<span class="math inline"><em>U</em> ∉ 𝒯</span>.</p>
+<h2 id="continuous-mapping">Continuous Mapping</h2>
+<p>Now we have defined topology on sets. It’s time to try defining
+continuity without using the notion of metric. Remember that in metric
+topology, we can define continuity as <span
+class="math inline">∀<em>ϵ</em> &gt; 0, ∃<em>δ</em> &gt; 0</span>, <span
+class="math inline">|<em>x</em>−<em>x</em><sub>0</sub>| &lt; <em>δ</em></span>
+yields <span
+class="math inline">|<em>f</em>(<em>x</em>)−<em>f</em>(<em>x</em><sub>0</sub>)| &lt; <em>ϵ</em></span>.
+This is in fact equivalent to <span
+class="math inline"><em>f</em><sup>−1</sup>(<em>f</em>(<em>x</em><sub>0</sub>) − <em>ϵ</em>, <em>f</em>(<em>x</em><sub>0</sub>+<em>ϵ</em>))</span>
+is open in <span class="math inline">ℝ</span>.</p>
+<div id="def:continuous" class="definition">
+<p><strong>Definition 6</strong> (Continuous Mapping). <em>Let <span
+class="math inline"><em>X</em>, <em>Y</em></span> be two topological
+space. We call a mapping <span
+class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span>
+continuous, if <span class="math display">∀<em>U</em> ⊆ <em>Y</em> that
+is open, <em>f</em><sup>−1</sup>(<em>U</em>) ⊆ <em>X</em> is
+open.</span></em></p>
+</div>
+<p><strong>Remark.</strong> The composition of continuous mappings is
+also continuous. Also observe that definition <a href="#def:continuous"
+data-reference-type="ref" data-reference="def:continuous">6</a> reduces
+to the continuous mapping in Calculus when <span
+class="math inline"><em>Y</em></span> is a metric topology, in which
+case we can show <em><span
+class="math inline">∀<em>x</em> ∈ <em>X</em>, <em>ϵ</em> &gt; 0, ∃<em>U</em> ∈ 𝒯<sub><em>X</em></sub> with <em>x</em> ∈ 𝒯<sub><em>X</em></sub>, <em>U</em> ⊆ <em>B</em>(<em>f</em>(<em>x</em>),<em>ϵ</em>)</span></em>
+is equivalent to definition <a href="#def:continuous"
+data-reference-type="ref" data-reference="def:continuous">6</a>.</p>
+<p>Definition <a href="#def:continuous" data-reference-type="ref"
+data-reference="def:continuous">6</a> also provides us a useful trick
+for defining a topology in space <span
+class="math inline"><em>X</em></span>. Let <span
+class="math inline">𝒯<sub><em>X</em></sub><sup><em>f</em></sup> := {<em>f</em><sup>−1</sup>(<em>U</em>) : <em>U</em> ∈ 𝒯<sub><em>Y</em></sub>}</span>,
+then <span
+class="math inline">𝒯<sub><em>X</em></sub><sup>(<em>f</em>)</sup></span>
+is a topology on <span
+class="math inline"><em>f</em><sup>−1</sup>(<em>Y</em>) ⊆ <em>X</em></span>.</p>
+<p>The definition of continuous mapping bridges across two topological
+space.</p>
+<div class="definition">
+<p><strong>Definition 7</strong> (Homeomorphism). <em>Let <span
+class="math inline"><em>X</em></span>, <span
+class="math inline"><em>Y</em></span> be two topological space. A
+mapping <span
+class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> is a
+homeomorphism, denoted <span
+class="math inline"><em>X</em> ≅ <em>Y</em></span>, if</em></p>
+<ol>
+<li><p><em><span class="math inline"><em>f</em></span> is
+continuous</em></p></li>
+<li><p><em><span class="math inline"><em>f</em></span> is
+bijective.</em></p></li>
+<li><p><em><span class="math inline"><em>f</em><sup>−1</sup></span> is
+also continuous.</em></p></li>
+</ol>
+</div>
+<p><strong>Remark.</strong> Homeomorphism is typically hard to disprove.
+It would take some effort to proof <span
+class="math inline">ℝ ≆ ℝ<sup>2</sup></span>, and even more effort to
+show <span class="math inline">ℝ<sup>2</sup> ≆ ℝ<sup>3</sup></span>.</p>
+<p><strong>Some examples.</strong></p>
+<ul>
+<li><p>(Embedding) Let <span
+class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> be
+continuous and injective. <span class="math inline"><em>f</em></span> is
+called an embedding from <span class="math inline"><em>X</em></span> to
+<span class="math inline"><em>Y</em></span>, if <span
+class="math inline"><em>f</em> : <em>X</em> → <em>f</em>(<em>X</em>)</span>
+is homeomorphism.</p>
+<p><span class="math inline"><em>f</em> : ℝ → ℝ<sup>2</sup></span>,
+<span
+class="math inline"><em>f</em>(<em>x</em>) = (<em>a</em><em>x</em>,<em>b</em><em>x</em>)</span>
+is an embedding.</p></li>
+<li><p>(Stereographic projection) <span
+class="math inline"><em>S</em><sup>2</sup> = {(<em>x</em>,<em>y</em>,<em>z</em>) ∈ ℝ<sup>3</sup> | <em>x</em><sup>2</sup> + <em>y</em><sup>2</sup> + <em>z</em><sup>2</sup> = 1}</span>.
+Then <span
+class="math inline"><em>S</em><sup>2</sup> ∖ {(0,0,1)} ≅ ℝ<sup>2</sup></span>.</p>
+<p><span class="math inline">$\varphi(x,y,z) = (\frac{2x}{1-z},
+\frac{2y}{1-z} -1)$</span> and <span
+class="math inline">$\varphi^{-1}(x,y-1) = (\frac{4x}{4+x^2 + y^2},
+\frac{4y}{4+x^2+y^2}, \frac{-4+x^2 + y^2}{4+x^2 + y^2})$</span></p></li>
+</ul>
+<p>Next, we build a useful tool for proving continuous mappings. The
+following lemma allows us to check the continuity of a mapping by
+checking continuity in its segments.</p>
+<div class="lemma">
+<p><strong>Lemma 8</strong> (Pasting Lemma). <em>Let <span
+class="math inline"><em>X</em>, <em>Y</em></span> be two topological
+spaces, <span
+class="math inline">{<em>X</em><sub><em>i</em></sub> | <em>i</em> ∈ <em>I</em>}</span>
+be a family of subspaces of <span class="math inline"><em>X</em></span>.
+Let <span
+class="math inline">{<em>f</em><sub><em>i</em></sub> | <em>i</em> ∈ <em>I</em>}</span>
+be a family of continuous functions and <span
+class="math inline"><em>f</em><sub><em>i</em></sub>|<sub><em>X</em><sub><em>i</em></sub> ∩ <em>X</em><sub><em>j</em></sub></sub>=<em>f</em><sub><em>j</em></sub>|<sub><em>X</em><sub><em>i</em></sub> ∩ <em>X</em><sub><em>j</em></sub></sub></span>
+for <span
+class="math inline">∀<em>i</em>, <em>j</em> ∈ <em>I</em></span>.
+If</em></p>
+<ul>
+<li><p><em><span
+class="math inline"><em>X</em><sub><em>i</em></sub></span> are open sets
+in <span class="math inline"><em>X</em></span>.</em></p></li>
+<li><p><em>Or, <span
+class="math inline"><em>X</em><sub><em>i</em></sub></span> are closed
+and <span class="math inline"><em>I</em></span> is finite.</em></p></li>
+</ul>
+<p><em>Then <span
+class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> with
+<span
+class="math inline"><em>f</em>|<sub><em>X</em><sub><em>i</em></sub></sub> = <em>f</em><sub><em>i</em></sub></span>
+is continuous.</em></p>
+</div>
+<h2 id="products-of-topology">Products of Topology</h2>
+<p>Let <span class="math inline"><em>X</em></span> and <span
+class="math inline"><em>Y</em></span> be two topological space. We want
+to find topology on <span
+class="math inline"><em>X</em> × <em>Y</em></span>. However, <span
+class="math inline"><em>U</em> × <em>V</em>, <em>U</em> ∈ 𝒯<sub><em>X</em></sub>, <em>V</em> ∈ 𝒯<sub><em>Y</em></sub></span>
+does not naturally form a topology, as it is not closed under union.</p>
+<div class="definition">
+<p><strong>Definition 9</strong> (Product Topology). <em>Let <span
+class="math inline">(<em>X</em>,𝒯<sub><em>X</em></sub>)</span>, <span
+class="math inline">(<em>Y</em>,𝒯<sub><em>Y</em></sub>)</span> be two
+topological space. We define <em>open boxes</em> in <span
+class="math inline"><em>X</em> × <em>Y</em></span> as <span
+class="math inline"><em>U</em> × <em>V</em></span>, where <span
+class="math inline"><em>U</em> ∈ 𝒯<sub><em>X</em></sub></span> and <span
+class="math inline"><em>V</em> ∈ 𝒯<sub><em>Y</em></sub></span>.</em></p>
+<p><em>Moreover, we call a subset <span
+class="math inline"><em>W</em> ⊆ <em>X</em> × <em>Y</em></span> open, if
+it is a union of open boxes.</em></p>
+</div>
+<p><strong>Remark.</strong> To check this is indeed a topology is
+trivial. The most crucial property is that intersecting two open boxes
+<span
+class="math inline">(<em>U</em><sub>1</sub>×<em>V</em><sub>1</sub>) ∩ (<em>U</em><sub>2</sub>×<em>V</em><sub>2</sub>) = (<em>U</em><sub>1</sub>∩<em>U</em><sub>2</sub>) × (<em>V</em><sub>1</sub>∩<em>V</em><sub>2</sub>)</span>
+is still an open box.</p>
+<h2 id="basis">Basis</h2>
+<p>We have seen in previous examples that a topology space may be
+constructed from some basic ingredients, e.g., open balls or open boxes.
+In this section, we formalize this intuition by characterising open
+balls and open boxed as <em>basis</em>.</p>
+<div class="definition">
+<p><strong>Definition 10</strong> (Basis for a topology). <em>Let <span
+class="math inline"><em>X</em></span> be a set. <span
+class="math inline">ℬ</span> be a family of subsets of <span
+class="math inline"><em>X</em></span>. We call <span
+class="math inline">ℬ</span> a basis for a topology if</em></p>
+<ul>
+<li><p><em>(Covers <span class="math inline"><em>X</em></span>) <span
+class="math inline">∀<em>x</em> ∈ ℬ, ∃<em>U</em> ∈ ℬ</span>, such that
+<span class="math inline"><em>x</em> ∈ <em>U</em></span>.</em></p></li>
+<li><p><em>(Intersection) If <span
+class="math inline"><em>U</em>, <em>V</em> ∈ ℬ</span>, there exists a
+collection of subsets <span
+class="math inline">{<em>W</em><sub><em>i</em></sub> ∈ ℬ | <em>i</em> ∈ <em>I</em>}</span>
+such that <span
+class="math inline"><em>U</em> ∩ <em>V</em> = ∪<sub><em>i</em> ∈ <em>I</em></sub><em>W</em><sub><em>i</em></sub></span>.</em></p></li>
+</ul>
+</div>
+<div class="definition">
+<p><strong>Definition 11</strong> (Subbasis). <em>Let <span
+class="math inline"><em>X</em></span> be a set. <span
+class="math inline"><em>S</em> ⊆ 2<sup><em>X</em></sup></span> is a
+subbasis if <span
+class="math display">⋃<sub><em>S</em><sub><em>i</em></sub> ∈ <em>S</em></sub><em>S</em><sub><em>i</em></sub> = <em>X</em>.  (only
+need S cover X)</span></em></p>
+</div>
+<p>Given a subbasis, how do we generate a basis? <span
+class="math display">Subbasis <em>S</em> → Basis ℬ → Topology 𝒯</span></p>
+<p>Let <span
+class="math inline">ℬ<sub><em>S</em></sub> = {<em>S</em><sub><em>i</em><sub>1</sub></sub> ∩ … ∩ <em>S</em><sub><em>i</em><sub><em>m</em></sub></sub> | <em>S</em><sub><em>i</em><sub>1</sub></sub>, …, <em>S</em><sub><em>i</em><sub><em>m</em></sub></sub> ∈ <em>S</em>}</span>.
+Then <span class="math inline">ℬ<sub><em>S</em></sub></span> is a
+basis.</p>
+<p>Let <span
+class="math inline">𝒯<sub>ℬ</sub> = {⋃<sub><em>i</em> ∈ ℐ</sub><em>B</em><sub><em>i</em></sub> | <em>B</em><sub><em>i</em></sub> ∈ ℬ}</span>.
+Then <span class="math inline">𝒯<sub>ℬ</sub></span> is a topology.</p>
+<p><strong>Examples.</strong></p>
+<ul>
+<li><p>Metric topology <span
+class="math inline">(<em>X</em>,<em>d</em>)</span>, corresponding to
+basis open balls <span
+class="math inline">{<em>B</em>(<em>x</em>,<em>ϵ</em>) | <em>x</em> ∈ <em>X</em>, <em>ϵ</em> &gt; 0}</span>.</p></li>
+<li><p>Product topology <span
+class="math inline"><em>X</em> × <em>Y</em></span>, corresponding to
+basis open boxes <span
+class="math inline">{<em>U</em> × <em>V</em> | <em>U</em> ∈ <em>X</em>, <em>V</em> ∈ <em>Y</em>}</span>.</p></li>
+<li><p><span
+class="math inline"><em>S</em> = {(−∞,<em>a</em>) | <em>a</em>∈ℝ}∪{(<em>b</em>,∞) | <em>b</em> ∈ ℝ}</span>
+is a subbasis in <span class="math inline">ℝ</span>. Its corresponding
+basis is <span
+class="math inline">ℬ<sub><em>S</em></sub> = {(<em>a</em>,<em>b</em>) | ∀<em>a</em>, <em>b</em> ∈ ℝ}</span>
+which is already a topology in <span
+class="math inline">ℝ</span>.</p></li>
+<li><p>(<strong>Initial topology</strong>) Consider some continuous
+mappings <span
+class="math inline"><em>f</em><sub><em>i</em></sub> : <em>X</em> → <em>Y</em><sub><em>i</em></sub></span>.
+Let <span
+class="math inline"><em>S</em> = {<em>f</em><sub><em>i</em></sub><sup>−1</sup>(<em>U</em>) | <em>U</em> ⊂ <em>Y</em><sub><em>i</em></sub> open}</span>.
+Then <span class="math inline">𝒯<sub><em>S</em></sub></span> is called
+an initial topology.</p></li>
+</ul>
+<div class="proposition">
+<p><strong>Proposition 12</strong>. <em><span
+class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span>, <span
+class="math inline"><em>S</em></span> is a subbasis of the topology of
+<span class="math inline"><em>Y</em></span>. Then <span
+class="math display"><em>f</em> is
+continuous ⇔ <em>f</em><sup>−1</sup>(<em>S</em><sub><em>i</em></sub>) ∈ 𝒯<sub><em>X</em></sub>, ∀<em>S</em><sub><em>i</em></sub> ∈ <em>S</em></span></em></p>
+</div>
+<h2 id="hausdorff-space">Hausdorff Space</h2>
+<div class="definition">
+<p><strong>Definition 13</strong> (Hausdorff space). <em>A topological
+space <span class="math inline"><em>X</em></span> is called Hausdorff if
+for any pair of points <span
+class="math inline"><em>x</em>, <em>y</em> ∈ <em>X</em></span>, there
+exists an open neighborhood <span class="math inline"><em>U</em></span>
+of <span class="math inline"><em>x</em></span> and an open neighborhood
+<span class="math inline"><em>V</em></span> of <span
+class="math inline"><em>y</em></span> such that <span
+class="math inline"><em>U</em> ∩ <em>V</em> = ⌀</span>.</em></p>
+</div>
+<h1 id="quotient-topology-and-gluing">Quotient Topology and Gluing</h1>
+<h2 id="basic-definition-1">Basic Definition</h2>
+<p><strong>Relation.</strong> A relation in <span
+class="math inline"><em>X</em></span> is a subset <span
+class="math inline"><em>R</em> ⊂ <em>X</em> × <em>X</em></span>. <span
+class="math inline">(<em>x</em>,<em>y</em>) ∈ <em>R</em></span> is
+denoted <span class="math inline"><em>x</em> ∼ <em>y</em></span>.</p>
+<p>An <strong>equivalent relation</strong> satisfies the following
+properties:</p>
+<ul>
+<li><p>(reflexive) <span
+class="math inline"><em>x</em> ∼ <em>x</em></span></p></li>
+<li><p>(symmetric) <span
+class="math inline"><em>x</em> ∼ <em>y</em> ⇒ <em>y</em> ∼ <em>x</em></span></p></li>
+<li><p>(transitive) <span
+class="math inline"><em>x</em> ∼ <em>y</em>, <em>y</em> ∼ <em>z</em> ⇒ <em>x</em> ∼ <em>z</em></span></p></li>
+</ul>
+<p>Consider two mappings <span
+class="math inline"><em>p</em><sub>1</sub>, <em>p</em><sub>2</sub> : <em>T</em> → <em>X</em></span>.
+We can define <span
+class="math inline"><em>p</em> : <em>T</em> → <em>X</em> × <em>X</em></span>,
+such that <span
+class="math inline"><em>p</em>(<em>t</em>) = (<em>p</em><sub>1</sub>(<em>t</em>),<em>p</em><sub>2</sub>(<em>t</em>))</span>.
+Then <span
+class="math inline"><em>R</em><sub><em>p</em><sub>1</sub><em>p</em><sub>2</sub></sub> = <em>p</em>(<em>T</em>)</span>
+is a relation generated by <span
+class="math inline"><em>p</em><sub>1</sub></span> and <span
+class="math inline"><em>p</em><sub>2</sub></span>.</p>
+<div class="definition">
+<p><strong>Definition 14</strong> (Equivalent class). <em>Let <span
+class="math inline">∼</span> be an equivalent relation. An equivalent
+class containing <span class="math inline"><em>x</em></span> is denoted
+by <span
+class="math display"> := {<em>y</em> ∈ <em>X</em> | <em>x</em> ∼ <em>y</em>}.</span></em></p>
+</div>
+<div class="definition">
+<p><strong>Definition 15</strong> (Quotient sets). <em>The quotient set
+in <span class="math inline"><em>X</em></span> of an equivalent relation
+<span class="math inline">∼</span> is denoted by <span
+class="math display"><em>X</em>/∼  := {[<em>x</em>] | <em>x</em> ∈ <em>X</em>}.</span></em></p>
+</div>
+<h2 id="quotient-topology">Quotient Topology</h2>
+<div class="definition">
+<p><strong>Definition 16</strong> (Quotient Topology). <em><span
+class="math inline">(<em>X</em>,𝒯<sub><em>X</em></sub>)</span> is a
+topology space. Let <span
+class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> be a
+surjective quotient. <span
+class="math inline"><em>U</em> ⊂ <em>Y</em></span> is open if <span
+class="math inline"><em>f</em><sup>−1</sup>(<em>U</em>)</span> is open.
+The <em>quotient topology</em> is defined as <span
+class="math display">𝒯<sub><em>Y</em></sub> = {<em>U</em> ⊂ <em>Y</em> | <em>f</em><sup>−1</sup>(<em>U</em>) ∈ 𝒯<sub><em>X</em></sub>}</span></em></p>
+</div>
+<p><strong>Remark.</strong></p>
+<ul>
+<li><p><span class="math inline">𝒯<sub><em>Y</em></sub></span> is the
+finest topology that makes <span class="math inline"><em>f</em></span>
+continuous.</p></li>
+<li><p>For an equivalent relation <span class="math inline">∼</span>,
+consider its projection map <span
+class="math inline"><em>π</em> : <em>X</em> → <em>X</em>/∼</span>. The
+quotient topology is <span
+class="math display">𝒯 = {<em>U</em> ⊂ <em>X</em>/∼ | <em>π</em><sup>−1</sup>(<em>U</em>) ∈ 𝒯<sub><em>X</em></sub>}</span></p></li>
+</ul>
+<div class="definition">
+<p><strong>Definition 17</strong> (Quotient map). <em>Let <span
+class="math inline"><em>X</em></span> and <span
+class="math inline"><em>Y</em></span> be topological spaces. Suppose
+<span class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> is
+a continuous and surjective. If the quotient topology is homeomorphic to
+the topology on <span class="math inline"><em>Y</em></span>, i.e., <span
+class="math inline">(<em>X</em>/∼<sub><em>f</em></sub>,<em>Q</em><em>T</em>) ≅ (<em>Y</em>,𝒯<sub><em>Y</em></sub>)</span>,
+then <span class="math inline"><em>f</em></span> is called a
+<em>quotient map</em>.</em></p>
+</div>
+<p>The question is: <em>how do we decide a map is a quotient map or
+not?</em> The following propositions <a href="#2.2.3"
+data-reference-type="ref" data-reference="2.2.3">18</a> and <a
+href="#2.2.4" data-reference-type="ref" data-reference="2.2.4">19</a>
+are usually used jointly to prove a quotient map.</p>
+<div id="2.2.3" class="proposition">
+<p><strong>Proposition 18</strong>. <em>Let <span
+class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> be
+continuous and surjective. Let <span
+class="math inline">{<em>U</em><sub><em>i</em></sub>}<sub><em>i</em> ∈ ℐ</sub></span>
+be an open cover of <span class="math inline"><em>Y</em></span>. We
+denote the restriction of <span class="math inline"><em>f</em></span> on
+<span class="math inline"><em>U</em><sub><em>i</em></sub></span> by
+<span
+class="math inline"><em>f</em><sub><em>i</em></sub> : <em>f</em><sup>−1</sup>(<em>U</em><sub><em>i</em></sub>) → <em>U</em><sub><em>i</em></sub></span>
+with <span
+class="math inline"><em>f</em><sub><em>i</em></sub> = <em>f</em>|<sub><em>f</em><sup>−1</sup>(<em>U</em><sub><em>i</em></sub>)</sub></span>.</em></p>
+</div>
+<div id="2.2.4" class="proposition">
+<p><strong>Proposition 19</strong>. <em>Let <span
+class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> be
+continuous and surjective. If <span
+class="math inline"><em>f</em></span> has a section <span
+class="math inline"><em>S</em> : <em>Y</em> → <em>X</em></span>, i.e.,
+<span class="math inline"><em>S</em> : <em>Y</em> → <em>X</em></span>
+continuous and <span
+class="math inline"><em>f</em> ∘ <em>S</em> = <em>I</em><em>d</em><sub><em>Y</em></sub></span>,
+then <span class="math inline"><em>f</em></span> is a quotient
+map.</em></p>
+</div>
+<p><strong>Remark.</strong> The existence of a section <span
+class="math inline"><em>S</em></span> implies <span
+class="math inline"><em>f</em></span> is surjective.</p>
+<div class="proposition">
+<p><strong>Proposition 20</strong>. <em>Let <span
+class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> be a
+continuous, surjective map and <span
+class="math inline"><em>f</em></span> is open (or closed) map. Then
+<span class="math inline"><em>f</em></span> is a quotient map.</em></p>
+</div>
+<h2 id="gluing-open-subsets">Gluing Open Subsets</h2>
+<div class="definition">
+<p><strong>Definition 21</strong> (Open gluing datum). <em>An open
+gluing datum consists of the following:</em></p>
+<ul>
+<li><p><em>(What to glue) A family of topological spaces <span
+class="math inline">{<em>U</em><sub><em>i</em></sub>}<sub><em>i</em> ∈ ℐ</sub></span>.</em></p></li>
+<li><p><em>(Where to glue) Open subspaces <span
+class="math inline"><em>U</em><sub><em>i</em><em>j</em></sub> ⊂ <em>U</em><sub><em>i</em></sub></span>,
+we also set <span
+class="math inline"><em>U</em><sub><em>i</em><em>i</em></sub> = <em>U</em><sub><em>i</em></sub></span>.</em></p></li>
+<li><p><em>(How to glue) homeomorphism <span
+class="math inline"><em>f</em><sub><em>i</em><em>j</em></sub> : <em>U</em><sub><em>i</em><em>j</em></sub> → <em>U</em><sub><em>j</em><em>i</em></sub></span></em></p></li>
+</ul>
+<p><em>satisfying the following</em></p>
+<ul>
+<li><p><em><span
+class="math inline"><em>f</em><sub><em>i</em><em>i</em></sub> = <em>I</em><em>d</em><sub><em>U</em><sub><em>i</em></sub></sub></span></em></p></li>
+<li><p><em><span
+class="math inline"><em>f</em><sub><em>i</em><em>j</em></sub>(<em>U</em><sub><em>i</em><em>j</em></sub>∩<em>U</em><sub><em>i</em><em>k</em></sub>) ⊂ <em>U</em><sub><em>j</em><em>i</em></sub> ∩ <em>U</em><sub><em>j</em><em>k</em></sub></span></em></p></li>
+<li><p><em>(Cocycle condition) The homeomorphisms agree on triple
+intersections <span
+class="math display"><em>f</em><sub><em>i</em><em>k</em></sub>|<sub><em>U</em><sub><em>i</em><em>j</em></sub> ∩ <em>U</em><sub><em>i</em><em>k</em></sub></sub>=<em>f</em><sub><em>j</em><em>k</em></sub>|<sub><em>U</em><sub><em>j</em><em>i</em></sub> ∩ <em>U</em><sub><em>j</em><em>k</em></sub></sub> ∘ <em>f</em><sub><em>i</em><em>j</em></sub>|<sub><em>U</em><sub><em>i</em><em>j</em></sub> ∩ <em>U</em><sub><em>i</em><em>k</em></sub></sub></span></em></p></li>
+</ul>
+</div>
+<p><strong>Remark.</strong> The cocycle condition guarantees the
+consistency when gluing <span class="math inline"> &gt; 2</span> subsets
+together.</p>
+<div class="definition">
+<p><strong>Definition 22</strong> (Disjoint union). <em>The disjoint
+union of a collection of sets <span
+class="math inline">{<em>U</em><sub><em>i</em></sub>}<sub><em>i</em> ∈ ℐ</sub></span>:
+<span
+class="math display">⨆<sub><em>i</em> ∈ ℐ</sub><em>U</em><sub><em>i</em></sub> = {(<em>x</em>,<em>i</em>) | <em>i</em> ∈ ℐ, <em>x</em> ∈ <em>U</em><sub><em>i</em></sub>}</span></em></p>
+</div>
+<div class="definition">
+<p><strong>Definition 23</strong> (Open gluing: <span
+class="math inline">(<em>U</em><sub><em>i</em></sub>,<em>U</em><sub><em>i</em><em>j</em></sub>,<em>f</em><sub><em>i</em><em>j</em></sub>)</span>).
+<em><span
+class="math display"><em>U</em> = ⨆<sub><em>i</em> ∈ ℐ</sub><em>U</em><sub><em>i</em></sub>.</span>
+<span
+class="math display"> ∼  : (<em>x</em>,<em>i</em>) ∼ (<em>y</em>,<em>i</em>) ⇔ <em>x</em> ∈ <em>U</em><sub><em>i</em><em>j</em></sub>, <em>y</em> ∈ <em>U</em><sub><em>j</em><em>i</em></sub>, <em>f</em><sub><em>i</em><em>j</em></sub>(<em>x</em>) = <em>y</em>.</span>
+Check that this is indeed an equivalence relation by definition. We call
+<span class="math inline">(<em>U</em>/∼,<em>Q</em><em>T</em>)</span> the
+topological space glued from datum <span
+class="math inline">(<em>U</em><sub><em>i</em></sub>,<em>U</em><sub><em>i</em><em>j</em></sub>,<em>f</em><sub><em>i</em><em>j</em></sub>)</span>.</em></p>
+</div>
+<h2 id="manifold">Manifold</h2>
+<div class="definition">
+<p><strong>Definition 24</strong> (Chart). <em>Let <span
+class="math inline"><em>X</em></span> be a topological space. An <span
+class="math inline"><em>n</em></span>-dimensional chart on <span
+class="math inline"><em>X</em></span> consists of an open subset <span
+class="math inline"><em>U</em> ⊂ <em>X</em></span> equipped with the
+subspace topology and a homeomorphism <span
+class="math inline"><em>ϕ</em><em>U</em> → <em>V</em></span>, where
+<span class="math inline"><em>V</em></span> is an open subspace of <span
+class="math inline">ℝ<sup><em>n</em></sup></span> with the standard
+topology.</em></p>
+</div>
+<div class="definition">
+<p><strong>Definition 25</strong>. <em>Let <span
+class="math inline"><em>M</em></span> be a Hausdorff space with a
+countable topological basis (also called second countable). <span
+class="math inline"><em>M</em></span> is a topological manifold (of pure
+dimension <span class="math inline"><em>n</em></span>) if there exists a
+collection of (<span class="math inline"><em>n</em></span>- dimensional)
+charts <span
+class="math inline">(<em>U</em><sub><em>i</em></sub>,<em>φ</em><sub><em>i</em></sub>)<sub><em>i</em> ∈ <em>I</em></sub></span>
+such that <span
+class="math inline"><em>M</em> = ⋃<sub><em>i</em> ∈ <em>I</em></sub><em>U</em><sub><em>i</em></sub></span>.</em></p>
+</div>
+<h1 id="connectedness">Connectedness</h1>
+<h2 id="connected-spaces">Connected Spaces</h2>
+<div class="definition">
+<p><strong>Definition 26</strong> (Connected Space). <em>A topological
+space <span class="math inline"><em>X</em></span> is connected if it is
+not the union of two disjoint non-empty open subsets.</em></p>
+</div>
+<p><strong>Remark.</strong></p>
+<p><span class="math inline"><em>X</em></span> is connected. <span
+class="math inline">⇔</span> The subsets that are open and closed in
+<span class="math inline"><em>X</em></span> must be <span
+class="math inline">⌀</span> and <span
+class="math inline"><em>X</em></span>.</p>
+<h3 id="connectedness-and-continuous-maps">Connectedness and continuous
+maps</h3>
+<div class="proposition">
+<p><strong>Proposition 27</strong>. <em>Let <span
+class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> be a
+continuous map of topological spaces. Assume <span
+class="math inline"><em>X</em></span> is connected, then <span
+class="math inline"><em>f</em>(<em>X</em>)</span> is connected.</em></p>
+</div>
+<p>In order words, connectedness is a <em><em>topological
+invariant</em></em>.</p>
+<p>Using this property, we can easily show <span
+class="math inline">ℝ ≆ ℝ<sup>2</sup></span>. Since <span
+class="math inline"><em>f</em>(ℝ∖{0})</span> is a connected subspace of
+<span class="math inline">ℝ<sup>2</sup></span>.</p>
+<h3 id="connectedness-and-subspaces">Connectedness and subspaces</h3>
+<div class="proposition">
+<p><strong>Proposition 28</strong>. <em>Let <span
+class="math inline"><em>X</em></span> be a topological space and <span
+class="math inline"><em>X</em><sup>′</sup> ⊆ <em>X</em></span> is a
+connected dense subset, then <span class="math inline"><em>X</em></span>
+is also connected.</em></p>
+</div>
+<p><strong>Remark.</strong> A subset <span
+class="math inline"><em>A</em> ⊆ <em>X</em></span> is
+<strong>dense</strong>, if its closed envelop <span
+class="math inline">$\overline A = X$</span>, where <span
+class="math inline">$\overline A = \bigcap_{i\in I} V_i$</span>, <span
+class="math inline"><em>V</em><sub><em>i</em></sub></span> is closed and
+<span
+class="math inline"><em>A</em> ⊆ <em>V</em><sub><em>i</em></sub></span>.
+An example: <span class="math inline">$\overline {\mathbb Q} = \mathbb
+R$</span>.</p>
+<div class="proof">
+<p><em>Proof.</em> Suppose <span class="math inline"><em>X</em></span>
+is not connected, then there exists a nonempty proper subset <span
+class="math inline"><em>U</em> ⊂ <em>X</em></span> that is closed and
+open. Since <span class="math inline"><em>X</em><sup>′</sup></span> is
+dense, <span
+class="math inline"><em>U</em> ∩ <em>X</em><sup>′</sup> ≠ ⌀</span>. Then
+<span
+class="math inline"><em>U</em> ∩ <em>X</em><sup>′</sup> ⊆ <em>X</em><sup>′</sup></span>
+is closed and open in <span
+class="math inline"><em>X</em><sup>′</sup></span>, which means <span
+class="math inline"><em>U</em> ∩ <em>X</em><sup>′</sup> = <em>X</em><sup>′</sup></span>.
+Thus, <span class="math inline">$U = X^\prime = \overline X^\prime =
+X$</span>, contradict. ◻</p>
+</div>
+<div class="corollary">
+<p><em>Corollary 1</em>. If <span
+class="math inline"><em>A</em> ⊆ <em>X</em></span> and <span
+class="math inline"><em>A</em></span> is connected, then its closed
+envelop <span class="math inline">$\overline A$</span> is also
+connected</p>
+</div>
+<h3 id="locally-constant-function">Locally constant function</h3>
+<div class="definition">
+<p><strong>Definition 29</strong> (Locally constant function). <em>Let
+<span class="math inline"><em>Λ</em></span> be a topological space with
+discrete topology. A continuous map <span
+class="math inline"><em>f</em> : <em>X</em> → <em>Λ</em></span> is
+locally constant if <span
+class="math display">∀<em>x</em>, ∃<em>U</em> ∈ 𝒯, <em>x</em> ∈ <em>U</em>, such
+that <em>f</em>|<sub><em>U</em></sub> is constant.</span></em></p>
+</div>
+<div id="lcf" class="proposition">
+<p><strong>Proposition 30</strong>. <em>Let <span
+class="math inline">(<em>Λ</em>,<em>d</em><em>i</em><em>s</em><em>c</em><em>r</em><em>e</em><em>t</em><em>e</em>)</span>
+be a topological space with at least two elements. <span
+class="math inline"><em>X</em></span> is a topological space. Then <span
+class="math inline"><em>X</em></span> is connected if and only if any
+locally constant function <span
+class="math inline"><em>f</em> : <em>X</em> → <em>Λ</em></span> is
+constant.</em></p>
+</div>
+<p>Using proposition <a href="#lcf" data-reference-type="ref"
+data-reference="lcf">30</a>, we can prove the following convenient
+proposition for connectedness.</p>
+<div class="proposition">
+<p><strong>Proposition 31</strong>. <em>Let <span
+class="math inline">{<em>A</em><sub><em>i</em></sub>}<sub><em>i</em> ∈ <em>I</em></sub></span>
+be a collection of connected subspaces of <span
+class="math inline"><em>X</em></span>. Let <span
+class="math inline"><em>B</em></span> be a connected subspace such that
+<span
+class="math inline"><em>B</em> ∩ <em>A</em><sub><em>i</em></sub> ≠ ⌀</span>,
+then <span
+class="math display"><em>B</em> ∪ ⋃<sub><em>i</em> ∈ <em>I</em></sub><em>A</em><sub><em>i</em></sub> is
+connected.</span></em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Define <span
+class="math inline"><em>A</em> = <em>B</em> ∪ ⋃<sub><em>i</em> ∈ <em>I</em></sub><em>A</em><sub><em>i</em></sub></span>.
+Let <span
+class="math inline"><em>f</em> : <em>A</em> → <em>Λ</em></span> be a
+locally constant function. We know <span
+class="math inline"><em>f</em>|<sub><em>A</em><sub><em>i</em></sub></sub></span>
+and <span class="math inline"><em>f</em><sub><em>B</em></sub></span> are
+all constant function as <span
+class="math inline"><em>A</em><sub><em>i</em></sub></span> and <span
+class="math inline"><em>B</em></span> are connected. Thus, <span
+class="math inline"><em>f</em>|<sub><em>A</em></sub>=<em>f</em>|<sub><em>U</em></sub></span>
+is constant. ◻</p>
+</div>
+<div class="corollary">
+<p><em>Corollary 2</em>. <span
+class="math inline">(<em>X</em>,𝒯)</span>, if <span
+class="math inline">∀<em>x</em>, <em>y</em> ∈ <em>X</em></span>, there
+exists a connected subspace <span class="math inline"><em>U</em></span>,
+<span class="math inline"><em>x</em>, <em>y</em> ∈ <em>U</em></span>,
+then <span class="math inline"><em>X</em></span> is connected.</p>
+</div>
+<div id="prod" class="corollary">
+<p><em>Corollary 3</em>. <span
+class="math inline"><em>X</em>, <em>Y</em></span> are connected <span
+class="math inline">⇒</span> <span
+class="math inline"><em>X</em> × <em>Y</em></span> is connected.</p>
+</div>
+<div id="conq" class="corollary">
+<p><em>Corollary 4</em>. <span
+class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> is a
+surjective continuous map. <span class="math inline"><em>Y</em></span>
+has the quotient topology. Then <span
+class="math inline"><em>X</em></span> is connected <span
+class="math inline">⇒</span> <span class="math inline"><em>Y</em></span>
+is connected.</p>
+</div>
+<p><strong>Remark.</strong> Based on these corollaries above, we can
+show some basic spaces are connected.</p>
+<ul>
+<li><p><span class="math inline">ℝ<sup><em>n</em></sup></span> is
+connected. (from corollary <a href="#prod" data-reference-type="ref"
+data-reference="prod">3</a>)</p></li>
+<li><p><span class="math inline"><em>S</em><sup><em>n</em></sup></span>
+is connected. <em>Proof:</em> for <span
+class="math inline"><em>x</em>, <em>y</em> ∈ <em>S</em><sup><em>n</em></sup></span>,
+choose a <span
+class="math inline"><em>z</em> ∈ <em>S</em><sup><em>n</em></sup></span>
+and <span
+class="math inline"><em>z</em> ≠ <em>x</em>, <em>z</em> ≠ <em>y</em></span>.
+Then <span
+class="math inline">ℝ<sup><em>n</em></sup>/{<em>z</em>} ≅ ℝ<sup><em>n</em></sup></span>
+is connected.</p></li>
+<li><p><span class="math inline">ℝ<em>P</em><sup><em>n</em></sup></span>
+and <span class="math inline">ℂ<em>P</em><sup><em>n</em></sup></span>
+connected from corollary <a href="#conq" data-reference-type="ref"
+data-reference="conq">4</a>.</p></li>
+</ul>
+<h2 id="path-connectedness">Path Connectedness</h2>
+<div class="definition">
+<p><strong>Definition 32</strong> (Path). <em>Let <span
+class="math inline"><em>X</em></span> be a topological space. A path
+<span class="math inline"><em>γ</em></span> is a continuous map <span
+class="math inline"><em>γ</em> : <em>I</em> → <em>X</em></span>. <span
+class="math inline"><em>γ</em>(0)</span> and <span
+class="math inline"><em>γ</em>(1)</span> are the start and the end of
+the path.</em></p>
+</div>
+<div class="definition">
+<p><strong>Definition 33</strong> (Path connected). <em>A topological
+space <span class="math inline"><em>X</em></span> is path connected if
+for any <span
+class="math inline"><em>x</em>, <em>y</em> ∈ <em>X</em></span>, <span
+class="math inline">∃</span> a path <span
+class="math inline"><em>γ</em></span> with <span
+class="math inline"><em>γ</em>(0) = <em>x</em></span>, <span
+class="math inline"><em>γ</em>(1) = <em>y</em></span>.</em></p>
+</div>
+<h2 id="connected-components">Connected Components</h2>
+<div class="definition">
+<p><strong>Definition 34</strong> (connected components). <em><span
+class="math inline">(<em>X</em>,𝒯)</span>. <span
+class="math inline"><em>x</em>, <em>y</em></span> are mutually connected
+if there is a connected subspace <span
+class="math inline"><em>U</em> ⊂ <em>X</em></span> and <span
+class="math inline"><em>x</em>, <em>y</em> ∈ <em>U</em></span>.</em></p>
+<p><em>Mutual connectedness is an equivalence relation. Its equivalence
+class are the connected components of <span
+class="math inline"><em>X</em></span>.</em></p>
+<p><em>Total number of connected components is a topological invariant:
+<span
+class="math inline"><em>π</em><sub>0</sub>(<em>X</em>)</span>.</em></p>
+</div>
+<p>Without any difficulty we can extend the mutual connectedness to
+mutual path connectedness. Note that mutual path connectedness is also
+an equivalence relation. Similarly we define path connected
+components.</p>
+<h1 id="compactness">Compactness</h1>
+<p>Compactness seeks to generalize the property of a bounded and closed
+subset of Euclidean space.</p>
+<div class="definition">
+<p><strong>Definition 35</strong> (Compactness). <em>Let <span
+class="math inline"><em>X</em>, 𝒯</span> be a topological space. <span
+class="math inline"><em>C</em></span> is compact if <span
+class="math inline">∀</span> open cover <span
+class="math inline">{<em>u</em><sub><em>i</em></sub>}<sub><em>i</em> ∈ ℐ</sub></span>
+of <span class="math inline"><em>X</em></span>, there exists <span
+class="math inline"><em>U</em><sub><em>i</em><sub>1</sub></sub>, …, <em>U</em><sub><em>i</em><sub><em>n</em></sub></sub> ∈ {<em>U</em><sub><em>i</em></sub>}<sub><em>i</em> ∈ ℐ</sub></span>,
+such that <span class="math inline">$X\subset \bigcup_{i=1}^n
+U_{i_j}$</span>.</em></p>
+</div>
+<p><strong>Remark.</strong> In other words, any open cover of <span
+class="math inline"><em>X</em></span> contains a finite open cover of
+<span class="math inline"><em>X</em></span>.</p>
+<p><strong>Examples.</strong></p>
+<ul>
+<li><p><span
+class="math inline">(<em>X</em>,<em>t</em><em>r</em><em>i</em><em>v</em><em>i</em><em>a</em><em>l</em>)</span>
+is compact. If <span class="math inline">|<em>X</em>| &lt; ∞</span>,
+<span
+class="math inline">(<em>X</em>,<em>d</em><em>i</em><em>s</em><em>c</em><em>r</em><em>e</em><em>t</em><em>e</em>)</span>
+is compact.</p></li>
+<li><p><span class="math inline">[0,1]</span> is compact.</p></li>
+<li><p><span class="math inline">(0,1)</span> is not compact, because
+<span class="math inline">$\{(\frac{1}{n},1)\}_{n=1}^\infty$</span> is
+an open cover, but no finite subset of it is a cover.</p></li>
+</ul>
+<h2 id="basic-property-of-compact-spaces">Basic Property of Compact
+Spaces</h2>
+<div class="proposition">
+<p><strong>Proposition 36</strong>. <em>If <span
+class="math inline"><em>f</em></span> is continuous, <span
+class="math inline"><em>X</em></span> is compact, then <span
+class="math inline"><em>f</em>(<em>X</em>)</span> is also
+compact.</em></p>
+</div>
+<h3 id="with-subspace">With subspace</h3>
+<div id="prop:4.2" class="proposition">
+<p><strong>Proposition 37</strong>. <em><span
+class="math inline"><em>X</em></span> is a compact, closed space. <span
+class="math inline"><em>Z</em></span> is a closed subspace of <span
+class="math inline"><em>X</em></span>. Then <span
+class="math inline"><em>Z</em></span> is also compact.</em></p>
+</div>
+<p><strong>Remark.</strong> This proposition <a href="#prop:4.2"
+data-reference-type="ref" data-reference="prop:4.2">37</a> guarantees
+that every bounded closed subset of <span class="math inline">ℝ</span>
+is compact.</p>
+<div id="prop:4.3" class="proposition">
+<p><strong>Proposition 38</strong>. <em><span
+class="math inline"><em>X</em></span> is Hausdorff. <span
+class="math inline"><em>Z</em> ⊂ <em>X</em></span> is compact <span
+class="math inline">⇒</span> <span class="math inline"><em>Z</em></span>
+is closed.</em></p>
+</div>
+<h3 id="with-product-space">With product space</h3>
+<div class="definition">
+<p><strong>Definition 39</strong> (Refinement of an open cover).
+<em><span
+class="math inline">𝒰 = {<em>U</em><sub><em>i</em></sub>}<sub><em>i</em> ∈ <em>I</em></sub>, 𝒱 = {<em>V</em><sub><em>i</em></sub>}<sub><em>i</em> ∈ <em>I</em></sub></span>
+are open covers of <span class="math inline"><em>X</em></span>. If <span
+class="math inline">∀<em>V</em><sub><em>i</em></sub>, ∃<em>U</em><sub><em>k</em></sub></span>,
+such that <span
+class="math inline"><em>V</em><sub><em>i</em></sub> ⊂ <em>U</em><sub><em>k</em></sub></span>,
+then <span class="math inline">𝒱</span> is called a refinement of <span
+class="math inline">𝒰</span>.</em></p>
+</div>
+<div class="proposition">
+<p><strong>Proposition 40</strong>. <em>If <span
+class="math inline"><em>X</em></span>, <span
+class="math inline"><em>Y</em></span> are compact topological spaces,
+then <span class="math inline"><em>X</em> × <em>Y</em></span> is also
+compact.</em></p>
+</div>
+<div class="proof">
+<p><em>Proof Sketch..</em> Let <span class="math inline">𝒰</span> be an
+open cover of <span class="math inline"><em>X</em> × <em>Y</em></span>,
+we can find a refinement of <span class="math inline">𝒱</span> of <span
+class="math inline">𝒰</span>, where <span class="math inline">𝒱</span>
+only contains the open boxes in <span
+class="math inline"><em>X</em> × <em>Y</em></span>. We can easily find a
+finite open cover in <span class="math inline">𝒱</span> using
+compactness of <span class="math inline"><em>X</em></span> and <span
+class="math inline"><em>Y</em></span>. ◻</p>
+</div>
+<div class="theorem">
+<p><strong>Theorem 41</strong> (Heine-Borel). <em>Let <span
+class="math inline"><em>Z</em></span> be a subspace of <span
+class="math inline">ℝ<sup><em>n</em></sup></span>. <span
+class="math inline"><em>Z</em></span> is compact if and only if <span
+class="math inline"><em>Z</em></span> is a bounded and closed
+subset.</em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> If <span class="math inline"><em>Z</em></span> is
+compact, then since <span
+class="math inline">ℝ<sup><em>n</em></sup></span> is Hausdorff, we know
+<span class="math inline"><em>Z</em></span> is closed according to
+proposition <a href="#prop:4.3" data-reference-type="ref"
+data-reference="prop:4.3">38</a>. Note that <span
+class="math inline"><em>Z</em> ⊂ ⋃<sub><em>r</em> &gt; 0</sub><em>B</em>(0,<em>r</em>)</span>,
+so <span
+class="math inline"><em>Z</em> ⊂ ⋃<sub><em>r</em> = <em>r</em><sub>1</sub>, …, <em>r</em><sub><em>n</em></sub></sub><em>B</em>(0,<em>r</em>)</span>,
+which means <span class="math inline"><em>Z</em></span> is bounded.</p>
+<p>The reverse direction is direct since <span
+class="math inline"><em>Z</em></span> is a closed subspace of <span
+class="math inline">[−<em>N</em>,<em>N</em>]<sup><em>n</em></sup></span>
+for sufficiently large <span
+class="math inline"><em>N</em></span>. ◻</p>
+</div>
+<h2 id="compact-open-topology">Compact open topology</h2>
+<p>In this section, we consider the set of all continuous map from <span
+class="math inline"><em>X</em></span> to <span
+class="math inline"><em>Y</em></span>, dubbed <span
+class="math inline">𝒞[<em>X</em>;<em>Y</em>]</span>, and assign a
+topology on it using compactness.</p>
+<div class="definition">
+<p><strong>Definition 42</strong> (Compact open topology). <em>Consider
+the set of all continuous map from <span
+class="math inline"><em>X</em></span> to <span
+class="math inline"><em>Y</em></span>: <span
+class="math inline">𝒞[<em>X</em>;<em>Y</em>]</span>. Define a subbasis =
+<span
+class="math inline">{ℳ<sub><em>K</em>, <em>U</em></sub> | <em>K</em> ⊂ <em>X</em> compact, <em>U</em> ⊂ <em>Y</em> open}</span>,
+where <span
+class="math display">ℳ<sub><em>K</em>, <em>U</em></sub> = {<em>f</em> ∈ 𝒞[<em>X</em>;<em>Y</em>] | <em>f</em>(<em>K</em>) ⊂ <em>U</em>}.</span>
+The topology generated by this subbasis is called a compact open
+topology.</em></p>
+</div>
+<p>Moreover, if <span class="math inline">(<em>Y</em>,<em>d</em>)</span>
+is a metric topological space, then we have</p>
+<div class="proposition">
+<p><strong>Proposition 43</strong>. <em><span
+class="math inline">(<em>Y</em>,<em>d</em>)</span> metric space. A
+collection of sets <span
+class="math display"><em>B</em><sub><em>K</em></sub>(<em>f</em>,<em>ϵ</em>) = {<em>g</em> ∈ 𝒞[<em>X</em>;<em>Y</em>] | sup<sub><em>x</em> ∈ <em>K</em></sub><em>d</em>(<em>f</em>(<em>x</em>),<em>g</em>(<em>x</em>)) &lt; <em>ϵ</em>}.</span>
+with <span class="math inline"><em>K</em> ⊂ <em>X</em></span> compact.
+Then <span
+class="math inline">{<em>B</em><sub><em>K</em></sub>(<em>f</em>,<em>ϵ</em>)}</span>
+is a basis of compact open topology.</em></p>
+</div>
+<p><strong>Example.</strong></p>
+<ul>
+<li><p>The solution space for <span class="math inline">$\ddot x + x =
+0$</span>: <span
+class="math inline">ℳ = {<em>x</em> = <em>a</em>cos <em>t</em> + <em>b</em>sin <em>t</em> | (<em>a</em>,<em>b</em>) ∈ ℝ<sup>2</sup>}</span>
+is homeomorphic to <span
+class="math inline">ℝ<sup>2</sup></span>.</p></li>
+</ul>
+<div class="proposition">
+<p><strong>Proposition 44</strong>. <em><span
+class="math inline"><em>Y</em></span> can be embedded into <span
+class="math inline">𝒞[<em>X</em>;<em>Y</em>]</span>. Consider a
+bijective map <span
+class="math inline"><em>c</em> : <em>Y</em> → 𝒞[<em>X</em>;<em>Y</em>]</span>
+such that <span
+class="math inline"><em>y</em> ↦ <em>f</em>(<em>X</em>) = <em>y</em></span>.</em></p>
+</div>
+<div class="proposition">
+<p><strong>Proposition 45</strong>. <em><span
+class="math inline">𝒞[<em>X</em>;<em>Y</em>]</span> is Hausdorff if and
+only if <span class="math inline"><em>Y</em></span> is
+Hausdorff.</em></p>
+</div>
+<div class="proposition">
+<p><strong>Proposition 46</strong>. <em><span
+class="math inline">𝒞[<em>X</em>;ℝ]</span> is path connected.</em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span
+class="math inline"><em>f</em> : <em>X</em> → ℝ</span>. Let <span
+class="math inline"><em>c</em><sub><em>f</em></sub> : [0,1] → 𝒞[<em>X</em>;ℝ] : <em>c</em><sub><em>f</em></sub>(<em>t</em>) = <em>t</em> ⋅ <em>f</em></span>. ◻</p>
+</div>
+<h1 id="homotopy">Homotopy</h1>
+<p>Homeomorphism is good for sure, but usually too restricted to be
+held. Here we discuss a weaker condition, i.e., Homotopy.</p>
+<h2 id="homotopy-of-maps">Homotopy of maps</h2>
+<div class="definition">
+<p><strong>Definition 47</strong>. <em>Let <span
+class="math inline"><em>f</em>, <em>g</em> : <em>X</em> → <em>Y</em></span>
+be two continuous maps. A homotopy between <span
+class="math inline"><em>f</em></span> and <span
+class="math inline"><em>g</em></span> is a continuous map <span
+class="math inline"><em>σ</em> : <em>X</em> × [0,1] → <em>Y</em></span>
+such that <span class="math inline">∀<em>x</em> ∈ <em>X</em></span>,
+<span
+class="math display"><em>σ</em>(<em>x</em>,0) = <em>f</em>(<em>x</em>), <em>σ</em>(<em>x</em>,1) = <em>g</em>(<em>x</em>).</span>
+<span class="math inline"><em>f</em></span> and <span
+class="math inline"><em>g</em></span> is then homotopic, denoted <span
+class="math inline"><em>f</em> ≃ <em>g</em></span>.</em></p>
+</div>
+<p><strong>Remark.</strong></p>
+<ul>
+<li><p><span class="math inline"><em>σ</em></span> defines a path in
+<span class="math inline">𝒞[<em>X</em>;<em>Y</em>]</span>.</p></li>
+<li><p>Be cautious that <span class="math inline"><em>σ</em></span> must
+be continuous on <span class="math inline"><em>X</em> × [0,1]</span>.
+Only continuous for <span
+class="math inline"><em>σ</em>(⋅,<em>t</em>)</span> is not
+enough.</p></li>
+<li><p>If <span class="math inline"><em>f</em></span> is homotopic to a
+constant function, it is called null-homotopic.</p></li>
+</ul>
+<div class="proposition">
+<p><strong>Proposition 48</strong>. <em>Homotopy <span
+class="math inline"><em>f</em> ≃ <em>g</em></span> is an equivalence
+relation.</em></p>
+</div>
+<p><strong>Remark.</strong> We denote the quotient set <span
+class="math inline">𝒞[<em>X</em>;<em>Y</em>]/≃</span> as <span
+class="math inline">[<em>X</em>;<em>Y</em>]</span>.</p>
+<div class="proposition">
+<p><strong>Proposition 49</strong>. <em>Let <span
+class="math inline"><em>f</em><sub>1</sub>, <em>f</em><sub>2</sub> : <em>X</em> → <em>Y</em></span>
+and <span
+class="math inline"><em>g</em><sub>1</sub>, <em>g</em><sub>2</sub> : <em>Y</em> → <em>Z</em></span>.
+If <span
+class="math inline"><em>f</em><sub>1</sub> ≃ <em>f</em><sub>2</sub></span>
+and <span
+class="math inline"><em>g</em><sub>1</sub> ≃ <em>g</em><sub>2</sub></span>,
+then <span
+class="math display"><em>g</em><sub>1</sub> ∘ <em>f</em><sub>1</sub> ≃ <em>g</em><sub>2</sub> ∘ <em>f</em><sub>2</sub>.</span></em></p>
+</div>
+<div class="proof">
+<p><em>Proof Sketch..</em> We prove by <span
+class="math inline"><em>g</em><sub>1</sub> ∘ <em>f</em><sub>2</sub> ≃ <em>g</em><sub>1</sub> ∘ <em>f</em><sub>1</sub> ≃ <em>g</em><sub>2</sub> ∘ <em>f</em><sub>2</sub></span>.</p>
+<p>The first relation can be proved by <span
+class="math inline"><em>g</em><sub>1</sub> ∘ <em>σ</em><sub>1</sub></span>.
+The second can be shown by <span
+class="math inline"><em>σ</em><sub>2</sub><sup>′</sup>(<em>x</em>,<em>t</em>) = <em>σ</em><sub>2</sub>(<em>f</em><sub>2</sub>(<em>x</em>),<em>t</em>)</span>. ◻</p>
+</div>
+<h2 id="homotopy-equivalence.">Homotopy equivalence.</h2>
+<p>We consider the homotopic inverse. For <span
+class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> we
+require its homotopic inverse to satisfy: <span
+class="math inline"><em>f</em> ∘ <em>g</em> ≃ <em>I</em><em>d</em><sub><em>Y</em></sub></span>
+and <span
+class="math inline"><em>g</em> ∘ <em>f</em> ≃ <em>I</em><em>d</em><sub><em>X</em></sub></span>.</p>
+<div class="definition">
+<p><strong>Definition 50</strong> (Homotopy equivalence).
+<em>Topological spaces <span class="math inline"><em>X</em></span> and
+<span class="math inline"><em>Y</em></span> are called homotopy
+equivalent if there exist continuous maps <span
+class="math inline"><em>f</em> : <em>X</em> → <em>Y</em></span> and
+<span class="math inline"><em>g</em> : <em>Y</em> → <em>X</em></span>
+such that <span
+class="math display"><em>f</em> ∘ <em>g</em> ≃ <em>I</em><em>d</em><sub><em>Y</em></sub>, <em>g</em> ∘ <em>f</em> ≃ <em>I</em><em>d</em><sub><em>X</em></sub>.</span></em></p>
+</div>
+<p><strong>Examples.</strong></p>
+<ul>
+<li><p><span
+class="math inline">ℝ<sup><em>n</em></sup> ≃ {<em>x</em>}</span>.</p></li>
+</ul>
+<div class="definition">
+<p><strong>Definition 51</strong> (Contractible space). <em>X is a
+contractible space if <span
+class="math inline"><em>X</em> ≃ {<em>x</em>}</span>. This is equivalent
+to the condition that <span
+class="math inline"><em>I</em><em>d</em><sub><em>X</em></sub></span> is
+null-homotopic.</em></p>
+</div>
+<p><strong>Example.</strong></p>
+<ul>
+<li><p><span
+class="math inline">ℝ ∖ {0} ≃ {<em>p</em><sub>1</sub>} ∪ {<em>p</em><sub>2</sub>}</span>.</p></li>
+<li><p><span
+class="math inline">ℝ<sup>2</sup> ∖ {0} ≃ <em>S</em><sup>1</sup></span>.</p></li>
+</ul>
+<p>To better describe the above observation, we define
+<strong>defomation retraction</strong>.</p>
+<div class="definition">
+<p><strong>Definition 52</strong> (Deformation retraction). <em>Let
+<span class="math inline"><em>X</em></span> be a topological space and
+<span class="math inline"><em>A</em></span> be a subspace of <span
+class="math inline"><em>X</em></span>. A deformation retraction is a
+homotopy <span
+class="math display"><em>r</em> : <em>X</em> × [0,1] → <em>X</em></span>
+such that <span
+class="math inline"><em>r</em>(<em>x</em>,0) = <em>x</em></span> and
+<span class="math inline"><em>r</em>(<em>x</em>,1) ∈ <em>A</em></span>.
+Moreover, for any <span
+class="math inline"><em>a</em> ∈ <em>A</em></span> and <span
+class="math inline"><em>t</em> ∈ [0,1]</span> we have <span
+class="math inline"><em>r</em>(<em>a</em>,<em>t</em>) = <em>a</em></span>.</em></p>
+</div>
+<h2 id="fundamental-group">Fundamental Group</h2>
+<div class="definition">
+<p><strong>Definition 53</strong> (Loop). <em>Let <span
+class="math inline"><em>X</em></span> be a topological space and <span
+class="math inline"><em>γ</em> : [0,1] → <em>X</em></span> is a path on
+X. If <span class="math inline"><em>γ</em>(0) = <em>γ</em>(1)</span> we
+call it a loop.</em></p>
+</div>
+<div class="definition">
+<p><strong>Definition 54</strong> (Paths). <em>The inverse of a path
+<span class="math inline"><em>γ</em></span> is <span
+class="math inline"><em>γ</em><sup>−</sup>(<em>t</em>) = <em>γ</em>(1−<em>t</em>)</span>.
+The constant path <span
+class="math inline"><em>I</em>[<em>x</em>]</span> is defined as <span
+class="math inline"><em>γ</em>(<em>t</em>) = <em>x</em></span> for some
+<span class="math inline"><em>x</em> ∈ <em>X</em></span>.</em></p>
+</div>
+<div class="definition">
+<p><strong>Definition 55</strong> (Path homotopy). <em>Two paths with
+same initial and end points: <span
+class="math inline"><em>γ</em><sub>1</sub>, <em>γ</em><sub>2</sub> : [0,1] → <em>X</em></span>.
+<span
+class="math inline"><em>γ</em><sub>1</sub>≃<sub><em>p</em></sub><em>γ</em><sub>2</sub></span>
+if there exists a continuous map <span
+class="math inline"><em>σ</em> : [0,1] × [0,1] → <em>X</em></span> with
+<span
+class="math inline"><em>σ</em>(<em>t</em>,0) = <em>γ</em><sub>1</sub>(<em>t</em>)</span>
+and <span
+class="math inline"><em>σ</em>(<em>t</em>,1) = <em>γ</em><sub>2</sub>(<em>t</em>)</span>.
+Moreover, we need <span
+class="math inline"><em>σ</em>(0,<em>s</em>) = <em>γ</em><sub>1</sub>(0) = <em>γ</em><sub>2</sub>(0)</span>
+and <span
+class="math inline"><em>σ</em>(1,<em>s</em>) = <em>γ</em><sub>1</sub>(1) = <em>γ</em><sub>2</sub>(1)</span>.</em></p>
+</div>
+<p><strong>Remark.</strong> Path homotopy is stricter than map homotopy
+as it fixes the initial and end points during deformation. To see their
+difference, consider <span class="math inline">ℝ ∖ {0}</span>.</p>
+<div class="definition">
+<p><strong>Definition 56</strong> (Path multiplication). <em>Let <span
+class="math inline"><em>α</em>, <em>β</em></span> be paths on a
+topological space <span class="math inline"><em>X</em></span>. Suppose
+<span class="math inline"><em>α</em>(1) = <em>β</em>(0)</span>. We
+define <span class="math display">$$(\alpha *\beta)(s) = \begin{cases}
+    \alpha(2s),\ s\in [0,\frac{1}{2}],\\
+    \beta(2s-1),\ s\in [\frac{1}{2},1].
+    \end{cases}$$</span></em></p>
+</div>
+<div class="proposition">
+<p><strong>Proposition 57</strong>. <em>For a path <span
+class="math inline"><em>γ</em></span> on <span
+class="math inline"><em>X</em></span> we have <span
+class="math display"><em>γ</em> * <em>γ</em><sup>−</sup>≃<sub><em>p</em></sub><em>I</em>[<em>γ</em>(0)]</span></em></p>
+</div>
+<p>Note that <span
+class="math inline"><em>α</em>≃<sub><em>p</em></sub><em>α</em><sup>′</sup></span>
+and <span
+class="math inline"><em>β</em>≃<sub><em>p</em></sub><em>β</em><sup>′</sup></span>
+yields <span
+class="math inline"><em>α</em> * <em>β</em>≃<sub><em>p</em></sub><em>α</em><sup>′</sup> * <em>β</em><sup>′</sup></span>.
+We can define <span
+class="math display"><sub><em>p</em></sub> * [<em>β</em>]<sub><em>p</em></sub> = [<em>α</em>*<em>β</em>]<sub><em>p</em></sub></span></p>
+<div class="proposition">
+<p><strong>Proposition 58</strong>. <em>Suppose <span
+class="math inline"><em>α</em>, <em>β</em>, <em>γ</em></span> are paths
+on <span class="math inline"><em>X</em></span>. Then <span
+class="math display"><sub><em>p</em></sub> * ([<em>β</em>]<sub><em>p</em></sub>*[<em>γ</em>]<sub><em>p</em></sub>) = ([<em>α</em>]<sub><em>p</em></sub>*[<em>β</em>]<sub><em>p</em></sub>) * [<em>γ</em>]<sub><em>p</em></sub>.</span></em></p>
+</div>
+<p>We now want to use define a group structure on this operation.
+However, not all paths on <span class="math inline"><em>X</em></span>
+can be multiplied as they might not have overlapped end points. To fix
+this issue, we consider loops with a fixed end points.</p>
+<div class="definition">
+<p><strong>Definition 59</strong> (Fundamental Group). <em>Let <span
+class="math inline"><em>X</em></span> be a topological space. Let <span
+class="math inline"><em>x</em> ∈ <em>X</em></span>. We define <span
+class="math display"><em>π</em><sub>1</sub>(<em>X</em>,<em>x</em>) = {[<em>γ</em>]<sub><em>p</em></sub> | <em>γ</em> loops
+in <em>X</em>, <em>i</em>.<em>e</em>., <em>γ</em>(0) = <em>γ</em>(1) = <em>x</em>}.</span>
+Then <span
+class="math inline">(<em>π</em><sub>1</sub>(<em>X</em>,<em>x</em>),*)</span>
+is a group.</em></p>
+</div>
+<p><strong>Remark.</strong></p>
+<ul>
+<li><p>On <span class="math inline">ℝ<sup>2</sup></span> all loops are
+path homotopic to the constant path. On <span
+class="math inline">ℝ<sup>2</sup> ∖ {0}</span>, however, loops that wrap
+around <span class="math inline">0</span> are not path homotopic to the
+constant path.</p></li>
+<li><p>A fundamental group is not necessarily Abelian.</p></li>
+</ul>
+<div class="proposition">
+<p><strong>Proposition 60</strong>. <em><span
+class="math inline"><em>π</em><sub>1</sub>((<em>X</em>,<em>x</em>),*)</span>
+is a homotopic invariant.</em></p>
+</div>
+<p><strong>Examples</strong>.</p>
+<ul>
+<li><p>Let <span class="math inline"><em>A</em></span> be a band and
+<span class="math inline"><em>B</em></span> be a Mobius band. Then <span
+class="math inline"><em>π</em><sub>1</sub>(<em>A</em>,*) ≅ <em>π</em><sub>1</sub>(<em>B</em>,*) ≅ <em>π</em><sub>1</sub>(<em>S</em><sup>1</sup>,*) ≅ (ℤ,+)</span>.</p></li>
+</ul>
+<div class="proposition">
+<p><strong>Proposition 61</strong>. <em>If <span
+class="math inline"><em>X</em></span> is path connected, then <span
+class="math inline"><em>π</em><sub>1</sub>((<em>X</em>,<em>x</em>),*) ≅ <em>π</em><sub>1</sub>((<em>X</em>,<em>y</em>),*)</span>
+for any <span
+class="math inline"><em>x</em>, <em>y</em> ∈ <em>X</em></span>.</em></p>
+</div>
+<p><strong>Remark.</strong> Let <span
+class="math inline"><em>X</em></span> be a topological space, then the
+followings are equivalent</p>
+<ul>
+<li><p><span
+class="math inline"><em>π</em><sub>1</sub>(<em>X</em>,<em>x</em>)</span>
+is trivial</p></li>
+<li><p><span
+class="math inline">∀<em>γ</em><sub>1</sub>, <em>γ</em><sub>2</sub></span>
+paths with <span
+class="math inline"><em>γ</em><sub>1</sub>(0) = <em>γ</em><sub>2</sub>(0) = <em>x</em></span>
+and <span
+class="math inline"><em>γ</em><sub>1</sub>(1) = <em>γ</em><sub>2</sub>(1)</span>,
+we have <span
+class="math inline"><em>γ</em><sub>1</sub>≃<sub><em>p</em></sub><em>γ</em><sub>2</sub></span>.</p></li>
+<li><p>All loops at <span class="math inline"><em>x</em></span> <span
+class="math inline">≃<sub><em>p</em></sub></span> constant loop at <span
+class="math inline"><em>x</em></span>.</p></li>
+</ul>
+<h2 id="covering-space">Covering Space</h2>
+<div class="definition">
+<p><strong>Definition 62</strong> (Covering Space). <em>Let <span
+class="math inline">(<em>E</em>,<em>p</em>)</span> be a space over <span
+class="math inline"><em>p</em></span> with <span
+class="math inline"><em>p</em> : <em>E</em> → <em>B</em></span>
+continuous surjective. <span class="math inline"><em>p</em></span> is a
+covering map and <span
+class="math inline">(<em>E</em>,<em>p</em>)</span> is a covering space
+over <span class="math inline"><em>B</em></span>, if <span
+class="math inline">∀<em>b</em> ∈ <em>B</em></span> there exists an open
+neighbor <span class="math inline"><em>U</em></span> of <span
+class="math inline"><em>b</em></span> such that <span
+class="math display"><em>p</em><sup>−1</sup>(<em>U</em>) = ⋃<sub><em>i</em> ∈ <em>I</em></sub><em>U</em><sub><em>i</em></sub></span>
+where <span class="math inline"><em>U</em><sub><em>i</em></sub></span>
+are disjoint open subsets of <span class="math inline"><em>E</em></span>
+and <span
+class="math inline"><em>p</em>|<sub><em>U</em><sub><em>i</em></sub></sub> : <em>U</em><sub><em>i</em></sub> → <em>U</em></span>
+is a homeomorphism.</em></p>
+</div>
+<div class="lemma">
+<p><strong>Lemma 63</strong> (lifting lemma). <em>Let <span
+class="math inline"><em>p</em> : <em>E</em> → <em>B</em></span> be a
+covering map. Let <span
+class="math inline"><em>c</em> : [0,1] → <em>B</em></span> be a path on
+<span class="math inline"><em>B</em></span>. If <span
+class="math inline"><em>b̃</em> ∈ <em>E</em>, <em>p</em>(<em>b̃</em>) = <em>c</em>(0) = <em>b</em></span>,
+then there exists a <em>unique</em> path in <span
+class="math inline"><em>E</em></span>: <span
+class="math inline"><em>c̃</em> : [0,1] → <em>E</em></span>, such that
+<span class="math inline"><em>c̃</em>(0) = <em>b̃</em></span> and <span
+class="math inline"><em>p</em> ∘ <em>c̃</em> = <em>c</em></span>.</em></p>
+</div>
+<div class="proposition">
+<p><strong>Proposition 64</strong>. <em>Let <span
+class="math inline"><em>p</em> : <em>E</em> → <em>B</em></span> be a
+covering map. Let <span
+class="math inline"><em>c</em><sub>1</sub>, <em>c</em><sub>2</sub> : [0,1] → <em>B</em></span>
+be two homotopic paths on <span class="math inline"><em>B</em></span>.
+Suppose <span
+class="math inline"><em>c</em><sub>1</sub>(0) = <em>c</em><sub>2</sub>(0) = <em>b</em></span>.
+Then <span
+class="math inline"><em>c̃</em><sub>1</sub>, <em>c̃</em><sub>2</sub></span>
+with <span
+class="math inline"><em>c̃</em><sub>1</sub>(0) = <em>c̃</em><sub>2</sub>(0) = <em>b̃</em> ∈ <em>p</em><sup>−1</sup>(<em>b</em>)</span>
+are also homotopic.</em></p>
+</div>
+<h2 id="higher-homotopic-group">Higher Homotopic Group</h2>
+<p>In discussion of path-connected components, we note that <span
+class="math display"><em>π</em><sub>0</sub>(<em>X</em>) = {[<em>x</em>→<em>X</em>] | <em>x</em> ∈ <em>X</em>}</span>
+can be viewed as the set of all homotopic equivalent classes from a
+single point to <span class="math inline"><em>X</em></span>. Similarly,
+<span
+class="math display"><em>π</em><sub>1</sub>(<em>X</em>) = {[[0,1]→<em>X</em>] | <em>x</em> ∈ <em>X</em>}</span>
+can be viewed as the set of all homotopic equivalent classes of loops in
+<span class="math inline"><em>X</em></span>. We want to generalize 0-dim
+point and 1-dim loops to <span class="math inline"><em>n</em></span>
+dimension in this section.</p>
+<div class="definition">
+<p><strong>Definition 65</strong> (n-cube). <em><span
+class="math inline"><em>I</em><sub><em>n</em></sub> = [0,1]<sup>⊗<em>n</em></sup> = {(<em>t</em><sub>1</sub>,…,<em>t</em><sub><em>n</em></sub>) ∈ ℝ<sup><em>n</em></sup> | <em>t</em><sub><em>i</em></sub> ∈ [0,1]}</span>.
+Then <span
+class="math inline">∂<em>I</em><sub><em>n</em></sub> = {(<em>t</em><sub>1</sub>,…,<em>t</em><sub><em>n</em></sub>) ∈ <em>I</em><sub><em>n</em></sub> | ∃<em>t</em><sub><em>i</em></sub> = 0, 1}</span>.</em></p>
+<p><em>Moreover, we define a <span
+class="math inline"><em>n</em></span>-loop based at <span
+class="math inline"><em>x</em> ∈ <em>X</em></span> be a continuous map
+<span
+class="math display"><em>γ</em> : <em>I</em><sub><em>n</em></sub> → <em>X</em>, s.t., <em>γ</em>|<sub>∂<em>I</em><sub><em>n</em></sub></sub> = <em>x</em>.</span></em></p>
+</div>
+<p><strong>Remark.</strong> This requirement is a generalization of the
+requirement <span
+class="math inline"><em>γ</em>(0) = <em>γ</em>(1)</span> in the
+1-dimensional case, i.e., loops.</p>
+<div class="definition">
+<p><strong>Definition 66</strong> (Homotopy for <span
+class="math inline"><em>n</em></span>-loops). <em>Let <span
+class="math inline"><em>γ</em>, <em>σ</em></span> be two <span
+class="math inline"><em>n</em></span>-loops based at <span
+class="math inline"><em>x</em></span>. Let <span
+class="math inline"><em>γ</em>(<em>x</em>) = <em>σ</em>(<em>x</em>)</span>
+for any <span
+class="math inline"><em>x</em> ∈ ∂<em>I</em><sub><em>n</em></sub></span>.
+Then <span class="math inline"><em>γ</em> ≃ <em>σ</em></span> homotopic
+as <span class="math inline"><em>n</em></span>-loops if there exists
+<span
+class="math inline"><em>H</em> : <em>I</em><sub><em>n</em></sub> × <em>I</em> → <em>X</em></span>
+such that <span
+class="math display"><em>H</em>(<em>t</em>;0) = <em>γ</em>(<em>t</em>), <em>H</em>(<em>t</em>;1) = <em>σ</em>(<em>t</em>), and <em>H</em>(<em>t</em>;<em>s</em>) = <em>x</em>, ∀<em>t</em> ∈ ∂<em>I</em><sub><em>n</em></sub>, <em>s</em> ∈ <em>I</em>.</span></em></p>
+</div>
+<p>To construct group structures for <span
+class="math inline"><em>n</em></span>-loops, we define their composition
+as <span class="math display">$$\sigma_1 *\sigma_2 = \begin{cases}
+    \sigma_1(2t_1,t_2,\dots, t_n),\quad  0 \leq t_1\leq 1/2.\\
+    \sigma_2(2t_1 - 1, t_2, \dots, t_n), \frac{1}{2}\leq t_1\leq 1.
+    \end{cases}
+    \label{nloop}$$</span></p>
+<p><strong>Remark.</strong></p>
+<ul>
+<li><p>Surprisingly, <span
+class="math inline"><em>σ</em><sub>1</sub> * <em>σ</em><sub>2</sub> ≃ <em>σ</em><sub>2</sub> * <em>σ</em><sub>1</sub></span>
+for <span class="math inline"><em>n</em> ≥ 2</span>. In other words,
+<span
+class="math inline">(<em>π</em><sub><em>n</em></sub>(<em>X</em>,<em>x</em>),*)</span>
+is an Abelian group.</p></li>
+<li><p>Moreover, <span
+class="math inline">[<em>σ</em><sub>1</sub>*<em>σ</em><sub>2</sub>]<sub><em>p</em></sub></span>
+well defined, in the sense that choosing the first index in <a
+href="#nloop" data-reference-type="ref"
+data-reference="nloop">[nloop]</a> is equivalent to choosing any other
+coordinate in <span class="math inline">[<em>n</em>]</span>.</p></li>
+</ul>
+<p><strong>Examples.</strong></p>
+<ul>
+<li><p><span
+class="math inline"><em>π</em><sub><em>n</em></sub>(<em>S</em><sup><em>n</em></sup>) ≅ ℤ, <em>n</em> ≥ 1</span>.</p></li>
+<li><p><span
+class="math inline"><em>π</em><sub>5</sub>(<em>S</em><sup>2</sup>) ≅ ℤ<sub>2</sub>, <em>π</em><sub>6</sub>(<em>S</em><sup>2</sup>) ≅ ℤ<sub>12</sub></span>.</p></li>
+<li><p><span
+class="math inline"><em>π</em><sub>1</sub>(ℝ<em>P</em><sup>2</sup>) ≅ ℤ<sub>2</sub>, <em>π</em><sub><em>n</em></sub>(ℝ<em>P</em><sup><em>n</em></sup>) ≅ ℤ, <em>n</em> ≥ 2</span>.</p></li>
+<li><p>(Bott periodicity of Lie groups) For <span
+class="math inline"><em>n</em> ≥ (<em>k</em>+1)/2</span>, <span
+class="math display">$$\pi_k(U(n)) \cong \pi_k(SU(n)) \cong
+\begin{cases}
+        \{e\},\ k\ \text{even}\\
+        \mathbb Z,\ k\ \text{odd}.
+        \end{cases}$$</span></p></li>
+</ul>
+<h2 id="application-of-homotopy-taxonomy-of-defects">Application of
+Homotopy: Taxonomy of Defects</h2>
+<p>For a given material, describe its magnetic feature by its magnetic
+moment <span
+class="math inline"><em>m⃗</em>(<em>x</em>) = ⟨∑<sub><em>i</em></sub><em>m</em><sub><em>i</em></sub>(<em>x</em>)⟩</span>.</p>
+<p>The free energy <span
+class="math display">ℱ = ℱ<sub><em>g</em><em>r</em><em>a</em><em>d</em></sub> + ℱ<sub><em>p</em><em>o</em><em>t</em><em>e</em><em>n</em><em>t</em><em>i</em><em>a</em><em>l</em></sub> + ℱ<sub><em>e</em><em>x</em><em>t</em></sub>.</span>
+where <span
+class="math display">ℱ<sub><em>g</em><em>r</em><em>a</em><em>d</em></sub> = <em>κ</em>|∇<em>m</em>|<sup>2</sup></span>
+and <span class="math display">$$\mathcal F_{potential} =
+-\alpha(T)|m|^2 + \beta(T) |m|^4 +
+\frac{\alpha(T)^2}{4\beta(T)}.$$</span> Note that we should minimize
+<span class="math inline"><em>F</em> = ∫ℱ(<em>x</em>)d<em>x</em></span>.
+Suppose the gradient is zero, i.e., the magnetic moment is constant
+(homogeneous). If <span
+class="math inline"><em>α</em>(<em>T</em>) &lt; 0, <em>β</em>(<em>T</em>) &gt; 0</span>,
+then <span class="math inline">|<em>m⃗</em>| = 0</span>. If <span
+class="math inline"><em>α</em>(<em>T</em>) &gt; 0, <em>β</em>(<em>T</em>) &gt; 0</span>,
+then <span class="math inline">|<em>m⃗</em>| &gt; 0</span>, i.e.,
+Ferromagnetism.</p>
+<p>We define defects as <span
+class="math inline"><em>m⃗</em>(<em>x</em>), <em>F</em> &lt; ∞</span>
+where <span class="math inline">ℱ</span> is a local minimum. If <span
+class="math inline"><em>m⃗</em>(<em>x</em>)</span> is regular everywhere,
+we call it a regular defect. If <span
+class="math inline"><em>m⃗</em>(<em>x</em>)</span> has a singular point,
+we call it a singular defect.</p>
+<p>For regular defects, we know when <span
+class="math inline">|<em>x</em>| → ∞</span>, <span
+class="math inline">ℱ → 0</span> or otherwise the integration would not
+be finite. Thus, <span class="math display">$$\lim_{|x|\to \infty} |\vec
+m(x)| = m_0 \propto \sqrt{\frac{\alpha}{\beta}}.$$</span> The boundary
+condition for <span
+class="math inline"><em>m⃗</em>(<em>x</em>) : ℝ<sup><em>d</em></sup> → ℝ<sup>3</sup></span>
+is bounded to <span class="math inline">𝕊<sup>2</sup></span>. The
+solution is locally stable guaranteed by homotopy on <span
+class="math inline"><em>π</em><sub><em>d</em> − 1</sub>(𝕊<sup>2</sup>)</span>.</p>
+<p><span
+class="math inline"><em>π</em><sub>0</sub>(<em>S</em><sup>2</sup>) = <em>π</em><sub>1</sub>(<em>S</em><sup>2</sup>) = {0}</span>,
+<span
+class="math inline"><em>π</em><sub>2</sub>(<em>S</em><sup>2</sup>) = ℤ</span>.</p>
+<h1 id="homology">Homology</h1>
+<h3 id="simplex">Simplex</h3>
+<ul>
+<li><p><span class="math inline">0</span>-simplex: a point <span
+class="math inline">⟨<em>p</em><sub>0</sub>⟩</span>.</p></li>
+<li><p><span class="math inline">1</span>-simplex: an edge: <span
+class="math inline">⟨<em>p</em><sub>0</sub>, <em>p</em><sub>1</sub>⟩</span>.</p></li>
+<li><p><span class="math inline">2</span>-simplex: an triangle <span
+class="math inline">⟨<em>p</em><sub>0</sub>, <em>p</em><sub>1</sub>, <em>p</em><sub>2</sub>⟩</span>,
+but <span
+class="math inline"><em>p</em><sub>0</sub>, <em>p</em><sub>1</sub>, <em>p</em><sub>2</sub></span>
+do not lie on a same line.</p></li>
+</ul>
+<p><strong>Geometric independence:</strong> <span
+class="math inline"><em>r</em> + 1</span> points are geometrically
+independent, if <span
+class="math inline"><em>p</em><sub>0</sub>, …, <em>p</em><sub><em>r</em></sub> ⊆ <em>r</em> − <em>d</em><em>i</em><em>m</em></span>
+hyperplane, but <span
+class="math inline"><em>p</em><sub>0</sub>, …, <em>p</em><sub><em>r</em></sub> ⊈ (<em>r</em>−1) − <em>d</em><em>i</em><em>m</em></span>
+hyperplane.</p>
+<div class="definition">
+<p><strong>Definition 67</strong> (<span
+class="math inline"><em>r</em></span>-simplex). <em><span
+class="math inline">{<em>p</em><sub>0</sub>, …, <em>p</em><sub><em>r</em></sub>}</span>
+be <span class="math inline">(<em>r</em>+1)</span>-geometrically
+independent. <span
+class="math inline"><em>p</em><sub>0</sub>, …, <em>p</em><sub><em>r</em></sub> ∈ ℝ<sup><em>m</em></sup></span>,
+<span class="math inline"><em>m</em> ≥ <em>r</em></span>. A <span
+class="math inline"><em>r</em></span>-simplex <span
+class="math inline"><em>σ</em><sup><em>r</em></sup>(⟨<em>p</em><sub>0</sub>,…,<em>p</em><sub><em>r</em></sub>⟩)</span>
+is defined as <span class="math display">$$\sigma^r = \{x\in \mathbb R^m
+\ |\ x = \sum_{i=1}^r c_i p_i, c_i \geq 0, \sum_{i=0}^r c_i =
+1\}$$</span></em></p>
+</div>
+<p><strong>Remark.</strong> <span
+class="math inline">{<em>c</em><sub><em>i</em></sub>}</span> are called
+the barycentric coordinates of <span
+class="math inline"><em>x</em></span>.</p>
+<div class="definition">
+<p><strong>Definition 68</strong> (<span
+class="math inline"><em>q</em></span>-face). <em>Let <span
+class="math inline"><em>q</em> ∈ ℤ, 0 ≤ <em>q</em> ≤ <em>r</em></span>.
+Select <span class="math inline"><em>q</em> + 1</span> points from <span
+class="math inline">{<em>p</em><sub>0</sub>, …, <em>p</em><sub><em>r</em></sub>}</span>
+and denote them by <span
+class="math inline">{<em>p</em><sub><em>i</em><sub>0</sub></sub>, …, <em>p</em><sub><em>i</em><sub><em>q</em></sub></sub>}</span>.
+Then the <span class="math inline"><em>q</em></span>-simplex <span
+class="math inline">⟨<em>p</em><sub><em>i</em><sub>0</sub></sub>, …, <em>p</em><sub><em>i</em><sub><em>q</em></sub></sub>⟩</span>
+is a <span class="math inline"><em>q</em></span>-face of <span
+class="math inline">⟨<em>p</em><sub>0</sub>, …, <em>p</em><sub><em>r</em></sub>⟩</span>,
+denoted <span
+class="math display">⟨<em>p</em><sub><em>i</em><sub>0</sub></sub>, …, <em>p</em><sub><em>i</em><sub><em>q</em></sub></sub>⟩ ≤ ⟨<em>p</em><sub>0</sub>, …, <em>p</em><sub><em>r</em></sub>⟩</span></em></p>
+</div>
+<h3 id="simplicial-complex">Simplicial Complex</h3>
+<div class="definition">
+<p><strong>Definition 69</strong>. <em><span
+class="math inline"><em>K</em></span> is a set of simplexes. <span
+class="math inline"><em>K</em></span> is a simplicial complex
+if</em></p>
+<ul>
+<li><p><em><span class="math inline"><em>σ</em> ∈ <em>K</em></span>,
+<span
+class="math inline"><em>σ</em><sup>′</sup> ≤ <em>σ</em> ⇒ <em>σ</em><sup>′</sup> ∈ <em>K</em></span></em></p></li>
+<li><p><em>For any <span
+class="math inline"><em>σ</em>, <em>σ</em><sup>′</sup> ∈ <em>K</em></span>,
+either <span
+class="math inline"><em>σ</em> ∩ <em>σ</em><sup>′</sup> = ⌀</span>, or
+<span
+class="math inline"><em>σ</em> ∩ <em>σ</em><sup>′</sup> ≤ <em>σ</em>, <em>σ</em> ∩ <em>σ</em><sup>′</sup> ≤ <em>σ</em><sup>′</sup></span>.</em></p></li>
+</ul>
+</div>
+<p><strong>Remark.</strong> For a simplicial complex <span
+class="math inline"><em>K</em></span>, the union of all elements in
+<span class="math inline"><em>K</em></span> is called a polyhedron,
+<span
+class="math inline">|<em>K</em>| := ⋃<sub><em>σ</em> ∈ <em>K</em></sub><em>σ</em></span>.</p>
+<div class="definition">
+<p><strong>Definition 70</strong> (Triangulation). <em>Let <span
+class="math inline"><em>X</em></span> be a topological space. If there
+exists a simplicial complex <span class="math inline"><em>K</em></span>,
+such that <span
+class="math inline"><em>f</em> : |<em>K</em>| → <em>X</em></span> is a
+homeomorphism, then <span class="math inline"><em>X</em></span> is
+triangulable, and <span
+class="math inline">(<em>K</em>,<em>f</em>)</span> is a triangulation of
+<span class="math inline"><em>X</em></span>.</em></p>
+</div>
+<h2 id="chain-group">Chain Group</h2>
+<p>Define orientation on <span
+class="math inline">⟨<em>p</em><sub>1</sub>, …, <em>p</em><sub><em>n</em></sub>⟩</span>.
+Two simplexes have the same orientation if they differ by an even
+permutation.</p>
+<div class="definition">
+<p><strong>Definition 71</strong> (Chain group). <em><span
+class="math inline"><em>K</em></span> simplicial complex. The <span
+class="math inline"><em>r</em></span>-chain group on <span
+class="math inline"><em>K</em></span>, <span
+class="math inline"><em>C</em><sub><em>r</em></sub>(<em>K</em>)</span>,
+is an Abelian group generated by the oriented <span
+class="math inline"><em>r</em></span>-simplexes of <span
+class="math inline"><em>K</em></span>. If <span
+class="math inline"><em>r</em> &gt; dim <em>K</em></span>, <span
+class="math inline"><em>C</em><sub><em>r</em></sub>(<em>K</em>) = 0</span>.
+An element in <span
+class="math inline"><em>C</em><sub><em>r</em></sub>(<em>K</em>)</span>
+is called an <span class="math inline"><em>r</em></span>-chain.</em></p>
+</div>
+<p><strong>Remark.</strong> <span
+class="math display"><em>C</em><sub><em>r</em></sub>(<em>K</em>) = {∑<sub><em>i</em></sub><em>z</em><sub><em>i</em></sub><em>σ</em><sub><em>i</em></sub><sup><em>r</em></sup> | <em>z</em><sub><em>i</em></sub> ∈ ℤ, <em>σ</em><sub><em>i</em></sub><sup><em>r</em></sup> ∈ <em>K</em>}.</span></p>
+<ul>
+<li><p>For <span
+class="math inline"><em>c</em> = ∑<sub><em>i</em></sub><em>c</em><sub><em>i</em></sub><em>σ</em><sub><em>i</em></sub><sup><em>r</em></sup></span>,
+<span
+class="math inline"><em>d</em> = ∑<sub><em>i</em></sub><em>d</em><sub><em>i</em></sub><em>σ</em><sub><em>i</em></sub><sup><em>r</em></sup></span>,
+<span
+class="math inline"><em>c</em> + <em>d</em> = ∑<sub><em>i</em></sub>(<em>c</em><sub><em>i</em></sub>+<em>d</em><sub><em>i</em></sub>)<em>σ</em><sub><em>i</em></sub><sup><em>r</em></sup></span>.</p></li>
+<li><p><span
+class="math inline"><em>C</em><sub><em>r</em></sub>(<em>K</em>) ≅ ℤ<sup><em>d</em></sup></span>
+for some <span class="math inline"><em>d</em></span>. <span
+class="math inline"><em>d</em></span> is the dimension of <span
+class="math inline"><em>C</em><sub><em>r</em></sub>(<em>K</em>)</span>
+and <span class="math inline"><em>d</em>=</span> the number of <span
+class="math inline"><em>r</em></span>-simplex in <span
+class="math inline"><em>K</em></span>.</p></li>
+<li><p>Consider <span class="math inline">dim <em>K</em> = 2</span>,
+<span
+class="math inline">dim <em>C</em><sub>2</sub>(<em>K</em>) − dim <em>C</em><sub>1</sub>(<em>K</em>) + dim<sub>0</sub>(<em>K</em>)</span>
+is the Euler characteristic for planar graphs, which is invariant under
+homotopy.</p></li>
+</ul>
+<p>Next, we define cycle groups and boundary groups that are subgroups
+of chain groups. We start with defining what a boundary is.</p>
+<div class="definition">
+<p><strong>Definition 72</strong> (Boundary). <em>Note that the boundary
+of a <span class="math inline"><em>r</em></span>-simplex is a union of
+<span class="math inline">(<em>r</em>−1)</span>-simplexes it contains.
+We define a boundary operator <span
+class="math inline">∂<sub><em>r</em></sub> : <em>C</em><sub><em>r</em></sub>(<em>K</em>) → <em>C</em><sub><em>r</em> − 1</sub>(<em>K</em>)</span>:
+<span
+class="math display">∂<sub><em>r</em></sub>(∑<sub><em>i</em></sub><em>z</em><sub><em>i</em></sub><em>σ</em><sub><em>i</em></sub><sup><em>r</em></sup>) = ∑<sub><em>i</em></sub><em>z</em><sub><em>i</em></sub>∂<sub><em>r</em></sub>(<em>σ</em><sub><em>i</em></sub><sup><em>r</em></sup>)</span>
+and for <span
+class="math inline"><em>σ</em><sub><em>i</em></sub><sup><em>r</em></sup> = (<em>p</em><sub>0</sub>,<em>p</em><sub>1</sub>,…,<em>p</em><sub><em>r</em></sub>)</span>,
+<span class="math display">$$\partial_r(\sigma_i^r) = \sum_{i=0}^r
+(-1)^i (p_0,\dots, p_{i-1}, p_{i+1},\dots, p_r).$$</span> By definition
+we know <span class="math inline"><em>σ</em><sub><em>r</em></sub></span>
+is a group homomorphism.</em></p>
+</div>
+<p>Then the kernel <span
+class="math inline"><em>k</em><em>e</em><em>r</em>(∂<sub><em>r</em></sub>)</span>
+is called the cycle group and the image <span
+class="math inline"><em>I</em><em>m</em>(∂<sub><em>r</em></sub>)</span>
+is called the boundary group.</p>
+<div class="definition">
+<p><strong>Definition 73</strong> (Cycle group). <em>An <span
+class="math inline"><em>r</em></span>-cycle group <span
+class="math inline"><em>Z</em><sub><em>r</em></sub>(<em>K</em>)</span>
+is defined as <span
+class="math display"><em>Z</em><sub><em>r</em></sub>(<em>K</em>) = <em>K</em><em>e</em><em>r</em>(∂<sub><em>r</em></sub>) = {<em>c</em> ∈ <em>C</em><sub><em>r</em></sub>(<em>K</em>) | ∂<sub><em>r</em></sub><em>c</em> = 0}.</span></em></p>
+</div>
+<div class="definition">
+<p><strong>Definition 74</strong> (Boundary group). <em>An <span
+class="math inline"><em>r</em></span>-boundary group <span
+class="math inline"><em>B</em><sub><em>r</em></sub>(<em>K</em>)</span>
+is defined as <span
+class="math display"><em>B</em><sub><em>r</em></sub>(<em>K</em>) = <em>I</em><em>m</em>∂<sub><em>r</em> + 1</sub> = {<em>c</em> ∈ <em>C</em><sub><em>r</em></sub>(<em>K</em>) | <em>c</em> = ∂<sub><em>r</em> + 1</sub><em>d</em>, <em>d</em> ∈ <em>C</em><sub><em>r</em> + 1</sub>(<em>K</em>)}.</span></em></p>
+</div>
+<div class="proposition">
+<p><strong>Proposition 75</strong>. <em><span
+class="math inline">∂<sub><em>r</em></sub> ∘ ∂<sub><em>r</em> + 1</sub> : <em>C</em><sub><em>r</em> + 1</sub>(<em>K</em>) → <em>C</em><sub><em>r</em> − 1</sub>(<em>K</em>)</span>
+is a zero map.</em></p>
+<p><em>Therefore, <span
+class="math inline"><em>B</em><sub><em>r</em></sub>(<em>K</em>) ⊂ <em>Z</em><sub><em>r</em></sub>(<em>K</em>) ⊂ <em>C</em><sub><em>r</em></sub>(<em>K</em>)</span>.</em></p>
+</div>
+<h2 id="simplicial-homology">Simplicial Homology</h2>
+<p>We define a <strong>chain complex</strong> <span
+class="math inline">(<em>C</em><sub>⋅</sub>,<em>d</em><sub>⋅</sub>)</span>
+of Abelian groups <span
+class="math inline">(<em>C</em><sub><em>n</em></sub>)<sub><em>n</em> ∈ ℤ</sub></span>
+and homomorphisms of Abelian groups <span
+class="math display"><em>d</em><sub><em>n</em></sub> : <em>C</em><sub><em>n</em> + 1</sub> → <em>C</em><sub><em>n</em></sub></span>
+subject to <span
+class="math inline"><em>d</em><sub><em>n</em></sub> ∘ <em>d</em><sub><em>n</em> + 1</sub> = 0</span>
+for all <span class="math inline"><em>n</em> ∈ ℤ</span>.</p>
+<div class="definition">
+<p><strong>Definition 76</strong> (Homology). <em>An <span
+class="math inline"><em>r</em></span>-homology group of <span
+class="math inline">(<em>C</em><sub>⋅</sub>,<em>d</em>)</span> is
+defined as <span class="math display">$$H_r(C_{\cdot}, d) =
+\frac{Ker(d_r: C_r \to C_{r-1})}{Im(d_{r+1}: C_{r+1} \to
+C_r)}$$</span></em></p>
+</div>
+<div class="theorem">
+<p><strong>Theorem 77</strong>. <em>Let <span
+class="math inline"><em>X</em></span>,<span
+class="math inline"><em>Y</em></span> be two triangulable homeomorphic
+topological space, and <span
+class="math inline">(<em>K</em>,<em>f</em>)</span>, <span
+class="math inline">(<em>L</em>,<em>g</em>)</span> be triangulations of
+<span class="math inline"><em>X</em></span> and <span
+class="math inline"><em>Y</em></span>. Then <span
+class="math display"><em>H</em><sub><em>r</em></sub>(<em>K</em>) ≅ <em>H</em><sub><em>r</em></sub>(<em>L</em>)</span></em></p>
+</div>
+<div class="proposition">
+<p><strong>Proposition 78</strong>. <em>Let <span
+class="math inline"><em>K</em></span> be a connected simplicial complex,
+then <span
+class="math display"><em>H</em><sub>0</sub>(<em>K</em>) ≅ ℤ</span></em></p>
+</div>
+<h2 id="structure-of-homology-group">Structure of Homology Group</h2>
+<p>Note that <span
+class="math inline"><em>H</em><sub><em>r</em></sub>(<em>K</em>)</span>
+is Abelian. The most general form of an Abelian group is <span
+class="math display"><em>H</em><sub><em>r</em></sub>(<em>K</em>) ≅ ℤ<sup><em>n</em></sup> × ℤ<sub><em>k</em><sub>1</sub></sub> × … × ℤ<sub><em>k</em><sub><em>p</em></sub></sub></span>
+The first part is called the free part and the second is called torsion
+part.</p>
+<p>If we change the coefficient in chain groups from integer to real
+numbers, the torsion part disappears. So <span
+class="math inline"><em>H</em><sub><em>r</em></sub>(<em>K</em>;ℝ) ≅ ℝ<sup><em>f</em></sup></span>.</p>
+<div class="definition">
+<p><strong>Definition 79</strong> (Betti number). <em>Let <span
+class="math inline"><em>K</em></span> be a simplicial complex. The <span
+class="math inline"><em>r</em></span>-th Betti number is <span
+class="math display"><em>b</em><sub><em>r</em></sub>(<em>K</em>) = dim <em>H</em><sub><em>r</em></sub>(<em>K</em>;ℝ)</span>
+which is also the rank of the free Abelian part of <span
+class="math inline"><em>H</em><sub><em>r</em></sub>(<em>K</em>;ℤ)</span>.</em></p>
+</div>
+<div class="definition">
+<p><strong>Definition 80</strong> (Euler characteristics). <em>Let <span
+class="math inline"><em>K</em></span> be an <span
+class="math inline"><em>n</em></span>-dimensional simplicial complex,
+and <span class="math inline"><em>I</em><sub><em>r</em></sub></span> be
+the number of <span class="math inline"><em>r</em></span>-simplexes in
+<span class="math inline"><em>K</em></span>. The Euler characteristics
+<span class="math inline"><em>χ</em></span> is <span
+class="math display">$$\chi(K) = \sum_{r=0}^n (-1)^r
+I_r.$$</span></em></p>
+</div>
+<div class="theorem">
+<p><strong>Theorem 81</strong> (Euler-Poincare). <em>Let <span
+class="math inline"><em>K</em></span> be an <span
+class="math inline"><em>n</em></span>-dim simplicial complex, <span
+class="math display">$$\chi(K) = \sum_{r=0}^n (-1)^r
+b_r(K).$$</span></em></p>
+</div>
+<h2 id="smith-normal-form">Smith Normal Form</h2>
+<p>Let <span
+class="math inline"><em>A</em> = (<em>a</em><sub><em>i</em><em>j</em></sub>) ∈ <em>M</em><sub><em>m</em> × <em>n</em></sub>(ℤ)</span>.
+<span class="math inline"><em>A</em></span> is in Smith normal form
+if</p>
+<ul>
+<li><p><span
+class="math inline"><em>a</em><sub><em>i</em><em>j</em></sub> = 0, ∀<em>i</em> ≠ <em>j</em></span></p></li>
+<li><p><span
+class="math inline">0 ≤ <em>r</em> ≤ min (<em>m</em>,<em>n</em>)</span>,
+<span
+class="math inline"><em>a</em><sub><em>i</em><em>i</em></sub> ≠ 0</span>
+for <span class="math inline"><em>i</em> ≤ <em>r</em></span> and <span
+class="math inline"><em>a</em><sub><em>i</em><em>i</em></sub> = 0</span>
+otherwise.</p></li>
+<li><p><span
+class="math inline"><em>a</em><sub><em>i</em></sub> = <em>a</em><sub><em>i</em><em>i</em></sub>, 0 ≤ <em>i</em> ≤ <em>r</em></span>,
+then <span
+class="math inline"><em>a</em><sub><em>i</em></sub>|<em>a</em><sub><em>i</em> + 1</sub></span>.</p></li>
+</ul>
+<div class="proposition">
+<p><strong>Proposition 82</strong>. <em>If <span
+class="math inline"><em>A</em> ∈ <em>M</em><sub><em>m</em> × <em>n</em></sub>(ℤ)</span>,
+then there exists <span
+class="math inline"><em>U</em> ∈ <em>M</em><sub><em>m</em> × <em>m</em></sub>(ℤ), <em>V</em> ∈ <em>M</em><sub><em>n</em> × <em>n</em></sub>(ℤ)</span>,
+<span
+class="math inline">det <em>U</em> =  ± 1, det <em>V</em> =  ± 1</span>,
+and <span
+class="math inline"><em>D</em> ∈ <em>M</em><sub><em>m</em> × <em>n</em></sub>(ℤ)</span>
+is in Smith normal form. We have <span
+class="math display"><em>A</em> = <em>U</em><em>D</em><em>V</em>.</span></em></p>
+</div>
+<div class="proposition">
+<p><strong>Proposition 83</strong>. <em><span
+class="math inline"><em>C</em><sub><em>r</em> − 1</sub>(<em>K</em>) ← <em>C</em><sub><em>r</em></sub>(<em>K</em>) ← <em>C</em><sub><em>r</em> + 1</sub>(<em>K</em>) ← …</span>.
+Let <span class="math inline"><em>A</em></span> be the matrix
+representation for <span
+class="math inline">∂<sub><em>r</em> + 1</sub></span> and <span
+class="math inline"><em>B</em></span> for <span
+class="math inline">∂<sub><em>r</em></sub></span>.</em></p>
+<p><em>Suppose <span
+class="math inline"><em>S</em><em>N</em><em>F</em>(<em>A</em>) = diag(<em>a</em><sub>1</sub>,…,<em>a</em><sub><em>r</em></sub>,<strong>0</strong>)</span>,
+then <span
+class="math display"><em>H</em><sub><em>r</em></sub>(<em>K</em>;ℤ) ≅ Ker<em>B</em>/Im<em>A</em> ≅ ℤ<sup>dim <em>C</em><sub><em>r</em></sub>(<em>K</em>) − <em>r</em> − <em>s</em></sup> × ℤ<sub><em>a</em><sub>1</sub></sub> × … × ℤ<sub><em>a</em><sub><em>r</em></sub></sub></span>
+where <span
+class="math inline"><em>r</em> = rank<em>A</em>, <em>s</em> = rank<em>B</em></span>.</em></p>
+</div>
+</body>
+</html>
