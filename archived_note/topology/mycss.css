@@ -8,6 +8,7 @@ body {
 }
 
 
+
 p.proof:before{
   content:'Proof.\00a0\00a0';
   float:left;
@@ -27,45 +28,72 @@ p.theorem::before {
     counter-increment: theorem; 
     content: "Theorem " counter(section)"."counter(theorem) " \00a0"; 
     font-weight:bold;
+    font-style: normal;
   }
   p.theorem[data-attribution]::before {
     counter-increment: theorem; 
     content: "Theorem " counter(section)"."counter(theorem) " (" attr(data-attribution) ")  \00a0 ";
     font-weight:bold;
+    font-style: normal;
   }
   p.definition::before{
     counter-increment: theorem;
     content: "Definition " counter(section)"."counter(theorem) " \00a0";
     font-weight:bold;
+    font-style: normal;
   }
   p.definition[data-attribution]::before{
     counter-increment: theorem;
     content: "Definition " counter(section)"."counter(theorem) " (" attr(data-attribution) ")  \00a0";
     font-weight:bold;
+    font-style: normal;
   }
   p.lemma::before{
     counter-increment: theorem;
     content: "Lemma " counter(section)"."counter(theorem) " \00a0";
     font-weight:bold;
+    font-style: normal;
   }
   p.lemma[data-attribution]::before{
     counter-increment: theorem;
     content: "Lemma " counter(section)"."counter(theorem) " (" attr(data-attribution) ")  \00a0";
     font-weight:bold;
+    font-style: normal;
   }
   p.proposition::before {
     counter-increment: theorem; 
     content: "Proposition " counter(section)"."counter(theorem) " \00a0"; 
     font-weight:bold;
+    font-style: normal;
   }
   p.corollary::before {
     counter-increment: theorem; 
     content: "Corollary " counter(section)"."counter(theorem) " \00a0"; 
     font-weight:bold;
+    font-style: normal;
   }
   
+  p.definition{
+    font-style: italic;
+  }
+  p.theorem{
+    font-style: italic;
+  }
+  p.lemma{
+    font-style: italic;
+  }
+  p.corollary{
+    font-style: italic;
+  }
+  p.proposition{
+    font-style: italic;
+  }
 
-
+  p.desc{
+    font-style: italic;
+    text-align: center;
+    font-family:cursive;
+  }
 ol {
     list-style-type: upper-roman;
     font-size: 14px;
@@ -83,7 +111,7 @@ ul {
 h1.title {
   color: black;
   text-align: center;
-  font-size: 30px;
+  font-size: 42px;
   padding-top:100px;
 }
 
