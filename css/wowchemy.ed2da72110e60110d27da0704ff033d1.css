@@ -3310,7 +3310,9 @@ fieldset:disabled a.btn {
     padding: .5rem 1rem;
     font-size: 1.25rem;
     line-height: 1.5;
-    border-radius: .3rem
+    border-radius: .3rem;
+    background-color: #30A5FF;
+    /* modified */
 }
 
 .btn-sm,
@@ -12835,7 +12837,8 @@ html[dir=rtl] body {
 }
 
 .home-section.light a {
-    color: #1565c0
+    /* color: #1565c0 */
+    color: #444444
 }
 
 .home-section.dark a {
