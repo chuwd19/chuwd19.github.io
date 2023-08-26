@@ -1,84 +1,84 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Wenda Chu</title><link>https://wenda-qianhw.netlify.app/</link><atom:link href="https://wenda-qianhw.netlify.app/index.xml" rel="self" type="application/rss+xml"/><description>Wenda Chu</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 08 Mar 2023 00:00:00 +0000</lastBuildDate><image><url>https://wenda-qianhw.netlify.app/media/icon_hud9f11bce4f3a2a4889ae0de212996427_55561_512x512_fill_lanczos_center_2.png</url><title>Wenda Chu</title><link>https://wenda-qianhw.netlify.app/</link></image><item><title>Topology</title><link>https://wenda-qianhw.netlify.app/archived_note/topology/</link><pubDate>Wed, 08 Mar 2023 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/topology/</guid><description/></item><item><title>PerAda: Parameter-Efficient and Generalizable Federated Learning Personalization with Guarantees</title><link>https://wenda-qianhw.netlify.app/publication/perada/</link><pubDate>Sat, 21 Jan 2023 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/publication/perada/</guid><description/></item><item><title>COMMIT: Certifying Robustness of Multi-Sensor Fusion Systems against Semantic Attacks</title><link>https://wenda-qianhw.netlify.app/publication/commit/</link><pubDate>Fri, 20 Jan 2023 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/publication/commit/</guid><description/></item><item><title>Distributed Robust Principal Component Analysis</title><link>https://wenda-qianhw.netlify.app/project/drpca/</link><pubDate>Sat, 31 Dec 2022 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/project/drpca/</guid><description>&lt;p>Principal component analysis (PCA) has been widely used for dimension reduction in data science. It extracts the top k significant components of a given matrix by computing the best low-rank approximation. However, it is well known that PCA is sensitive to noises and adversarial attacks. Robust PCA (RPCA) aims at mitigating this drawback by separating the noise out explicitly. Specifically, RPCA assumes that the observed matrix $M$ can be decomposed as $M = L^* + S^*$ where $L^*$ is a low-rank matrix and $S^*$ is a sparse matrix.&lt;/p>
-&lt;p>Some RPCA algorithms relax the low-rank constraints to nuclear norm and sparsity to $\ell_1$ norm, so that traditional convex optimization algorithms (e.g., PGM, ADMM) can be directly applied. Others reformulate the problem as low-rank matrix factorization with $\ell_1$ norm bounded noise. However, none of these algorithms are scalable and can be implemented distributedly, due to the use of SVD or full matrix multiplications. In this paper, we propose a distributed RPCA algorithm based on consensus-factorization (DCF-PCA) that takes $O(1)$ computation time as the number of remote clients increase. We show the convergence of our algorithm both theoretically and empirically.&lt;/p></description></item><item><title>Fair Federated Learning on Heterogeneous Data</title><link>https://wenda-qianhw.netlify.app/project/focus/</link><pubDate>Thu, 29 Dec 2022 18:50:20 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/project/focus/</guid><description>&lt;p>Federated learning (FL) provides an effective collaborative training paradigm, allowing local agents to train a global model jointly without sharing their local data to protect privacy. However, due to the heterogeneous nature of local data, it is challenging to optimize or even define the fairness of the trained global model for the agents. For instance, existing work usually considers accuracy equity as fairness for different agents in FL, which is limited, especially under the heterogeneous setting, since it is intuitively &amp;ldquo;unfair&amp;rdquo; to enforce agents with high-quality data to achieve similar accuracy to those who contribute low-quality data. In this work, we aim to address such limitations and propose a formal fairness definition in FL, fairness via agent-awareness (FAA), which takes different contributions of heterogeneous agents into account. Under FAA, the performance of agents with high-quality data will not be sacrificed just due to the existence of large amounts of agents with low-quality data. In addition, we propose a fair FL training algorithm based on agent clustering (FOCUS) to achieve fairness in FL measured by FAA. Theoretically, we prove the convergence and optimality of FOCUS under mild conditions for linear and general convex loss functions with bounded smoothness. We also prove that FOCUS always achieves higher fairness in terms of FAA compared with standard FedAvg under both linear and general convex loss functions. Empirically, we evaluate FOCUS on four datasets, including synthetic data, images, and texts under different settings, and we show that FOCUS achieves significantly higher fairness in terms of FAA while maintaining similar or even higher prediction accuracy compared with FedAvg and other existing fair FL algorithms.&lt;/p></description></item><item><title>Comprehensive and distinguishable graph-linked embedding for multi-omics single-cell data integration</title><link>https://wenda-qianhw.netlify.app/project/glue+/</link><pubDate>Sat, 10 Dec 2022 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/project/glue+/</guid><description/></item><item><title>Physically Realizable Natural-Looking Clothing Textures Evade Person Detectors via 3D Modeling</title><link>https://wenda-qianhw.netlify.app/publication/advcamo/</link><pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/publication/advcamo/</guid><description/></item><item><title>TPC talk</title><link>https://wenda-qianhw.netlify.app/events/tpc_talk/</link><pubDate>Tue, 19 Jul 2022 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/events/tpc_talk/</guid><description>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Wenda Chu</title><link>https://chuwd19.github.io/</link><atom:link href="https://chuwd19.github.io/index.xml" rel="self" type="application/rss+xml"/><description>Wenda Chu</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 08 Mar 2023 00:00:00 +0000</lastBuildDate><image><url>https://chuwd19.github.io/media/icon_hud9f11bce4f3a2a4889ae0de212996427_55561_512x512_fill_lanczos_center_2.png</url><title>Wenda Chu</title><link>https://chuwd19.github.io/</link></image><item><title>Topology</title><link>https://chuwd19.github.io/archived_note/topology/</link><pubDate>Wed, 08 Mar 2023 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/topology/</guid><description/></item><item><title>PerAda: Parameter-Efficient and Generalizable Federated Learning Personalization with Guarantees</title><link>https://chuwd19.github.io/publication/perada/</link><pubDate>Sat, 21 Jan 2023 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/publication/perada/</guid><description/></item><item><title>COMMIT: Certifying Robustness of Multi-Sensor Fusion Systems against Semantic Attacks</title><link>https://chuwd19.github.io/publication/commit/</link><pubDate>Fri, 20 Jan 2023 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/publication/commit/</guid><description/></item><item><title>Distributed Robust Principal Component Analysis</title><link>https://chuwd19.github.io/project/drpca/</link><pubDate>Sat, 31 Dec 2022 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/project/drpca/</guid><description>&lt;p>Principal component analysis (PCA) has been widely used for dimension reduction in data science. It extracts the top k significant components of a given matrix by computing the best low-rank approximation. However, it is well known that PCA is sensitive to noises and adversarial attacks. Robust PCA (RPCA) aims at mitigating this drawback by separating the noise out explicitly. Specifically, RPCA assumes that the observed matrix $M$ can be decomposed as $M = L^* + S^*$ where $L^*$ is a low-rank matrix and $S^*$ is a sparse matrix.&lt;/p>
+&lt;p>Some RPCA algorithms relax the low-rank constraints to nuclear norm and sparsity to $\ell_1$ norm, so that traditional convex optimization algorithms (e.g., PGM, ADMM) can be directly applied. Others reformulate the problem as low-rank matrix factorization with $\ell_1$ norm bounded noise. However, none of these algorithms are scalable and can be implemented distributedly, due to the use of SVD or full matrix multiplications. In this paper, we propose a distributed RPCA algorithm based on consensus-factorization (DCF-PCA) that takes $O(1)$ computation time as the number of remote clients increase. We show the convergence of our algorithm both theoretically and empirically.&lt;/p></description></item><item><title>Fair Federated Learning on Heterogeneous Data</title><link>https://chuwd19.github.io/project/focus/</link><pubDate>Thu, 29 Dec 2022 18:50:20 +0000</pubDate><guid>https://chuwd19.github.io/project/focus/</guid><description>&lt;p>Federated learning (FL) provides an effective collaborative training paradigm, allowing local agents to train a global model jointly without sharing their local data to protect privacy. However, due to the heterogeneous nature of local data, it is challenging to optimize or even define the fairness of the trained global model for the agents. For instance, existing work usually considers accuracy equity as fairness for different agents in FL, which is limited, especially under the heterogeneous setting, since it is intuitively &amp;ldquo;unfair&amp;rdquo; to enforce agents with high-quality data to achieve similar accuracy to those who contribute low-quality data. In this work, we aim to address such limitations and propose a formal fairness definition in FL, fairness via agent-awareness (FAA), which takes different contributions of heterogeneous agents into account. Under FAA, the performance of agents with high-quality data will not be sacrificed just due to the existence of large amounts of agents with low-quality data. In addition, we propose a fair FL training algorithm based on agent clustering (FOCUS) to achieve fairness in FL measured by FAA. Theoretically, we prove the convergence and optimality of FOCUS under mild conditions for linear and general convex loss functions with bounded smoothness. We also prove that FOCUS always achieves higher fairness in terms of FAA compared with standard FedAvg under both linear and general convex loss functions. Empirically, we evaluate FOCUS on four datasets, including synthetic data, images, and texts under different settings, and we show that FOCUS achieves significantly higher fairness in terms of FAA while maintaining similar or even higher prediction accuracy compared with FedAvg and other existing fair FL algorithms.&lt;/p></description></item><item><title>Comprehensive and distinguishable graph-linked embedding for multi-omics single-cell data integration</title><link>https://chuwd19.github.io/project/glue+/</link><pubDate>Sat, 10 Dec 2022 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/project/glue+/</guid><description/></item><item><title>Physically Realizable Natural-Looking Clothing Textures Evade Person Detectors via 3D Modeling</title><link>https://chuwd19.github.io/publication/advcamo/</link><pubDate>Mon, 21 Nov 2022 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/publication/advcamo/</guid><description/></item><item><title>TPC talk</title><link>https://chuwd19.github.io/events/tpc_talk/</link><pubDate>Tue, 19 Jul 2022 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/events/tpc_talk/</guid><description>
 &lt;video controls >
-&lt;source src="https://wenda-qianhw.netlify.app/events/tpc_talk/TPC_talk.mp4" type="video/mp4">
+&lt;source src="https://chuwd19.github.io/events/tpc_talk/TPC_talk.mp4" type="video/mp4">
 &lt;/video>
-&lt;p>Click &lt;a href="https://wenda-qianhw.netlify.app/publication/tpc/">here&lt;/a> to access the corresponding paper.&lt;/p></description></item><item><title>FOCUS: Fairness via Agent-Awareness for Federated Learning on Heterogeneous Data</title><link>https://wenda-qianhw.netlify.app/publication/focus/</link><pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/publication/focus/</guid><description/></item><item><title>游戏激励机制的迁移价值和文化逻辑</title><link>https://wenda-qianhw.netlify.app/paragraphs/%E6%B8%B8%E6%88%8F%E6%BF%80%E5%8A%B1%E6%9C%BA%E5%88%B6%E7%9A%84%E8%BF%81%E7%A7%BB%E4%BB%B7%E5%80%BC%E5%92%8C%E6%96%87%E5%8C%96%E9%80%BB%E8%BE%91/</link><pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/paragraphs/%E6%B8%B8%E6%88%8F%E6%BF%80%E5%8A%B1%E6%9C%BA%E5%88%B6%E7%9A%84%E8%BF%81%E7%A7%BB%E4%BB%B7%E5%80%BC%E5%92%8C%E6%96%87%E5%8C%96%E9%80%BB%E8%BE%91/</guid><description>&lt;p>&lt;strong>摘要&lt;/strong> 电子游戏对玩家产生了极大的吸引力,其激励机制获得了巨大的成功。本文认为,使游戏激励机
+&lt;p>Click &lt;a href="https://chuwd19.github.io/publication/tpc/">here&lt;/a> to access the corresponding paper.&lt;/p></description></item><item><title>FOCUS: Fairness via Agent-Awareness for Federated Learning on Heterogeneous Data</title><link>https://chuwd19.github.io/publication/focus/</link><pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/publication/focus/</guid><description/></item><item><title>游戏激励机制的迁移价值和文化逻辑</title><link>https://chuwd19.github.io/paragraphs/%E6%B8%B8%E6%88%8F%E6%BF%80%E5%8A%B1%E6%9C%BA%E5%88%B6%E7%9A%84%E8%BF%81%E7%A7%BB%E4%BB%B7%E5%80%BC%E5%92%8C%E6%96%87%E5%8C%96%E9%80%BB%E8%BE%91/</link><pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/paragraphs/%E6%B8%B8%E6%88%8F%E6%BF%80%E5%8A%B1%E6%9C%BA%E5%88%B6%E7%9A%84%E8%BF%81%E7%A7%BB%E4%BB%B7%E5%80%BC%E5%92%8C%E6%96%87%E5%8C%96%E9%80%BB%E8%BE%91/</guid><description>&lt;p>&lt;strong>摘要&lt;/strong> 电子游戏对玩家产生了极大的吸引力,其激励机制获得了巨大的成功。本文认为,使游戏激励机
 制区别于传统激励机制的主要特征是数字化和实时反馈,并对盛大公司采用个例探究的形式阐明了这两种
 特征的作用机制。通过分析,本文一方面证明了游戏激励机制在非游戏领域的迁移价值,一方面指出将此
 激励机制引入现实的隐患。最后,本文揭示了当代电子游戏的内在逻辑是用数字和程序组成的数学逻辑,
 以及这种逻辑可能导致的牺牲多元价值及数字劳动剥削等社会问题。&lt;/p>
-&lt;p>Click the &lt;em>PDF&lt;/em> button for the full text.&lt;/p></description></item><item><title>非线性和交互式的艺术：电子游戏的新型叙事方式</title><link>https://wenda-qianhw.netlify.app/paragraphs/%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%92%8C%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%9A%84%E8%89%BA%E6%9C%AF%E7%94%B5%E5%AD%90%E6%B8%B8%E6%88%8F%E7%9A%84%E6%96%B0%E5%9E%8B%E5%8F%99%E4%BA%8B%E6%96%B9%E5%BC%8F/</link><pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/paragraphs/%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%92%8C%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%9A%84%E8%89%BA%E6%9C%AF%E7%94%B5%E5%AD%90%E6%B8%B8%E6%88%8F%E7%9A%84%E6%96%B0%E5%9E%8B%E5%8F%99%E4%BA%8B%E6%96%B9%E5%BC%8F/</guid><description/></item><item><title>Cryptography</title><link>https://wenda-qianhw.netlify.app/archived_note/cryptography/</link><pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/cryptography/</guid><description>&lt;p>Some of the notes are hand-written. The others are typed in markdown.&lt;/p>
+&lt;p>Click the &lt;em>PDF&lt;/em> button for the full text.&lt;/p></description></item><item><title>非线性和交互式的艺术：电子游戏的新型叙事方式</title><link>https://chuwd19.github.io/paragraphs/%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%92%8C%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%9A%84%E8%89%BA%E6%9C%AF%E7%94%B5%E5%AD%90%E6%B8%B8%E6%88%8F%E7%9A%84%E6%96%B0%E5%9E%8B%E5%8F%99%E4%BA%8B%E6%96%B9%E5%BC%8F/</link><pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/paragraphs/%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%92%8C%E4%BA%A4%E4%BA%92%E5%BC%8F%E7%9A%84%E8%89%BA%E6%9C%AF%E7%94%B5%E5%AD%90%E6%B8%B8%E6%88%8F%E7%9A%84%E6%96%B0%E5%9E%8B%E5%8F%99%E4%BA%8B%E6%96%B9%E5%BC%8F/</guid><description/></item><item><title>Cryptography</title><link>https://chuwd19.github.io/archived_note/cryptography/</link><pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/cryptography/</guid><description>&lt;p>Some of the notes are hand-written. The others are typed in markdown.&lt;/p>
 &lt;ul>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/crypto/owf.pdf" target="_blank">1 Computational Hardness and One-Way Functions&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/crypto/owf.pdf" target="_blank">1 Computational Hardness and One-Way Functions&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/crypto/basic_algo.pdf" target="_blank">2-1 Basic Algorithms&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/crypto/basic_algo.pdf" target="_blank">2-1 Basic Algorithms&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/crypto/rsa_discrete_log.pdf" target="_blank">2-2 RSA &amp; Discrete-log&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/crypto/rsa_discrete_log.pdf" target="_blank">2-2 RSA &amp; Discrete-log&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/crypto/3.pdf" target="_blank">3 Indistinguishability and Pseudorandomness&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/crypto/3.pdf" target="_blank">3 Indistinguishability and Pseudorandomness&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/crypto/4.pdf" target="_blank">4 Pseudorandom Generators&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/crypto/4.pdf" target="_blank">4 Pseudorandom Generators&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/crypto/5.pdf" target="_blank">5 Pseudorandom Functions&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/crypto/5.pdf" target="_blank">5 Pseudorandom Functions&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/crypto/6.pdf" target="_blank">6 Probabilistic Encryption&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/crypto/6.pdf" target="_blank">6 Probabilistic Encryption&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/crypto/zero_knowledge.pdf" target="_blank">7-1 Zero Knowledge Proof&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/crypto/zero_knowledge.pdf" target="_blank">7-1 Zero Knowledge Proof&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/crypto/7.pdf" target="_blank">7-2 Simulation and Zero Knowledge Proof&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/crypto/7.pdf" target="_blank">7-2 Simulation and Zero Knowledge Proof&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/crypto/8.pdf" target="_blank">8 Hash Functions&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/crypto/8.pdf" target="_blank">8 Hash Functions&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/crypto/9.pdf" target="_blank">9 Authentication and Signature&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/crypto/9.pdf" target="_blank">9 Authentication and Signature&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/crypto/10.pdf" target="_blank">10 Lattice Problem&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/crypto/10.pdf" target="_blank">10 Lattice Problem&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/crypto/11.pdf" target="_blank">11 Program Obfuscation&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/crypto/11.pdf" target="_blank">11 Program Obfuscation&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/crypto/12.pdf" target="_blank">12 Secure Multiparty Computation&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/crypto/12.pdf" target="_blank">12 Secure Multiparty Computation&lt;/a>
 &lt;/li>
-&lt;/ul></description></item><item><title>Quantum Computer Science</title><link>https://wenda-qianhw.netlify.app/archived_note/qcs/</link><pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/qcs/</guid><description>&lt;p>Some of the notes are hand-written. The others are typed in markdown.&lt;/p>
+&lt;/ul></description></item><item><title>Quantum Computer Science</title><link>https://chuwd19.github.io/archived_note/qcs/</link><pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/qcs/</guid><description>&lt;p>Some of the notes are hand-written. The others are typed in markdown.&lt;/p>
 &lt;ul>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/qcs/1.pdf" target="_blank">1 Foundation&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/qcs/1.pdf" target="_blank">1 Foundation&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/qcs/2.pdf" target="_blank">2 Quantum System&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/qcs/2.pdf" target="_blank">2 Quantum System&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/qcs/3.pdf" target="_blank">3 Quantum Dynamics&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/qcs/3.pdf" target="_blank">3 Quantum Dynamics&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/qcs/4.pdf" target="_blank">4 Entanglement&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/qcs/4.pdf" target="_blank">4 Entanglement&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/qcs/5.pdf" target="_blank">5 Quantum Computation&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/qcs/5.pdf" target="_blank">5 Quantum Computation&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/qcs/6.pdf" target="_blank">6 Quantum Algorithms&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/qcs/6.pdf" target="_blank">6 Quantum Algorithms&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/qcs/7.pdf" target="_blank">7 Quantum Error Correction&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/qcs/7.pdf" target="_blank">7 Quantum Error Correction&lt;/a>
 &lt;/li>
-&lt;/ul></description></item><item><title>TPC: Transformation-Specific Smoothing for Point Cloud Models</title><link>https://wenda-qianhw.netlify.app/publication/tpc/</link><pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/publication/tpc/</guid><description/></item><item><title>Departures</title><link>https://wenda-qianhw.netlify.app/events/departures/</link><pubDate>Thu, 30 Dec 2021 13:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/events/departures/</guid><description>
+&lt;/ul></description></item><item><title>TPC: Transformation-Specific Smoothing for Point Cloud Models</title><link>https://chuwd19.github.io/publication/tpc/</link><pubDate>Fri, 28 Jan 2022 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/publication/tpc/</guid><description/></item><item><title>Departures</title><link>https://chuwd19.github.io/events/departures/</link><pubDate>Thu, 30 Dec 2021 13:00:00 +0000</pubDate><guid>https://chuwd19.github.io/events/departures/</guid><description>
 &lt;video controls >
-&lt;source src="https://wenda-qianhw.netlify.app/events/departures/departures.mp4" type="video/mp4">
-&lt;/video></description></item><item><title>Adversarial Defenses</title><link>https://wenda-qianhw.netlify.app/archived_note/adv-defenses/</link><pubDate>Wed, 17 Nov 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/adv-defenses/</guid><description/></item><item><title>Adversarial Machine Learning</title><link>https://wenda-qianhw.netlify.app/archived_note/adversarial-ml/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/adversarial-ml/</guid><description>&lt;h2 id="centernotes-on-adversarial-machine-learningcenter">&lt;center>Notes on Adversarial Machine Learning&lt;/center>&lt;/h2>
+&lt;source src="https://chuwd19.github.io/events/departures/departures.mp4" type="video/mp4">
+&lt;/video></description></item><item><title>Adversarial Defenses</title><link>https://chuwd19.github.io/archived_note/adv-defenses/</link><pubDate>Wed, 17 Nov 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/adv-defenses/</guid><description/></item><item><title>Adversarial Machine Learning</title><link>https://chuwd19.github.io/archived_note/adversarial-ml/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/adversarial-ml/</guid><description>&lt;h2 id="centernotes-on-adversarial-machine-learningcenter">&lt;center>Notes on Adversarial Machine Learning&lt;/center>&lt;/h2>
 &lt;h3 id="1--formalize-adversarial-attack">1 Formalize Adversarial Attack&lt;/h3>
 &lt;h5 id="explorative-attacks-vs-causative-attack">Explorative Attacks vs. Causative Attack&lt;/h5>
 &lt;ul>
@@ -888,7 +888,7 @@ which represents the information loss of describing $p(x)$ by $q(x)$.&lt;/p>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/figure/FGSM_adv_train.png" alt="avatar" style="zoom:36%;" />&lt;/p>
+&lt;p>&lt;img src="https://chuwd19.github.io/home/qianhw/下载/hugo/content/slides/notes/figure/FGSM_adv_train.png" alt="avatar" style="zoom:36%;" />&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -991,7 +991,7 @@ which represents the information loss of describing $p(x)$ by $q(x)$.&lt;/p>
 &lt;p>I fixed the viewing angles for each epoch, so perhaps the tshirt is trained only adversarial for those views at end of each epoch. (&lt;strong>fixed later in experiment 7&lt;/strong>)&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/figure/Tshirt_random_angle.png" alt="avatar" style="zoom:20%;" />&lt;/p>
+&lt;p>&lt;img src="https://chuwd19.github.io/home/qianhw/下载/hugo/content/slides/notes/figure/Tshirt_random_angle.png" alt="avatar" style="zoom:20%;" />&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>9.4 experiment5: vec2atlas, R = 8. (Map $(3,V)$ to atlas $(1,V,R,R,3)$ before the previous pipeline).&lt;/p>
@@ -1064,7 +1064,7 @@ which represents the information loss of describing $p(x)$ by $q(x)$.&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;del>It is necessary to create a precise mapping from UV to Atlas, which would enable the pipeline of training an adversarial uv texture.&lt;/del>&lt;/p>
-&lt;p>&lt;del>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/xfigure/atlas2uv/recall-angle-compare.png" alt="avatar" style="zoom:36%;" />&lt;/del>&lt;/p>
+&lt;p>&lt;del>&lt;img src="https://chuwd19.github.io/home/qianhw/下载/hugo/content/slides/notes/xfigure/atlas2uv/recall-angle-compare.png" alt="avatar" style="zoom:36%;" />&lt;/del>&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;del>An observation is that the lateral part of the uv-rendered tshirt gives lower recall, which is counterintuitive since the lateral part usually performs worse than other angles with less surface area.&lt;/del>&lt;/p>
@@ -1074,7 +1074,7 @@ which represents the information loss of describing $p(x)$ by $q(x)$.&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;del>(9.12) Combining two meshes using uv texture causes conflicts: mesh of man cloaks the mesh of tshirt&lt;/del>&lt;/p>
-&lt;p>&lt;del>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/afigure/atlas2uv/issue.png" alt="avatar" style="zoom:33%;" />&lt;/del>&lt;/p>
+&lt;p>&lt;del>&lt;img src="https://chuwd19.github.io/home/qianhw/下载/hugo/content/slides/notes/afigure/atlas2uv/issue.png" alt="avatar" style="zoom:33%;" />&lt;/del>&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>This bug is due to incompatible texture size of two meshes. &lt;strong>Fixed&lt;/strong>. (9.16)&lt;/p>
@@ -1092,11 +1092,11 @@ which represents the information loss of describing $p(x)$ by $q(x)$.&lt;/p>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/桌面/Adversarial ML/figure/recall-angle-compare-tvloss.png" alt="avatar" style="zoom: 33%;" />&lt;/p>
+&lt;p>&lt;img src="https://chuwd19.github.io/home/qianhw/桌面/Adversarial ML/figure/recall-angle-compare-tvloss.png" alt="avatar" style="zoom: 33%;" />&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>Current Pipeline:&lt;/p>
-&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/figure/pipeline0.png" alt="avatar" style="zoom:33%;" />&lt;/p>
+&lt;p>&lt;img src="https://chuwd19.github.io/home/qianhw/下载/hugo/content/slides/notes/figure/pipeline0.png" alt="avatar" style="zoom:33%;" />&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>Next step: to enable the rendering process directly from TextureUV.&lt;/p>
@@ -1291,14 +1291,14 @@ source_coordinate = torch.matmul(Variable(self.target_coordinate_repr), mapping_
 &lt;p>B个角度的取梯度的平均值，weighted mean去加速优先attack&lt;/p>
 &lt;p>2D的pipeline 饱和度 hsv&lt;/p>
 &lt;p>色相饱和度亮度&lt;/p>
-&lt;p>参数化 gan&lt;/p></description></item><item><title>My favorite photos</title><link>https://wenda-qianhw.netlify.app/photo/masterpieces/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/photo/masterpieces/</guid><description>&lt;p>
+&lt;p>参数化 gan&lt;/p></description></item><item><title>My favorite photos</title><link>https://chuwd19.github.io/photo/masterpieces/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/photo/masterpieces/</guid><description>&lt;p>
 &lt;figure >
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img alt="avatar" srcset="
 /photo/masterpieces/figures/20191002tianjin/1_hu96de19ce4e3b56f0053cca724c53f24a_1143519_0d80a0200b6e0fb63af853834bbe9b19.jpg 400w,
 /photo/masterpieces/figures/20191002tianjin/1_hu96de19ce4e3b56f0053cca724c53f24a_1143519_8aab1e1f02a4e5ccdea019ca6b9cead2.jpg 760w,
 /photo/masterpieces/figures/20191002tianjin/1_hu96de19ce4e3b56f0053cca724c53f24a_1143519_1200x1200_fit_q75_lanczos.jpg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/20191002tianjin/1_hu96de19ce4e3b56f0053cca724c53f24a_1143519_0d80a0200b6e0fb63af853834bbe9b19.jpg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/20191002tianjin/1_hu96de19ce4e3b56f0053cca724c53f24a_1143519_0d80a0200b6e0fb63af853834bbe9b19.jpg"
 width="760"
 height="599"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1312,7 +1312,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/20191002tianjin/2_hu8b0f7990a231b0481a6b20ffaa48d67d_829332_f1c21eaa01e9ce926c12f1655febfbfc.jpg 400w,
 /photo/masterpieces/figures/20191002tianjin/2_hu8b0f7990a231b0481a6b20ffaa48d67d_829332_2cf59ac5f722a1905b88ef4a0e4e38d4.jpg 760w,
 /photo/masterpieces/figures/20191002tianjin/2_hu8b0f7990a231b0481a6b20ffaa48d67d_829332_1200x1200_fit_q75_lanczos.jpg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/20191002tianjin/2_hu8b0f7990a231b0481a6b20ffaa48d67d_829332_f1c21eaa01e9ce926c12f1655febfbfc.jpg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/20191002tianjin/2_hu8b0f7990a231b0481a6b20ffaa48d67d_829332_f1c21eaa01e9ce926c12f1655febfbfc.jpg"
 width="635"
 height="760"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1325,7 +1325,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/202002Shenzhen/1_hu2db6ed77b304adb9c412f270726d032c_4258256_d3a512b6c0df2258cc03ae06ee3c0f37.jpeg 400w,
 /photo/masterpieces/figures/202002Shenzhen/1_hu2db6ed77b304adb9c412f270726d032c_4258256_d1e1d957cb813cf447bcb5a50d9c60d2.jpeg 760w,
 /photo/masterpieces/figures/202002Shenzhen/1_hu2db6ed77b304adb9c412f270726d032c_4258256_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/202002Shenzhen/1_hu2db6ed77b304adb9c412f270726d032c_4258256_d3a512b6c0df2258cc03ae06ee3c0f37.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/202002Shenzhen/1_hu2db6ed77b304adb9c412f270726d032c_4258256_d3a512b6c0df2258cc03ae06ee3c0f37.jpeg"
 width="760"
 height="550"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1338,7 +1338,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/202002Shenzhen/2_hu41e9e16d512b7297a95d711f4f09205f_1403501_f7fb4e302435e496932394f21dce3127.jpg 400w,
 /photo/masterpieces/figures/202002Shenzhen/2_hu41e9e16d512b7297a95d711f4f09205f_1403501_6ba074e0f88cd816f0de1186b56eeb9d.jpg 760w,
 /photo/masterpieces/figures/202002Shenzhen/2_hu41e9e16d512b7297a95d711f4f09205f_1403501_1200x1200_fit_q75_lanczos.jpg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/202002Shenzhen/2_hu41e9e16d512b7297a95d711f4f09205f_1403501_f7fb4e302435e496932394f21dce3127.jpg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/202002Shenzhen/2_hu41e9e16d512b7297a95d711f4f09205f_1403501_f7fb4e302435e496932394f21dce3127.jpg"
 width="760"
 height="569"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1351,7 +1351,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/202002Shenzhen/3_hu4f753bdb0e86cd66c4b9835c3ce9a654_1811078_ee264184b9da760e1fda05ce257b30b1.jpeg 400w,
 /photo/masterpieces/figures/202002Shenzhen/3_hu4f753bdb0e86cd66c4b9835c3ce9a654_1811078_2f8860e80fc77849631b95b428973eb2.jpeg 760w,
 /photo/masterpieces/figures/202002Shenzhen/3_hu4f753bdb0e86cd66c4b9835c3ce9a654_1811078_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/202002Shenzhen/3_hu4f753bdb0e86cd66c4b9835c3ce9a654_1811078_ee264184b9da760e1fda05ce257b30b1.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/202002Shenzhen/3_hu4f753bdb0e86cd66c4b9835c3ce9a654_1811078_ee264184b9da760e1fda05ce257b30b1.jpeg"
 width="760"
 height="517"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1364,7 +1364,7 @@ Contrast. (2020.5)&lt;/p>
 /photo/masterpieces/figures/202002Shenzhen/4_hua74502866e436072ac1fd23024c1ac73_1711009_4e829cf6b2ff935128a9152128a79491.jpeg 400w,
 /photo/masterpieces/figures/202002Shenzhen/4_hua74502866e436072ac1fd23024c1ac73_1711009_dbb253b4cdc9af464c00782b94c9af34.jpeg 760w,
 /photo/masterpieces/figures/202002Shenzhen/4_hua74502866e436072ac1fd23024c1ac73_1711009_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/202002Shenzhen/4_hua74502866e436072ac1fd23024c1ac73_1711009_4e829cf6b2ff935128a9152128a79491.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/202002Shenzhen/4_hua74502866e436072ac1fd23024c1ac73_1711009_4e829cf6b2ff935128a9152128a79491.jpeg"
 width="760"
 height="544"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1377,7 +1377,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/202002Shenzhen/5_huc8be59575e4872732b3777bee5818a31_4120952_cb3cf3a156e8f7513f9eecd0df0cef77.jpeg 400w,
 /photo/masterpieces/figures/202002Shenzhen/5_huc8be59575e4872732b3777bee5818a31_4120952_a22867879fe36f8f6f834a301fee85ce.jpeg 760w,
 /photo/masterpieces/figures/202002Shenzhen/5_huc8be59575e4872732b3777bee5818a31_4120952_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/202002Shenzhen/5_huc8be59575e4872732b3777bee5818a31_4120952_cb3cf3a156e8f7513f9eecd0df0cef77.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/202002Shenzhen/5_huc8be59575e4872732b3777bee5818a31_4120952_cb3cf3a156e8f7513f9eecd0df0cef77.jpeg"
 width="760"
 height="507"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1390,7 +1390,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/202002Shenzhen/6_hua2e467b396f9477f3ff62fdbd1a5803a_3082838_8a7f857ae3e1c4dade923567f8957be3.jpeg 400w,
 /photo/masterpieces/figures/202002Shenzhen/6_hua2e467b396f9477f3ff62fdbd1a5803a_3082838_c852814f44e7542c78d51e14f612edb2.jpeg 760w,
 /photo/masterpieces/figures/202002Shenzhen/6_hua2e467b396f9477f3ff62fdbd1a5803a_3082838_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/202002Shenzhen/6_hua2e467b396f9477f3ff62fdbd1a5803a_3082838_8a7f857ae3e1c4dade923567f8957be3.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/202002Shenzhen/6_hua2e467b396f9477f3ff62fdbd1a5803a_3082838_8a7f857ae3e1c4dade923567f8957be3.jpeg"
 width="760"
 height="559"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1403,7 +1403,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/tsinghua/1_hu5326ba64e7e524566f374e0bfce4df87_886947_c45b00e0fa3b0a65411891bfb2044f0d.jpg 400w,
 /photo/masterpieces/figures/tsinghua/1_hu5326ba64e7e524566f374e0bfce4df87_886947_de6dac05ca5b6fb0e4cbd70e801e189e.jpg 760w,
 /photo/masterpieces/figures/tsinghua/1_hu5326ba64e7e524566f374e0bfce4df87_886947_1200x1200_fit_q75_lanczos.jpg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/tsinghua/1_hu5326ba64e7e524566f374e0bfce4df87_886947_c45b00e0fa3b0a65411891bfb2044f0d.jpg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/tsinghua/1_hu5326ba64e7e524566f374e0bfce4df87_886947_c45b00e0fa3b0a65411891bfb2044f0d.jpg"
 width="760"
 height="570"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1416,7 +1416,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/tsinghua/art_museum_hu0f2ee6aeab0d9b2c5ab6d568c6b4b436_253992_b74d5a44de18959aa6decc1ca9ab1608.jpeg 400w,
 /photo/masterpieces/figures/tsinghua/art_museum_hu0f2ee6aeab0d9b2c5ab6d568c6b4b436_253992_d1b2438e8e347728825676d9cbcace4a.jpeg 760w,
 /photo/masterpieces/figures/tsinghua/art_museum_hu0f2ee6aeab0d9b2c5ab6d568c6b4b436_253992_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/tsinghua/art_museum_hu0f2ee6aeab0d9b2c5ab6d568c6b4b436_253992_b74d5a44de18959aa6decc1ca9ab1608.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/tsinghua/art_museum_hu0f2ee6aeab0d9b2c5ab6d568c6b4b436_253992_b74d5a44de18959aa6decc1ca9ab1608.jpeg"
 width="760"
 height="614"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1429,7 +1429,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/tsinghua/canteen_huee9d1088243ae274c7b33558ec1afab2_822246_c976ebc4cc080d473f5219c67f8ff988.jpg 400w,
 /photo/masterpieces/figures/tsinghua/canteen_huee9d1088243ae274c7b33558ec1afab2_822246_c35b4d0780087884c17f11d84454cc5e.jpg 760w,
 /photo/masterpieces/figures/tsinghua/canteen_huee9d1088243ae274c7b33558ec1afab2_822246_1200x1200_fit_q75_lanczos.jpg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/tsinghua/canteen_huee9d1088243ae274c7b33558ec1afab2_822246_c976ebc4cc080d473f5219c67f8ff988.jpg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/tsinghua/canteen_huee9d1088243ae274c7b33558ec1afab2_822246_c976ebc4cc080d473f5219c67f8ff988.jpg"
 width="760"
 height="570"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1442,7 +1442,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/tsinghua/2_hu90ba930a0da495ad136027cb7d17bd2c_5158344_9458b0f01e541ee1d193e3a85ae5c4a9.jpeg 400w,
 /photo/masterpieces/figures/tsinghua/2_hu90ba930a0da495ad136027cb7d17bd2c_5158344_cfeefa7bbd9654210e3b74a1eefd0c50.jpeg 760w,
 /photo/masterpieces/figures/tsinghua/2_hu90ba930a0da495ad136027cb7d17bd2c_5158344_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/tsinghua/2_hu90ba930a0da495ad136027cb7d17bd2c_5158344_9458b0f01e541ee1d193e3a85ae5c4a9.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/tsinghua/2_hu90ba930a0da495ad136027cb7d17bd2c_5158344_9458b0f01e541ee1d193e3a85ae5c4a9.jpeg"
 width="760"
 height="570"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1455,7 +1455,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/tsinghua/snow1_hua0c49c72b73e47e68447d3c186d9e2b0_967987_677b7b9e0d90b5d796005f381a6c6b7f.jpeg 400w,
 /photo/masterpieces/figures/tsinghua/snow1_hua0c49c72b73e47e68447d3c186d9e2b0_967987_ccc79bb73739fdb22f74a37acbffeaf6.jpeg 760w,
 /photo/masterpieces/figures/tsinghua/snow1_hua0c49c72b73e47e68447d3c186d9e2b0_967987_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/tsinghua/snow1_hua0c49c72b73e47e68447d3c186d9e2b0_967987_677b7b9e0d90b5d796005f381a6c6b7f.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/tsinghua/snow1_hua0c49c72b73e47e68447d3c186d9e2b0_967987_677b7b9e0d90b5d796005f381a6c6b7f.jpeg"
 width="760"
 height="550"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1468,7 +1468,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/tsinghua/snow2_hu17563afa7d64e50f375afcea8827f244_1098086_6ee205eb9a33cdbb850dcbc6cffd5d02.jpeg 400w,
 /photo/masterpieces/figures/tsinghua/snow2_hu17563afa7d64e50f375afcea8827f244_1098086_c1bcc820b5e674b47eaec05b528cb77d.jpeg 760w,
 /photo/masterpieces/figures/tsinghua/snow2_hu17563afa7d64e50f375afcea8827f244_1098086_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/tsinghua/snow2_hu17563afa7d64e50f375afcea8827f244_1098086_6ee205eb9a33cdbb850dcbc6cffd5d02.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/tsinghua/snow2_hu17563afa7d64e50f375afcea8827f244_1098086_6ee205eb9a33cdbb850dcbc6cffd5d02.jpeg"
 width="760"
 height="592"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1481,7 +1481,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/tsinghua/snow3_hu4a4a4cc9fb0b4d71ca260ee785e9d125_1797155_7c1808cec6e003536717cbda9fc6c8d0.jpg 400w,
 /photo/masterpieces/figures/tsinghua/snow3_hu4a4a4cc9fb0b4d71ca260ee785e9d125_1797155_2cc10d46ef287676c5a76daefc179292.jpg 760w,
 /photo/masterpieces/figures/tsinghua/snow3_hu4a4a4cc9fb0b4d71ca260ee785e9d125_1797155_1200x1200_fit_q75_lanczos.jpg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/tsinghua/snow3_hu4a4a4cc9fb0b4d71ca260ee785e9d125_1797155_7c1808cec6e003536717cbda9fc6c8d0.jpg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/tsinghua/snow3_hu4a4a4cc9fb0b4d71ca260ee785e9d125_1797155_7c1808cec6e003536717cbda9fc6c8d0.jpg"
 width="760"
 height="570"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1494,7 +1494,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/tsinghua/3_hu39ab9cd9da76775ef22ba08b3cecca9a_3420321_86d0c7291bc722c433028def8335394a.jpeg 400w,
 /photo/masterpieces/figures/tsinghua/3_hu39ab9cd9da76775ef22ba08b3cecca9a_3420321_5da97a5e51cc1151cd086e35cd201002.jpeg 760w,
 /photo/masterpieces/figures/tsinghua/3_hu39ab9cd9da76775ef22ba08b3cecca9a_3420321_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/tsinghua/3_hu39ab9cd9da76775ef22ba08b3cecca9a_3420321_86d0c7291bc722c433028def8335394a.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/tsinghua/3_hu39ab9cd9da76775ef22ba08b3cecca9a_3420321_86d0c7291bc722c433028def8335394a.jpeg"
 width="760"
 height="570"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1507,7 +1507,7 @@ Covid 19. (2020.11)&lt;/p>
 /photo/masterpieces/figures/tsinghua/4_hu14f7ced98f13f5c782a993e5bf06bec8_3108480_ec9e2d67f0511e5a0d199db8fc0ce865.jpeg 400w,
 /photo/masterpieces/figures/tsinghua/4_hu14f7ced98f13f5c782a993e5bf06bec8_3108480_33c3f2a634f6efaa48d49607161aaf42.jpeg 760w,
 /photo/masterpieces/figures/tsinghua/4_hu14f7ced98f13f5c782a993e5bf06bec8_3108480_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/tsinghua/4_hu14f7ced98f13f5c782a993e5bf06bec8_3108480_ec9e2d67f0511e5a0d199db8fc0ce865.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/tsinghua/4_hu14f7ced98f13f5c782a993e5bf06bec8_3108480_ec9e2d67f0511e5a0d199db8fc0ce865.jpeg"
 width="760"
 height="585"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1520,7 +1520,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/tsinghua/5_hu6287b1012de14d2c855127ad41415dc3_6720395_d33e0bf66eb5f5570894de06cb6ae834.jpeg 400w,
 /photo/masterpieces/figures/tsinghua/5_hu6287b1012de14d2c855127ad41415dc3_6720395_07e98ec656d6e02bb66737718060a5b3.jpeg 760w,
 /photo/masterpieces/figures/tsinghua/5_hu6287b1012de14d2c855127ad41415dc3_6720395_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/tsinghua/5_hu6287b1012de14d2c855127ad41415dc3_6720395_d33e0bf66eb5f5570894de06cb6ae834.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/tsinghua/5_hu6287b1012de14d2c855127ad41415dc3_6720395_d33e0bf66eb5f5570894de06cb6ae834.jpeg"
 width="760"
 height="570"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1533,7 +1533,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/tsinghua/6_huc113da44745139f281ac88eed8de3cb6_2473413_de9c1412ee7faa13cff819807a9a2581.jpeg 400w,
 /photo/masterpieces/figures/tsinghua/6_huc113da44745139f281ac88eed8de3cb6_2473413_5e3adaf6b4f7385fd0cfced627da62e2.jpeg 760w,
 /photo/masterpieces/figures/tsinghua/6_huc113da44745139f281ac88eed8de3cb6_2473413_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/tsinghua/6_huc113da44745139f281ac88eed8de3cb6_2473413_de9c1412ee7faa13cff819807a9a2581.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/tsinghua/6_huc113da44745139f281ac88eed8de3cb6_2473413_de9c1412ee7faa13cff819807a9a2581.jpeg"
 width="760"
 height="459"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1546,7 +1546,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/tsinghua/flower1_huda961d7b4616429ccafce6ea80239bb5_944764_d2ee013a91705ae68b4e2eda3bab01af.jpeg 400w,
 /photo/masterpieces/figures/tsinghua/flower1_huda961d7b4616429ccafce6ea80239bb5_944764_50868940d073348913078df92e0ad5d4.jpeg 760w,
 /photo/masterpieces/figures/tsinghua/flower1_huda961d7b4616429ccafce6ea80239bb5_944764_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/tsinghua/flower1_huda961d7b4616429ccafce6ea80239bb5_944764_d2ee013a91705ae68b4e2eda3bab01af.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/tsinghua/flower1_huda961d7b4616429ccafce6ea80239bb5_944764_d2ee013a91705ae68b4e2eda3bab01af.jpeg"
 width="760"
 height="582"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1559,7 +1559,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/Trip/Beijing_railway_hu65c5e4b3201551363f66d75b94175256_7352360_21ba23a04ba832e35ba0616e0861b245.jpg 400w,
 /photo/masterpieces/figures/Trip/Beijing_railway_hu65c5e4b3201551363f66d75b94175256_7352360_eab9226a0bcdb03771e86ad85b7d643b.jpg 760w,
 /photo/masterpieces/figures/Trip/Beijing_railway_hu65c5e4b3201551363f66d75b94175256_7352360_1200x1200_fit_q75_lanczos.jpg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/Trip/Beijing_railway_hu65c5e4b3201551363f66d75b94175256_7352360_21ba23a04ba832e35ba0616e0861b245.jpg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/Trip/Beijing_railway_hu65c5e4b3201551363f66d75b94175256_7352360_21ba23a04ba832e35ba0616e0861b245.jpg"
 width="760"
 height="570"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1572,7 +1572,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/tsinghua/7_hu63653651b9445045ec0b069f3bdf1a55_2437889_31c857845be0c09a78c01518d0fdbe41.jpeg 400w,
 /photo/masterpieces/figures/tsinghua/7_hu63653651b9445045ec0b069f3bdf1a55_2437889_7f3081e0115d0ea71cfbcf78f7853fd8.jpeg 760w,
 /photo/masterpieces/figures/tsinghua/7_hu63653651b9445045ec0b069f3bdf1a55_2437889_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/tsinghua/7_hu63653651b9445045ec0b069f3bdf1a55_2437889_31c857845be0c09a78c01518d0fdbe41.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/tsinghua/7_hu63653651b9445045ec0b069f3bdf1a55_2437889_31c857845be0c09a78c01518d0fdbe41.jpeg"
 width="760"
 height="570"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1585,7 +1585,7 @@ See the world through&amp;hellip;? (2020.10)&lt;/p>
 /photo/masterpieces/figures/tsinghua/snow4_hu8b8a3d8a6b58a006f8566ec8e457e20e_1113443_0cb0691f69575928d98d95bc6e0a01eb.jpg 400w,
 /photo/masterpieces/figures/tsinghua/snow4_hu8b8a3d8a6b58a006f8566ec8e457e20e_1113443_394af3dbb27504535e9d3aba246363f5.jpg 760w,
 /photo/masterpieces/figures/tsinghua/snow4_hu8b8a3d8a6b58a006f8566ec8e457e20e_1113443_1200x1200_fit_q75_lanczos.jpg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/tsinghua/snow4_hu8b8a3d8a6b58a006f8566ec8e457e20e_1113443_0cb0691f69575928d98d95bc6e0a01eb.jpg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/tsinghua/snow4_hu8b8a3d8a6b58a006f8566ec8e457e20e_1113443_0cb0691f69575928d98d95bc6e0a01eb.jpg"
 width="760"
 height="507"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1599,7 +1599,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/2022shenzhen/1_hu83b563a001074bc9bec11a3175b59ccd_505113_fc0f924c14a10afd0ee35e1c100c7f04.jpg 400w,
 /photo/masterpieces/figures/2022shenzhen/1_hu83b563a001074bc9bec11a3175b59ccd_505113_ca8505141b6395e20408a3fe517446e2.jpg 760w,
 /photo/masterpieces/figures/2022shenzhen/1_hu83b563a001074bc9bec11a3175b59ccd_505113_1200x1200_fit_q75_lanczos.jpg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/2022shenzhen/1_hu83b563a001074bc9bec11a3175b59ccd_505113_fc0f924c14a10afd0ee35e1c100c7f04.jpg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/2022shenzhen/1_hu83b563a001074bc9bec11a3175b59ccd_505113_fc0f924c14a10afd0ee35e1c100c7f04.jpg"
 width="760"
 height="506"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1613,7 +1613,7 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/Trip/chuanxi_hu0fa12b5e12631b733c76cc0ef0838670_6215139_e4132e2cd4a006092b00a9bd150fd026.jpeg 400w,
 /photo/masterpieces/figures/Trip/chuanxi_hu0fa12b5e12631b733c76cc0ef0838670_6215139_901041cb1b3e0378510030cca44f8275.jpeg 760w,
 /photo/masterpieces/figures/Trip/chuanxi_hu0fa12b5e12631b733c76cc0ef0838670_6215139_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/Trip/chuanxi_hu0fa12b5e12631b733c76cc0ef0838670_6215139_e4132e2cd4a006092b00a9bd150fd026.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/Trip/chuanxi_hu0fa12b5e12631b733c76cc0ef0838670_6215139_e4132e2cd4a006092b00a9bd150fd026.jpeg"
 width="760"
 height="502"
 loading="lazy" data-zoomable />&lt;/div>
@@ -1626,12 +1626,12 @@ loading="lazy" data-zoomable />&lt;/div>
 /photo/masterpieces/figures/Trip/greatwall_hu19b0373762a446c4553970bda4a112e2_811288_e2e9ec1027dcb55777a88571468b4c1d.jpeg 400w,
 /photo/masterpieces/figures/Trip/greatwall_hu19b0373762a446c4553970bda4a112e2_811288_24192b405e34b76557b870d45e4e5bba.jpeg 760w,
 /photo/masterpieces/figures/Trip/greatwall_hu19b0373762a446c4553970bda4a112e2_811288_1200x1200_fit_q75_lanczos.jpeg 1200w"
-src="https://wenda-qianhw.netlify.app/photo/masterpieces/figures/Trip/greatwall_hu19b0373762a446c4553970bda4a112e2_811288_e2e9ec1027dcb55777a88571468b4c1d.jpeg"
+src="https://chuwd19.github.io/photo/masterpieces/figures/Trip/greatwall_hu19b0373762a446c4553970bda4a112e2_811288_e2e9ec1027dcb55777a88571468b4c1d.jpeg"
 width="760"
 height="570"
 loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
-长城。 (2021.5)&lt;/p></description></item><item><title>Ray Tracing Renderer Report</title><link>https://wenda-qianhw.netlify.app/slides/ray_tracing/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/slides/ray_tracing/</guid><description>&lt;h2 id="centerray-tracing-reportcenter">&lt;center>Ray Tracing Report&lt;/center>&lt;/h2>
+长城。 (2021.5)&lt;/p></description></item><item><title>Ray Tracing Renderer Report</title><link>https://chuwd19.github.io/slides/ray_tracing/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/slides/ray_tracing/</guid><description>&lt;h2 id="centerray-tracing-reportcenter">&lt;center>Ray Tracing Report&lt;/center>&lt;/h2>
 &lt;center>储闻达 2019012373&lt;/center>
 &lt;h4 id="1-overview">1 Overview&lt;/h4>
 &lt;p>I implement a ray tracer based on the &lt;strong>path tracing algorithm&lt;/strong>, which supports:&lt;/p>
@@ -1885,7 +1885,7 @@ return 0;
 &lt;p>&lt;img src="figures/scene11.bmp" alt="avatar" style="zoom:80%;" />&lt;/p>
 &lt;p>&lt;img src="figures/2ball.bmp" alt="2ball" />&lt;/p>
 &lt;p>&lt;img src="figures/scene15_final_2.bmp" alt="avatar" style="zoom:70%;" />&lt;/p>
-&lt;p>&lt;img src="figures/dof.bmp" alt="avatar" style="zoom:80%;" />&lt;/p></description></item><item><title>Ray Tracing Renderer Report</title><link>https://wenda-qianhw.netlify.app/slides/ray_tracing/ray_tracing/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/slides/ray_tracing/ray_tracing/</guid><description>&lt;h2 id="centerray-tracing-reportcenter">&lt;center>Ray Tracing Report&lt;/center>&lt;/h2>
+&lt;p>&lt;img src="figures/dof.bmp" alt="avatar" style="zoom:80%;" />&lt;/p></description></item><item><title>Ray Tracing Renderer Report</title><link>https://chuwd19.github.io/slides/ray_tracing/ray_tracing/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/slides/ray_tracing/ray_tracing/</guid><description>&lt;h2 id="centerray-tracing-reportcenter">&lt;center>Ray Tracing Report&lt;/center>&lt;/h2>
 &lt;center>储闻达 2019012373&lt;/center>
 &lt;h4 id="1-overview">1 Overview&lt;/h4>
 &lt;p>I implement a ray tracer based on the &lt;strong>path tracing algorithm&lt;/strong>, which supports:&lt;/p>
@@ -2139,7 +2139,7 @@ return 0;
 &lt;p>&lt;img src="figures/scene11.bmp" alt="avatar" style="zoom:80%;" />&lt;/p>
 &lt;p>&lt;img src="figures/2ball.bmp" alt="2ball" />&lt;/p>
 &lt;p>&lt;img src="figures/scene15_final_2.bmp" alt="avatar" style="zoom:70%;" />&lt;/p>
-&lt;p>&lt;img src="figures/dof.bmp" alt="avatar" style="zoom:80%;" />&lt;/p></description></item><item><title>Report</title><link>https://wenda-qianhw.netlify.app/private/school_report/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/private/school_report/</guid><description/></item><item><title>Slides</title><link>https://wenda-qianhw.netlify.app/slides/notes/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/slides/notes/</guid><description>&lt;h2 id="centernotes-on-adversarial-machine-learningcenter">&lt;center>Notes on Adversarial Machine Learning&lt;/center>&lt;/h2>
+&lt;p>&lt;img src="figures/dof.bmp" alt="avatar" style="zoom:80%;" />&lt;/p></description></item><item><title>Report</title><link>https://chuwd19.github.io/private/school_report/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/private/school_report/</guid><description/></item><item><title>Slides</title><link>https://chuwd19.github.io/slides/notes/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/slides/notes/</guid><description>&lt;h2 id="centernotes-on-adversarial-machine-learningcenter">&lt;center>Notes on Adversarial Machine Learning&lt;/center>&lt;/h2>
 &lt;h3 id="1--formalize-adversarial-attack">1 Formalize Adversarial Attack&lt;/h3>
 &lt;h5 id="explorative-attacks-vs-causative-attack">Explorative Attacks vs. Causative Attack&lt;/h5>
 &lt;ul>
@@ -3152,7 +3152,7 @@ which represents the information loss of describing $p(x)$ by $q(x)$.&lt;/p>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/桌面/Adversarial ML/figure/recall-angle-compare-tvloss.png" alt="avatar" style="zoom: 33%;" />&lt;/p>
+&lt;p>&lt;img src="https://chuwd19.github.io/home/qianhw/桌面/Adversarial ML/figure/recall-angle-compare-tvloss.png" alt="avatar" style="zoom: 33%;" />&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>Current Pipeline:&lt;/p>
@@ -3354,10 +3354,10 @@ source_coordinate = torch.matmul(Variable(self.target_coordinate_repr), mapping_
 &lt;p>参数化 gan&lt;/p>
 &lt;h2 id="-questions-on-how-to-use-pytorch3d">❓ Questions on how to use PyTorch3D&lt;/h2>
 &lt;p>I have read the provided tutorials and have understood that meshes with TextureVertex and TextureAtlas can be rendered by differentiable functions. Both of them run well in my training pipeline. Yet I did not find any example codes on computing gradients of TextureUV and it seems the gradient of loss did not propagate backward to the TextureUV. So I am wondering is the differentiable rendering process of TextureUV supported in PyTorch3D?
-&lt;code>mesh.textures = TexturesUV(maps=tex, faces_uvs=faces[None], verts_uvs=verts_uv)&lt;/code>&lt;/p></description></item><item><title>Traffic at Peak Hours - A Game Theory View</title><link>https://wenda-qianhw.netlify.app/project/traffic-game/</link><pubDate>Sat, 10 Jul 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/project/traffic-game/</guid><description>&lt;p>People in today’s modern cities have been accustomed to the scene that thousands of people travels from uptown and suburban areas to downtown and urban areas every morning of workdays. This phenomena puts great stress on the traffic system, causing congestion at a specific period of a day, which is usually referred to as the morning peak. During morning peaks, bus stops and subway stations are filled with people who get up late and are hurrying up not to be late for work. Therefore, this competition for limited traffic resources among these workers naturally forms a game.&lt;/p>
+&lt;code>mesh.textures = TexturesUV(maps=tex, faces_uvs=faces[None], verts_uvs=verts_uv)&lt;/code>&lt;/p></description></item><item><title>Traffic at Peak Hours - A Game Theory View</title><link>https://chuwd19.github.io/project/traffic-game/</link><pubDate>Sat, 10 Jul 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/project/traffic-game/</guid><description>&lt;p>People in today’s modern cities have been accustomed to the scene that thousands of people travels from uptown and suburban areas to downtown and urban areas every morning of workdays. This phenomena puts great stress on the traffic system, causing congestion at a specific period of a day, which is usually referred to as the morning peak. During morning peaks, bus stops and subway stations are filled with people who get up late and are hurrying up not to be late for work. Therefore, this competition for limited traffic resources among these workers naturally forms a game.&lt;/p>
 &lt;p>In this paper, a traffic game is formalize, abstracting the main features from this battle of peak hours. The ultimate goal of each player is to set off for work as late as possible while arriving before a deadline. To reflect the common rules of buses and subway systems, the traffic system adopts a first-come-first-serve(FCFS) rule with a fixed serving rate. Despite the inherent incontinuity of the ordering function exploited by FCFS rule, we show the existence of Nash equilibrium by modifying the original game with various approaches such as discretization or smoothing.&lt;/p>
 &lt;p>Aside from normal actions of queuing, a somewhat devious action, which we call detouring, is also taken into account. When Alice reaches a subway station and the queueis already very long, she may first travel in the reverse direction for several stops and then travels back, jumping the queue indirectly. Detouring may benefit some individuals, but it is a waste of the traffic capacity since the person travels longer. With more and more people adopting this strategy, social welfare diminishes. It is thus an example of the so-called ’involution’ that the pressure of competition leads to bad results on every individuals. In this paper, we analyze the behavior of detouring as a subgame with rules of M/D/1 queue model, incorporating corresponding conclusions from Queuing Theory.&lt;/p>
-&lt;p>While a Nash equilibrium is hard to find in general, we simulate these two games and successfully find $\epsilon$ Nash equilibrium in an iterative manner.&lt;/p></description></item><item><title>Computer Architecture</title><link>https://wenda-qianhw.netlify.app/archived_note/computer-arch/</link><pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/computer-arch/</guid><description>&lt;p>Press the &amp;lsquo;&amp;lsquo;pdf&amp;rsquo;&amp;rsquo; button to download the notes.&lt;/p></description></item><item><title>Ray Tracing Renderer</title><link>https://wenda-qianhw.netlify.app/project/rtx/</link><pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/project/rtx/</guid><description>&lt;p>This renderer supports Monte Carlo path tracing with reflection and refraction. Simple geometries (cubes, spheres, circles, cylinders, etc.) can be loaded in from .txt files, while complicated triangular meshes with uv textures and normal vector interpolation can be loaded from .obj files. Area lights are supported to create soft shadows. Moreover, we support depth of fields effects and achieve anti-aliasing by super-sampling. For more details, please click the button and redirect to the main slide.&lt;/p>
+&lt;p>While a Nash equilibrium is hard to find in general, we simulate these two games and successfully find $\epsilon$ Nash equilibrium in an iterative manner.&lt;/p></description></item><item><title>Computer Architecture</title><link>https://chuwd19.github.io/archived_note/computer-arch/</link><pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/computer-arch/</guid><description>&lt;p>Press the &amp;lsquo;&amp;lsquo;pdf&amp;rsquo;&amp;rsquo; button to download the notes.&lt;/p></description></item><item><title>Ray Tracing Renderer</title><link>https://chuwd19.github.io/project/rtx/</link><pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/project/rtx/</guid><description>&lt;p>This renderer supports Monte Carlo path tracing with reflection and refraction. Simple geometries (cubes, spheres, circles, cylinders, etc.) can be loaded in from .txt files, while complicated triangular meshes with uv textures and normal vector interpolation can be loaded from .obj files. Area lights are supported to create soft shadows. Moreover, we support depth of fields effects and achieve anti-aliasing by super-sampling. For more details, please click the button and redirect to the main slide.&lt;/p>
 &lt;h4 id="1-overview">1 Overview&lt;/h4>
 &lt;p>I implement a ray tracer based on the &lt;strong>path tracing algorithm&lt;/strong>, which supports:&lt;/p>
 &lt;ul>
@@ -3609,7 +3609,7 @@ return 0;
 &lt;p>&lt;img src="figures/scene11.bmp" alt="avatar" style="zoom:80%;" />&lt;/p>
 &lt;p>&lt;img src="figures/2ball.bmp" alt="2ball" />&lt;/p>
 &lt;p>&lt;img src="figures/scene15_final_2.bmp" alt="avatar" style="zoom:70%;" />&lt;/p>
-&lt;p>&lt;img src="figures/dof.bmp" alt="avatar" style="zoom:80%;" />&lt;/p></description></item><item><title>Distributed System</title><link>https://wenda-qianhw.netlify.app/archived_note/distributed/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/distributed/</guid><description>&lt;h2 id="centerreview---finalcenter">&lt;center>Review - Final&lt;/center>&lt;/h2>
+&lt;p>&lt;img src="figures/dof.bmp" alt="avatar" style="zoom:80%;" />&lt;/p></description></item><item><title>Distributed System</title><link>https://chuwd19.github.io/archived_note/distributed/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/distributed/</guid><description>&lt;h2 id="centerreview---finalcenter">&lt;center>Review - Final&lt;/center>&lt;/h2>
 &lt;h3 id="11-intro">1.1 Intro&lt;/h3>
 &lt;h5 id="characteristics-of-ds">Characteristics of DS&lt;/h5>
 &lt;ul>
@@ -4597,7 +4597,7 @@ padding: 2px;">Paxos&lt;/div>
 &lt;li>Phase 3: Each process sends its vector to all other processes.&lt;/li>
 &lt;li>Phase 4: Each process the information received from every other process to do its computation.&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/post/fig/BFT.png" alt="avatar" style="zoom:33%;" />&lt;/p>
+&lt;p>&lt;img src="https://chuwd19.github.io/home/qianhw/下载/hugo/content/post/fig/BFT.png" alt="avatar" style="zoom:33%;" />&lt;/p>
 &lt;h3 id="10-gfs--mapreduce">10 GFS &amp;amp; MapReduce&lt;/h3>
 &lt;ul>
 &lt;li>GFS is a distributed fault-tolerant file system&lt;/li>
@@ -4817,140 +4817,140 @@ padding: 2px;">GFS&lt;/div>
 &lt;ul>
 &lt;li>throughput limitation: 7 transactions/sec, comparing to 2000-10000 for VISA&lt;/li>
 &lt;li>Hard-forking vs. soft-forking&lt;/li>
-&lt;/ul></description></item><item><title>Introduction to Algorithm Design</title><link>https://wenda-qianhw.netlify.app/archived_note/intro2ad/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/intro2ad/</guid><description/></item><item><title>Machine Learning</title><link>https://wenda-qianhw.netlify.app/archived_note/machine-learning/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/machine-learning/</guid><description>&lt;p>Some of the notes are hand-written. The others are typed in markdown.&lt;/p>
+&lt;/ul></description></item><item><title>Introduction to Algorithm Design</title><link>https://chuwd19.github.io/archived_note/intro2ad/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/intro2ad/</guid><description/></item><item><title>Machine Learning</title><link>https://chuwd19.github.io/archived_note/machine-learning/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/machine-learning/</guid><description>&lt;p>Some of the notes are hand-written. The others are typed in markdown.&lt;/p>
 &lt;ul>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/1.pdf" target="_blank">1 Introduction&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/1.pdf" target="_blank">1 Introduction&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/2.pdf" target="_blank">2 Gradient Descent&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/2.pdf" target="_blank">2 Gradient Descent&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/3.pdf" target="_blank">3 Classification and Regression&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/3.pdf" target="_blank">3 Classification and Regression&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/4.pdf" target="_blank">4 Regularization&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/4.pdf" target="_blank">4 Regularization&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/5.pdf" target="_blank">5 SVM&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/5.pdf" target="_blank">5 SVM&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/6.pdf" target="_blank">6 Generalization Theory&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/6.pdf" target="_blank">6 Generalization Theory&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/7.pdf" target="_blank">7 Neural Networks&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/7.pdf" target="_blank">7 Neural Networks&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/8.pdf" target="_blank">8 Mid-term review&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/8.pdf" target="_blank">8 Mid-term review&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/9.pdf" target="_blank">9 Decoupling&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/9.pdf" target="_blank">9 Decoupling&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/10.pdf" target="_blank">10 Decision Tree&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/10.pdf" target="_blank">10 Decision Tree&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/11.pdf" target="_blank">11 Clustering&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/11.pdf" target="_blank">11 Clustering&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/12.pdf" target="_blank">12 Robust ML&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/12.pdf" target="_blank">12 Robust ML&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/13.pdf" target="_blank">13 Differential Privacy&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/13.pdf" target="_blank">13 Differential Privacy&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/14.pdf" target="_blank">14 Hyperparameter Tuning&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/14.pdf" target="_blank">14 Hyperparameter Tuning&lt;/a>
 &lt;/li>
 &lt;li>
-&lt;a href="https://wenda-qianhw.netlify.app/uploads/ml/15.pdf" target="_blank">15 Final Review&lt;/a>
+&lt;a href="https://chuwd19.github.io/uploads/ml/15.pdf" target="_blank">15 Final Review&lt;/a>
 &lt;/li>
-&lt;/ul></description></item><item><title>Probabilistic Graphical Model</title><link>https://wenda-qianhw.netlify.app/archived_note/pgm/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/pgm/</guid><description/></item><item><title>A survey on Differential Privacy</title><link>https://wenda-qianhw.netlify.app/project/dp/</link><pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/project/dp/</guid><description>&lt;p>Over the past several decades, immense amount of data were collected, which enables a variety of new applications and services. Some of these applications investigate user behaviors and gain economic profits from it (such as recommendation algorithms); while some of them get access to crucial information such as health condition or medical data. As a result, it has been a growing concern to guard the privacy of users and protect sensitive data from exposure.&lt;/p>
-&lt;p>Among various approaches, Differential Privacy is considered as one of the most promising privacy preservation techniques. An elegant definition of privacy is proposed by and several basic mechanisms are introduced as building blocks toward privacy. In this report, we make a concise introduction to these techniques and briefly discuss several applications of differential privacy.&lt;/p></description></item><item><title>Sky</title><link>https://wenda-qianhw.netlify.app/photo/sky/</link><pubDate>Fri, 21 May 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/photo/sky/</guid><description>
+&lt;/ul></description></item><item><title>Probabilistic Graphical Model</title><link>https://chuwd19.github.io/archived_note/pgm/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/pgm/</guid><description/></item><item><title>A survey on Differential Privacy</title><link>https://chuwd19.github.io/project/dp/</link><pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/project/dp/</guid><description>&lt;p>Over the past several decades, immense amount of data were collected, which enables a variety of new applications and services. Some of these applications investigate user behaviors and gain economic profits from it (such as recommendation algorithms); while some of them get access to crucial information such as health condition or medical data. As a result, it has been a growing concern to guard the privacy of users and protect sensitive data from exposure.&lt;/p>
+&lt;p>Among various approaches, Differential Privacy is considered as one of the most promising privacy preservation techniques. An elegant definition of privacy is proposed by and several basic mechanisms are introduced as building blocks toward privacy. In this report, we make a concise introduction to these techniques and briefly discuss several applications of differential privacy.&lt;/p></description></item><item><title>Sky</title><link>https://chuwd19.github.io/photo/sky/</link><pubDate>Fri, 21 May 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/photo/sky/</guid><description>
 &lt;div class="gallery">
-&lt;a data-fancybox="gallery-sky" href="https://wenda-qianhw.netlify.app/media/albums/sky/1.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/sky/1_hucb6d02ec3c1059f017b31851aa917b62_2719988_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="1.jpg" width="253" height="190">
+&lt;a data-fancybox="gallery-sky" href="https://chuwd19.github.io/media/albums/sky/1.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/sky/1_hucb6d02ec3c1059f017b31851aa917b62_2719988_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="1.jpg" width="253" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-sky" href="https://wenda-qianhw.netlify.app/media/albums/sky/2.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/sky/2_hu7dc94ee866f78558570f14cbdfaa75e8_692531_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="2.jpg" width="253" height="190">
+&lt;a data-fancybox="gallery-sky" href="https://chuwd19.github.io/media/albums/sky/2.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/sky/2_hu7dc94ee866f78558570f14cbdfaa75e8_692531_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="2.jpg" width="253" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-sky" href="https://wenda-qianhw.netlify.app/media/albums/sky/3.jpeg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/sky/3_hu0e34b440c41cfdc01b04d5f773a678d3_2622488_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="3.jpeg" width="253" height="190">
+&lt;a data-fancybox="gallery-sky" href="https://chuwd19.github.io/media/albums/sky/3.jpeg" >
+&lt;img src="https://chuwd19.github.io/media/albums/sky/3_hu0e34b440c41cfdc01b04d5f773a678d3_2622488_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="3.jpeg" width="253" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-sky" href="https://wenda-qianhw.netlify.app/media/albums/sky/4.jpeg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/sky/4_hub30d49bce33c081ab3b2171bc2557310_3534492_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="4.jpeg" width="253" height="190">
+&lt;a data-fancybox="gallery-sky" href="https://chuwd19.github.io/media/albums/sky/4.jpeg" >
+&lt;img src="https://chuwd19.github.io/media/albums/sky/4_hub30d49bce33c081ab3b2171bc2557310_3534492_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="4.jpeg" width="253" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-sky" href="https://wenda-qianhw.netlify.app/media/albums/sky/5.jpeg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/sky/5_hu5094b082084b0ae0c63f14fb6711421e_609225_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="5.jpeg" width="228" height="190">
+&lt;a data-fancybox="gallery-sky" href="https://chuwd19.github.io/media/albums/sky/5.jpeg" >
+&lt;img src="https://chuwd19.github.io/media/albums/sky/5_hu5094b082084b0ae0c63f14fb6711421e_609225_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="5.jpeg" width="228" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-sky" href="https://wenda-qianhw.netlify.app/media/albums/sky/6.jpeg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/sky/6_huc0c870f693f919ba18aae20af4ded40d_1940382_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="6.jpeg" width="285" height="190">
+&lt;a data-fancybox="gallery-sky" href="https://chuwd19.github.io/media/albums/sky/6.jpeg" >
+&lt;img src="https://chuwd19.github.io/media/albums/sky/6_huc0c870f693f919ba18aae20af4ded40d_1940382_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="6.jpeg" width="285" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-sky" href="https://wenda-qianhw.netlify.app/media/albums/sky/7.jpeg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/sky/7_hua075ec3b59168934b2b500b175c9d02c_2354541_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="7.jpeg" width="231" height="190">
+&lt;a data-fancybox="gallery-sky" href="https://chuwd19.github.io/media/albums/sky/7.jpeg" >
+&lt;img src="https://chuwd19.github.io/media/albums/sky/7_hua075ec3b59168934b2b500b175c9d02c_2354541_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="7.jpeg" width="231" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-sky" href="https://wenda-qianhw.netlify.app/media/albums/sky/8.jpeg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/sky/8_hua493564cbec9eb0fa9fdae493fd623e6_2276927_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="8.jpeg" width="289" height="190">
+&lt;a data-fancybox="gallery-sky" href="https://chuwd19.github.io/media/albums/sky/8.jpeg" >
+&lt;img src="https://chuwd19.github.io/media/albums/sky/8_hua493564cbec9eb0fa9fdae493fd623e6_2276927_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="8.jpeg" width="289" height="190">
 &lt;/a>
-&lt;/div></description></item><item><title>Structures</title><link>https://wenda-qianhw.netlify.app/photo/structures/</link><pubDate>Fri, 21 May 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/photo/structures/</guid><description>
+&lt;/div></description></item><item><title>Structures</title><link>https://chuwd19.github.io/photo/structures/</link><pubDate>Fri, 21 May 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/photo/structures/</guid><description>
 &lt;div class="gallery">
-&lt;a data-fancybox="gallery-structures" href="https://wenda-qianhw.netlify.app/media/albums/structures/1580394046840-01-01.jpeg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/structures/1580394046840-01-01_hu874797b70947d16ecd005262e6f0bb3d_127053_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="1580394046840-01-01.jpeg" width="143" height="190">
+&lt;a data-fancybox="gallery-structures" href="https://chuwd19.github.io/media/albums/structures/1580394046840-01-01.jpeg" >
+&lt;img src="https://chuwd19.github.io/media/albums/structures/1580394046840-01-01_hu874797b70947d16ecd005262e6f0bb3d_127053_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="1580394046840-01-01.jpeg" width="143" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-structures" href="https://wenda-qianhw.netlify.app/media/albums/structures/IMG_20200111_131029.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/structures/IMG_20200111_131029_hu2a4206695fc4262267ef1bc5cb3dc571_3303097_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="IMG_20200111_131029.jpg" width="253" height="190">
+&lt;a data-fancybox="gallery-structures" href="https://chuwd19.github.io/media/albums/structures/IMG_20200111_131029.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/structures/IMG_20200111_131029_hu2a4206695fc4262267ef1bc5cb3dc571_3303097_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="IMG_20200111_131029.jpg" width="253" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-structures" href="https://wenda-qianhw.netlify.app/media/albums/structures/IMG_20210220_081704-01.jpeg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/structures/IMG_20210220_081704-01_hu288ae1a4ab238ee38daa072b7a4d4171_5356540_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="IMG_20210220_081704-01.jpeg" width="253" height="190">
+&lt;a data-fancybox="gallery-structures" href="https://chuwd19.github.io/media/albums/structures/IMG_20210220_081704-01.jpeg" >
+&lt;img src="https://chuwd19.github.io/media/albums/structures/IMG_20210220_081704-01_hu288ae1a4ab238ee38daa072b7a4d4171_5356540_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="IMG_20210220_081704-01.jpeg" width="253" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-structures" href="https://wenda-qianhw.netlify.app/media/albums/structures/IMG_20210723_131852.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/structures/IMG_20210723_131852_hu6f91f77b8ab579858a7c922da64c1fc8_3714391_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="IMG_20210723_131852.jpg" width="253" height="190">
+&lt;a data-fancybox="gallery-structures" href="https://chuwd19.github.io/media/albums/structures/IMG_20210723_131852.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/structures/IMG_20210723_131852_hu6f91f77b8ab579858a7c922da64c1fc8_3714391_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="IMG_20210723_131852.jpg" width="253" height="190">
 &lt;/a>
-&lt;/div></description></item><item><title>喵</title><link>https://wenda-qianhw.netlify.app/photo/animals/</link><pubDate>Fri, 21 May 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/photo/animals/</guid><description>
+&lt;/div></description></item><item><title>喵</title><link>https://chuwd19.github.io/photo/animals/</link><pubDate>Fri, 21 May 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/photo/animals/</guid><description>
 &lt;div class="gallery">
-&lt;a data-fancybox="gallery-animals" href="https://wenda-qianhw.netlify.app/media/albums/animals/IMG_20200116_120653_mh1579185290177.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/animals/IMG_20200116_120653_mh1579185290177_hu0b9d509e2b524da8f5337da3ff0bc0d0_920134_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="IMG_20200116_120653_mh1579185290177.jpg" width="268" height="190">
+&lt;a data-fancybox="gallery-animals" href="https://chuwd19.github.io/media/albums/animals/IMG_20200116_120653_mh1579185290177.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/animals/IMG_20200116_120653_mh1579185290177_hu0b9d509e2b524da8f5337da3ff0bc0d0_920134_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="IMG_20200116_120653_mh1579185290177.jpg" width="268" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-animals" href="https://wenda-qianhw.netlify.app/media/albums/animals/IMG_20200116_120924_mh1579185167070.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/animals/IMG_20200116_120924_mh1579185167070_hu6fe6e2824c6b0c9981f6b9365afb9766_880062_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="IMG_20200116_120924_mh1579185167070.jpg" width="143" height="190">
+&lt;a data-fancybox="gallery-animals" href="https://chuwd19.github.io/media/albums/animals/IMG_20200116_120924_mh1579185167070.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/animals/IMG_20200116_120924_mh1579185167070_hu6fe6e2824c6b0c9981f6b9365afb9766_880062_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="IMG_20200116_120924_mh1579185167070.jpg" width="143" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-animals" href="https://wenda-qianhw.netlify.app/media/albums/animals/IMG_20200116_122448_mh1579184984991.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/animals/IMG_20200116_122448_mh1579184984991_hu39bbb8c6b126299cd28b1bbaed9e36d6_1204343_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="IMG_20200116_122448_mh1579184984991.jpg" width="253" height="190">
+&lt;a data-fancybox="gallery-animals" href="https://chuwd19.github.io/media/albums/animals/IMG_20200116_122448_mh1579184984991.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/animals/IMG_20200116_122448_mh1579184984991_hu39bbb8c6b126299cd28b1bbaed9e36d6_1204343_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="IMG_20200116_122448_mh1579184984991.jpg" width="253" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-animals" href="https://wenda-qianhw.netlify.app/media/albums/animals/IMG_20200116_130848_mh1579181292886.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/animals/IMG_20200116_130848_mh1579181292886_hu2850f5757ef9ed3d284e3bac9d3ab5e7_1547061_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="IMG_20200116_130848_mh1579181292886.jpg" width="253" height="190">
+&lt;a data-fancybox="gallery-animals" href="https://chuwd19.github.io/media/albums/animals/IMG_20200116_130848_mh1579181292886.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/animals/IMG_20200116_130848_mh1579181292886_hu2850f5757ef9ed3d284e3bac9d3ab5e7_1547061_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="IMG_20200116_130848_mh1579181292886.jpg" width="253" height="190">
 &lt;/a>
-&lt;/div></description></item><item><title>Diversifying Options in Option-Critic Framework of Hierarchical Reinforcement Learning</title><link>https://wenda-qianhw.netlify.app/project/ai/</link><pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/project/ai/</guid><description>&lt;p>Reinforcement learning has achieved great successes in many different domains recent years. However, it remains a big challenge for these method to address environments with sparse and delayed rewards, which are often encounter in real world scenarios. As an innovative approach to solve this problem, Hierarchical Reinforcement Learning manages to learn knowledge at multiple levels and make plans with temporal abstraction. In addition to its great performance on sparse reward problems, previous researches have also revealed its potential of transfer learning.&lt;/p>
+&lt;/div></description></item><item><title>Diversifying Options in Option-Critic Framework of Hierarchical Reinforcement Learning</title><link>https://chuwd19.github.io/project/ai/</link><pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/project/ai/</guid><description>&lt;p>Reinforcement learning has achieved great successes in many different domains recent years. However, it remains a big challenge for these method to address environments with sparse and delayed rewards, which are often encounter in real world scenarios. As an innovative approach to solve this problem, Hierarchical Reinforcement Learning manages to learn knowledge at multiple levels and make plans with temporal abstraction. In addition to its great performance on sparse reward problems, previous researches have also revealed its potential of transfer learning.&lt;/p>
 &lt;p>Two main approaches have been proposed for designing HRL architectures. The first one is to find and assign subgoals to guide the low level policy. The other one is to learn skills on the low level policy and a policy to utilize these skills on the higher level.&lt;/p>
-&lt;p>In our research, we focus on the option framwork as a representative of the second approach. We implement the Option-Critic architecture and reproduce its result on maze problems. During experiments, however, we find the natural tendency of the agent to develop only one option for the whole problem, which essentially degrades to vanilla policy gradient method. We are therefore motivated to develop methods to enhance the diversity of options. We consider several possible methods including dropouts on options, giving intrinsic rewards to guide the choice of options and enhancing option specialization on termination probability.&lt;/p></description></item><item><title>Snow</title><link>https://wenda-qianhw.netlify.app/photo/snow/</link><pubDate>Mon, 30 Dec 2019 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/photo/snow/</guid><description>
+&lt;p>In our research, we focus on the option framwork as a representative of the second approach. We implement the Option-Critic architecture and reproduce its result on maze problems. During experiments, however, we find the natural tendency of the agent to develop only one option for the whole problem, which essentially degrades to vanilla policy gradient method. We are therefore motivated to develop methods to enhance the diversity of options. We consider several possible methods including dropouts on options, giving intrinsic rewards to guide the choice of options and enhancing option specialization on termination probability.&lt;/p></description></item><item><title>Snow</title><link>https://chuwd19.github.io/photo/snow/</link><pubDate>Mon, 30 Dec 2019 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/photo/snow/</guid><description>
 &lt;div class="gallery">
-&lt;a data-fancybox="gallery-snow" href="https://wenda-qianhw.netlify.app/media/albums/snow/1.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/snow/1_hu083a39289c8cb1fb413768d37ca18a1f_1389941_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="1.jpg" width="253" height="190">
+&lt;a data-fancybox="gallery-snow" href="https://chuwd19.github.io/media/albums/snow/1.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/snow/1_hu083a39289c8cb1fb413768d37ca18a1f_1389941_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="1.jpg" width="253" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-snow" href="https://wenda-qianhw.netlify.app/media/albums/snow/10.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/snow/10_hu9a5927702195a12a4b3ca7b998a7fb53_1207148_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="10.jpg" width="253" height="190">
+&lt;a data-fancybox="gallery-snow" href="https://chuwd19.github.io/media/albums/snow/10.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/snow/10_hu9a5927702195a12a4b3ca7b998a7fb53_1207148_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="10.jpg" width="253" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-snow" href="https://wenda-qianhw.netlify.app/media/albums/snow/2.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/snow/2_hua98a259c6d9387f2fcf916cfe784edc5_1096385_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="2.jpg" width="274" height="190">
+&lt;a data-fancybox="gallery-snow" href="https://chuwd19.github.io/media/albums/snow/2.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/snow/2_hua98a259c6d9387f2fcf916cfe784edc5_1096385_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="2.jpg" width="274" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-snow" href="https://wenda-qianhw.netlify.app/media/albums/snow/3.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/snow/3_hua83b7681d35ff9bfcbca5d6d303a6427_1674622_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="3.jpg" width="238" height="190">
+&lt;a data-fancybox="gallery-snow" href="https://chuwd19.github.io/media/albums/snow/3.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/snow/3_hua83b7681d35ff9bfcbca5d6d303a6427_1674622_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="3.jpg" width="238" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-snow" href="https://wenda-qianhw.netlify.app/media/albums/snow/4.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/snow/4_hu6c764a34682b56034fa77cf5539b3144_1508689_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="4.jpg" width="253" height="190">
+&lt;a data-fancybox="gallery-snow" href="https://chuwd19.github.io/media/albums/snow/4.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/snow/4_hu6c764a34682b56034fa77cf5539b3144_1508689_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="4.jpg" width="253" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-snow" href="https://wenda-qianhw.netlify.app/media/albums/snow/5.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/snow/5_huf1b0e050aee51f261ede55ef7ad3f698_1498236_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="5.jpg" width="253" height="190">
+&lt;a data-fancybox="gallery-snow" href="https://chuwd19.github.io/media/albums/snow/5.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/snow/5_huf1b0e050aee51f261ede55ef7ad3f698_1498236_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="5.jpg" width="253" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-snow" href="https://wenda-qianhw.netlify.app/media/albums/snow/6.jpeg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/snow/6_hu831ece0063f1a3f01318c1e2a209cff6_846306_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="6.jpeg" width="253" height="190">
+&lt;a data-fancybox="gallery-snow" href="https://chuwd19.github.io/media/albums/snow/6.jpeg" >
+&lt;img src="https://chuwd19.github.io/media/albums/snow/6_hu831ece0063f1a3f01318c1e2a209cff6_846306_0x190_resize_q75_lanczos.jpeg" loading="lazy" alt="6.jpeg" width="253" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-snow" href="https://wenda-qianhw.netlify.app/media/albums/snow/7.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/snow/7_hu30c762aefd9a9921698977df21789a56_1541297_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="7.jpg" width="253" height="190">
+&lt;a data-fancybox="gallery-snow" href="https://chuwd19.github.io/media/albums/snow/7.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/snow/7_hu30c762aefd9a9921698977df21789a56_1541297_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="7.jpg" width="253" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-snow" href="https://wenda-qianhw.netlify.app/media/albums/snow/8.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/snow/8_huf8f0c46e2820b916ef05dc52f3b5d410_1420183_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="8.jpg" width="261" height="190">
+&lt;a data-fancybox="gallery-snow" href="https://chuwd19.github.io/media/albums/snow/8.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/snow/8_huf8f0c46e2820b916ef05dc52f3b5d410_1420183_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="8.jpg" width="261" height="190">
 &lt;/a>
-&lt;a data-fancybox="gallery-snow" href="https://wenda-qianhw.netlify.app/media/albums/snow/9.jpg" >
-&lt;img src="https://wenda-qianhw.netlify.app/media/albums/snow/9_hu4a4a4cc9fb0b4d71ca260ee785e9d125_1797155_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="9.jpg" width="253" height="190">
+&lt;a data-fancybox="gallery-snow" href="https://chuwd19.github.io/media/albums/snow/9.jpg" >
+&lt;img src="https://chuwd19.github.io/media/albums/snow/9_hu4a4a4cc9fb0b4d71ca260ee785e9d125_1797155_0x190_resize_q75_lanczos.jpg" loading="lazy" alt="9.jpg" width="253" height="190">
 &lt;/a>
-&lt;/div></description></item><item><title/><link>https://wenda-qianhw.netlify.app/admin/config.yml</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/admin/config.yml</guid><description/></item><item><title>My life</title><link>https://wenda-qianhw.netlify.app/life/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/life/</guid><description/></item><item><title>Note Page</title><link>https://wenda-qianhw.netlify.app/note/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/note/</guid><description/></item></channel></rss>
+&lt;/div></description></item><item><title/><link>https://chuwd19.github.io/admin/config.yml</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/admin/config.yml</guid><description/></item><item><title>My life</title><link>https://chuwd19.github.io/life/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/life/</guid><description/></item><item><title>Note Page</title><link>https://chuwd19.github.io/note/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/note/</guid><description/></item></channel></rss>

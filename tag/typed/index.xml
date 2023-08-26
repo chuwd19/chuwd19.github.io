@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>typed | Wenda Chu</title><link>https://wenda-qianhw.netlify.app/tag/typed/</link><atom:link href="https://wenda-qianhw.netlify.app/tag/typed/index.xml" rel="self" type="application/rss+xml"/><description>typed</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 08 Mar 2023 00:00:00 +0000</lastBuildDate><image><url>https://wenda-qianhw.netlify.app/media/icon_hud9f11bce4f3a2a4889ae0de212996427_55561_512x512_fill_lanczos_center_2.png</url><title>typed</title><link>https://wenda-qianhw.netlify.app/tag/typed/</link></image><item><title>Topology</title><link>https://wenda-qianhw.netlify.app/archived_note/topology/</link><pubDate>Wed, 08 Mar 2023 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/topology/</guid><description/></item><item><title>Adversarial Defenses</title><link>https://wenda-qianhw.netlify.app/archived_note/adv-defenses/</link><pubDate>Wed, 17 Nov 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/adv-defenses/</guid><description/></item><item><title>Adversarial Machine Learning</title><link>https://wenda-qianhw.netlify.app/archived_note/adversarial-ml/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/adversarial-ml/</guid><description>&lt;h2 id="centernotes-on-adversarial-machine-learningcenter">&lt;center>Notes on Adversarial Machine Learning&lt;/center>&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>typed | Wenda Chu</title><link>https://chuwd19.github.io/tag/typed/</link><atom:link href="https://chuwd19.github.io/tag/typed/index.xml" rel="self" type="application/rss+xml"/><description>typed</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 08 Mar 2023 00:00:00 +0000</lastBuildDate><image><url>https://chuwd19.github.io/media/icon_hud9f11bce4f3a2a4889ae0de212996427_55561_512x512_fill_lanczos_center_2.png</url><title>typed</title><link>https://chuwd19.github.io/tag/typed/</link></image><item><title>Topology</title><link>https://chuwd19.github.io/archived_note/topology/</link><pubDate>Wed, 08 Mar 2023 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/topology/</guid><description/></item><item><title>Adversarial Defenses</title><link>https://chuwd19.github.io/archived_note/adv-defenses/</link><pubDate>Wed, 17 Nov 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/adv-defenses/</guid><description/></item><item><title>Adversarial Machine Learning</title><link>https://chuwd19.github.io/archived_note/adversarial-ml/</link><pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/adversarial-ml/</guid><description>&lt;h2 id="centernotes-on-adversarial-machine-learningcenter">&lt;center>Notes on Adversarial Machine Learning&lt;/center>&lt;/h2>
 &lt;h3 id="1--formalize-adversarial-attack">1 Formalize Adversarial Attack&lt;/h3>
 &lt;h5 id="explorative-attacks-vs-causative-attack">Explorative Attacks vs. Causative Attack&lt;/h5>
 &lt;ul>
@@ -808,7 +808,7 @@ which represents the information loss of describing $p(x)$ by $q(x)$.&lt;/p>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/figure/FGSM_adv_train.png" alt="avatar" style="zoom:36%;" />&lt;/p>
+&lt;p>&lt;img src="https://chuwd19.github.io/home/qianhw/下载/hugo/content/slides/notes/figure/FGSM_adv_train.png" alt="avatar" style="zoom:36%;" />&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -911,7 +911,7 @@ which represents the information loss of describing $p(x)$ by $q(x)$.&lt;/p>
 &lt;p>I fixed the viewing angles for each epoch, so perhaps the tshirt is trained only adversarial for those views at end of each epoch. (&lt;strong>fixed later in experiment 7&lt;/strong>)&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/figure/Tshirt_random_angle.png" alt="avatar" style="zoom:20%;" />&lt;/p>
+&lt;p>&lt;img src="https://chuwd19.github.io/home/qianhw/下载/hugo/content/slides/notes/figure/Tshirt_random_angle.png" alt="avatar" style="zoom:20%;" />&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>9.4 experiment5: vec2atlas, R = 8. (Map $(3,V)$ to atlas $(1,V,R,R,3)$ before the previous pipeline).&lt;/p>
@@ -984,7 +984,7 @@ which represents the information loss of describing $p(x)$ by $q(x)$.&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;del>It is necessary to create a precise mapping from UV to Atlas, which would enable the pipeline of training an adversarial uv texture.&lt;/del>&lt;/p>
-&lt;p>&lt;del>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/xfigure/atlas2uv/recall-angle-compare.png" alt="avatar" style="zoom:36%;" />&lt;/del>&lt;/p>
+&lt;p>&lt;del>&lt;img src="https://chuwd19.github.io/home/qianhw/下载/hugo/content/slides/notes/xfigure/atlas2uv/recall-angle-compare.png" alt="avatar" style="zoom:36%;" />&lt;/del>&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;del>An observation is that the lateral part of the uv-rendered tshirt gives lower recall, which is counterintuitive since the lateral part usually performs worse than other angles with less surface area.&lt;/del>&lt;/p>
@@ -994,7 +994,7 @@ which represents the information loss of describing $p(x)$ by $q(x)$.&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>&lt;del>(9.12) Combining two meshes using uv texture causes conflicts: mesh of man cloaks the mesh of tshirt&lt;/del>&lt;/p>
-&lt;p>&lt;del>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/afigure/atlas2uv/issue.png" alt="avatar" style="zoom:33%;" />&lt;/del>&lt;/p>
+&lt;p>&lt;del>&lt;img src="https://chuwd19.github.io/home/qianhw/下载/hugo/content/slides/notes/afigure/atlas2uv/issue.png" alt="avatar" style="zoom:33%;" />&lt;/del>&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>This bug is due to incompatible texture size of two meshes. &lt;strong>Fixed&lt;/strong>. (9.16)&lt;/p>
@@ -1012,11 +1012,11 @@ which represents the information loss of describing $p(x)$ by $q(x)$.&lt;/p>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/桌面/Adversarial ML/figure/recall-angle-compare-tvloss.png" alt="avatar" style="zoom: 33%;" />&lt;/p>
+&lt;p>&lt;img src="https://chuwd19.github.io/home/qianhw/桌面/Adversarial ML/figure/recall-angle-compare-tvloss.png" alt="avatar" style="zoom: 33%;" />&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>Current Pipeline:&lt;/p>
-&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/slides/notes/figure/pipeline0.png" alt="avatar" style="zoom:33%;" />&lt;/p>
+&lt;p>&lt;img src="https://chuwd19.github.io/home/qianhw/下载/hugo/content/slides/notes/figure/pipeline0.png" alt="avatar" style="zoom:33%;" />&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>Next step: to enable the rendering process directly from TextureUV.&lt;/p>
@@ -1211,7 +1211,7 @@ source_coordinate = torch.matmul(Variable(self.target_coordinate_repr), mapping_
 &lt;p>B个角度的取梯度的平均值，weighted mean去加速优先attack&lt;/p>
 &lt;p>2D的pipeline 饱和度 hsv&lt;/p>
 &lt;p>色相饱和度亮度&lt;/p>
-&lt;p>参数化 gan&lt;/p></description></item><item><title>Computer Architecture</title><link>https://wenda-qianhw.netlify.app/archived_note/computer-arch/</link><pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/computer-arch/</guid><description>&lt;p>Press the &amp;lsquo;&amp;lsquo;pdf&amp;rsquo;&amp;rsquo; button to download the notes.&lt;/p></description></item><item><title>Distributed System</title><link>https://wenda-qianhw.netlify.app/archived_note/distributed/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/distributed/</guid><description>&lt;h2 id="centerreview---finalcenter">&lt;center>Review - Final&lt;/center>&lt;/h2>
+&lt;p>参数化 gan&lt;/p></description></item><item><title>Computer Architecture</title><link>https://chuwd19.github.io/archived_note/computer-arch/</link><pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/computer-arch/</guid><description>&lt;p>Press the &amp;lsquo;&amp;lsquo;pdf&amp;rsquo;&amp;rsquo; button to download the notes.&lt;/p></description></item><item><title>Distributed System</title><link>https://chuwd19.github.io/archived_note/distributed/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/distributed/</guid><description>&lt;h2 id="centerreview---finalcenter">&lt;center>Review - Final&lt;/center>&lt;/h2>
 &lt;h3 id="11-intro">1.1 Intro&lt;/h3>
 &lt;h5 id="characteristics-of-ds">Characteristics of DS&lt;/h5>
 &lt;ul>
@@ -2199,7 +2199,7 @@ padding: 2px;">Paxos&lt;/div>
 &lt;li>Phase 3: Each process sends its vector to all other processes.&lt;/li>
 &lt;li>Phase 4: Each process the information received from every other process to do its computation.&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://wenda-qianhw.netlify.app/home/qianhw/下载/hugo/content/post/fig/BFT.png" alt="avatar" style="zoom:33%;" />&lt;/p>
+&lt;p>&lt;img src="https://chuwd19.github.io/home/qianhw/下载/hugo/content/post/fig/BFT.png" alt="avatar" style="zoom:33%;" />&lt;/p>
 &lt;h3 id="10-gfs--mapreduce">10 GFS &amp;amp; MapReduce&lt;/h3>
 &lt;ul>
 &lt;li>GFS is a distributed fault-tolerant file system&lt;/li>
@@ -2419,4 +2419,4 @@ padding: 2px;">GFS&lt;/div>
 &lt;ul>
 &lt;li>throughput limitation: 7 transactions/sec, comparing to 2000-10000 for VISA&lt;/li>
 &lt;li>Hard-forking vs. soft-forking&lt;/li>
-&lt;/ul></description></item><item><title>Probabilistic Graphical Model</title><link>https://wenda-qianhw.netlify.app/archived_note/pgm/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://wenda-qianhw.netlify.app/archived_note/pgm/</guid><description/></item></channel></rss>
+&lt;/ul></description></item><item><title>Probabilistic Graphical Model</title><link>https://chuwd19.github.io/archived_note/pgm/</link><pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate><guid>https://chuwd19.github.io/archived_note/pgm/</guid><description/></item></channel></rss>
