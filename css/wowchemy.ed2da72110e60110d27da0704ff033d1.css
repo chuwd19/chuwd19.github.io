@@ -10938,7 +10938,8 @@ body.no-navbar {
 
 @media(max-width:991.98px) {
     .page-wrapper {
-        min-height: calc(100vh - 50px)
+        min-height: calc(100vh - 50px);
+        margin: 10% 10%
     }
 }
 
