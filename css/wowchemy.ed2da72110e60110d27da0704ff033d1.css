@@ -13004,7 +13004,7 @@ html[dir=rtl] body {
 }
 
 .avatar {
-    width: 270px;
+    width: 240px;
     height: 270px;
     margin: 0 auto;
     object-fit: cover
@@ -13018,7 +13018,8 @@ html[dir=rtl] body {
 }
 
 .avatar-circle {
-    border-radius: 50%
+    /* 50% to achieve a circle */
+    border-radius: 20%
 }
 
 .avatar-square {
