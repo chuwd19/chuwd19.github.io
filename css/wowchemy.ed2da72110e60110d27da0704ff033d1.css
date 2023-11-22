@@ -13534,5 +13534,6 @@ div.chart {
 }
 
 .small-icon {
-    font-size: 10pt
+    vertical-align: super;
+    font-size: 6pt
 }
