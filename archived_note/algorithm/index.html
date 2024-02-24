@@ -8,8 +8,7 @@
     <meta name=google-site-verification content="Y6phf4VZM9HednfYy-pEi3-KtU6uqI75tPeeinWlOYs">
     <meta name=baidu-site-verification content="code-7BynQM9TAs">
     <meta name=author content="Wenda Chu 储闻达">
-    <meta name=description
-        content="This is the note for CS 139 Algorithm Design, taught by Prof. Urmila Mahadev.">
+    <meta name=description content="This is the note for CS 139 Algorithm Design, taught by Prof. Urmila Mahadev.">
     <link rel=alternate hreflang=en-us href="index.html">
 
     <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
@@ -169,16 +168,18 @@
                 <div class=page-body>
                     <article class=article>
                         <div class="article-container pt-3">
-            
+
                             <div class=article-metadata>
-                                <div><span class=author-highlighted>Wenda Chu 储闻达</span></div><span class=article-date>Dec 10,
+                                <div><span class=author-highlighted>Wenda Chu 储闻达</span></div><span
+                                    class=article-date>Dec 10,
                                     2023</span>
                                 <span class=middot-divider></span><span class=article-categories><i
-                                        class="fas fa-folder mr-1"></i><a href  ="../../category/notes/index.html">Notes</a></span>
+                                        class="fas fa-folder mr-1"></i><a
+                                        href="../../category/notes/index.html">Notes</a></span>
                             </div>
-                            <div class="btn-links mb-3"><a class="btn btn-outline-primary btn-page-header" href="cs139.pdf"
-                                    target=_blank rel=noopener>PDF</a>
-                        </div>
+                            <div class="btn-links mb-3"><a class="btn btn-outline-primary btn-page-header"
+                                    href="cs139.pdf" target=_blank rel=noopener>PDF</a>
+                            </div>
                     </article>
                 </div>
                 <nav class="ltx_TOC ltx_list_toc ltx_toc_toc">
@@ -188,6 +189,13 @@
                                 title="In Analysis and Design of Algorithms" class="ltx_ref"><span
                                     class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">1
                                     </span>Probability Bounds</span></a></li>
+                                    <ol class="ltx_toclist ltx_toclist_section">
+                                        <li class="ltx_tocentry ltx_tocentry_subsection"><a href="#S1.SS1"
+                                                title="In 1 Probability Bounds ‣ Analysis and Design of Algorithms"
+                                                class="ltx_ref"><span class="ltx_text ltx_ref_title"><span
+                                                        class="ltx_tag ltx_tag_ref">1.1 </span>An Example: Median
+                                                    Finding</span></a></li>
+                                    </ol>
                         <li class="ltx_tocentry ltx_tocentry_section">
                             <a href="#S2" title="In Analysis and Design of Algorithms" class="ltx_ref"><span
                                     class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">2
@@ -450,6 +458,1562 @@
                         <span class="ltx_tag ltx_tag_section">1 </span>Probability Bounds
                     </h2>
 
+                    <div id="S1.p1" class="ltx_para ltx_noindent">
+                        <p class="ltx_p"><span class="ltx_text ltx_font_bold">Markov Inequality</span></p>
+                    </div>
+                    <div id="S1.p2" class="ltx_para ltx_noindent">
+                        <p class="ltx_p">For a nonnegative random variable <math id="S1.p2.m1" class="ltx_Math"
+                                alttext="X" display="inline">
+                                <mi>X</mi>
+                            </math>, for any <math id="S1.p2.m2" class="ltx_Math" alttext="k&gt;0" display="inline">
+                                <mrow>
+                                    <mi>k</mi>
+                                    <mo>&gt;</mo>
+                                    <mn>0</mn>
+                                </mrow>
+                            </math>,</p>
+                        <table id="S1.E1" class="ltx_equation ltx_eqn_table">
+
+                            <tbody>
+                                <tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+                                    <td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+                                    <td class="ltx_eqn_cell ltx_align_center"><math id="S1.E1.m1" class="ltx_Math"
+                                            alttext="\Pr(X\geq k)\leq\frac{\mathbb{E}(X)}{k}" display="block">
+                                            <mrow>
+                                                <mrow>
+                                                    <mi>Pr</mi>
+                                                    <mo>⁡</mo>
+                                                    <mrow>
+                                                        <mo>(</mo>
+                                                        <mrow>
+                                                            <mi>X</mi>
+                                                            <mo>≥</mo>
+                                                            <mi>k</mi>
+                                                        </mrow>
+                                                        <mo>)</mo>
+                                                    </mrow>
+                                                </mrow>
+                                                <mo>≤</mo>
+                                                <mfrac>
+                                                    <mrow>
+                                                        <mi>𝔼</mi>
+                                                        <mo>⁢</mo>
+                                                        <mrow>
+                                                            <mo stretchy="false">(</mo>
+                                                            <mi>X</mi>
+                                                            <mo stretchy="false">)</mo>
+                                                        </mrow>
+                                                    </mrow>
+                                                    <mi>k</mi>
+                                                </mfrac>
+                                            </mrow>
+                                        </math></td>
+                                    <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+                                    <td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right">
+                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="S1.p3" class="ltx_para ltx_noindent">
+                        <p class="ltx_p">If we have the variance of a random variable, we can apply more detailed
+                            analyses:</p>
+                    </div>
+                    <div id="S1.p4" class="ltx_para ltx_noindent">
+                        <p class="ltx_p"><span class="ltx_text ltx_font_bold">Chebyshev Inequality</span></p>
+                    </div>
+                    <div id="S1.p5" class="ltx_para ltx_noindent">
+                        <p class="ltx_p">Let <math id="S1.p5.m1" class="ltx_Math" alttext="X" display="inline">
+                                <mi>X</mi>
+                            </math> be a random variable with <math id="S1.p5.m2" class="ltx_Math"
+                                alttext="\mathbb{E}(X)=\mu" display="inline">
+                                <mrow>
+                                    <mrow>
+                                        <mi>𝔼</mi>
+                                        <mo>⁢</mo>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mi>X</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </mrow>
+                                    <mo>=</mo>
+                                    <mi>μ</mi>
+                                </mrow>
+                            </math> and <math id="S1.p5.m3" class="ltx_Math" alttext="Var(X)=\sigma^{2}"
+                                display="inline">
+                                <mrow>
+                                    <mrow>
+                                        <mi>V</mi>
+                                        <mo>⁢</mo>
+                                        <mi>a</mi>
+                                        <mo>⁢</mo>
+                                        <mi>r</mi>
+                                        <mo>⁢</mo>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mi>X</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </mrow>
+                                    <mo>=</mo>
+                                    <msup>
+                                        <mi>σ</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                </mrow>
+                            </math>, then</p>
+                        <table id="S1.E2" class="ltx_equation ltx_eqn_table">
+
+                            <tbody>
+                                <tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+                                    <td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+                                    <td class="ltx_eqn_cell ltx_align_center"><math id="S1.E2.m1" class="ltx_Math"
+                                            alttext="\Pr(|X-\mu|\geq t)\leq\frac{\sigma^{2}}{t^{2}}." display="block">
+                                            <mrow>
+                                                <mrow>
+                                                    <mrow>
+                                                        <mi>Pr</mi>
+                                                        <mo>⁡</mo>
+                                                        <mrow>
+                                                            <mo>(</mo>
+                                                            <mrow>
+                                                                <mrow>
+                                                                    <mo stretchy="false">|</mo>
+                                                                    <mrow>
+                                                                        <mi>X</mi>
+                                                                        <mo>−</mo>
+                                                                        <mi>μ</mi>
+                                                                    </mrow>
+                                                                    <mo stretchy="false">|</mo>
+                                                                </mrow>
+                                                                <mo>≥</mo>
+                                                                <mi>t</mi>
+                                                            </mrow>
+                                                            <mo>)</mo>
+                                                        </mrow>
+                                                    </mrow>
+                                                    <mo>≤</mo>
+                                                    <mfrac>
+                                                        <msup>
+                                                            <mi>σ</mi>
+                                                            <mn>2</mn>
+                                                        </msup>
+                                                        <msup>
+                                                            <mi>t</mi>
+                                                            <mn>2</mn>
+                                                        </msup>
+                                                    </mfrac>
+                                                </mrow>
+                                                <mo lspace="0em">.</mo>
+                                            </mrow>
+                                        </math></td>
+                                    <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+                                    <td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right">
+                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="ltx_p">The proof is straightforward after applying Markov inequality to <math
+                                id="S1.p5.m4" class="ltx_Math" alttext="|X-\mu|" display="inline">
+                                <mrow>
+                                    <mo stretchy="false">|</mo>
+                                    <mrow>
+                                        <mi>X</mi>
+                                        <mo>−</mo>
+                                        <mi>μ</mi>
+                                    </mrow>
+                                    <mo stretchy="false">|</mo>
+                                </mrow>
+                            </math>.</p>
+                    </div>
+                    <div id="S1.p6" class="ltx_para ltx_noindent">
+                        <p class="ltx_p"><span class="ltx_text ltx_font_bold">Chernoff Bound</span></p>
+                    </div>
+                    <div id="S1.p7" class="ltx_para ltx_noindent">
+                        <p class="ltx_p">Let <math id="S1.p7.m1" class="ltx_Math" alttext="W_{i}" display="inline">
+                                <msub>
+                                    <mi>W</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </math> be independent random variables. <math id="S1.p7.m2" class="ltx_Math"
+                                alttext="W=W_{1}+\dots+W_{n}" display="inline">
+                                <mrow>
+                                    <mi>W</mi>
+                                    <mo>=</mo>
+                                    <mrow>
+                                        <msub>
+                                            <mi>W</mi>
+                                            <mn>1</mn>
+                                        </msub>
+                                        <mo>+</mo>
+                                        <mi mathvariant="normal">⋯</mi>
+                                        <mo>+</mo>
+                                        <msub>
+                                            <mi>W</mi>
+                                            <mi>n</mi>
+                                        </msub>
+                                    </mrow>
+                                </mrow>
+                            </math>. Chernoff bound takes advantage of higher-order conditions of independent variables.
+                            For Bernoulli random variables with probability <math id="S1.p7.m3" class="ltx_Math"
+                                alttext="p" display="inline">
+                                <mi>p</mi>
+                            </math>,</p>
+                        <table id="S1.E3" class="ltx_equation ltx_eqn_table">
+
+                            <tbody>
+                                <tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+                                    <td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+                                    <td class="ltx_eqn_cell ltx_align_center"><math id="S1.E3.m1" class="ltx_Math"
+                                            alttext="\Pr(W\geq(1+\delta)\mathbb{E}[W])\leq\left(\frac{e^{\delta}}{(1+\delta)^{%
+    \delta}}\right)^{\mu}" display="block">
+                                            <mrow>
+                                                <mrow>
+                                                    <mi>Pr</mi>
+                                                    <mo>⁡</mo>
+                                                    <mrow>
+                                                        <mo>(</mo>
+                                                        <mrow>
+                                                            <mi>W</mi>
+                                                            <mo>≥</mo>
+                                                            <mrow>
+                                                                <mrow>
+                                                                    <mo stretchy="false">(</mo>
+                                                                    <mrow>
+                                                                        <mn>1</mn>
+                                                                        <mo>+</mo>
+                                                                        <mi>δ</mi>
+                                                                    </mrow>
+                                                                    <mo stretchy="false">)</mo>
+                                                                </mrow>
+                                                                <mo>⁢</mo>
+                                                                <mi>𝔼</mi>
+                                                                <mo>⁢</mo>
+                                                                <mrow>
+                                                                    <mo stretchy="false">[</mo>
+                                                                    <mi>W</mi>
+                                                                    <mo stretchy="false">]</mo>
+                                                                </mrow>
+                                                            </mrow>
+                                                        </mrow>
+                                                        <mo>)</mo>
+                                                    </mrow>
+                                                </mrow>
+                                                <mo>≤</mo>
+                                                <msup>
+                                                    <mrow>
+                                                        <mo>(</mo>
+                                                        <mfrac>
+                                                            <msup>
+                                                                <mi>e</mi>
+                                                                <mi>δ</mi>
+                                                            </msup>
+                                                            <msup>
+                                                                <mrow>
+                                                                    <mo stretchy="false">(</mo>
+                                                                    <mrow>
+                                                                        <mn>1</mn>
+                                                                        <mo>+</mo>
+                                                                        <mi>δ</mi>
+                                                                    </mrow>
+                                                                    <mo stretchy="false">)</mo>
+                                                                </mrow>
+                                                                <mi>δ</mi>
+                                                            </msup>
+                                                        </mfrac>
+                                                        <mo>)</mo>
+                                                    </mrow>
+                                                    <mi>μ</mi>
+                                                </msup>
+                                            </mrow>
+                                        </math></td>
+                                    <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+                                    <td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right">
+                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="S1.p8" class="ltx_para ltx_noindent">
+                        <p class="ltx_p">For <math id="S1.p8.m1" class="ltx_Math" alttext="X_{i}\in[0,1]"
+                                display="inline">
+                                <mrow>
+                                    <msub>
+                                        <mi>X</mi>
+                                        <mi>i</mi>
+                                    </msub>
+                                    <mo>∈</mo>
+                                    <mrow>
+                                        <mo stretchy="false">[</mo>
+                                        <mn>0</mn>
+                                        <mo>,</mo>
+                                        <mn>1</mn>
+                                        <mo stretchy="false">]</mo>
+                                    </mrow>
+                                </mrow>
+                            </math></p>
+                        <table id="S1.E4" class="ltx_equation ltx_eqn_table">
+
+                            <tbody>
+                                <tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+                                    <td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+                                    <td class="ltx_eqn_cell ltx_align_center"><math id="S1.E4.m1" class="ltx_Math"
+                                            alttext="[Pr(X\geq(1+\delta)\mu)]\leq\exp^{-\frac{\delta^{2}\mu}{3}},\ [Pr(X\leq(1-%
+    \delta)\mu)]\leq\exp^{-\frac{\delta^{2}\mu}{2}},\ \Pr[X\geq R]\leq\exp^{-R},\ %
+    \text{for}\ R\geq 5\mu" display="block">
+                                            <mrow>
+                                                <mrow>
+                                                    <mrow>
+                                                        <mo stretchy="false">[</mo>
+                                                        <mrow>
+                                                            <mi>P</mi>
+                                                            <mo>⁢</mo>
+                                                            <mi>r</mi>
+                                                            <mo>⁢</mo>
+                                                            <mrow>
+                                                                <mo stretchy="false">(</mo>
+                                                                <mrow>
+                                                                    <mi>X</mi>
+                                                                    <mo>≥</mo>
+                                                                    <mrow>
+                                                                        <mrow>
+                                                                            <mo stretchy="false">(</mo>
+                                                                            <mrow>
+                                                                                <mn>1</mn>
+                                                                                <mo>+</mo>
+                                                                                <mi>δ</mi>
+                                                                            </mrow>
+                                                                            <mo stretchy="false">)</mo>
+                                                                        </mrow>
+                                                                        <mo>⁢</mo>
+                                                                        <mi>μ</mi>
+                                                                    </mrow>
+                                                                </mrow>
+                                                                <mo stretchy="false">)</mo>
+                                                            </mrow>
+                                                        </mrow>
+                                                        <mo stretchy="false">]</mo>
+                                                    </mrow>
+                                                    <mo>≤</mo>
+                                                    <msup>
+                                                        <mi>exp</mi>
+                                                        <mrow>
+                                                            <mo>−</mo>
+                                                            <mfrac>
+                                                                <mrow>
+                                                                    <msup>
+                                                                        <mi>δ</mi>
+                                                                        <mn>2</mn>
+                                                                    </msup>
+                                                                    <mo>⁢</mo>
+                                                                    <mi>μ</mi>
+                                                                </mrow>
+                                                                <mn>3</mn>
+                                                            </mfrac>
+                                                        </mrow>
+                                                    </msup>
+                                                </mrow>
+                                                <mo rspace="0.667em">,</mo>
+                                                <mrow>
+                                                    <mrow>
+                                                        <mrow>
+                                                            <mo stretchy="false">[</mo>
+                                                            <mrow>
+                                                                <mi>P</mi>
+                                                                <mo>⁢</mo>
+                                                                <mi>r</mi>
+                                                                <mo>⁢</mo>
+                                                                <mrow>
+                                                                    <mo stretchy="false">(</mo>
+                                                                    <mrow>
+                                                                        <mi>X</mi>
+                                                                        <mo>≤</mo>
+                                                                        <mrow>
+                                                                            <mrow>
+                                                                                <mo stretchy="false">(</mo>
+                                                                                <mrow>
+                                                                                    <mn>1</mn>
+                                                                                    <mo>−</mo>
+                                                                                    <mi>δ</mi>
+                                                                                </mrow>
+                                                                                <mo stretchy="false">)</mo>
+                                                                            </mrow>
+                                                                            <mo>⁢</mo>
+                                                                            <mi>μ</mi>
+                                                                        </mrow>
+                                                                    </mrow>
+                                                                    <mo stretchy="false">)</mo>
+                                                                </mrow>
+                                                            </mrow>
+                                                            <mo stretchy="false">]</mo>
+                                                        </mrow>
+                                                        <mo>≤</mo>
+                                                        <msup>
+                                                            <mi>exp</mi>
+                                                            <mrow>
+                                                                <mo>−</mo>
+                                                                <mfrac>
+                                                                    <mrow>
+                                                                        <msup>
+                                                                            <mi>δ</mi>
+                                                                            <mn>2</mn>
+                                                                        </msup>
+                                                                        <mo>⁢</mo>
+                                                                        <mi>μ</mi>
+                                                                    </mrow>
+                                                                    <mn>2</mn>
+                                                                </mfrac>
+                                                            </mrow>
+                                                        </msup>
+                                                    </mrow>
+                                                    <mo rspace="0.667em">,</mo>
+                                                    <mrow>
+                                                        <mrow>
+                                                            <mrow>
+                                                                <mi>Pr</mi>
+                                                                <mo>⁡</mo>
+                                                                <mrow>
+                                                                    <mo stretchy="false">[</mo>
+                                                                    <mrow>
+                                                                        <mi>X</mi>
+                                                                        <mo>≥</mo>
+                                                                        <mi>R</mi>
+                                                                    </mrow>
+                                                                    <mo stretchy="false">]</mo>
+                                                                </mrow>
+                                                            </mrow>
+                                                            <mo>≤</mo>
+                                                            <msup>
+                                                                <mi>exp</mi>
+                                                                <mrow>
+                                                                    <mo>−</mo>
+                                                                    <mi>R</mi>
+                                                                </mrow>
+                                                            </msup>
+                                                        </mrow>
+                                                        <mo rspace="0.667em">,</mo>
+                                                        <mrow>
+                                                            <mrow>
+                                                                <mtext>for</mtext>
+                                                                <mo lspace="0.500em">⁢</mo>
+                                                                <mi>R</mi>
+                                                            </mrow>
+                                                            <mo>≥</mo>
+                                                            <mrow>
+                                                                <mn>5</mn>
+                                                                <mo>⁢</mo>
+                                                                <mi>μ</mi>
+                                                            </mrow>
+                                                        </mrow>
+                                                    </mrow>
+                                                </mrow>
+                                            </mrow>
+                                        </math></td>
+                                    <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+                                    <td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right">
+                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="S1.p9" class="ltx_para ltx_noindent">
+                        <p class="ltx_p">The proof is by considering the random variable <math id="S1.p9.m1"
+                                class="ltx_Math" alttext="e^{tW}" display="inline">
+                                <msup>
+                                    <mi>e</mi>
+                                    <mrow>
+                                        <mi>t</mi>
+                                        <mo>⁢</mo>
+                                        <mi>W</mi>
+                                    </mrow>
+                                </msup>
+                            </math>, which contains higher-order information of <math id="S1.p9.m2" class="ltx_Math"
+                                alttext="W" display="inline">
+                                <mi>W</mi>
+                            </math>.</p>
+                    </div>
+                    <section id="S1.SS1" class="ltx_subsection">
+                        <h3 class="ltx_title ltx_title_subsection">
+                            <span class="ltx_tag ltx_tag_subsection">1.1 </span>An Example: Median Finding
+                        </h3>
+
+                        <div id="S1.SS1.p1" class="ltx_para ltx_noindent">
+                            <p class="ltx_p">Goal:</p>
+                            <ul id="S1.I1" class="ltx_itemize">
+                                <li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+                                    <span class="ltx_tag ltx_tag_item">•</span>
+                                    <div id="S1.I1.i1.p1" class="ltx_para">
+                                        <p class="ltx_p">Input a set <math id="S1.I1.i1.p1.m1" class="ltx_Math"
+                                                alttext="S" display="inline">
+                                                <mi>S</mi>
+                                            </math> of integers</p>
+                                    </div>
+                                </li>
+                                <li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+                                    <span class="ltx_tag ltx_tag_item">•</span>
+                                    <div id="S1.I1.i2.p1" class="ltx_para ltx_noindent">
+                                        <p class="ltx_p">Find the median <math id="S1.I1.i2.p1.m1" class="ltx_Math"
+                                                alttext="m\in S" display="inline">
+                                                <mrow>
+                                                    <mi>m</mi>
+                                                    <mo>∈</mo>
+                                                    <mi>S</mi>
+                                                </mrow>
+                                            </math>: at least <math id="S1.I1.i2.p1.m2" class="ltx_Math"
+                                                alttext="\lceil\frac{n}{2}\rceil" display="inline">
+                                                <mrow>
+                                                    <mo stretchy="false">⌈</mo>
+                                                    <mfrac>
+                                                        <mi>n</mi>
+                                                        <mn>2</mn>
+                                                    </mfrac>
+                                                    <mo stretchy="false">⌉</mo>
+                                                </mrow>
+                                            </math> elements <math id="S1.I1.i2.p1.m3" class="ltx_Math" alttext="\leq m"
+                                                display="inline">
+                                                <mrow>
+                                                    <mi></mi>
+                                                    <mo>≤</mo>
+                                                    <mi>m</mi>
+                                                </mrow>
+                                            </math> and at least <math id="S1.I1.i2.p1.m4" class="ltx_Math"
+                                                alttext="\lfloor\frac{n}{2}\rfloor+1" display="inline">
+                                                <mrow>
+                                                    <mrow>
+                                                        <mo stretchy="false">⌊</mo>
+                                                        <mfrac>
+                                                            <mi>n</mi>
+                                                            <mn>2</mn>
+                                                        </mfrac>
+                                                        <mo stretchy="false">⌋</mo>
+                                                    </mrow>
+                                                    <mo>+</mo>
+                                                    <mn>1</mn>
+                                                </mrow>
+                                            </math> elements <math id="S1.I1.i2.p1.m5" class="ltx_Math" alttext="\geq m"
+                                                display="inline">
+                                                <mrow>
+                                                    <mi></mi>
+                                                    <mo>≥</mo>
+                                                    <mi>m</mi>
+                                                </mrow>
+                                            </math>.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <p class="ltx_p">We want to find <math id="S1.SS1.p1.m1" class="ltx_Math" alttext="d,u\in S"
+                                    display="inline">
+                                    <mrow>
+                                        <mrow>
+                                            <mi>d</mi>
+                                            <mo>,</mo>
+                                            <mi>u</mi>
+                                        </mrow>
+                                        <mo>∈</mo>
+                                        <mi>S</mi>
+                                    </mrow>
+                                </math>, such that <math id="S1.SS1.p1.m2" class="ltx_Math" alttext="d\leq m\leq u"
+                                    display="inline">
+                                    <mrow>
+                                        <mi>d</mi>
+                                        <mo>≤</mo>
+                                        <mi>m</mi>
+                                        <mo>≤</mo>
+                                        <mi>u</mi>
+                                    </mrow>
+                                </math>, with <math id="S1.SS1.p1.m3" class="ltx_Math"
+                                    alttext="C=\{s\in S,d\leq s\leq u\}" display="inline">
+                                    <mrow>
+                                        <mi>C</mi>
+                                        <mo>=</mo>
+                                        <mrow>
+                                            <mo stretchy="false">{</mo>
+                                            <mrow>
+                                                <mrow>
+                                                    <mi>s</mi>
+                                                    <mo>∈</mo>
+                                                    <mi>S</mi>
+                                                </mrow>
+                                                <mo>,</mo>
+                                                <mrow>
+                                                    <mi>d</mi>
+                                                    <mo>≤</mo>
+                                                    <mi>s</mi>
+                                                    <mo>≤</mo>
+                                                    <mi>u</mi>
+                                                </mrow>
+                                            </mrow>
+                                            <mo stretchy="false">}</mo>
+                                        </mrow>
+                                    </mrow>
+                                </math> small enough. Specifically, we do</p>
+                            <ul id="S1.I2" class="ltx_itemize">
+                                <li id="S1.I2.i1" class="ltx_item" style="list-style-type:none;">
+                                    <span class="ltx_tag ltx_tag_item">•</span>
+                                    <div id="S1.I2.i1.p1" class="ltx_para">
+                                        <p class="ltx_p">Count number of elements in <math id="S1.I2.i1.p1.m1"
+                                                class="ltx_Math" alttext="S" display="inline">
+                                                <mi>S</mi>
+                                            </math> larger than <math id="S1.I2.i1.p1.m2" class="ltx_Math" alttext="u"
+                                                display="inline">
+                                                <mi>u</mi>
+                                            </math>, and smaller than <math id="S1.I2.i1.p1.m3" class="ltx_Math"
+                                                alttext="d" display="inline">
+                                                <mi>d</mi>
+                                            </math>.</p>
+                                    </div>
+                                </li>
+                                <li id="S1.I2.i2" class="ltx_item" style="list-style-type:none;">
+                                    <span class="ltx_tag ltx_tag_item">•</span>
+                                    <div id="S1.I2.i2.p1" class="ltx_para">
+                                        <p class="ltx_p">Sort <math id="S1.I2.i2.p1.m1" class="ltx_Math" alttext="C"
+                                                display="inline">
+                                                <mi>C</mi>
+                                            </math> in <math id="S1.I2.i2.p1.m2" class="ltx_Math"
+                                                alttext="O(|C|\log|C|)=o(n)" display="inline">
+                                                <mrow>
+                                                    <mrow>
+                                                        <mi>O</mi>
+                                                        <mo>⁢</mo>
+                                                        <mrow>
+                                                            <mo stretchy="false">(</mo>
+                                                            <mrow>
+                                                                <mrow>
+                                                                    <mo stretchy="false">|</mo>
+                                                                    <mi>C</mi>
+                                                                    <mo stretchy="false">|</mo>
+                                                                </mrow>
+                                                                <mo lspace="0.167em">⁢</mo>
+                                                                <mrow>
+                                                                    <mi>log</mi>
+                                                                    <mo>⁡</mo>
+                                                                    <mrow>
+                                                                        <mo stretchy="false">|</mo>
+                                                                        <mi>C</mi>
+                                                                        <mo stretchy="false">|</mo>
+                                                                    </mrow>
+                                                                </mrow>
+                                                            </mrow>
+                                                            <mo stretchy="false">)</mo>
+                                                        </mrow>
+                                                    </mrow>
+                                                    <mo>=</mo>
+                                                    <mrow>
+                                                        <mi>o</mi>
+                                                        <mo>⁢</mo>
+                                                        <mrow>
+                                                            <mo stretchy="false">(</mo>
+                                                            <mi>n</mi>
+                                                            <mo stretchy="false">)</mo>
+                                                        </mrow>
+                                                    </mrow>
+                                                </mrow>
+                                            </math> time.</p>
+                                    </div>
+                                </li>
+                                <li id="S1.I2.i3" class="ltx_item" style="list-style-type:none;">
+                                    <span class="ltx_tag ltx_tag_item">•</span>
+                                    <div id="S1.I2.i3.p1" class="ltx_para ltx_noindent">
+                                        <p class="ltx_p">Deduce the median.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="S1.SS1.p2" class="ltx_para ltx_noindent">
+                            <p class="ltx_p">How to choose <math id="S1.SS1.p2.m1" class="ltx_Math" alttext="C"
+                                    display="inline">
+                                    <mi>C</mi>
+                                </math>? We first select a multi-set <math id="S1.SS1.p2.m2" class="ltx_Math"
+                                    alttext="R" display="inline">
+                                    <mi>R</mi>
+                                </math> of <math id="S1.SS1.p2.m3" class="ltx_Math" alttext="n^{3/4}" display="inline">
+                                    <msup>
+                                        <mi>n</mi>
+                                        <mrow>
+                                            <mn>3</mn>
+                                            <mo>/</mo>
+                                            <mn>4</mn>
+                                        </mrow>
+                                    </msup>
+                                </math> elements iid from <math id="S1.SS1.p2.m4" class="ltx_Math" alttext="S"
+                                    display="inline">
+                                    <mi>S</mi>
+                                </math>, and sort <math id="S1.SS1.p2.m5" class="ltx_Math" alttext="R" display="inline">
+                                    <mi>R</mi>
+                                </math>.</p>
+                        </div>
+                        <div id="S1.SS1.p3" class="ltx_para ltx_noindent">
+                            <ul id="S1.I3" class="ltx_itemize">
+                                <li id="S1.I3.i1" class="ltx_item" style="list-style-type:none;">
+                                    <span class="ltx_tag ltx_tag_item">•</span>
+                                    <div id="S1.I3.i1.p1" class="ltx_para ltx_noindent">
+                                        <p class="ltx_p">Let <math id="S1.I3.i1.p1.m1" class="ltx_Math" alttext="d"
+                                                display="inline">
+                                                <mi>d</mi>
+                                            </math> be the <math id="S1.I3.i1.p1.m2" class="ltx_Math"
+                                                alttext="\frac{1}{2}n^{3/4}-\sqrt{n}" display="inline">
+                                                <mrow>
+                                                    <mrow>
+                                                        <mfrac>
+                                                            <mn>1</mn>
+                                                            <mn>2</mn>
+                                                        </mfrac>
+                                                        <mo>⁢</mo>
+                                                        <msup>
+                                                            <mi>n</mi>
+                                                            <mrow>
+                                                                <mn>3</mn>
+                                                                <mo>/</mo>
+                                                                <mn>4</mn>
+                                                            </mrow>
+                                                        </msup>
+                                                    </mrow>
+                                                    <mo>−</mo>
+                                                    <msqrt>
+                                                        <mi>n</mi>
+                                                    </msqrt>
+                                                </mrow>
+                                            </math> smallest element and <math id="S1.I3.i1.p1.m3" class="ltx_Math"
+                                                alttext="u" display="inline">
+                                                <mi>u</mi>
+                                            </math> be the <math id="S1.I3.i1.p1.m4" class="ltx_Math"
+                                                alttext="\frac{1}{2}n^{3/4}+\sqrt{n}" display="inline">
+                                                <mrow>
+                                                    <mrow>
+                                                        <mfrac>
+                                                            <mn>1</mn>
+                                                            <mn>2</mn>
+                                                        </mfrac>
+                                                        <mo>⁢</mo>
+                                                        <msup>
+                                                            <mi>n</mi>
+                                                            <mrow>
+                                                                <mn>3</mn>
+                                                                <mo>/</mo>
+                                                                <mn>4</mn>
+                                                            </mrow>
+                                                        </msup>
+                                                    </mrow>
+                                                    <mo>+</mo>
+                                                    <msqrt>
+                                                        <mi>n</mi>
+                                                    </msqrt>
+                                                </mrow>
+                                            </math> smallest one.</p>
+                                    </div>
+                                </li>
+                                <li id="S1.I3.i2" class="ltx_item" style="list-style-type:none;">
+                                    <span class="ltx_tag ltx_tag_item">•</span>
+                                    <div id="S1.I3.i2.p1" class="ltx_para ltx_noindent">
+                                        <p class="ltx_p">Compute <math id="S1.I3.i2.p1.m1" class="ltx_Math"
+                                                alttext="C,L_{d}=\{s\in S,s&lt;d\},L_{u}=\{s\in S,s&gt;u\}"
+                                                display="inline">
+                                                <mrow>
+                                                    <mrow>
+                                                        <mrow>
+                                                            <mi>C</mi>
+                                                            <mo>,</mo>
+                                                            <msub>
+                                                                <mi>L</mi>
+                                                                <mi>d</mi>
+                                                            </msub>
+                                                        </mrow>
+                                                        <mo>=</mo>
+                                                        <mrow>
+                                                            <mo stretchy="false">{</mo>
+                                                            <mrow>
+                                                                <mrow>
+                                                                    <mi>s</mi>
+                                                                    <mo>∈</mo>
+                                                                    <mi>S</mi>
+                                                                </mrow>
+                                                                <mo>,</mo>
+                                                                <mrow>
+                                                                    <mi>s</mi>
+                                                                    <mo>&lt;</mo>
+                                                                    <mi>d</mi>
+                                                                </mrow>
+                                                            </mrow>
+                                                            <mo stretchy="false">}</mo>
+                                                        </mrow>
+                                                    </mrow>
+                                                    <mo>,</mo>
+                                                    <mrow>
+                                                        <msub>
+                                                            <mi>L</mi>
+                                                            <mi>u</mi>
+                                                        </msub>
+                                                        <mo>=</mo>
+                                                        <mrow>
+                                                            <mo stretchy="false">{</mo>
+                                                            <mrow>
+                                                                <mrow>
+                                                                    <mi>s</mi>
+                                                                    <mo>∈</mo>
+                                                                    <mi>S</mi>
+                                                                </mrow>
+                                                                <mo>,</mo>
+                                                                <mrow>
+                                                                    <mi>s</mi>
+                                                                    <mo>&gt;</mo>
+                                                                    <mi>u</mi>
+                                                                </mrow>
+                                                            </mrow>
+                                                            <mo stretchy="false">}</mo>
+                                                        </mrow>
+                                                    </mrow>
+                                                </mrow>
+                                            </math>. If <math id="S1.I3.i2.p1.m2" class="ltx_Math" alttext="|L_{d}|"
+                                                display="inline">
+                                                <mrow>
+                                                    <mo stretchy="false">|</mo>
+                                                    <msub>
+                                                        <mi>L</mi>
+                                                        <mi>d</mi>
+                                                    </msub>
+                                                    <mo stretchy="false">|</mo>
+                                                </mrow>
+                                            </math> or <math id="S1.I3.i2.p1.m3" class="ltx_Math"
+                                                alttext="|L_{u}|\geq\frac{n}{2}" display="inline">
+                                                <mrow>
+                                                    <mrow>
+                                                        <mo stretchy="false">|</mo>
+                                                        <msub>
+                                                            <mi>L</mi>
+                                                            <mi>u</mi>
+                                                        </msub>
+                                                        <mo stretchy="false">|</mo>
+                                                    </mrow>
+                                                    <mo>≥</mo>
+                                                    <mfrac>
+                                                        <mi>n</mi>
+                                                        <mn>2</mn>
+                                                    </mfrac>
+                                                </mrow>
+                                            </math>, we fail. If <math id="S1.I3.i2.p1.m4" class="ltx_Math"
+                                                alttext="|C|&gt;4n^{3/4}" display="inline">
+                                                <mrow>
+                                                    <mrow>
+                                                        <mo stretchy="false">|</mo>
+                                                        <mi>C</mi>
+                                                        <mo stretchy="false">|</mo>
+                                                    </mrow>
+                                                    <mo>&gt;</mo>
+                                                    <mrow>
+                                                        <mn>4</mn>
+                                                        <mo>⁢</mo>
+                                                        <msup>
+                                                            <mi>n</mi>
+                                                            <mrow>
+                                                                <mn>3</mn>
+                                                                <mo>/</mo>
+                                                                <mn>4</mn>
+                                                            </mrow>
+                                                        </msup>
+                                                    </mrow>
+                                                </mrow>
+                                            </math>, we fail.</p>
+                                    </div>
+                                </li>
+                                <li id="S1.I3.i3" class="ltx_item" style="list-style-type:none;">
+                                    <span class="ltx_tag ltx_tag_item">•</span>
+                                    <div id="S1.I3.i3.p1" class="ltx_para ltx_noindent">
+                                        <p class="ltx_p">Otherwise, we sort <math id="S1.I3.i3.p1.m1" class="ltx_Math"
+                                                alttext="C" display="inline">
+                                                <mi>C</mi>
+                                            </math> and return the <math id="S1.I3.i3.p1.m2" class="ltx_Math"
+                                                alttext="\frac{n}{2}-|L_{d}|" display="inline">
+                                                <mrow>
+                                                    <mfrac>
+                                                        <mi>n</mi>
+                                                        <mn>2</mn>
+                                                    </mfrac>
+                                                    <mo>−</mo>
+                                                    <mrow>
+                                                        <mo stretchy="false">|</mo>
+                                                        <msub>
+                                                            <mi>L</mi>
+                                                            <mi>d</mi>
+                                                        </msub>
+                                                        <mo stretchy="false">|</mo>
+                                                    </mrow>
+                                                </mrow>
+                                            </math> smallest element in <math id="S1.I3.i3.p1.m3" class="ltx_Math"
+                                                alttext="C" display="inline">
+                                                <mi>C</mi>
+                                            </math>.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="S1.SS1.p4" class="ltx_para ltx_noindent">
+                            <p class="ltx_p">The runtime is <math id="S1.SS1.p4.m1" class="ltx_Math" alttext="O(n)"
+                                    display="inline">
+                                    <mrow>
+                                        <mi>O</mi>
+                                        <mo>⁢</mo>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mi>n</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </mrow>
+                                </math> indeed, but we have to bound the probability of failure.</p>
+                        </div>
+                        <div id="S1.SS1.p5" class="ltx_para ltx_noindent">
+                            <p class="ltx_p"><math id="S1.SS1.p5.m1" class="ltx_Math"
+                                    alttext="Y_{1}=\mathbb{1}\{|\{r\in R:r\leq m\}|&lt;\frac{1}{2}n^{3/4}-\sqrt{n}\}"
+                                    display="inline">
+                                    <mrow>
+                                        <msub>
+                                            <mi>Y</mi>
+                                            <mn>1</mn>
+                                        </msub>
+                                        <mo>=</mo>
+                                        <mrow>
+                                            <mn>𝟙</mn>
+                                            <mo>⁢</mo>
+                                            <mrow>
+                                                <mo stretchy="false">{</mo>
+                                                <mrow>
+                                                    <mrow>
+                                                        <mo stretchy="false">|</mo>
+                                                        <mrow>
+                                                            <mo stretchy="false">{</mo>
+                                                            <mrow>
+                                                                <mi>r</mi>
+                                                                <mo>∈</mo>
+                                                                <mi>R</mi>
+                                                            </mrow>
+                                                            <mo lspace="0.278em" rspace="0.278em">:</mo>
+                                                            <mrow>
+                                                                <mi>r</mi>
+                                                                <mo>≤</mo>
+                                                                <mi>m</mi>
+                                                            </mrow>
+                                                            <mo stretchy="false">}</mo>
+                                                        </mrow>
+                                                        <mo stretchy="false">|</mo>
+                                                    </mrow>
+                                                    <mo>&lt;</mo>
+                                                    <mrow>
+                                                        <mrow>
+                                                            <mfrac>
+                                                                <mn>1</mn>
+                                                                <mn>2</mn>
+                                                            </mfrac>
+                                                            <mo>⁢</mo>
+                                                            <msup>
+                                                                <mi>n</mi>
+                                                                <mrow>
+                                                                    <mn>3</mn>
+                                                                    <mo>/</mo>
+                                                                    <mn>4</mn>
+                                                                </mrow>
+                                                            </msup>
+                                                        </mrow>
+                                                        <mo>−</mo>
+                                                        <msqrt>
+                                                            <mi>n</mi>
+                                                        </msqrt>
+                                                    </mrow>
+                                                </mrow>
+                                                <mo stretchy="false">}</mo>
+                                            </mrow>
+                                        </mrow>
+                                    </mrow>
+                                </math>. If <math id="S1.SS1.p5.m2" class="ltx_Math" alttext="Y_{1}=0" display="inline">
+                                    <mrow>
+                                        <msub>
+                                            <mi>Y</mi>
+                                            <mn>1</mn>
+                                        </msub>
+                                        <mo>=</mo>
+                                        <mn>0</mn>
+                                    </mrow>
+                                </math>, then <math id="S1.SS1.p5.m3" class="ltx_Math" alttext="|L_{d}|\leq\frac{1}{2}"
+                                    display="inline">
+                                    <mrow>
+                                        <mrow>
+                                            <mo stretchy="false">|</mo>
+                                            <msub>
+                                                <mi>L</mi>
+                                                <mi>d</mi>
+                                            </msub>
+                                            <mo stretchy="false">|</mo>
+                                        </mrow>
+                                        <mo>≤</mo>
+                                        <mfrac>
+                                            <mn>1</mn>
+                                            <mn>2</mn>
+                                        </mfrac>
+                                    </mrow>
+                                </math>.</p>
+                        </div>
+                        <div id="S1.SS1.p6" class="ltx_para ltx_noindent">
+                            <p class="ltx_p"><math id="S1.SS1.p6.m1" class="ltx_Math"
+                                    alttext="Y_{2}=\mathbb{1}\{|\{r\in R:r\geq m\}|&lt;\frac{1}{2}n^{3/4}-\sqrt{n}\}"
+                                    display="inline">
+                                    <mrow>
+                                        <msub>
+                                            <mi>Y</mi>
+                                            <mn>2</mn>
+                                        </msub>
+                                        <mo>=</mo>
+                                        <mrow>
+                                            <mn>𝟙</mn>
+                                            <mo>⁢</mo>
+                                            <mrow>
+                                                <mo stretchy="false">{</mo>
+                                                <mrow>
+                                                    <mrow>
+                                                        <mo stretchy="false">|</mo>
+                                                        <mrow>
+                                                            <mo stretchy="false">{</mo>
+                                                            <mrow>
+                                                                <mi>r</mi>
+                                                                <mo>∈</mo>
+                                                                <mi>R</mi>
+                                                            </mrow>
+                                                            <mo lspace="0.278em" rspace="0.278em">:</mo>
+                                                            <mrow>
+                                                                <mi>r</mi>
+                                                                <mo>≥</mo>
+                                                                <mi>m</mi>
+                                                            </mrow>
+                                                            <mo stretchy="false">}</mo>
+                                                        </mrow>
+                                                        <mo stretchy="false">|</mo>
+                                                    </mrow>
+                                                    <mo>&lt;</mo>
+                                                    <mrow>
+                                                        <mrow>
+                                                            <mfrac>
+                                                                <mn>1</mn>
+                                                                <mn>2</mn>
+                                                            </mfrac>
+                                                            <mo>⁢</mo>
+                                                            <msup>
+                                                                <mi>n</mi>
+                                                                <mrow>
+                                                                    <mn>3</mn>
+                                                                    <mo>/</mo>
+                                                                    <mn>4</mn>
+                                                                </mrow>
+                                                            </msup>
+                                                        </mrow>
+                                                        <mo>−</mo>
+                                                        <msqrt>
+                                                            <mi>n</mi>
+                                                        </msqrt>
+                                                    </mrow>
+                                                </mrow>
+                                                <mo stretchy="false">}</mo>
+                                            </mrow>
+                                        </mrow>
+                                    </mrow>
+                                </math>. If <math id="S1.SS1.p6.m2" class="ltx_Math" alttext="Y_{2}=0" display="inline">
+                                    <mrow>
+                                        <msub>
+                                            <mi>Y</mi>
+                                            <mn>2</mn>
+                                        </msub>
+                                        <mo>=</mo>
+                                        <mn>0</mn>
+                                    </mrow>
+                                </math> then <math id="S1.SS1.p6.m3" class="ltx_Math" alttext="|L_{u}|\leq\frac{1}{2}"
+                                    display="inline">
+                                    <mrow>
+                                        <mrow>
+                                            <mo stretchy="false">|</mo>
+                                            <msub>
+                                                <mi>L</mi>
+                                                <mi>u</mi>
+                                            </msub>
+                                            <mo stretchy="false">|</mo>
+                                        </mrow>
+                                        <mo>≤</mo>
+                                        <mfrac>
+                                            <mn>1</mn>
+                                            <mn>2</mn>
+                                        </mfrac>
+                                    </mrow>
+                                </math>.</p>
+                        </div>
+                        <div id="S1.SS1.p7" class="ltx_para ltx_noindent">
+                            <p class="ltx_p"><math id="S1.SS1.p7.m1" class="ltx_Math"
+                                    alttext="Y_{3}=\mathbb{1}\{|C|&gt;4n^{3/4}\}" display="inline">
+                                    <mrow>
+                                        <msub>
+                                            <mi>Y</mi>
+                                            <mn>3</mn>
+                                        </msub>
+                                        <mo>=</mo>
+                                        <mrow>
+                                            <mn>𝟙</mn>
+                                            <mo>⁢</mo>
+                                            <mrow>
+                                                <mo stretchy="false">{</mo>
+                                                <mrow>
+                                                    <mrow>
+                                                        <mo stretchy="false">|</mo>
+                                                        <mi>C</mi>
+                                                        <mo stretchy="false">|</mo>
+                                                    </mrow>
+                                                    <mo>&gt;</mo>
+                                                    <mrow>
+                                                        <mn>4</mn>
+                                                        <mo>⁢</mo>
+                                                        <msup>
+                                                            <mi>n</mi>
+                                                            <mrow>
+                                                                <mn>3</mn>
+                                                                <mo>/</mo>
+                                                                <mn>4</mn>
+                                                            </mrow>
+                                                        </msup>
+                                                    </mrow>
+                                                </mrow>
+                                                <mo stretchy="false">}</mo>
+                                            </mrow>
+                                        </mrow>
+                                    </mrow>
+                                </math>.</p>
+                        </div>
+                        <div id="S1.SS1.p8" class="ltx_para ltx_noindent">
+                            <p class="ltx_p"><math id="S1.SS1.p8.m1" class="ltx_Math"
+                                    alttext="\Pr(Y_{1}=1)\leq\frac{1}{4n^{1/4}}" display="inline">
+                                    <mrow>
+                                        <mrow>
+                                            <mi>Pr</mi>
+                                            <mo>⁡</mo>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mrow>
+                                                    <msub>
+                                                        <mi>Y</mi>
+                                                        <mn>1</mn>
+                                                    </msub>
+                                                    <mo>=</mo>
+                                                    <mn>1</mn>
+                                                </mrow>
+                                                <mo>)</mo>
+                                            </mrow>
+                                        </mrow>
+                                        <mo>≤</mo>
+                                        <mfrac>
+                                            <mn>1</mn>
+                                            <mrow>
+                                                <mn>4</mn>
+                                                <mo>⁢</mo>
+                                                <msup>
+                                                    <mi>n</mi>
+                                                    <mrow>
+                                                        <mn>1</mn>
+                                                        <mo>/</mo>
+                                                        <mn>4</mn>
+                                                    </mrow>
+                                                </msup>
+                                            </mrow>
+                                        </mfrac>
+                                    </mrow>
+                                </math> by applying Chebyshev bound. (Could get better bound if using Chernoff bound?)
+                            </p>
+                        </div>
+                        <div id="S1.SS1.p9" class="ltx_para ltx_noindent">
+                            <p class="ltx_p"><math id="S1.SS1.p9.m1" class="ltx_Math"
+                                    alttext="\Pr(Y_{3}=1)\leq\frac{1}{2n^{1/4}}" display="inline">
+                                    <mrow>
+                                        <mrow>
+                                            <mi>Pr</mi>
+                                            <mo>⁡</mo>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mrow>
+                                                    <msub>
+                                                        <mi>Y</mi>
+                                                        <mn>3</mn>
+                                                    </msub>
+                                                    <mo>=</mo>
+                                                    <mn>1</mn>
+                                                </mrow>
+                                                <mo>)</mo>
+                                            </mrow>
+                                        </mrow>
+                                        <mo>≤</mo>
+                                        <mfrac>
+                                            <mn>1</mn>
+                                            <mrow>
+                                                <mn>2</mn>
+                                                <mo>⁢</mo>
+                                                <msup>
+                                                    <mi>n</mi>
+                                                    <mrow>
+                                                        <mn>1</mn>
+                                                        <mo>/</mo>
+                                                        <mn>4</mn>
+                                                    </mrow>
+                                                </msup>
+                                            </mrow>
+                                        </mfrac>
+                                    </mrow>
+                                </math>. Either <math id="S1.SS1.p9.m2" class="ltx_Math" alttext="2n^{3/4}"
+                                    display="inline">
+                                    <mrow>
+                                        <mn>2</mn>
+                                        <mo>⁢</mo>
+                                        <msup>
+                                            <mi>n</mi>
+                                            <mrow>
+                                                <mn>3</mn>
+                                                <mo>/</mo>
+                                                <mn>4</mn>
+                                            </mrow>
+                                        </msup>
+                                    </mrow>
+                                </math> elements larger than <math id="S1.SS1.p9.m3" class="ltx_Math" alttext="m"
+                                    display="inline">
+                                    <mi>m</mi>
+                                </math> or <math id="S1.SS1.p9.m4" class="ltx_Math" alttext="2n^{3/4}" display="inline">
+                                    <mrow>
+                                        <mn>2</mn>
+                                        <mo>⁢</mo>
+                                        <msup>
+                                            <mi>n</mi>
+                                            <mrow>
+                                                <mn>3</mn>
+                                                <mo>/</mo>
+                                                <mn>4</mn>
+                                            </mrow>
+                                        </msup>
+                                    </mrow>
+                                </math> elements smaller than <math id="S1.SS1.p9.m5" class="ltx_Math" alttext="m"
+                                    display="inline">
+                                    <mi>m</mi>
+                                </math>. Suppose the first happens, then <math id="S1.SS1.p9.m6" class="ltx_Math"
+                                    alttext="R" display="inline">
+                                    <mi>R</mi>
+                                </math> has at least <math id="S1.SS1.p9.m7" class="ltx_Math"
+                                    alttext="\frac{1}{2}n^{3/4}-\sqrt{n}" display="inline">
+                                    <mrow>
+                                        <mrow>
+                                            <mfrac>
+                                                <mn>1</mn>
+                                                <mn>2</mn>
+                                            </mfrac>
+                                            <mo>⁢</mo>
+                                            <msup>
+                                                <mi>n</mi>
+                                                <mrow>
+                                                    <mn>3</mn>
+                                                    <mo>/</mo>
+                                                    <mn>4</mn>
+                                                </mrow>
+                                            </msup>
+                                        </mrow>
+                                        <mo>−</mo>
+                                        <msqrt>
+                                            <mi>n</mi>
+                                        </msqrt>
+                                    </mrow>
+                                </math> samples that are among the <math id="S1.SS1.p9.m8" class="ltx_Math"
+                                    alttext="\frac{1}{2}n-2n^{3/4}" display="inline">
+                                    <mrow>
+                                        <mrow>
+                                            <mfrac>
+                                                <mn>1</mn>
+                                                <mn>2</mn>
+                                            </mfrac>
+                                            <mo>⁢</mo>
+                                            <mi>n</mi>
+                                        </mrow>
+                                        <mo>−</mo>
+                                        <mrow>
+                                            <mn>2</mn>
+                                            <mo>⁢</mo>
+                                            <msup>
+                                                <mi>n</mi>
+                                                <mrow>
+                                                    <mn>3</mn>
+                                                    <mo>/</mo>
+                                                    <mn>4</mn>
+                                                </mrow>
+                                            </msup>
+                                        </mrow>
+                                    </mrow>
+                                </math> largest elements in <math id="S1.SS1.p9.m9" class="ltx_Math" alttext="S"
+                                    display="inline">
+                                    <mi>S</mi>
+                                </math>. (Consider the rightmost interval in <math id="S1.SS1.p9.m10" class="ltx_Math"
+                                    alttext="R" display="inline">
+                                    <mi>R</mi>
+                                </math>.) Let <math id="S1.SS1.p9.m11" class="ltx_Math"
+                                    alttext="R=\{a_{i}\}_{i=1}^{n^{3/4}}" display="inline">
+                                    <mrow>
+                                        <mi>R</mi>
+                                        <mo>=</mo>
+                                        <msubsup>
+                                            <mrow>
+                                                <mo stretchy="false">{</mo>
+                                                <msub>
+                                                    <mi>a</mi>
+                                                    <mi>i</mi>
+                                                </msub>
+                                                <mo stretchy="false">}</mo>
+                                            </mrow>
+                                            <mrow>
+                                                <mi>i</mi>
+                                                <mo>=</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <msup>
+                                                <mi>n</mi>
+                                                <mrow>
+                                                    <mn>3</mn>
+                                                    <mo>/</mo>
+                                                    <mn>4</mn>
+                                                </mrow>
+                                            </msup>
+                                        </msubsup>
+                                    </mrow>
+                                </math>, and <math id="S1.SS1.p9.m12" class="ltx_Math" alttext="X_{i}=1"
+                                    display="inline">
+                                    <mrow>
+                                        <msub>
+                                            <mi>X</mi>
+                                            <mi>i</mi>
+                                        </msub>
+                                        <mo>=</mo>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </math> if <math id="S1.SS1.p9.m13" class="ltx_Math" alttext="a_{i}" display="inline">
+                                    <msub>
+                                        <mi>a</mi>
+                                        <mi>i</mi>
+                                    </msub>
+                                </math> is larger than the <math id="S1.SS1.p9.m14" class="ltx_Math"
+                                    alttext="\frac{1}{2}n+2n^{3/4}" display="inline">
+                                    <mrow>
+                                        <mrow>
+                                            <mfrac>
+                                                <mn>1</mn>
+                                                <mn>2</mn>
+                                            </mfrac>
+                                            <mo>⁢</mo>
+                                            <mi>n</mi>
+                                        </mrow>
+                                        <mo>+</mo>
+                                        <mrow>
+                                            <mn>2</mn>
+                                            <mo>⁢</mo>
+                                            <msup>
+                                                <mi>n</mi>
+                                                <mrow>
+                                                    <mn>3</mn>
+                                                    <mo>/</mo>
+                                                    <mn>4</mn>
+                                                </mrow>
+                                            </msup>
+                                        </mrow>
+                                    </mrow>
+                                </math> element. <math id="S1.SS1.p9.m15" class="ltx_Math"
+                                    alttext="\mathbb{E}(X_{i})=\frac{1}{2}-2n^{-1/4}" display="inline">
+                                    <mrow>
+                                        <mrow>
+                                            <mi>𝔼</mi>
+                                            <mo>⁢</mo>
+                                            <mrow>
+                                                <mo stretchy="false">(</mo>
+                                                <msub>
+                                                    <mi>X</mi>
+                                                    <mi>i</mi>
+                                                </msub>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                        </mrow>
+                                        <mo>=</mo>
+                                        <mrow>
+                                            <mfrac>
+                                                <mn>1</mn>
+                                                <mn>2</mn>
+                                            </mfrac>
+                                            <mo>−</mo>
+                                            <mrow>
+                                                <mn>2</mn>
+                                                <mo>⁢</mo>
+                                                <msup>
+                                                    <mi>n</mi>
+                                                    <mrow>
+                                                        <mo>−</mo>
+                                                        <mrow>
+                                                            <mn>1</mn>
+                                                            <mo>/</mo>
+                                                            <mn>4</mn>
+                                                        </mrow>
+                                                    </mrow>
+                                                </msup>
+                                            </mrow>
+                                        </mrow>
+                                    </mrow>
+                                </math>. <math id="S1.SS1.p9.m16" class="ltx_Math"
+                                    alttext="\mathbb{E}(\sum X_{i})=\frac{1}{2}n^{3/4}-2\sqrt{n}" display="inline">
+                                    <mrow>
+                                        <mrow>
+                                            <mi>𝔼</mi>
+                                            <mo>⁢</mo>
+                                            <mrow>
+                                                <mo stretchy="false">(</mo>
+                                                <mrow>
+                                                    <mo lspace="0em">∑</mo>
+                                                    <msub>
+                                                        <mi>X</mi>
+                                                        <mi>i</mi>
+                                                    </msub>
+                                                </mrow>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                        </mrow>
+                                        <mo>=</mo>
+                                        <mrow>
+                                            <mrow>
+                                                <mfrac>
+                                                    <mn>1</mn>
+                                                    <mn>2</mn>
+                                                </mfrac>
+                                                <mo>⁢</mo>
+                                                <msup>
+                                                    <mi>n</mi>
+                                                    <mrow>
+                                                        <mn>3</mn>
+                                                        <mo>/</mo>
+                                                        <mn>4</mn>
+                                                    </mrow>
+                                                </msup>
+                                            </mrow>
+                                            <mo>−</mo>
+                                            <mrow>
+                                                <mn>2</mn>
+                                                <mo>⁢</mo>
+                                                <msqrt>
+                                                    <mi>n</mi>
+                                                </msqrt>
+                                            </mrow>
+                                        </mrow>
+                                    </mrow>
+                                </math>. Then</p>
+                        </div>
+                        <div id="S1.SS1.p10" class="ltx_para ltx_noindent">
+                            <table id="S1.E5" class="ltx_equation ltx_eqn_table">
+
+                                <tbody>
+                                    <tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+                                        <td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+                                        <td class="ltx_eqn_cell ltx_align_center"><math id="S1.E5.m1" class="ltx_Math"
+                                                alttext="\Pr(\sum_{i=1}^{n^{3/4}}X_{i}\geq\frac{1}{2}n^{3/4}-\sqrt{n})\leq\frac{1}{2}n^%
+    {-1/4}" display="block">
+                                                <mrow>
+                                                    <mrow>
+                                                        <mi>Pr</mi>
+                                                        <mo>⁡</mo>
+                                                        <mrow>
+                                                            <mo>(</mo>
+                                                            <mrow>
+                                                                <mrow>
+                                                                    <munderover>
+                                                                        <mo lspace="0em" movablelimits="false">∑</mo>
+                                                                        <mrow>
+                                                                            <mi>i</mi>
+                                                                            <mo>=</mo>
+                                                                            <mn>1</mn>
+                                                                        </mrow>
+                                                                        <msup>
+                                                                            <mi>n</mi>
+                                                                            <mrow>
+                                                                                <mn>3</mn>
+                                                                                <mo>/</mo>
+                                                                                <mn>4</mn>
+                                                                            </mrow>
+                                                                        </msup>
+                                                                    </munderover>
+                                                                    <msub>
+                                                                        <mi>X</mi>
+                                                                        <mi>i</mi>
+                                                                    </msub>
+                                                                </mrow>
+                                                                <mo>≥</mo>
+                                                                <mrow>
+                                                                    <mrow>
+                                                                        <mfrac>
+                                                                            <mn>1</mn>
+                                                                            <mn>2</mn>
+                                                                        </mfrac>
+                                                                        <mo>⁢</mo>
+                                                                        <msup>
+                                                                            <mi>n</mi>
+                                                                            <mrow>
+                                                                                <mn>3</mn>
+                                                                                <mo>/</mo>
+                                                                                <mn>4</mn>
+                                                                            </mrow>
+                                                                        </msup>
+                                                                    </mrow>
+                                                                    <mo>−</mo>
+                                                                    <msqrt>
+                                                                        <mi>n</mi>
+                                                                    </msqrt>
+                                                                </mrow>
+                                                            </mrow>
+                                                            <mo>)</mo>
+                                                        </mrow>
+                                                    </mrow>
+                                                    <mo>≤</mo>
+                                                    <mrow>
+                                                        <mfrac>
+                                                            <mn>1</mn>
+                                                            <mn>2</mn>
+                                                        </mfrac>
+                                                        <mo>⁢</mo>
+                                                        <msup>
+                                                            <mi>n</mi>
+                                                            <mrow>
+                                                                <mo>−</mo>
+                                                                <mrow>
+                                                                    <mn>1</mn>
+                                                                    <mo>/</mo>
+                                                                    <mn>4</mn>
+                                                                </mrow>
+                                                            </mrow>
+                                                        </msup>
+                                                    </mrow>
+                                                </mrow>
+                                            </math></td>
+                                        <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+                                        <td rowspan="1"
+                                            class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span
+                                                class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="S1.SS1.p11" class="ltx_para ltx_noindent">
+                            <p class="ltx_p">By union bound, we fail with probability less than <math id="S1.SS1.p11.m1"
+                                    class="ltx_Math" alttext="n^{-1/4}" display="inline">
+                                    <msup>
+                                        <mi>n</mi>
+                                        <mrow>
+                                            <mo>−</mo>
+                                            <mrow>
+                                                <mn>1</mn>
+                                                <mo>/</mo>
+                                                <mn>4</mn>
+                                            </mrow>
+                                        </mrow>
+                                    </msup>
+                                </math>.</p>
+                            <div class="ltx_pagination ltx_role_newpage"></div>
+                        </div>
+                    </section>
                 </section>
                 <section id="S2" class="ltx_section">
                     <h2 class="ltx_title ltx_title_section">
@@ -5320,7 +6884,8 @@ missing})&gt;1-\delta." display="block">
                                         <mo lspace="0.167em">⁡</mo>
                                         <mi>n</mi>
                                     </mrow>
-                                </math> time.</p>
+                                </math> time.
+                            </p>
                         </div>
                         <div id="S4.SS3.p3" class="ltx_para ltx_noindent">
                             <p class="ltx_p">If <math id="S4.SS3.p3.m1" class="ltx_Math" alttext="d" display="inline">
@@ -5830,7 +7395,8 @@ missing})&gt;1-\delta." display="block">
                                         </math></td>
                                     <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
                                     <td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right">
-                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(31)</span></td>
+                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(31)</span>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -5863,7 +7429,8 @@ missing})&gt;1-\delta." display="block">
                                         </math></td>
                                     <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
                                     <td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right">
-                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(32)</span></td>
+                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(32)</span>
+                                    </td>
                                 </tr>
                             </tbody>
                             <tbody id="S5.E33">
@@ -5908,7 +7475,8 @@ missing})&gt;1-\delta." display="block">
                                         </math></td>
                                     <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
                                     <td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right">
-                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(33)</span></td>
+                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(33)</span>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -7767,7 +9335,8 @@ IP}^{*}." display="block">
                                         </math></td>
                                     <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
                                     <td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right">
-                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(47)</span></td>
+                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(47)</span>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -7831,7 +9400,8 @@ IP}^{*}." display="block">
                                         </math></td>
                                     <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
                                     <td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right">
-                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(48)</span></td>
+                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(48)</span>
+                                    </td>
                                 </tr>
                             </tbody>
                             <tbody id="S6.E49">
@@ -7879,7 +9449,8 @@ IP}^{*}." display="block">
                                         </math></td>
                                     <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
                                     <td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right">
-                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(49)</span></td>
+                                        <span class="ltx_tag ltx_tag_equation ltx_align_right">(49)</span>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -11148,7 +12719,8 @@ v_{i}+\sum_{i\neq j}v_{i}^{T}v_{j}" display="block">
                                             </mrow>
                                         </mrow>
                                     </mrow>
-                                </math>.</p>
+                                </math>.
+                            </p>
                         </div>
                         <div id="S7.SS1.p4" class="ltx_para ltx_noindent">
                             <p class="ltx_p"><span class="ltx_text ltx_font_bold">Weighted Majority.</span> Assuming we
@@ -20901,7 +22473,8 @@ i}y_{i}d(i)=\sum_{i}d(i)y_{i}^{2}+\sum_{i}d(i)y_{j}^{2}\geq\sum_{i}d(i)y_{i}^{2}
                                             <mi>t</mi>
                                         </mrow>
                                     </mrow>
-                                </math>.</p>
+                                </math>.
+                            </p>
                         </div>
                         <div id="S10.SS2.p3" class="ltx_para ltx_noindent">
                             <p class="ltx_p"><span class="ltx_text ltx_font_bold">Algorithm.</span></p>
@@ -21196,7 +22769,8 @@ i}y_{i}d(i)=\sum_{i}d(i)y_{i}^{2}+\sum_{i}d(i)y_{j}^{2}\geq\sum_{i}d(i)y_{i}^{2}
                                     <mi>p</mi>
                                 </math> in <math id="S10.SS2.p7.m5" class="ltx_Math" alttext="X" display="inline">
                                     <mi>X</mi>
-                                </math> is</p>
+                                </math> is
+                            </p>
                             <table id="S10.E140" class="ltx_equation ltx_eqn_table">
 
                                 <tbody>
@@ -21861,7 +23435,8 @@ at times}\ R]\leq(2/\sqrt{5})^{t+1}" display="block">
                                                     <mo>⁢</mo>
                                                     <mi>k</mi>
                                                 </mrow>
-                                            </math>.</p>
+                                            </math>.
+                                        </p>
                                     </div>
                                 </li>
                                 <li id="S11.I2.i2" class="ltx_item" style="list-style-type:none;">
@@ -23901,19 +25476,19 @@ at times}\ R]\leq(2/\sqrt{5})^{t+1}" display="block">
             </article>
         </div>
         <script src="../../js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js"></script>
-    <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js
-        integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
-    <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js
-        integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
-    <script src=https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.8.4/mermaid.min.js
-        integrity="sha512-as1BF4+iHZ3BVO6LLDQ7zrbvTXM+c/1iZ1qII/c3c4L8Rn5tHLpFUtpaEtBNS92f+xGsCzsD7b62XP3XYap6oA=="
-        crossorigin=anonymous title=mermaid></script>
-    <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js
-        integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw=="
-        crossorigin=anonymous></script>
-    <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js
-        crossorigin=anonymous></script>
-    <script id=search-hit-fuse-template type=text/x-template>
+        <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js
+            integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+        <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js
+            integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+        <script src=https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.8.4/mermaid.min.js
+            integrity="sha512-as1BF4+iHZ3BVO6LLDQ7zrbvTXM+c/1iZ1qII/c3c4L8Rn5tHLpFUtpaEtBNS92f+xGsCzsD7b62XP3XYap6oA=="
+            crossorigin=anonymous title=mermaid></script>
+        <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js
+            integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw=="
+            crossorigin=anonymous></script>
+        <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js
+            crossorigin=anonymous></script>
+        <script id=search-hit-fuse-template type=text/x-template>
           <div class="search-hit" id="summary-{{key}}">
             <div class="search-hit-content">
               <div class="search-hit-name">
@@ -23924,12 +25499,12 @@ at times}\ R]\leq(2/\sqrt{5})^{t+1}" display="block">
             </div>
           </div>
         </script>
-    <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js
-        integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
-    <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js
-        integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
-    <script src="../../en/js/wowchemy.min.d68ecd57c0ec1f1f61d65fd568f1c3a0.js"></script>
-    <!-- </body> -->
+        <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js
+            integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
+        <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js
+            integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
+        <script src="../../en/js/wowchemy.min.d68ecd57c0ec1f1f61d65fd568f1c3a0.js"></script>
+        <!-- </body> -->
 
 
 
@@ -23941,80 +25516,86 @@ at times}\ R]\leq(2/\sqrt{5})^{t+1}" display="block">
 
 
 
-    <div class=page-body>
-      <article class=article>
-          <div class="article-container pt-3">
+        <div class=page-body>
+            <article class=article>
+                <div class="article-container pt-3">
 
 
-              <div class="btn-links mb-3"><a class="btn btn-outline-primary btn-page-header" href="cs139.pdf"
-                      target=_blank rel=noopener>PDF</a></div>
-          </div>
-          <div class=article-container>
-              <div class=article-style></div>
-              <div class=share-box aria-hidden=true>
-                  <ul class=share>
-                      <li><a href="https://twitter.com/intent/tweet?url=https://chuwd19.github.io/archived_note/algorithm/&text=algorithm"
-                              target=_blank rel=noopener class=share-btn-twitter><i class="fab fa-twitter"></i></a>
-                      </li>
-                      <li><a href="https://www.facebook.com/sharer.php?u=https://chuwd19.github.io/archived_note/algorithm/&t=algorithm"
-                              target=_blank rel=noopener class=share-btn-facebook><i class="fab fa-facebook"></i></a>
-                      </li>
-                      <li><a href="mailto:?subject=algorithm&body=https://chuwd19.github.io/archived_note/algorithm/"
-                              target=_blank rel=noopener class=share-btn-email><i class="fas fa-envelope"></i></a>
-                      </li>
-                      <li><a href="https://www.linkedin.com/shareArticle?url=https://chuwd19.github.io/archived_note/algorithm/&title=algorithm"
-                              target=_blank rel=noopener class=share-btn-linkedin><i
-                                  class="fab fa-linkedin-in"></i></a></li>
-                      <li><a href="whatsapp://send?text=algorithm%20https://chuwd19.github.io/archived_note/algorithm/"
-                              target=_blank rel=noopener class=share-btn-whatsapp><i class="fab fa-whatsapp"></i></a>
-                      </li>
-                      <li><a href="https://service.weibo.com/share/share.php?url=https://chuwd19.github.io/archived_note/algorithm/&title=algorithm"
-                              target=_blank rel=noopener class=share-btn-weibo><i class="fab fa-weibo"></i></a></li>
-                  </ul>
-              </div>
-              <div class="media author-card content-widget-hr"><a href="../../index.html"><img
-                          class="avatar mr-3 avatar-circle"
-                          src="../../authors/admin/avatar_huec040978cd197f91fa586c800703b8ed_65970_270x270_fill_q75_lanczos_center.jpg"
-                          alt="Wenda Chu 储闻达"></a>
-                  <div class=media-body>
-                      <h5 class=card-title><a href="../../index.html">Wenda Chu 储闻达</a></h5>
-                      <h6 class=card-subtitle>Undergraduate Student</h6>
-                      <p class=card-text>I like chess, piano, animation and photography.</p>
-                      <ul class=network-icon aria-hidden=true></ul>
-                  </div>
-              </div>
-          </div>
-      </article>
-  </div>
+                    <div class="btn-links mb-3"><a class="btn btn-outline-primary btn-page-header" href="cs139.pdf"
+                            target=_blank rel=noopener>PDF</a></div>
+                </div>
+                <div class=article-container>
+                    <div class=article-style></div>
+                    <div class=share-box aria-hidden=true>
+                        <ul class=share>
+                            <li><a href="https://twitter.com/intent/tweet?url=https://chuwd19.github.io/archived_note/algorithm/&text=algorithm"
+                                    target=_blank rel=noopener class=share-btn-twitter><i
+                                        class="fab fa-twitter"></i></a>
+                            </li>
+                            <li><a href="https://www.facebook.com/sharer.php?u=https://chuwd19.github.io/archived_note/algorithm/&t=algorithm"
+                                    target=_blank rel=noopener class=share-btn-facebook><i
+                                        class="fab fa-facebook"></i></a>
+                            </li>
+                            <li><a href="mailto:?subject=algorithm&body=https://chuwd19.github.io/archived_note/algorithm/"
+                                    target=_blank rel=noopener class=share-btn-email><i class="fas fa-envelope"></i></a>
+                            </li>
+                            <li><a href="https://www.linkedin.com/shareArticle?url=https://chuwd19.github.io/archived_note/algorithm/&title=algorithm"
+                                    target=_blank rel=noopener class=share-btn-linkedin><i
+                                        class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="whatsapp://send?text=algorithm%20https://chuwd19.github.io/archived_note/algorithm/"
+                                    target=_blank rel=noopener class=share-btn-whatsapp><i
+                                        class="fab fa-whatsapp"></i></a>
+                            </li>
+                            <li><a href="https://service.weibo.com/share/share.php?url=https://chuwd19.github.io/archived_note/algorithm/&title=algorithm"
+                                    target=_blank rel=noopener class=share-btn-weibo><i class="fab fa-weibo"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="media author-card content-widget-hr"><a href="../../index.html"><img
+                                class="avatar mr-3 avatar-circle"
+                                src="../../authors/admin/avatar_huec040978cd197f91fa586c800703b8ed_65970_270x270_fill_q75_lanczos_center.jpg"
+                                alt="Wenda Chu 储闻达"></a>
+                        <div class=media-body>
+                            <h5 class=card-title><a href="../../index.html">Wenda Chu 储闻达</a></h5>
+                            <h6 class=card-subtitle>Undergraduate Student</h6>
+                            <p class=card-text>I like chess, piano, animation and photography.</p>
+                            <ul class=network-icon aria-hidden=true></ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
 
-  <div class=page-footer>
-      <div class=container>
-          <footer class=site-footer>
-              <p class=powered-by>Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_blank
-                      rel=noopener>Wowchemy</a> — the free, <a href=https://github.com/wowchemy/wowchemy-hugo-modules
-                      target=_blank rel=noopener>open source</a> website builder that empowers creators.</p>
-          </footer>
-      </div>
-  </div>
-  <div id=modal class="modal fade" role=dialog>
-      <div class=modal-dialog>
-          <div class=modal-content>
-              <div class=modal-header>
-                  <h5 class=modal-title>Cite</h5><button type=button class=close data-dismiss=modal aria-label=Close>
-                      <span aria-hidden=true>&#215;</span></button>
-              </div>
-              <div class=modal-body>
-                  <pre><code class="tex hljs"></code></pre>
-              </div>
-              <div class=modal-footer><a class="btn btn-outline-primary my-1 js-copy-cite" href="index.html#"
-                      target=_blank><i class="fas fa-copy"></i> Copy</a>
-                  <a class="btn btn-outline-primary my-1 js-download-cite" href="index.html#" target=_blank><i
-                          class="fas fa-download"></i> Download</a>
-                  <div id=modal-error></div>
-              </div>
-          </div>
-      </div>
-  </div>
+        <div class=page-footer>
+            <div class=container>
+                <footer class=site-footer>
+                    <p class=powered-by>Published with <a href="https://wowchemy.com/?utm_campaign=poweredby"
+                            target=_blank rel=noopener>Wowchemy</a> — the free, <a
+                            href=https://github.com/wowchemy/wowchemy-hugo-modules target=_blank rel=noopener>open
+                            source</a> website builder that empowers creators.</p>
+                </footer>
+            </div>
+        </div>
+        <div id=modal class="modal fade" role=dialog>
+            <div class=modal-dialog>
+                <div class=modal-content>
+                    <div class=modal-header>
+                        <h5 class=modal-title>Cite</h5><button type=button class=close data-dismiss=modal
+                            aria-label=Close>
+                            <span aria-hidden=true>&#215;</span></button>
+                    </div>
+                    <div class=modal-body>
+                        <pre><code class="tex hljs"></code></pre>
+                    </div>
+                    <div class=modal-footer><a class="btn btn-outline-primary my-1 js-copy-cite" href="index.html#"
+                            target=_blank><i class="fas fa-copy"></i> Copy</a>
+                        <a class="btn btn-outline-primary my-1 js-download-cite" href="index.html#" target=_blank><i
+                                class="fas fa-download"></i> Download</a>
+                        <div id=modal-error></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
