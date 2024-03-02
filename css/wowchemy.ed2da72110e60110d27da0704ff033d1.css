@@ -11265,7 +11265,8 @@ div.alert a {
 }
 
 .article-container {
-    max-width: 760px;
+/*     max-width: 760px; */
+    max-width: 900px;
     padding: 0 20px;
     margin: 0 auto
 }
