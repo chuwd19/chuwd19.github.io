@@ -392,7 +392,11 @@ h2,
 .h2 {
     font-size: 2rem
 }
+h25,
+.h25{
+    font-size: 1.3rem
 
+}
 h3,
 .h3 {
     font-size: 1.75rem
@@ -1434,10 +1438,13 @@ pre code {
     }
 
     .col-lg-9 {
-        flex: 0 0 75%;
-        max-width: 75%
+        flex: 0 0 70%;
+        max-width: 70%
     }
 
+    .font-size-09{
+        font-size: 0.92rem;
+    }
     .col-lg-10 {
         flex: 0 0 83.33333333%;
         max-width: 83.33333333%
