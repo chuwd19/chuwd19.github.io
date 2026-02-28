@@ -54,6 +54,510 @@
   <script
     type=application/ld+json>{"@context":"https://schema.org","@type":"WebSite","potentialAction":{"@type":"SearchAction","target":"https://chuwd19.github.io?q={search_term_string}","query-input":"required name=search_term_string"},"url":"https://chuwd19.github.io"}</script>
   <title>Wenda Chu</title>
+  <style id="custom-academic-theme">
+    :root {
+      --paper: #ffffff;
+      --paper-soft: #f8fafc;
+      --ink: #142b46;
+      --muted: #35475d;
+      --line: #d9e3ef;
+      --accent: #124a7f;
+      --accent-soft: #e9f1fb;
+      --shadow: 0 20px 45px rgba(16, 36, 59, 0.09);
+    }
+
+    body {
+      color: var(--ink);
+      font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(18, 74, 127, 0.1), transparent 42%),
+        radial-gradient(circle at 88% 3%, rgba(18, 74, 127, 0.08), transparent 32%),
+        linear-gradient(180deg, #f1f5fb 0%, #f9fbff 45%, #f4f7fc 100%);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .section-heading h1,
+    .navbar-brand {
+      font-family: "Lora", Georgia, serif;
+      letter-spacing: 0.01em;
+      color: #0d2135;
+    }
+
+    p,
+    li,
+    .article-style,
+    .card-text {
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    a:hover {
+      color: #0a3a64;
+    }
+
+    .page-header .navbar {
+      background: rgba(250, 252, 255, 0.88) !important;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(16, 36, 59, 0.06);
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
+    }
+
+    #navbar-main .navbar-brand {
+      font-size: 1.0rem;
+      font-weight: 600;
+    }
+
+    .navbar .nav-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
+    }
+
+    .home-section {
+      padding-top: 2.6rem;
+      padding-bottom: 2.6rem;
+    }
+
+    .home-section .home-section-bg {
+      display: none;
+    }
+
+    .home-section .container {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      max-width: min(1400px, calc(100% - 6rem));
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      padding-left: clamp(1.4rem, 2.8vw, 2.8rem);
+      padding-right: clamp(1.4rem, 2.8vw, 2.8rem);
+      animation: paper-rise 0.7s ease both;
+    }
+
+    #profile .avatar {
+      border: 6px solid var(--paper-soft);
+      box-shadow: 0 16px 30px rgba(16, 36, 59, 0.18);
+    }
+
+    .portrait-title h2 {
+      font-size: 2.2rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .portrait-title h3 {
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .portrait-title .name-zh {
+      display: block;
+      margin-top: -0.1rem;
+      margin-bottom: 0.45rem;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: #334a63;
+      font-weight: 500;
+      font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "PMingLiU", serif;
+      letter-spacing: 0;
+    }
+
+    .section-subheading {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.77rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    #about .section-subheading {
+      font-size: 1rem;
+    }
+
+    .pub-list-item,
+    .project-item .row.align-items-center,
+    .experience .card {
+      background: linear-gradient(180deg, #ffffff 0%, #fdfefe 100%);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1rem 1.1rem;
+      box-shadow: 0 8px 18px rgba(16, 36, 59, 0.06);
+      will-change: transform, box-shadow;
+      transition: transform 0.28s cubic-bezier(0.22, 0.68, 0.18, 1),
+        box-shadow 0.28s cubic-bezier(0.22, 0.68, 0.18, 1),
+        border-color 0.24s ease;
+    }
+
+    #featured .projects-container {
+      overflow: visible;
+    }
+
+    .pub-list-item:hover,
+    .pub-list-item:focus-within,
+    .project-item .row.align-items-center:hover,
+    .project-item .row.align-items-center:focus-within,
+    .experience .card:hover {
+      transform: translateY(-4px);
+      border-color: #bfd1e6;
+      box-shadow: 0 16px 34px rgba(20, 46, 79, 0.14);
+    }
+
+    .project-item .row.align-items-center img {
+      transition: transform 0.34s ease, filter 0.34s ease;
+    }
+
+    .project-item .row.align-items-center:hover img,
+    .project-item .row.align-items-center:focus-within img {
+      transform: scale(1.025);
+      filter: saturate(1.05);
+    }
+
+    #experience .experience {
+      margin-bottom: 0.05rem;
+    }
+
+    #experience .experience .col.py-2 {
+      padding-top: 0.0rem !important;
+      padding-bottom: 0.0rem !important;
+    }
+
+    #experience .experience .card-body {
+      padding: 0.1rem 0.86rem;
+    }
+
+    #experience .experience .mr-2.mb-2 {
+      margin-right: 0.55rem !important;
+      margin-bottom: 0 !important;
+    }
+
+    #experience .experience .mr-2.mb-2 img {
+      width: 46px !important;
+      height: 46px !important;
+      object-fit: contain;
+    }
+
+    #experience .exp-title.section-subheading {
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+    }
+
+    #experience .exp-company.section-subheading {
+      text-transform: none;
+      letter-spacing: 0.01em;
+      font-size: 0.8rem;
+    }
+
+    #experience .exp-meta {
+      margin-top: 0.08rem;
+      font-size: 0.77rem;
+      line-height: 1.24;
+    }
+
+    #experience .card-text,
+    #experience .card-text p,
+    #experience .card-text li {
+      font-size: 0.7rem;
+      line-height: 1.2;
+    }
+
+    #experience .card-text p {
+      margin-top: 0.1rem;
+      margin-bottom: 0.18rem;
+    }
+
+    #experience .card-text ul {
+      margin-top: 0.16rem;
+      margin-bottom: 0;
+      padding-left: 0.9rem;
+    }
+
+    #experience .card-text li {
+      margin-bottom: 0.08rem;
+    }
+
+    #experience .experience .m-2 {
+      margin: 0.45rem !important;
+    }
+
+    #experience .experience .border-right {
+      border-right-width: 1.5px !important;
+    }
+
+    #experience .exp-fill {
+      width: 0.58rem;
+      height: 0.58rem;
+    }
+
+    #experience .experience .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(20, 46, 79, 0.11);
+    }
+
+    #experience .experience .card-text p {
+      color: var(--muted) !important;
+    }
+
+    .table.table-sm th,
+    .table.table-sm td {
+      border-top: 1px solid var(--line);
+      vertical-align: top;
+      padding-top: 0.68rem;
+      padding-bottom: 0.68rem;
+      background: transparent !important;
+    }
+
+    .table.table-sm th {
+      color: var(--accent);
+      font-weight: 700;
+      width: 130px;
+      white-space: nowrap;
+    }
+
+    .btn-outline-primary,
+    .btn-primary {
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-outline-primary {
+      border-color: #9eb7d1;
+      color: var(--accent);
+      background: #fff;
+    }
+
+    .btn-outline-primary:hover,
+    .btn-primary {
+      background: var(--accent-soft);
+      border-color: #88a8c8;
+      color: #0e3c66;
+    }
+
+    /* Match Selected Projects action buttons to publication .btn-sm geometry. */
+    #projects .btn-page-header {
+      padding: 5px 0.4rem;
+      font-size: 14px;
+      line-height: 1;
+      border-radius: 0.2rem;
+    }
+
+    #featured .project-toolbar {
+      margin-top: 0.35rem;
+      margin-bottom: 0.4rem;
+    }
+
+    #featured .project-filters .btn-group {
+      border: 1px solid #cbd9ea;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #f7fafd 0%, #edf3fa 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 6px 16px rgba(17, 43, 73, 0.08);
+      padding: 0.2rem;
+      gap: 0.15rem;
+    }
+
+    #featured .project-filters .btn-group .btn {
+      border: 0;
+      border-radius: 999px;
+      min-width: 7.3rem;
+      padding: 0.48rem 1.2rem;
+      font-size: 0.92rem;
+      line-height: 1.2;
+      font-weight: 600;
+      color: #355577;
+      background: transparent;
+      box-shadow: none;
+      transition: background 0.22s ease, color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+    }
+
+    #featured .project-filters .btn-group .btn:hover {
+      color: #133f69;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    #featured .project-filters .btn-group .btn.active {
+      color: #123f68;
+      background: linear-gradient(180deg, #ffffff 0%, #f4f8fc 100%);
+      box-shadow: 0 6px 14px rgba(18, 58, 96, 0.16);
+      transform: translateY(-1px);
+    }
+
+    #contact .fa-ul i {
+      color: var(--accent);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    @media (max-width: 991px) {
+      .home-section .container {
+        border-radius: 14px;
+        max-width: calc(100% - 1.6rem);
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .portrait-title h2 {
+        font-size: 1.85rem;
+      }
+    }
+
+    @keyframes paper-rise {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    body.dark {
+      --paper: #0f1622;
+      --paper-soft: #152031;
+      --ink: #e6edf7;
+      --muted: #b4c1d3;
+      --line: #2a3a52;
+      --accent: #86b6ec;
+      --accent-soft: #1b2a3e;
+      --shadow: 0 24px 46px rgba(0, 0, 0, 0.42);
+    }
+
+    body.dark {
+      background:
+        radial-gradient(circle at 14% 8%, rgba(76, 128, 186, 0.2), transparent 42%),
+        radial-gradient(circle at 88% 4%, rgba(64, 104, 154, 0.18), transparent 34%),
+        linear-gradient(180deg, #0a111c 0%, #0d1623 52%, #0c1420 100%);
+    }
+
+    body.dark h1,
+    body.dark h2,
+    body.dark h3,
+    body.dark h4,
+    body.dark h5,
+    body.dark h6,
+    body.dark .section-heading h1,
+    body.dark .navbar-brand {
+      color: #ecf2fb;
+    }
+
+    body.dark .page-header .navbar {
+      background: rgba(12, 21, 33, 0.82) !important;
+      border-bottom-color: var(--line);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark .portrait-title .name-zh {
+      color: #c7d7eb;
+    }
+
+    body.dark .pub-list-item,
+    body.dark .project-item .row.align-items-center,
+    body.dark .experience .card {
+      background: linear-gradient(180deg, #121c2c 0%, #101a29 100%);
+      border-color: var(--line);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    body.dark .pub-list-item:hover,
+    body.dark .pub-list-item:focus-within,
+    body.dark .project-item .row.align-items-center:hover,
+    body.dark .project-item .row.align-items-center:focus-within,
+    body.dark .experience .card:hover {
+      transform: translateY(-3px);
+      border-color: #3a4f6c;
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.48);
+    }
+
+    body.dark .project-item .row.align-items-center:hover img,
+    body.dark .project-item .row.align-items-center:focus-within img {
+      filter: saturate(1.08) brightness(1.02);
+    }
+
+    body.dark #experience .experience .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark .btn-outline-primary {
+      border-color: #56779c;
+      color: #b9d5f5;
+      background: #0e1928;
+    }
+
+    body.dark .btn-outline-primary:hover,
+    body.dark .btn-primary {
+      background: #1b2c43;
+      border-color: #6d8fb5;
+      color: #d4e5fb;
+    }
+
+    body.dark #featured .project-filters .btn-group {
+      border-color: #31445e;
+      background: linear-gradient(180deg, #1a2637 0%, #152233 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    body.dark #featured .project-filters .btn-group .btn {
+      color: #a8c0da;
+    }
+
+    body.dark #featured .project-filters .btn-group .btn:hover {
+      color: #d4e6fa;
+      background: rgba(156, 191, 229, 0.12);
+    }
+
+    body.dark #featured .project-filters .btn-group .btn.active {
+      color: #e6f1ff;
+      background: linear-gradient(180deg, #2a3e57 0%, #22364d 100%);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark .table.table-sm th,
+    body.dark .table.table-sm td,
+    body.dark .site-footer {
+      border-color: var(--line);
+    }
+
+    body.dark #about .table.table-sm th {
+      color: #a9cbf0 !important;
+    }
+
+    body.dark #about .table.table-sm td {
+      color: #dbe7f6 !important;
+    }
+
+    body.dark #about .table.table-sm td a {
+      color: #a8d0ff !important;
+    }
+
+    body.dark #about .table.table-sm td a:hover {
+      color: #d2e6ff !important;
+    }
+
+
+  </style>
 </head>
 
 <body id=top data-spy=scroll data-offset=70 data-target=#navbar-main class=page-wrapper>
@@ -124,7 +628,7 @@
                 alt="Wenda Chu 储闻达">
               <div class=portrait-title>
                 <h2>Wenda Chu</h2>
-                <h25>储闻达</h25>
+                <div class="name-zh" lang="zh-Hans">&#20648;&#38395;&#36798;</div>
                 <h3>PhD Student</h3>
                 <h3><a href=https://www.caltech.edu/ target=_blank rel=noopener><span>Caltech</span></a>
                 </h3>
@@ -277,6 +781,19 @@
 
 
             <div class="isotope projects-container row js-layout-row">
+              
+              <div class="col-12 isotope-item js-id-others">
+                <div class=pub-list-item style=margin-bottom:1rem>
+                  <div><i class="far fa-file-alt pub-icon" aria-hidden=true></i> <a
+                      href="https://arxiv.org/abs/2507.04832">Discrete diffusion trajectory alignment via stepwise decomposition</a></div>
+                  <div><span class="article-metadata li-cite-author"> Jiaqi Han<i
+                        class="author-notes fas fa-info-circle small-icon" data-toggle=tooltip
+                        title="Equal contribution"></i>, Austin Wang<i
+                        class="author-notes fas fa-info-circle small-icon" data-toggle=tooltip
+                        title="Equal contribution"></i>, Minkai Xu, <b>Wenda Chu</b>, Meihua Dang, Haotian Ye, Huayu Chen, Yisong Yue, Stefano Ermon.</span></div>
+                  ICLR 2026.
+                </div>
+              </div>
 
               <div class="col-12 isotope-item js-id-selected">
                 <div class="pub-list-item" style=margin-bottom:1rem>
@@ -558,8 +1075,8 @@
                             src="media/icons/brands/logo-bytedance.png" width=56px height=56px
                             alt="Secure Learning Lab, University of Illinois at Urbana-Champaign"></a></div>
                       <div>
-                        <div class="section-subheading card-title exp-title text-muted my-0">Research Intern</div>
-                        <div class="section-subheading card-title exp-company text-muted my-0">ByteDance Seed</div>
+                        <div class="section-subheading card-title exp-title my-0">Research Intern</div>
+                        <div class="section-subheading card-title exp-company my-0">ByteDance Seed</div>
                         <div class="text-muted exp-meta">June 2025 - Sep 2025
                           <span class=middot-divider></span><span>San Jose</span>
                         </div>
@@ -601,10 +1118,8 @@
                             src="media/icons/brands/sll_logo.svg" width=56px height=56px
                             alt="Secure Learning Lab, University of Illinois at Urbana-Champaign"></a></div>
                       <div>
-                        <div class="section-subheading card-title exp-title text-muted my-0">Research Intern</div>
-                        <div class="section-subheading card-title exp-company text-muted my-0"><a
-                            href=https://aisecure.github.io/ target=_blank rel=noopener>Secure Learning Lab, University
-                            of Illinois at Urbana-Champaign</a></div>
+                        <div class="section-subheading card-title exp-title my-0">Research Intern</div>
+                        <div class="section-subheading card-title exp-company my-0">Secure Learning Lab, University of Illinois at Urbana-Champaign</div>
                         <div class="text-muted exp-meta">Nov 2021 -
                           June 2023
                           <span class=middot-divider></span><span>Illinois</span>
@@ -648,9 +1163,8 @@
                             src="media/icons/brands/tsinghua_logo.svg" width=56px height=56px
                             alt="Tsinghua University"></a></div>
                       <div>
-                        <div class="section-subheading card-title exp-title text-muted my-0">Research Intern</div>
-                        <div class="section-subheading card-title exp-company text-muted my-0"><a
-                            href=https://www.tsinghua.edu.cn/en/ target=_blank rel=noopener>Tsinghua University</a>
+                        <div class="section-subheading card-title exp-title my-0">Research Intern</div>
+                        <div class="section-subheading card-title exp-company my-0">Tsinghua University
                         </div>
                         <div class="text-muted exp-meta">Sep 2021 -
                           Feb 2023
@@ -659,11 +1173,9 @@
                       </div>
                     </div>
                     <div class=card-text>
-                      <ul>
                         <!-- <li>Yao Class, IIIS.</li> -->
-                        <li>I was fortunate to be advised by Prof. Xiaolin Hu and researched on launching physically
-                          realizable adversarial attacks on object detection models.</li>
-                      </ul>
+                        <p>I was fortunate to be advised by Prof. Xiaolin Hu and researched on launching physically
+                          realizable adversarial attacks on object detection models.</p>
                     </div>
                   </div>
                 </div>
